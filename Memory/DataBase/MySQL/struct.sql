@@ -2,26 +2,26 @@
 
 	/**	***	***	***	***	***	***	***	***	***	***	***	***	***	***	***	***	*
 	 *																	*
-	 *		@copyright 2012
+	 *		@copyright 2013
 	 *			by														*
 	 *		@author Vitaliy Myroslavovych Tsutsman
 	 *																	*
-	 *		@date 2013/03/01 - 2013/../..
+	 *		@date 2013/03/01 - 2013/03/29
 	 *																	*
 	 *		@description Journal Mannager System(JMS)
 	 *			System for mannager of journals and users.
 	 *																	*
-	 *		@adress Paland/Krakow/Budryka/11
+	 *		@adress Paland/Krakow/Budryka/11/414
 	 *																	*
 	***	***	***	***	***	***	***	***	***	***	***	***	***	***	***	***	***	*/
 
 /*	***	Create DataBase	***	***	***	***	***	***	***	***	***	***	***	***	***	*/
-CREATE DATABASE `youtube_video` 
+CREATE DATABASE `jms` 
 	DEFAULT 
 		CHARACTER SET utf8 
 		COLLATE utf8_general_ci;
 
-USE `youtube_video`;
+USE `jms`;
 
 /*	***	Create Tables and relations	***	***	***	***	***	***	***	***	***	***	*/
 /* -# Role of users #- */
@@ -58,7 +58,7 @@ CREATE TABLE `user`(
 	`second_name`	VARCHAR( 32 ) NOT NULL, /* Second name(family name) 	*/
 	`father_name`	VARCHAR( 32 ) NOT NULL, /* Name of your father 			*/
 	/* Other data */
-	`gender`		BOOLEAN, 		/* Gender of user 	*/
+	`gender`		BOOLEAN DEFAULT NULL, 	/* Gender of user 	*/
 	`country`		VARCHAR( 2 ), 	/* Native country 	*/
 	`language`		VARCHAR( 2 ), 	/* Native language 	*/
 
@@ -98,11 +98,12 @@ ENGINE = InnoDB CHARACTER SET = utf8;
 /* -# Content of service #-	---	---	---	---	---	---	---	---	---	---	---	--- */
 /* -# Journals #- */
 CREATE TABLE `journal`(
-	`id`			INTEGER NOT NULL AUTO_INCREMENT, 
-	`issn`			VARCHAR( 100 ) NOT NULL, 
-	`title`			VARCHAR( 100 ) NOT NULL, 
-	`description`	TEXT, 
-	`creation`		TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 		*/
+	`id`			INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 		*/
+	`issn`			VARCHAR( 100 ) NOT NULL, 	/* ISSN of registration 	*/
+	`title`			VARCHAR( 100 ) NOT NULL, 	/* Title of journal 		*/
+	`description`	TEXT, 				/* Short description about journal 	*/
+
+	`creation`		TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 	*/
 
 	/* Keys */
 	PRIMARY KEY( `id` )
@@ -111,10 +112,11 @@ ENGINE = InnoDB CHARACTER SET = utf8;
 
 /* -# Numbers of journal #- */
 CREATE TABLE `journal_number`(
-	`id`			INTEGER NOT NULL AUTO_INCREMENT, /* Identificator */
-	`id_journal`	INTEGER NOT NULL, /* Identificator of journal */
-	`tom`			INTEGER NOT NULL, /* Tom of edition */
-	`number`		INTEGER NOT NULL, /* Number of edition */
+	`id`			INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 		*/
+	`id_journal`	INTEGER NOT NULL, 			/* Identificator of journal */
+	`volume`		INTEGER NOT NULL, 			/* Tom of edition 			*/
+	`issue`			INTEGER NOT NULL, 			/* Number of edition 		*/
+
 	`creation`		TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 	*/
 
 	/* Keys */
@@ -128,14 +130,22 @@ ENGINE = InnoDB CHARACTER SET = utf8;
 
 /* -# Articles of journals #- */
 CREATE TABLE `article`(
-	`id`				INTEGER NOT NULL AUTO_INCREMENT, /* Identificator */
-	`id_user`			INTEGER, /* Identificator of user */
-	`id_number_journal`	INTEGER, /* Identificator of journal number */
-	`code_language`		VARCHAR( 2 ) NOT NULL, /* Code of language all article */
-	`pageno`			INTEGER, /* Number of page in journal */
+	`id`				INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 	*/
+	`id_user`			INTEGER, 				/* Identificator of user 	*/
+	`id_journal_number`	INTEGER, 		/* Identificator of journal number 	*/
+	`code_language`		VARCHAR( 2 ) NOT NULL, /* Code of language of article */
+	`pageno`			INTEGER, 			/* Number of page in journal 	*/
 
 	/* Keys */
-	PRIMARY KEY( `id` )
+	PRIMARY KEY( `id` ), 
+
+	FOREIGN KEY( `id_journal_number` ) REFERENCES `journal_number`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT, 
+
+	FOREIGN KEY( `id_user` ) REFERENCES `user`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
 )
 ENGINE = InnoDB CHARACTER SET = utf8;
 

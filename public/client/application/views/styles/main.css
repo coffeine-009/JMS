@@ -1,0 +1,78 @@
+/* Rules */
+html, 
+body
+{
+	margin	: 0;
+	padding	: 0;
+}
+
+body
+{
+	font-family		: "Times New Roman", serief;
+	font-size		: small;
+}
+
+/* Main of page */
+.header
+{
+	background		: #ccc;
+	background		: -moz-linear-gradient( top, #fff, #eee, #ccc );
+	color			: #000;
+	font-size		: medium;
+	text-align		: left;
+}
+
+	/* Short logotip */
+	.logotip
+	{
+		display		: inline-block;
+		margin-left	: 10px;
+	}
+	
+	/* Menu :: main */
+	.menu-main
+	{
+		color		: #000;
+		display		: inline-block;
+		font-weight	: bold;
+	}
+	
+	.menu-main>ul
+	{
+		color	: inherit;
+	}
+	
+		.menu-main>ul>li
+		{
+			color	: inherit;
+			display : inline;
+			margin	: 3px;
+		}
+		
+			.menu-main>ul>li>a
+			{
+				color			: inherit;
+				text-decoration	: none;
+			}
+			
+			.menu-main>ul>li>a:hover
+			{
+				color		:#777;
+				text-decoration: overline;
+			}
+			
+	/* Tools */
+	.tools
+	{
+		display	: inline-block;
+		float	: right;
+		margin	: 5px;
+	}
+	
+	/* Authorization block */
+	.auth
+	{
+		display	: inline-block;
+		float	: right;
+		margin	: 5px;
+	}

@@ -7,7 +7,7 @@
 	
 		<title>JMS</title>
 		
-		<link />
+		<link type = "text/css" rel = "stylesheet" href = "/client/application/views/styles/main.css" />
 		
 		<script type = "text/javascript"></script>
 	
@@ -15,35 +15,59 @@
 	
 	<body>
 	
-	<div id = "header">
-	
-		<div id = "menu-main">
+		<div id = "header" class = "header">
 		
-			Home
-		
+			<!-- Short logotip -->
+			<div id = "logotip" class = "logotip">
+			
+				CMP
+			
+			</div>
+			
+			<!-- Manu :: Main -->
+			<div id = "menu-main" class = "menu-main">
+			
+				<ul>
+					<li>
+						<a href = "">Home</a>
+					</li>
+					<li>
+						<a href = "">About</a>
+					</li>
+				</ul>
+			
+			</div>
+			
+			<!-- Authorization block -->
+			<div id = "auth" class = "auth">
+			
+				<a href = "">Sing in</a> | 
+				<a href = "">Sing up</a>
+			
+			</div>
+			
+			<!-- Tools -->
+			<div id = "tools" class = "tools">
+			
+				Tools
+			
+			</div>
+			
 		</div>
 		
-		<div id = "logotip">
+		<!-- Main content -->
+		<div id = "main">
 		
-		
-		
+			<?= $this -> layout() -> content; ?>
+			
 		</div>
 		
-	</div>
-	
-	<div id = "main">
-	
+		<!-- Footer -->
+		<div id = "footer">
 		
-	
-	</div>
-	
-	<div id = "footer">
-	
-	
-	
-	</div>
-
-		<?php echo $this -> layout() -> content; ?>
+			&copy; 2013 by <a href = "">Vitaliy Tsutsman</a>
+		
+		</div>
 	
 	</body>
 
