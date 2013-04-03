@@ -1,0 +1,55 @@
+/* Registration */
+h1
+{
+	border-top		: solid 1px;
+	border-bottom	: solid 1px;
+	border-color	: #eee;
+	text-align		: center;
+}
+
+.group
+{
+	border			: solid 1px #eee;
+	display			: table;
+	margin			: 0 0 0 0;
+	width			: 100%;
+}
+
+	.group .group-title
+	{
+		background		: -moz-linear-gradient( top, #ddd, #eee, #ddd );
+		display			: table-caption;
+		padding			: 9px;
+	}
+
+.registration-item
+{
+	background		: #fff;
+	background		: -moz-linear-gradient( top, #fff, #fff, #eee );
+	display			: table-row;
+}
+
+	/* Title */
+	.registration-item .registration-item-title
+	{
+		border-bottom	: solid 1px #ddd;
+		display			: table-cell;
+		padding			: 9px;
+		width			: 15%;
+	}
+	
+	/* Field */
+	.registration-item .registration-item-field
+	{
+		border-bottom	: solid 1px #eee;
+		display			: table-cell;
+		width			: 20%;
+	}
+	
+	/* Message */
+	.registration-item .registration-item-message
+	{
+		border-bottom	: solid 1px #ddd;
+		display			: table-cell;
+		padding			: 0 9px 0 9px;		
+	}

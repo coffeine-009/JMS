@@ -76,14 +76,20 @@ body
 {
 	/*display		: inline-block;*/
 	/*margin-left	: 10px;*/
-	background: #999;
+	background		: #eee;
+	font-size		: xx-large;
+	/*height			: 100px;*/
+	text-align		: center;
 }
 
 /* Main content */
 .main
 {
 	/*background		: #f00;*/
+	border-top		: solid 1px #ccc;
+	border-bottom	: solid 1px #ccc;
 	margin			: 3px 0 3px 0;
+	padding			: 5px;
 }
 
 /* Footer */
