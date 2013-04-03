@@ -13,6 +13,7 @@ body
 }
 
 /* Main of page */
+/* Header */
 .header
 {
 	background		: #ccc;
@@ -21,13 +22,6 @@ body
 	font-size		: medium;
 	text-align		: left;
 }
-
-	/* Short logotip */
-	.logotip
-	{
-		display		: inline-block;
-		margin-left	: 10px;
-	}
 	
 	/* Menu :: main */
 	.menu-main
@@ -76,3 +70,29 @@ body
 		float	: right;
 		margin	: 5px;
 	}
+	
+/* Short logotip */
+.logotip
+{
+	/*display		: inline-block;*/
+	/*margin-left	: 10px;*/
+	background: #999;
+}
+
+/* Main content */
+.main
+{
+	/*background		: #f00;*/
+	margin			: 3px 0 3px 0;
+}
+
+/* Footer */
+.footer
+{
+	background		: #ccc;
+	background		: -moz-linear-gradient( top, #ccc, #eee, #fff );
+	color			: #000;
+	font-size		: medium;
+	padding			: 5px;
+	text-align		: center;
+}
