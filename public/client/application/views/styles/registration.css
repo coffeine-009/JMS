@@ -36,6 +36,7 @@ h1
 		display			: table-cell;
 		padding			: 9px;
 		width			: 15%;
+		vertical-align	: top;
 	}
 	
 	/* Field */
@@ -44,6 +45,7 @@ h1
 		border-bottom	: solid 1px #eee;
 		display			: table-cell;
 		width			: 20%;
+		padding			: 9px;
 	}
 	
 	/* Message */
@@ -51,5 +53,6 @@ h1
 	{
 		border-bottom	: solid 1px #ddd;
 		display			: table-cell;
-		padding			: 0 9px 0 9px;		
+		padding			: 9px 9px 0 9px;
+		vertical-align	: top;		
 	}

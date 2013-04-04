@@ -1,12 +1,8 @@
 <!-- Registration -->
-<div id = "" class = "">Main => Registration</div>
-
-<!-- Title -->
-<h1>Registration</h1>
-
 <!-- Form -->
-<form action = "" method = "post">
-	
+<form action = "/authorization/registration" method = "post">
+
+	<!-- Base data -->	
 	<div id = "" class = "group">
 	
 		<label class = "group-title">Base:</label>
@@ -14,7 +10,7 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title">Username:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "" value = "" />
+				<input id = "" type = "text" name = "username" value = "" />
 			</div>
 			<span class = "registration-item-message">Msg<br/>fd</span>
 		</div>
@@ -22,7 +18,7 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title">Password:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "" value = "" />
+				<input id = "" type = "text" name = "password" value = "" />
 			</div>
 			<span class = "registration-item-message"></span>
 		</div>
@@ -30,14 +26,30 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title">Repeat password:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "" value = "" />
+				<input id = "" type = "text" name = "repeat_password" value = "" />
 			</div>			
 			<span class = "registration-item-message">Msg</span>
 		</div>
 		
+		<div class = "registration-item">
+			<label for = "" class = "registration-item-title">Gender:</label>
+			<div class = "registration-item-field">
+				<div>					
+					<input id = "gender-male" type = "radio" name = "gender" value = "" />
+					<label for = "gender-male">Male</label>
+				</div>
+				
+				<div>				
+					<input id = "gender-female" type = "radio" name = "gender" value = "" />
+					<label for = "gender-female">Female</label>
+				</div>
+			</div>
+			<span class = "registration-item-message">Msg<br/>fd</span>
+		</div>
+		
 	</div>
 	
-	
+	<!-- Names -->
 	<div class = "group">
 	
 		<label class = "group-title">Names:</label>
@@ -45,7 +57,7 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title">First name:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "" value = "" />
+				<input id = "" type = "text" name = "first_name" value = "" />
 			</div>
 			<span class = "registration-item-message">Msg</span>
 		</div>
@@ -53,7 +65,7 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title">Second name:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "" value = "" />
+				<input id = "" type = "text" name = "second_name" value = "" />
 			</div>
 			<span class = "registration-item-message">Msg</span>
 		</div>
@@ -61,7 +73,72 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title">Middle name:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "" value = "" />
+				<input id = "" type = "text" name = "father_name" value = "" />
+			</div>
+			<span class = "registration-item-message">Msg</span>
+		</div>
+		
+	</div>
+	
+	
+	<!-- Contacts -->
+	<div class = "group">
+	
+		<label class = "group-title">Contacts:</label>
+		
+		<div class = "registration-item">
+			<label for = "" class = "registration-item-title">E-mail:</label>
+			<div class = "registration-item-field">
+				<input id = "" type = "text" name = "email" value = "" />
+			</div>
+			<span class = "registration-item-message">Msg</span>
+		</div>
+		
+		<div class = "registration-item">
+			<label for = "" class = "registration-item-title">Phone:</label>
+			<div class = "registration-item-field">
+				<input id = "" type = "text" name = "phone" value = "" />
+			</div>
+			<span class = "registration-item-message">Msg</span>
+		</div>
+		
+		<div class = "registration-item">
+			<label for = "" class = "registration-item-title">Skype:</label>
+			<div class = "registration-item-field">
+				<input id = "" type = "text" name = "skype" value = "" />
+			</div>
+			<span class = "registration-item-message">Msg</span>
+		</div>
+		
+		<div class = "registration-item">
+			<label for = "" class = "registration-item-title">Mailling Address:</label>
+			<div class = "registration-item-field">
+				<textarea id = "" name = "address" cols = "30" rows = "5"></textarea>
+			</div>
+			<span class = "registration-item-message">Msg</span>
+		</div>
+		
+		<div class = "registration-item">
+			<label for = "" class = "registration-item-title">Country:</label>
+			<div class = "registration-item-field">
+				<select id = "" name = "country">
+					<option value = "">Ukraine</option>
+				</select>
+			</div>
+			<span class = "registration-item-message">Msg</span>
+		</div>
+		
+		<div class = "registration-item">
+			<label for = "" class = "registration-item-title">Params:</label>
+			<div class = "registration-item-field">
+				<div>
+					<input id = "" type = "checkbox" name = "" />
+					<label>Send me letter</label>
+				</div>
+				<div>
+					<input id = "" type = "checkbox" name = "" />
+					<label>Check me letter</label>
+				</div>
 			</div>
 			<span class = "registration-item-message">Msg</span>
 		</div>
