@@ -5,34 +5,52 @@
 	<!-- Base data -->	
 	<div id = "" class = "group">
 	
-		<label class = "group-title">Base:</label>
+		<label class = "group-title"><?= $this -> translate( 'Base date' ); ?>:</label>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Username:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Username' ); ?>:</label>
 			<div class = "registration-item-field">
 				<input id = "" type = "text" name = "username" value = "" />
 			</div>
-			<span class = "registration-item-message">Msg<br/>fd</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'username' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Password:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Password' ); ?>:</label>
 			<div class = "registration-item-field">
 				<input id = "" type = "text" name = "password" value = "" />
 			</div>
-			<span class = "registration-item-message"></span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'password' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Repeat password:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Repeat password' ); ?>:</label>
 			<div class = "registration-item-field">
 				<input id = "" type = "text" name = "repeat_password" value = "" />
 			</div>			
-			<span class = "registration-item-message">Msg</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'r_passwd' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Gender:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Gender' ); ?>:</label>
 			<div class = "registration-item-field">
 				<div>					
 					<input id = "gender-male" type = "radio" name = "gender" value = "" />
@@ -44,7 +62,13 @@
 					<label for = "gender-female">Female</label>
 				</div>
 			</div>
-			<span class = "registration-item-message">Msg<br/>fd</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'gender' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 	</div>
@@ -52,30 +76,48 @@
 	<!-- Names -->
 	<div class = "group">
 	
-		<label class = "group-title">Names:</label>
+		<label class = "group-title"><?= $this -> translate( 'Names' ); ?>:</label>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">First name:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'First names' ); ?>:</label>
 			<div class = "registration-item-field">
 				<input id = "" type = "text" name = "first_name" value = "" />
 			</div>
-			<span class = "registration-item-message">Msg</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'first_name' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Second name:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Last name' ); ?>:</label>
 			<div class = "registration-item-field">
 				<input id = "" type = "text" name = "second_name" value = "" />
 			</div>
-			<span class = "registration-item-message">Msg</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'last_name' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Middle name:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Middle name' ); ?>:</label>
 			<div class = "registration-item-field">
 				<input id = "" type = "text" name = "father_name" value = "" />
 			</div>
-			<span class = "registration-item-message">Msg</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'middle_name' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 	</div>
@@ -84,63 +126,100 @@
 	<!-- Contacts -->
 	<div class = "group">
 	
-		<label class = "group-title">Contacts:</label>
+		<label class = "group-title"><?= $this -> translate( 'Contacts' ); ?>:</label>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">E-mail:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'E-mail' ); ?>:</label>
 			<div class = "registration-item-field">
 				<input id = "" type = "text" name = "email" value = "" />
 			</div>
-			<span class = "registration-item-message">Msg</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'email' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Phone:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Phone' ); ?>:</label>
 			<div class = "registration-item-field">
 				<input id = "" type = "text" name = "phone" value = "" />
 			</div>
-			<span class = "registration-item-message">Msg</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'phone' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Skype:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Skype' ); ?>:</label>
 			<div class = "registration-item-field">
 				<input id = "" type = "text" name = "skype" value = "" />
 			</div>
-			<span class = "registration-item-message">Msg</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'skype' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Mailling Address:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Mailling Address' ); ?>:</label>
 			<div class = "registration-item-field">
 				<textarea id = "" name = "address" cols = "30" rows = "5"></textarea>
 			</div>
-			<span class = "registration-item-message">Msg</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'mailing_address' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Country:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Country' ); ?>:</label>
 			<div class = "registration-item-field">
 				<select id = "" name = "country">
 					<option value = "">Ukraine</option>
+					<!-- TODO: Get From DB -->
 				</select>
 			</div>
-			<span class = "registration-item-message">Msg</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'country' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title">Params:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Params' ); ?>:</label>
 			<div class = "registration-item-field">
 				<div>
 					<input id = "" type = "checkbox" name = "" />
-					<label>Send me letter</label>
+					<label><?= $this -> translate( 'Send me a letter' ); ?></label>
 				</div>
 				<div>
 					<input id = "" type = "checkbox" name = "" />
-					<label>Check me letter</label>
+					<label><?= $this -> translate( 'Other' ); ?></label>
 				</div>
 			</div>
-			<span class = "registration-item-message">Msg</span>
+			<span class = "registration-item-message">
+				<?=
+					$this -> translate(
+						$this -> errors[ 'params' ]
+					);				
+				?>
+			</span>
 		</div>
 		
 	</div>

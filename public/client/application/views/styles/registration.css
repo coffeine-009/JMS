@@ -7,6 +7,12 @@ h1
 	text-align		: center;
 }
 
+input[type=submit]
+{
+	background		: -moz-linear-gradient( top, #ccc, #fff, #ccc );;
+	-moz-border-radius	: 3px;
+}
+
 .group
 {
 	border			: solid 1px #eee;

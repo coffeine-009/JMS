@@ -7,7 +7,7 @@
 	 * 		by
 	 * 	@author Vitaliy Tsutsman
 	 * 
-	 * @date 2013-04-04 17:48:46 :: 
+	 * @date 2013-04-04 17:48:46 :: 2013-..-.. ..:..:..
 	 * 
 	 * @address Paland/Krakow/Budryka/5/414
 	 * 																*
@@ -36,12 +36,36 @@ class AuthorizationController
     //- Registration action -//
     public function registrationAction()
     {
+    	//- Array of arrays -//
+    	$errors = array(
+    		'username'	=> '', 
+    		'password'	=> '', 
+    		'r_passwd'	=> '', 
+    		'gender'	=> '', 
+    		//- Names -//
+    		'first_name'	=> '', 
+    		'last_name'		=> '', 
+    		'middle_name'	=> '',
+    		//- Contacts -//
+    		'email'				=> '', 
+    		'phone'				=> '', 
+    		'skype'				=> '', 
+    	 	'mailing_address'	=> '', 
+    		'country'			=> '', 
+    		//- Params -//
+    		'params'	=> ''
+    	);
+    	
     	//- Get data from form -//
+    	
+
     	
     	
         //- Init view -//
         $this -> view -> Title = 'Registration';
         $this -> view -> pathOfSite = 'Main => Registration';
+        
+        $this -> view -> errors = $errors;
     }
 
     public function registrationsuccessAction()
