@@ -57,8 +57,27 @@ class AuthorizationController
     	);
     	
     	//- Get data from form -//
-    	
-
+    	if( $this -> getRequest() -> isPost() )
+    	{
+    		$data = $this -> getRequest() -> getParams();
+    		
+    		
+    		//- Validation -//
+			$vUserName = new Zend_Validate_Alnum();
+	
+			if( $vUserName -> isValid( $data[ 'username' ] ) )
+			{
+				// email appears to be valid
+				echo 'ok';
+			}else
+			{
+				// email is invalid; print the reasons
+				foreach( $vUserName -> getMessages() as $messageId => $message )
+				{
+					echo "Validation failure '$messageId': $message\n";
+				}
+    		}    	
+    	}
     	
     	
         //- Init view -//
