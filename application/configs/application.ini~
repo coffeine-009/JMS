@@ -38,4 +38,4 @@ resources.db.adapter = PDO_MYSQL;
 resources.db.params.host = localhost
 resources.db.params.username = root
 resources.db.params.password = developer
-resources.db.params.dbname = deam
+resources.db.params.dbname = jms

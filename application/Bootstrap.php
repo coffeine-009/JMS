@@ -108,7 +108,7 @@ class Bootstrap
 		Zend_Registry :: getInstance() 
 			-> set( 'Zend_Translate', $translate );
 	}
-	/*
+*//*
 	
 	//- Acl -//
 	public function _initAcl()
@@ -151,5 +151,41 @@ class Bootstrap
 		);
 	}
 */
+	//- Doctrine -//
+	public function _initDoctrine()
+	{
+		require_once 'Doctrine/Doctrine.php';
+		
+		//- Add doctrine autoloader -//
+		$this -> getApplication()
+			-> getAutoloader()
+			-> pushAutoloader(
+				array(
+					'Doctrine', 
+					'autoload'
+				), 
+				'Doctrine'
+			);
+
+		//- Init manager -//
+		$mannager = Doctrine_Manager :: getInstance();
+			$mannager -> setAttribute(
+				Doctrine :: ATTR_MODEL_LOADING, 
+				Doctrine :: MODEL_LOADING_CONSERVATIVE
+			);
+			
+		//- Configuration -//
+		$config = $this -> getOption( 'resources' );
+		$dsn = 'mysql://' . 
+			$config[ 'db' ][ 'params' ][ 'username' ] . ':' . 
+			$config[ 'db' ][ 'params' ][ 'password' ] . '@' . 
+			$config[ 'db' ][ 'params' ][ 'host' ] . '/' . 
+			$config[ 'db' ][ 'params' ][ 'dbname' ];
+		
+		return Doctrine_Manager :: connection(
+			$dsn, 
+			'doctrine'
+		);
+	}
 }
 
