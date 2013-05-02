@@ -150,12 +150,25 @@
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Country' ); ?>:</label>
 			<div class = "registration-item-field">
 				<select id = "" name = "country" required>
-					<option value = "1">Ukraine</option>
+					<option value = "UA">Ukraine</option>
 					<!-- TODO: Get From DB -->
 				</select>
 			</div>
 			<span class = "registration-item-message">
 				<?= implode( '<br />', $this -> errors[ 'country' ] );	?>
+			</span>
+		</div>
+		
+		<div class = "registration-item">
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Language' ); ?>:</label>
+			<div class = "registration-item-field">
+				<select id = "" name = "language" required>
+					<option value = "uk">Ukraine</option>
+					<!-- TODO: Get From DB -->
+				</select>
+			</div>
+			<span class = "registration-item-message">
+				<?= implode( '<br />', $this -> errors[ 'language' ] );	?>
 			</span>
 		</div>
 		

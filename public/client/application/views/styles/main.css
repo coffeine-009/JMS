@@ -49,10 +49,16 @@ body
 				text-decoration	: none;
 			}
 			
+			.menu-main>ul>li.active>a
+			{
+				color			: #555;
+				text-decoration	: overline;
+			}
+			
 			.menu-main>ul>li>a:hover
 			{
-				color		:#777;
-				text-decoration: overline;
+				color			:#999;
+				text-decoration	: overline;
 			}
 			
 	/* Tools */

@@ -21,15 +21,8 @@
 			
 			<!-- Manu :: Main -->
 			<div id = "menu-main" class = "menu-main">
-			
-				<ul>
-					<li>
-						<a href = "">Home</a>
-					</li>
-					<li>
-						<a href = "">About</a>
-					</li>
-				</ul>
+				
+				<?= $this -> navigation() -> menu(); ?>				
 			
 			</div>
 			
@@ -61,7 +54,14 @@
 		<div id = "main" class = "main">
 		
 			<!-- Path on site -->
-			<div id = "" class = ""><?= $this -> pathOfSite; ?></div>
+			<div id = "" class = "">
+				<?=
+					$this -> navigation() 
+						-> breadcrumbs() 
+						-> setLinkLast( false ) 
+						-> setSeparator( ' / ' ); 
+				?>
+			</div>
 
 			<!-- Title -->
 			<h1><?= $this -> Title; ?></h1>

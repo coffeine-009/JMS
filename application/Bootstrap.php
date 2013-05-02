@@ -37,6 +37,28 @@ class Bootstrap
 		$router -> addConfig( $config, 'routes' );
 	}
 
+	//- Navigation -//
+	public function _initNavigation()
+	{
+		//- Get configuration of navigation -//
+		$config = new Zend_Config_Ini( APPLICATION_PATH . '/configs/navigation.ini', 'guest' );
+		
+		//- Navigation container -//
+		$container = new Zend_Navigation( $config );
+		
+		//- Registration -//
+		Zend_Registry :: getInstance() -> set(
+			'Zend_Navigation', 
+			$container
+		);
+		
+		//- Add helper -//
+		require_once 'helpers/Navigation.php';
+		Zend_Controller_Action_HelperBroker :: addHelper(
+			new Application_Helpers_Navigation()
+		);
+	}
+	
 /*	
 	///	*** Lacalization	***	///
 	public function _initLocale()

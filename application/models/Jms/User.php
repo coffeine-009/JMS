@@ -12,5 +12,69 @@
  */
 class Jms_User extends Jms_BaseUser
 {
+	//- Sent message -//
+	public function sendActivationLatter()// : bool
+	{echo 'ok';
+	/*
+		//- Generate secure hash -//
+		$this -> secureHash = md5( time() . $this -> getPassword() . $this -> email -> getContact() );
 
+		//- Send email -//
+		$message = new Coffeine_Messenger_Mail_Main(
+			$this -> email -> getContact(),
+    		'Registration. JMS'
+    	);
+    		$message -> setTemplate(
+    			APPLICATION_PATH . '/templates/',
+    			Zend_Registry :: get( 'Zend_Locale' ) . '_Mail.phtml',
+    			array(
+	    			'locale'=> Zend_Registry :: get( 'Zend_Locale' ), 
+	    			'user'	=> (object)array(
+	    				'id'	=> $this -> id, 
+	    				'password'	=> $this -> password, 
+	    				'secureHash'	=> $this -> secureHash
+    				)
+    			)
+    		);
+    		$message -> setAddressSrc( 'JMS' );
+    		$message -> init();
+    		 
+    		if( !$message -> send() )
+    		{
+    			//- ERROR -//
+    			return false;
+    		}
+    		 
+    		//- Push secureHash to queue for comfirm this email -//
+    		try
+    		{
+    			//- Get id of E-mail -//
+    			$response = $this -> db_link -> query(
+    				"SELECT id FROM email WHERE mail = '{$this -> email -> getContact()}' LIMIT 1" 
+    			) -> fetch( PDO :: FETCH_OBJ );
+
+    			if( !$response ){ return false; }
+
+    			$this -> db_link -> query(
+	    			"INSERT INTO queue_email_confirm(
+	    				id_user, 
+	    				id_email, 
+	    				hash
+	    			)
+	    			VALUES 
+	    			( 
+	    				{$this -> id},
+	    				{$response -> id},
+	    				'{$this -> secureHash}' 
+	    			)"
+    			);
+    		}
+    		catch( Exception $Exc )
+    		{
+    			//- ERROR :: Queue.push -//
+    			return false;
+    		}
+    		 
+    		return true;*/
+	}
 }

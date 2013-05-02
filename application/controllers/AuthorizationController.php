@@ -52,6 +52,7 @@ class AuthorizationController
     		'skype'				=> array(), 
     	 	'mailing_address'	=> array(), 
     		'country'			=> array(), 
+    		'language'			=> array(), 
     		//- Params -//
     		'params'	=> array()
     	);
@@ -73,7 +74,8 @@ class AuthorizationController
 			$vPhone			= new Zend_Validate_Regex( '/^\+[[:digit:]]{7,15}$/i' );
 			$vSkype			= new Zend_Validate_Regex( '/^[^\<\>\&]{3,80}$/i' );
 			$vAdress		= new Zend_Validate_Regex( '/^[^\<\>\&]+/i' );
-			$vCountry		= new Zend_Validate_Regex( '/^[[:digit:]]{1,3}$/i' );
+			$vCountry		= new Zend_Validate_Regex( '/^[[:alpha:]]{2}$/i' );
+			$vLanguage		= new Zend_Validate_Regex( '/^[[:alpha:]]{2}$/i' );
 	
 			//- Validation -//
 			if( 
@@ -89,14 +91,37 @@ class AuthorizationController
 				&& ( empty( $data[ 'skype' ] ) || $vSkype -> isValid( $data[ 'skype' ] ) ) 
 				&& $vAdress -> isValid( $data[ 'address' ] ) 
 				&& $vCountry -> isValid( $data[ 'country' ] ) 
+				&& $vLanguage -> isValid( $data[ 'language' ] ) 
 			)
 			{
 				//- Registration of new user -//
-				
-				echo 'ok';
-				Zend_Debug::dump($data);
+				$user = new Jms_User();
+		    		$user -> id_role = 1;
+		    		$user -> id_status = 1;
+		    		
+		    		$user -> first_name = $data[ 'first_name' ];
+		    		$user -> second_name = $data[ 'second_name' ];
+		    		$user -> father_name = $data[ 'father_name' ];
+
+		    		$user -> gender = (int)$data[ 'gender' ];
+		    		$user -> country = $data[ 'country' ];
+		    		$user -> language = $data[ 'language' ];
+		    	
+		    	$user -> save();
+
+		    	//- Send letter for activate -//
+		    	$user -> sendActivationLatter();
+		    	
+				//- Add message -//
+				$this -> _helper -> flashMessenger -> clearCurrentMessages();
+				$this -> _helper -> flashMessenger 
+					-> addMessage( 'Registration is success' )
+					-> addMessage( 'Activate letter was sent. Read him, please' );
+
+				//- Redirect to registration success -//
+				$this -> _redirect( '/registration/success' );
 			}else
-			{			
+			{
 				//- Set input data -//
 				$this -> view -> input = $data;
 				
@@ -171,6 +196,12 @@ class AuthorizationController
 				foreach( $vCountry -> getMessages() as $messageId => $message )
 				{
 					$errors[ 'country' ][] = $messageId . ': ' . $message;
+				}
+				
+				//- Language -//
+				foreach( $vLanguage -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'language' ][] = $messageId . ': ' . $message;
 				}
     		}
     	}

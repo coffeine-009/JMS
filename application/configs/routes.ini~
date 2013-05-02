@@ -19,7 +19,7 @@ routes.registration.defaults.action = "registration"
 routes.registration_success.route = "/registration/success"
 routes.registration_success.defaults.module = "default"
 routes.registration_success.defaults.controller = "authorization"
-routes.registration_success.defaults.action = "registrationSuccess"
+routes.registration_success.defaults.action = "registration-success"
 
 ;//- User :: Auth -//
 routes.auth_login.route = "/login"
