@@ -58,6 +58,7 @@ input[type=submit]
 	.registration-item .registration-item-message
 	{
 		border-bottom	: solid 1px #ddd;
+		color			: #f00;
 		display			: table-cell;
 		padding			: 9px 9px 0 9px;
 		vertical-align	: top;		

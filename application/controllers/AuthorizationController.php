@@ -38,45 +38,141 @@ class AuthorizationController
     {
     	//- Array of arrays -//
     	$errors = array(
-    		'username'	=> '', 
-    		'password'	=> '', 
-    		'r_passwd'	=> '', 
-    		'gender'	=> '', 
+    		'username'	=> array(), 
+    		'password'	=> array(), 
+    		'r_passwd'	=> array(), 
+    		'gender'	=> array(), 
     		//- Names -//
-    		'first_name'	=> '', 
-    		'last_name'		=> '', 
-    		'middle_name'	=> '',
+    		'first_name'	=> array(), 
+    		'last_name'		=> array(), 
+    		'middle_name'	=> array(),
     		//- Contacts -//
-    		'email'				=> '', 
-    		'phone'				=> '', 
-    		'skype'				=> '', 
-    	 	'mailing_address'	=> '', 
-    		'country'			=> '', 
+    		'email'				=> array(), 
+    		'phone'				=> array(), 
+    		'skype'				=> array(), 
+    	 	'mailing_address'	=> array(), 
+    		'country'			=> array(), 
     		//- Params -//
-    		'params'	=> ''
+    		'params'	=> array()
     	);
     	
     	//- Get data from form -//
     	if( $this -> getRequest() -> isPost() )
     	{
+    		//- Get input data -//
     		$data = $this -> getRequest() -> getParams();
-    		
-    		
-    		//- Validation -//
-			$vUserName = new Zend_Validate_Alnum();
+    		    		
+    		//- Validators -//
+			$vUserName 		= new Zend_Validate_Alnum();
+			$vPassword		= new Zend_Validate_StringLength( array( 'min' => '6', 'max' => '80' ) );
+			$vFirstName 	= new Zend_Validate_Alpha();
+			$vSecondName 	= new Zend_Validate_Alpha();
+			$vFatherName 	= new Zend_Validate_Alpha();
+			$vGender		= new Zend_Validate_Regex( '/^[01]$/i' );
+			$vEmail			= new Zend_Validate_EmailAddress();
+			$vPhone			= new Zend_Validate_Regex( '/^\+[[:digit:]]{7,15}$/i' );
+			$vSkype			= new Zend_Validate_Regex( '/^[^\<\>\&]{3,80}$/i' );
+			$vAdress		= new Zend_Validate_Regex( '/^[^\<\>\&]+/i' );
+			$vCountry		= new Zend_Validate_Regex( '/^[[:digit:]]{1,3}$/i' );
 	
-			if( $vUserName -> isValid( $data[ 'username' ] ) )
+			//- Validation -//
+			if( 
+				$vUserName -> isValid( $data[ 'username' ] ) 
+				&& $vPassword -> isValid( $data[ 'password' ] ) 
+				&& $data[ 'password' ] === $data[ 'repeat_password' ] 
+				&& $vFirstName -> isValid( $data[ 'first_name' ] ) 
+				&& $vSecondName -> isValid( $data[ 'second_name' ] ) 
+				&& $vFatherName -> isValid( $data[ 'father_name' ] ) 
+				&& $vGender -> isValid( $data[ 'gender' ] ) 
+				&& $vEmail -> isValid( $data[ 'email' ] ) 
+				&& ( empty( $data[ 'phone' ] ) || $vPhone -> isValid( $data[ 'phone' ] ) ) 
+				&& ( empty( $data[ 'skype' ] ) || $vSkype -> isValid( $data[ 'skype' ] ) ) 
+				&& $vAdress -> isValid( $data[ 'address' ] ) 
+				&& $vCountry -> isValid( $data[ 'country' ] ) 
+			)
 			{
-				// email appears to be valid
+				//- Registration of new user -//
+				
 				echo 'ok';
+				Zend_Debug::dump($data);
 			}else
-			{
-				// email is invalid; print the reasons
+			{			
+				//- Set input data -//
+				$this -> view -> input = $data;
+				
+				//- Display errors, input data is invalid -//
+				//- Username -//
 				foreach( $vUserName -> getMessages() as $messageId => $message )
 				{
-					echo "Validation failure '$messageId': $message\n";
+					$errors[ 'username' ][] = $messageId . ': ' . $message;
 				}
-    		}    	
+				
+				//-  Password -//
+				foreach( $vPassword -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'password' ][] = $messageId . ': ' . $message;
+				}
+				
+				//- Repeat passwrd -//
+				if( $data[ 'password' ] !== $data[ 'repeat_password' ] )
+				{
+					$errors[ 'r_passwd' ][] = 'Passwords not idential';
+				}				
+				
+				//- First name -//
+				foreach( $vFirstName -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'first_name' ][] = $messageId . ': ' . $message;
+				}
+				
+				//- Last name -//
+				foreach( $vSecondName -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'last_name' ][] = $messageId . ': ' . $message;
+				}
+				
+				//- Middle name -//
+				foreach( $vFatherName -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'middle_name' ][] = $messageId . ': ' . $message;
+				}
+				
+				//- Gender -//
+				foreach( $vGender -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'gender' ][] = $messageId . ': ' . $message;
+				}
+				
+				//- E-mail -//
+				foreach( $vEmail -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'email' ][] = $messageId . ': ' . $message;
+				}
+				
+				//- Phone -//
+				foreach( $vPhone -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'phone' ][] = $messageId . ': ' . $message;
+				}
+				
+				//- Skype -//
+				foreach( $vSkype -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'skype' ][] = $messageId . ': ' . $message;
+				}
+				
+				//- Country -//
+				foreach( $vAdress -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'mailing_address' ][] = $messageId . ': ' . $message;
+				}
+				
+				//- Country -//
+				foreach( $vCountry -> getMessages() as $messageId => $message )
+				{
+					$errors[ 'country' ][] = $messageId . ': ' . $message;
+				}
+    		}
     	}
     	
     	

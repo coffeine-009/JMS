@@ -6,7 +6,7 @@
 	 *			by														*
 	 *		@author Vitaliy Myroslavovych Tsutsman
 	 *																	*
-	 *		@date 2013/03/01 - 2013/03/29
+	 *		@date 2013/03/01 - 2013/05/01
 	 *																	*
 	 *		@description Journal Mannager System(JMS)
 	 *			System for mannager of journals and users.
@@ -29,6 +29,7 @@ CREATE TABLE `role`(
 	`id`			INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 		*/
 	`title`			VARCHAR( 16 ) NOT NULL, 		/* Title(const) 		*/
 	`description`	TEXT, 							/* Description of role 	*/
+
 	`creation`		TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 	*/
 
 	/* Keys */
@@ -41,6 +42,7 @@ CREATE TABLE `user_status`(
 	`id`			INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 		*/
 	`title`			VARCHAR( 16 ) NOT NULL, 		/* Title(const) 		*/
 	`description`	TEXT, 							/* Description of role 	*/
+
 	`creation`		TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 	*/
 
 	/* Keys */
@@ -70,6 +72,10 @@ CREATE TABLE `user`(
 	INDEX( `id_role` ), 
 
 	FOREIGN KEY( `id_role` ) REFERENCES `role`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT, 
+
+	FOREIGN KEY( `id_status` ) REFERENCES `user_status`( `id` )
 		ON UPDATE CASCADE
 		ON DELETE RESTRICT
 )
@@ -131,33 +137,94 @@ ENGINE = InnoDB CHARACTER SET = utf8;
 /* -# Articles of journals #- */
 CREATE TABLE `article`(
 	`id`				INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 	*/
-	`id_user`			INTEGER, 				/* Identificator of user 	*/
+	`id_user`			INTEGER, /* Identificator of user-copyrighter(corespondent)*/
 	`id_journal_number`	INTEGER, 		/* Identificator of journal number 	*/
+
 	`code_language`		VARCHAR( 2 ) NOT NULL, /* Code of language of article */
 	`pageno`			INTEGER, 			/* Number of page in journal 	*/
+
+	`creation`			TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create*/
 
 	/* Keys */
 	PRIMARY KEY( `id` ), 
 
-	FOREIGN KEY( `id_journal_number` ) REFERENCES `journal_number`( `id` )
+/*	FOREIGN KEY( `id_journal_number` ) REFERENCES `journal_number`( `id` )
 		ON UPDATE CASCADE
 		ON DELETE RESTRICT, 
-
+*/
 	FOREIGN KEY( `id_user` ) REFERENCES `user`( `id` )
 		ON UPDATE CASCADE
 		ON DELETE RESTRICT
 )
 ENGINE = InnoDB CHARACTER SET = utf8;
 
-/* -# Journals #- */
+/* -# Article lang content of journals #- */
 CREATE TABLE `article_language`(
-	`id`			INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 	*/
+	`id`			INTEGER NOT NULL, 			/* Identificator 		*/
+
 	`code_language`	VARCHAR( 2 ) NOT NULL, 		/* Code of language 	*/
+
 	`author`		VARCHAR( 256 ) NOT NULL, 	/* Author(s) of article */
 	`title`			VARCHAR( 256 ) NOT NULL, 	/* Title of article 	*/
 	`abstract`		VARCHAR( 1024 ) NOT NULL, 	/* Abstract for article */
 
 	/* Keys */
-	PRIMARY KEY( `id` )
+	FOREIGN KEY( `id` ) REFERENCES `article`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+)
+ENGINE = InnoDB CHARACTER SET = utf8;
+
+/* -# Sub authors for article #- */
+CREATE TABLE `article_authors`(
+	`id_user`		INTEGER NOT NULL, /* Id of user( Other author of article )*/
+	`id_article`	INTEGER NOT NULL, /* Id of article */
+
+	/* Keys */
+	FOREIGN KEY( `id_user` ) REFERENCES `user`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT, 
+
+	FOREIGN KEY( `id_article` ) REFERENCES `article`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+)
+ENGINE = InnoDB CHARACTER SET = utf8;
+
+
+/* -# Recension for article #- */
+CREATE TABLE `recension`(
+	`id`				INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 	*/
+	`id_user`			INTEGER, 				/* Identificator of user 	*/
+	`id_article`		INTEGER, 		/* Identificator of journal number 	*/
+
+	`code_language`		VARCHAR( 2 ) NOT NULL, /* Code of language of article */
+
+	`creation`			TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create*/
+
+	/* Keys */
+	PRIMARY KEY( `id` ), 
+
+	FOREIGN KEY( `id_user` ) REFERENCES `user`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT, 
+
+	FOREIGN KEY( `id_article` ) REFERENCES `article`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT	
+)
+ENGINE = InnoDB CHARACTER SET = utf8;
+
+/* -# Recension lang content for article #- */
+CREATE TABLE `recension_language`(
+	`id`			INTEGER NOT NULL, 			/* Identificator 		*/
+	`code_language`	VARCHAR( 2 ) NOT NULL, 		/* Code of language 	*/
+
+	`text`		VARCHAR( 1024 ) NOT NULL, 		/* Abstract for article */
+
+	/* Keys */
+	FOREIGN KEY( `id` ) REFERENCES `recension`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
 )
 ENGINE = InnoDB CHARACTER SET = utf8;

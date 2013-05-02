@@ -10,13 +10,15 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Username' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "username" value = "" />
+				<input id = "" type = "text" name = "username" value = "<?= $this -> input[ 'username' ]; ?>" required />
 			</div>
 			<span class = "registration-item-message">
 				<?=
-					$this -> translate(
-						$this -> errors[ 'username' ]
-					);				
+					implode( '<br />', $this -> errors[ 'username' ] );
+					/*foreach( $this -> errors[ 'username' ] as $error )
+					{
+						echo $this -> translate( $error );
+					}*/				
 				?>
 			</span>
 		</div>
@@ -24,28 +26,20 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Password' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "password" value = "" />
+				<input id = "" type = "password" name = "password" value = "" required />
 			</div>
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'password' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'password' ] );	?>
 			</span>
 		</div>
 		
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Repeat password' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "repeat_password" value = "" />
+				<input id = "" type = "password" name = "repeat_password" value = "" required />
 			</div>			
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'r_passwd' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'r_passwd' ] );	?>
 			</span>
 		</div>
 		
@@ -53,21 +47,17 @@
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Gender' ); ?>:</label>
 			<div class = "registration-item-field">
 				<div>					
-					<input id = "gender-male" type = "radio" name = "gender" value = "" />
+					<input id = "gender-male" type = "radio" name = "gender" value = "1" <?//= ($this -> input[ 'gender' ] == 1) ? 'checked' : ''; ?> required />
 					<label for = "gender-male">Male</label>
 				</div>
 				
 				<div>				
-					<input id = "gender-female" type = "radio" name = "gender" value = "" />
+					<input id = "gender-female" type = "radio" name = "gender" value = "0" <?//= ($this -> input[ 'gender' ] == '0') ? 'checked' : ''; ?> required />
 					<label for = "gender-female">Female</label>
 				</div>
 			</div>
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'gender' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'gender' ] );	?>
 			</span>
 		</div>
 		
@@ -81,42 +71,30 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'First names' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "first_name" value = "" />
+				<input id = "" type = "text" name = "first_name" value = "<?= $this -> input[ 'first_name' ]; ?>" required />
 			</div>
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'first_name' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'first_name' ] );	?>
 			</span>
 		</div>
 		
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Last name' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "second_name" value = "" />
+				<input id = "" type = "text" name = "second_name" value = "<?= $this -> input[ 'second_name' ]; ?>" required />
 			</div>
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'last_name' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'last_name' ] );	?>
 			</span>
 		</div>
 		
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Middle name' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "father_name" value = "" />
+				<input id = "" type = "text" name = "father_name" value = "<?= $this -> input[ 'father_name' ]; ?>" required />
 			</div>
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'middle_name' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'middle_name' ] );	?>
 			</span>
 		</div>
 		
@@ -131,73 +109,53 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'E-mail' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "email" name = "email" value = "" />
+				<input id = "" type = "email" name = "email" value = "<?= $this -> input[ 'email' ]; ?>" required />
 			</div>
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'email' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'email' ] );	?>
 			</span>
 		</div>
 		
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Phone' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "phone" value = "" />
+				<input id = "" type = "text" name = "phone" value = "<?= $this -> input[ 'phone' ]; ?>" />
 			</div>
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'phone' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'phone' ] );	?>
 			</span>
 		</div>
 		
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Skype' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "skype" value = "" />
+				<input id = "" type = "text" name = "skype" value = "<?= $this -> input[ 'skype' ]; ?>" />
 			</div>
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'skype' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'skype' ] );	?>
 			</span>
 		</div>
 		
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Mailling Address' ); ?>:</label>
 			<div class = "registration-item-field">
-				<textarea id = "" name = "address" cols = "30" rows = "5"></textarea>
+				<textarea id = "" name = "address" cols = "30" rows = "5" required><?= $this -> input[ 'address' ]; ?></textarea>
 			</div>
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'mailing_address' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'mailing_address' ] );	?>
 			</span>
 		</div>
 		
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Country' ); ?>:</label>
 			<div class = "registration-item-field">
-				<select id = "" name = "country">
-					<option value = "">Ukraine</option>
+				<select id = "" name = "country" required>
+					<option value = "1">Ukraine</option>
 					<!-- TODO: Get From DB -->
 				</select>
 			</div>
 			<span class = "registration-item-message">
-				<?=
-					$this -> translate(
-						$this -> errors[ 'country' ]
-					);				
-				?>
+				<?= implode( '<br />', $this -> errors[ 'country' ] );	?>
 			</span>
 		</div>
 		
