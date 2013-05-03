@@ -1,1 +1,15 @@
-<br /><br /><center>View script for controller <b>Authorization</b> and script/action name <b>login</b></center>
+
+<form action = "/login" method = "post">
+
+	<input type = "email" name = "username" value = "" />
+	
+	<input type = "password" name = "password" />
+	
+	<input type = "submit" value = "OK" />
+
+</form>
+
+<?php 
+	if( !empty( $this -> errors ) )
+		echo implode( '<br/>', $this -> errors );
+?>

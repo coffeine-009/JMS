@@ -53,8 +53,11 @@ ENGINE = InnoDB CHARACTER SET = utf8;
 /* -# Data about users #- */
 CREATE TABLE `user`(
 	`id`			INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 		*/
-	`id_role`		INTEGER NOT NULL, 				/* Identificator of role */
+	`id_role`		INTEGER NOT NULL, 			/* Identificator of role	*/
 	`id_status`		INTEGER NOT NULL, /* Identificator of user's status 	*/
+	/* Access data */
+	`username`		VARCHAR( 40 ) NOT NULL UNIQUE, /* Username for access 	*/
+	`password`		VARCHAR( 128 ) NOT NULL, /* Hash of password for access */
 	/* Data */
 	`first_name`	VARCHAR( 16 ) NOT NULL, /* First name of user 			*/
 	`second_name`	VARCHAR( 32 ) NOT NULL, /* Second name(family name) 	*/
@@ -82,11 +85,73 @@ CREATE TABLE `user`(
 ENGINE = InnoDB CHARACTER SET = utf8;
 
 /* -# Contact's user #- */
-/* - Email - */
+/* -# Email #- */
 CREATE TABLE `email`(
 	`id`		INTEGER NOT NULL AUTO_INCREMENT, 	/* Identificator 		*/
 	`id_user`	INTEGER NOT NULL, 					/* Identificator of user */
+
 	`address`	VARCHAR( 80 ) NOT NULL UNIQUE, 		/* Email address 		*/
+
+	`creation`	TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 		*/
+
+	/* Keys */
+	PRIMARY KEY( `id` ), 
+
+	INDEX( `id_user` ), 
+
+	FOREIGN KEY( `id_user` ) REFERENCES `user`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
+)
+ENGINE = InnoDB CHARACTER SET = utf8;
+
+/* -# Phone #- */
+CREATE TABLE `phone`(
+	`id`		INTEGER NOT NULL AUTO_INCREMENT, 	/* Identificator 		*/
+	`id_user`	INTEGER NOT NULL, 					/* Identificator of user */
+
+	`address`	VARCHAR( 15 ) NOT NULL UNIQUE, 		/* Phone number 		*/
+
+	`creation`	TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 		*/
+
+	/* Keys */
+	PRIMARY KEY( `id` ), 
+
+	INDEX( `id_user` ), 
+
+	FOREIGN KEY( `id_user` ) REFERENCES `user`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
+)
+ENGINE = InnoDB CHARACTER SET = utf8;
+
+/* -# Skype #- */
+CREATE TABLE `skype`(
+	`id`		INTEGER NOT NULL AUTO_INCREMENT, 	/* Identificator 		*/
+	`id_user`	INTEGER NOT NULL, 					/* Identificator of user*/
+
+	`address`	VARCHAR( 80 ) NOT NULL UNIQUE, 		/* Address for skype	*/
+
+	`creation`	TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 		*/
+
+	/* Keys */
+	PRIMARY KEY( `id` ), 
+
+	INDEX( `id_user` ), 
+
+	FOREIGN KEY( `id_user` ) REFERENCES `user`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
+)
+ENGINE = InnoDB CHARACTER SET = utf8;
+
+/* -# Address #- */
+CREATE TABLE `address`(
+	`id`		INTEGER NOT NULL AUTO_INCREMENT, 	/* Identificator 		*/
+	`id_user`	INTEGER NOT NULL, 					/* Identificator of user*/
+
+	`address`	TEXT NOT NULL, 						/* Address 				*/
+
 	`creation`	TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 		*/
 
 	/* Keys */
@@ -101,7 +166,31 @@ CREATE TABLE `email`(
 ENGINE = InnoDB CHARACTER SET = utf8;
 
 
-/* -# Content of service #-	---	---	---	---	---	---	---	---	---	---	---	--- */
+/* #- Tools for user -#	---	---	---	---	---	---	---	---	---	---	---	---	--- */
+/* -# Tools #- */
+CREATE TABLE `tool`(
+	`id`		INTEGER NOT NULL AUTO_INCREMENT, 	/* Identificator 		*/
+	`id_user`	INTEGER NOT NULL, 					/* Identificator of user*/
+
+	`title`		VARCHAR( 32 ) NOT NULL UNIQUE, 		/* Title of tools 		*/
+	/* Params */
+	
+
+	`creation`	TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 		*/
+
+	/* Keys */
+	PRIMARY KEY( `id` ), 
+
+	INDEX( `id_user` ), 
+
+	FOREIGN KEY( `id_user` ) REFERENCES `user`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
+)
+ENGINE = InnoDB CHARACTER SET = utf8;
+
+
+/* #- Content of service -#	---	---	---	---	---	---	---	---	---	---	---	--- */
 /* -# Journals #- */
 CREATE TABLE `journal`(
 	`id`			INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 		*/

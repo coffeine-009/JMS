@@ -1,60 +1,91 @@
 <?php
 
-class Auth_Adapter implements Zend_Auth_Adapter_Interface
+class Auth_Adapter
+	implements
+		Zend_Auth_Adapter_Interface
 {
+	///	***	Constants	***	///
+	const AUTH = 
+	"SELECT 
+		user.id, 
+		role.title AS role, 
+		email.contact 
+	FROM 
+		(user 
+			LEFT JOIN 
+		email 
+			ON( user.id = email.id_user )
+		)
+			LEFT JOIN 
+		role 
+			ON( role.id = user.id_role ) 
+	WHERE 
+		email.contact = '%s' 
+		AND 
+		user.password = MD5( '%s' ) 
+	LIMIT 
+		1
+	";
+		
 	///	***	Properties	***	///
-	protected $link;
 	protected $userData;
 	
 	///	***	Methods		***	///
 	public function __construct( /*string*/$UserName, /*string*/$Password )
 	{
+		//- Set properties -//
 		$this -> username = $UserName;
 		$this -> password = $Password;
-		
-		$param = new Zend_Config_Ini( 'configs/application.ini', 'production' );
-	
-		$params = array(
-			'host'		=> $param -> resources -> db -> params -> host, 
-			'username'	=> $param -> resources -> db -> params -> username, 
-			'password'	=> $param -> resources -> db -> params -> password, 
-			'dbname'	=> $param -> resources -> db -> params -> dbname
-		);
-		
-		$this -> link = Zend_Db :: factory( $param  -> resources -> db -> adapter, $params );
 	}
 	
 	public function authenticate()
-	{
-		$sql = "SELECT 
-			user.id, 
-			role.title AS role, 
-			email.mail 
-		FROM 
-			(user 
-				LEFT JOIN 
-			email 
-				ON( user.id = email.id_user )
-			)
-				LEFT JOIN 
-			role 
-				ON( role.id = user.id_role ) 
-		WHERE 
-			email.mail = '{$this -> username}' 
-			AND 
-			user.password = MD5( '{$this -> password}' ) 
-		LIMIT 
-			1
-		";
-		
-		$res = $this -> link -> query( $sql ) -> fetch();
-		
-		if( $res )
-		{
-			$this -> userData = $res;
+	{		
+		$response = Doctrine_Query :: create()
+			/*-> from( "Jms_Email e" )
+			-> leftJoin( "e.User u" )
+			-> leftJoin( "u.Role" )*/			
+			//- TMP -//
+			-> from( "Jms_User u" )
+			-> addFrom( "u.Email e" )
+			-> addFrom( "u.Role r" )
 			
+			-> where( 
+				"address = '{$this -> username}' 
+				AND 
+				password = MD5( '{$this -> password}' )" 
+			)
+		
+			-> limit( 1 );
+		
+		$response -> execute();
+			
+		$userData = $response->fetchArray();
+
+		//- Test response from DB -//
+		if( count( $userData ) === 1 )
+		{
+			//- Get data -//
+			$this -> userData = array(
+				'id'		=> $userData[ 0 ][ 'id' ], 
+				'username'	=> $userData[ 0 ][ 'username' ], 
+				'first_name'=> $userData[ 0 ][ 'first_name' ], 
+				'last_name'	=> $userData[ 0 ][ 'second_name' ], 
+				'gender'	=> $userData[ 0 ][ 'gender' ], 
+				'country'	=> $userData[ 0 ][ 'country' ], 
+				'language'	=> $userData[ 0 ][ 'language' ], 
+				//TODO: tools
+				'role'	=> array(
+					'id'	=> $userData[ 0 ][ 'Role' ][ 'id' ], 
+					'title'	=> $userData[ 0 ][ 'Role' ][ 'title' ]
+				), 
+				'email'	=> array(
+					'id'		=> $userData[ 0 ][ 'Email' ][ 0 ][ 'id' ], 
+					'address'	=> $userData[ 0 ][ 'Email' ][ 0 ][ 'address' ]
+				)
+			);
+						
 			return new Zend_Auth_Result(
-				Zend_Auth_Result :: SUCCESS, $res[ 'id' ], array()
+				Zend_Auth_Result :: SUCCESS, $this -> userData[ 'id' ], array()
 			);
 		}else
 			{

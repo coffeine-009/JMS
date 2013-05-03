@@ -7,12 +7,44 @@
 	
 		<title>JMS</title>
 		
-		<link type = "text/css" rel = "stylesheet" href = "/client/application/views/styles/main.css" />
-		<!-- tmp -->
-		<link type = "text/css" rel = "stylesheet" href = "/client/application/views/styles/registration.css" />
 		
-		<script type = "text/javascript"></script>
-	
+		<!-- Library -->
+		<!-- jQuery -->
+		<link rel="stylesheet" href="/client/library/jQuery/jquery-ui.css"
+			type="text/css" media="all" />
+		<script type="text/javascript"
+			src="/client/library/jQuery/jquery.min.js"></script>
+		<script type="text/javascript"
+			src="/client/library/jQuery/jquery-ui.min.js"></script>
+		<!--
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+        -->
+		
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		
+		
+		<!-- Styles :: CSS -->
+		<link type = "text/css" rel = "stylesheet" href = "/client/application/views/styles/main.css" />
+				
+		<!-- Dynamic styles -->
+		<?= $this -> headLink(); ?>
+		
+		
+		<!-- Scripts :: JS -->
+		<script type = "text/javascript">
+			$( document ).ready( function(){
+				//alert( 'main' );
+				//TODO
+			});
+		</script>
+		
+		<!-- Dynamic JS -->
+		<?= $this -> headScript(); ?>
+		
 	</head>
 	
 	<body>
@@ -29,15 +61,20 @@
 			<!-- Authorization block -->
 			<div id = "auth" class = "auth">
 			
-				<a href = "">Sing in</a> | 
-				<a href = "">Sing up</a>
+				<?php if( !isset( $this -> user ) ): ?>
+				<a href = "/login">Sing in</a> | 
+				<a href = "/registration">Sing up</a>
+				<?php else: ?>
+				<a><?= $this -> user[ 'first_name' ]; ?></a> | 
+				<a href = "/logout"><?= $this -> translate( 'Sign out' ); ?></a>
+				<?php endif; ?>
 			
 			</div>
 			
 			<!-- Tools -->
 			<div id = "tools" class = "tools">
 			
-				Tools
+				
 			
 			</div>
 			

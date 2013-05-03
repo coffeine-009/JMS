@@ -1,1 +1,6 @@
-<br /><br /><center>View script for controller <b>Authorization</b> and script/action name <b>registrationsuccess</b></center>
+
+<ul>
+  <?php foreach( $this -> messages as $msg ): ?>
+		<li><?= $this -> translate( $msg ); ?></li>
+	<?php endforeach; ?>
+</ul>

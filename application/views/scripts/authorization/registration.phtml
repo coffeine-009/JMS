@@ -1,6 +1,6 @@
 <!-- Registration -->
 <!-- Form -->
-<form action = "/authorization/registration" method = "post">
+<form action = "/registration" method = "post">
 
 	<!-- Base data -->	
 	<div id = "" class = "group">
@@ -10,9 +10,9 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Username' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "text" name = "username" value = "<?= $this -> input[ 'username' ]; ?>" required />
+				<input id = "username" type = "text" name = "username" value = "<?= $this -> input[ 'username' ]; ?>" required />
 			</div>
-			<span class = "registration-item-message">
+			<span id = "username-msg" class = "registration-item-message">
 				<?=
 					implode( '<br />', $this -> errors[ 'username' ] );
 					/*foreach( $this -> errors[ 'username' ] as $error )
@@ -69,7 +69,7 @@
 		<label class = "group-title"><?= $this -> translate( 'Names' ); ?>:</label>
 		
 		<div class = "registration-item">
-			<label for = "" class = "registration-item-title"><?= $this -> translate( 'First names' ); ?>:</label>
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'First name' ); ?>:</label>
 			<div class = "registration-item-field">
 				<input id = "" type = "text" name = "first_name" value = "<?= $this -> input[ 'first_name' ]; ?>" required />
 			</div>
@@ -109,9 +109,9 @@
 		<div class = "registration-item">
 			<label for = "" class = "registration-item-title"><?= $this -> translate( 'E-mail' ); ?>:</label>
 			<div class = "registration-item-field">
-				<input id = "" type = "email" name = "email" value = "<?= $this -> input[ 'email' ]; ?>" required />
+				<input id = "email" type = "email" name = "email" value = "<?= $this -> input[ 'email' ]; ?>" required />
 			</div>
-			<span class = "registration-item-message">
+			<span id = "email-msg" class = "registration-item-message">
 				<?= implode( '<br />', $this -> errors[ 'email' ] );	?>
 			</span>
 		</div>
@@ -169,6 +169,21 @@
 			</div>
 			<span class = "registration-item-message">
 				<?= implode( '<br />', $this -> errors[ 'language' ] );	?>
+			</span>
+		</div>
+		
+		<!-- Role -->
+		<div class = "registration-item">
+			<label for = "" class = "registration-item-title"><?= $this -> translate( 'Role' ); ?>:</label>
+			<div class = "registration-item-field">
+				<select id = "" name = "role" required>
+					<?php foreach( $this -> roles as $role ): ?>
+					<option value = "<?= $role[ 'id' ]; ?>"><?= $role[ 'title' ]; ?></option>
+					<?php endforeach; ?>
+				</select>
+			</div>
+			<span class = "registration-item-message">
+				<?= implode( '<br />', $this -> errors[ 'role' ] );	?>
 			</span>
 		</div>
 		

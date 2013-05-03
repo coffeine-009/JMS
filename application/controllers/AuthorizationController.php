@@ -25,7 +25,10 @@ class AuthorizationController
 
     public function init()
     {
-        /* Initialize action controller here */
+    	//- Init others view formats -//
+		$this -> _helper -> getHelper( 'contextSwitch' )
+			-> addActionContext( 'test', 'json' )
+			-> initContext();
     }
 
     public function indexAction()
@@ -36,8 +39,36 @@ class AuthorizationController
     //- Registration action -//
     public function registrationAction()
     {
+    	//- Include css -//
+    	$this -> view -> headLink() -> appendStylesheet(
+    		'/client/application/views/styles/registration.css'
+    	);
+    	
+    	//- Include JS -//
+    	$this -> view -> headScript() -> appendFile(
+    		'/client/application/views/scripts/registration.js'
+    	);
+    	$this -> view -> headScript() -> appendFile(
+    		'/client/library/Coffeine/Connect/Ajax/Connect.js'
+    	);
+    	
+    	//- Get list of roles -//
+    	$roles = Doctrine_Query :: create()
+    		-> from( "Jms_Role" )
+    		-> where( "title != 'administrator'" )
+    		-> orderBy( "id" );
+    		
+    	$roles = $roles -> fetchArray();
+    	
+    	//- Init view -//
+        $this -> view -> Title = 'Registration';
+        $this -> view -> pathOfSite = 'Main => Registration';
+        
+        $this -> view -> roles = $roles;
+        
+    	
     	//- Array of arrays -//
-    	$errors = array(
+    	$this -> errors = array(
     		'username'	=> array(), 
     		'password'	=> array(), 
     		'r_passwd'	=> array(), 
@@ -53,6 +84,7 @@ class AuthorizationController
     	 	'mailing_address'	=> array(), 
     		'country'			=> array(), 
     		'language'			=> array(), 
+    		'role'				=> array(), 
     		//- Params -//
     		'params'	=> array()
     	);
@@ -96,22 +128,38 @@ class AuthorizationController
 			{
 				//- Registration of new user -//
 				$user = new Jms_User();
-		    		$user -> id_role = 1;
-		    		$user -> id_status = 1;
-		    		
+					//- Set role for new user -//
+					foreach( $roles as $role )
+						if( (int)$role[ 'id' ] === (int)$data[ 'role' ] ){
+		    				$user -> id_role = (int)$data[ 'role' ];
+		    				break;
+						}					
+		    		$user -> id_status = 2; //- Set status no active -//		    		
+		    		//- Access -//
+		    		$user -> username = $data[ 'username' ];
+		    		$user -> password = md5( $data[ 'password' ] );
+		    		//- Names -//
 		    		$user -> first_name = $data[ 'first_name' ];
 		    		$user -> second_name = $data[ 'second_name' ];
 		    		$user -> father_name = $data[ 'father_name' ];
-
+					//- Other -//
 		    		$user -> gender = (int)$data[ 'gender' ];
 		    		$user -> country = $data[ 'country' ];
 		    		$user -> language = $data[ 'language' ];
 		    	
 		    	$user -> save();
+		    	
+		    	//- Add contacts -//
+		    	//- Email -//
+		    	$email = new Jms_Email();
+		    		$email -> id_user = (int)$user -> id;
+		    		$email -> address = $data[ 'email' ];
+		    		
+		    	$email -> save();
 
 		    	//- Send letter for activate -//
 		    	$user -> sendActivationLatter();
-		    	
+		    	//TODO: Review
 				//- Add message -//
 				$this -> _helper -> flashMessenger -> clearCurrentMessages();
 				$this -> _helper -> flashMessenger 
@@ -129,31 +177,31 @@ class AuthorizationController
 				//- Username -//
 				foreach( $vUserName -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'username' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'username' ][] = $messageId . ': ' . $message;
 				}
 				
 				//-  Password -//
 				foreach( $vPassword -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'password' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'password' ][] = $messageId . ': ' . $message;
 				}
 				
 				//- Repeat passwrd -//
 				if( $data[ 'password' ] !== $data[ 'repeat_password' ] )
 				{
-					$errors[ 'r_passwd' ][] = 'Passwords not idential';
+					$this -> errors[ 'r_passwd' ][] = 'Passwords not idential';
 				}				
 				
 				//- First name -//
 				foreach( $vFirstName -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'first_name' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'first_name' ][] = $messageId . ': ' . $message;
 				}
 				
 				//- Last name -//
 				foreach( $vSecondName -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'last_name' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'last_name' ][] = $messageId . ': ' . $message;
 				}
 				
 				//- Middle name -//
@@ -165,68 +213,129 @@ class AuthorizationController
 				//- Gender -//
 				foreach( $vGender -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'gender' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'gender' ][] = $messageId . ': ' . $message;
 				}
 				
 				//- E-mail -//
 				foreach( $vEmail -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'email' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'email' ][] = $messageId . ': ' . $message;
 				}
 				
 				//- Phone -//
 				foreach( $vPhone -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'phone' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'phone' ][] = $messageId . ': ' . $message;
 				}
 				
 				//- Skype -//
 				foreach( $vSkype -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'skype' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'skype' ][] = $messageId . ': ' . $message;
 				}
 				
 				//- Country -//
 				foreach( $vAdress -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'mailing_address' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'mailing_address' ][] = $messageId . ': ' . $message;
 				}
 				
 				//- Country -//
 				foreach( $vCountry -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'country' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'country' ][] = $messageId . ': ' . $message;
 				}
 				
 				//- Language -//
 				foreach( $vLanguage -> getMessages() as $messageId => $message )
 				{
-					$errors[ 'language' ][] = $messageId . ': ' . $message;
+					$this -> errors[ 'language' ][] = $messageId . ': ' . $message;
 				}
     		}
     	}
-    	
-    	
-        //- Init view -//
-        $this -> view -> Title = 'Registration';
-        $this -> view -> pathOfSite = 'Main => Registration';
-        
-        $this -> view -> errors = $errors;
     }
 
     public function registrationsuccessAction()
     {
-        // action body
+        //- Get message -//
+        $this -> view -> messages = $this -> _helper -> flashMessenger -> getMessages();
+        
+        if( empty( $this -> view -> messages ) )
+        {
+        	//- Redirect to home -//
+        	$this -> _redirect( '/' );
+        }
     }
 
     public function loginAction()
     {
-        // action body
+        //- Validators -//
+		$validators = array(
+			'username'	=> array(
+				'NotEmpty', 
+				'EmailAddress'
+			),
+			'password'	=> array()
+		);
+		
+		$input = new Zend_Filter_Input( array(), $validators );
+			$input -> setData(
+				$this -> getRequest() -> getParams()
+			);
+    	
+		//- Get input data -//
+		if( $this -> getRequest() -> isPost() )
+		{
+			//- Validate -//
+			if( $input -> isValid() )
+			{										
+				//- Create adapter for authenticate -//
+				Zend_Loader :: loadFile( 'Auth/Adapter.php' );
+				
+				$adapter = new Auth_Adapter( 
+					$input -> username, 
+					$input -> password 
+				);
+							 
+				//- Authenticate -//
+				$auth = Zend_Auth :: getInstance();
+							
+				if( $auth -> authenticate( $adapter ) -> isValid() )
+				{
+					//- User is authenticate -//
+					$this -> session = new Zend_Session_Namespace( 'system.user' );
+					
+					//- Save data about current user in session -//
+					$this -> session -> user = $adapter -> getUserData();
+					
+					//- Redirect to default -//
+					$this -> _redirect( 
+						'/' . strtolower( $this -> session -> user[ 'role' ][ 'title' ] ) 
+					);
+				}else
+					{
+						//- Display message: Error, authenticate -//
+						$this -> errors[] = 'Error, Can not authentificate user. Repeat, please!';
+					}
+			}else
+				{
+					//- Data is not valid -//
+					array_push( 
+    					$this -> errors, 
+    					'Error, data is not valid. Repeat, please!'
+    				);
+				}
+		}
+		
+		//- Init view -//
+		
     }
 
     public function logoutAction()
     {
-        // action body
+        //- Destroy user session -//
+		Zend_Auth :: getInstance() -> clearIdentity();
+		Zend_Session :: destroy();
     }
 
     public function forgotAction()
@@ -234,7 +343,115 @@ class AuthorizationController
         // action body
     }
 
-
+	//- Test -//
+	public function testAction()
+	{
+		//- Filters -//
+		$filters = array(
+			'param'	=> array( 
+				'HtmlEntities', 
+				'StripTags', 
+				'StringTrim'
+			), 			
+			'value'	=> array( 
+				'HtmlEntities', 
+				'StripTags', 
+				'StringTrim'
+			)
+		);
+		
+		//- Validators -//
+		$validators = array(
+			'param'	=> array( 
+		 		'NotEmpty', 
+				'Alpha'
+			), 
+			'value'	=> array(
+				'NotEmpty'
+			)
+		);
+		
+		//- Validation -//
+		$input = new Zend_Filter_Input( $filters, $validators );
+			$input -> setData(
+				$this -> getRequest() -> getParams()
+			);
+			
+		//- Test -//
+		if( $this -> getRequest() -> isGet() )
+		{
+			if( $input -> isValid() )
+			{
+				switch( $input -> param )
+				{
+					//- Username -//
+					case 'username':
+					{
+						$validator = new Zend_Validate_Alnum();
+						
+						if( $validator -> isValid( $input -> value ) )
+						{
+							//- Test in DB -//
+							$response = Doctrine_Query :: create()
+								-> from( "Jms_User" )
+								-> where( "username = '{$input -> value}'" )
+								-> limit( 1 );
+								
+							if( count( $response->fetchArray() ) === 0 )
+							{
+								//- Username are free -//
+								$this -> view -> status = 1;
+								$this -> view -> msg = 'Username is free';
+							}else
+								{
+									//- Username are exist -//
+									$this -> view -> status = 0;
+									$this -> view -> msg = 'Username is exist';
+								}
+							
+							return;
+						}
+						
+					}break;
+					
+					//- E-mail -//
+					case 'email':
+					{
+						$validator = new Zend_Validate_EmailAddress();
+						
+						if( $validator -> isValid( $input -> value ) )
+						{
+							//- Test in DB -//
+							$response = Doctrine_Query :: create()
+								-> from( "Jms_Email" )
+								-> where( "address = '{$input -> value}'" )
+								-> limit( 1 );
+							
+							if( count( $response->fetchArray() ) === 0 )
+							{
+								//- Username are free -//
+								$this -> view -> status = 1;
+								$this -> view -> msg = 'Email is free';
+							}else
+								{
+									//- Username are exist -//
+									$this -> view -> status = 0;
+									$this -> view -> msg = 'Email is exist';
+								}
+							
+							return;
+						}
+						
+					}break;
+				}
+			}
+		}
+		
+		//- Username are exist -//
+		$this -> view -> status = 0;
+		$this -> view -> msg = 'Invalid input';
+		//throw new Zend_Controller_Action_Exception( 'Invalid input' );
+	}
 }
 
 

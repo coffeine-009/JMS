@@ -10,6 +10,8 @@ Doctrine_Manager::getInstance()->bindComponent('Jms_User', 'doctrine');
  * @property integer $id
  * @property integer $id_role
  * @property integer $id_status
+ * @property string $username
+ * @property string $password
  * @property string $first_name
  * @property string $second_name
  * @property string $father_name
@@ -19,10 +21,14 @@ Doctrine_Manager::getInstance()->bindComponent('Jms_User', 'doctrine');
  * @property timestamp $creation
  * @property Jms_Role $Role
  * @property Jms_UserStatus $UserStatus
+ * @property Doctrine_Collection $Address
  * @property Doctrine_Collection $Article
  * @property Doctrine_Collection $ArticleAuthors
  * @property Doctrine_Collection $Email
+ * @property Doctrine_Collection $Phone
  * @property Doctrine_Collection $Recension
+ * @property Doctrine_Collection $Skype
+ * @property Doctrine_Collection $Tool
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -54,6 +60,24 @@ abstract class Jms_BaseUser extends Doctrine_Record
         $this->hasColumn('id_status', 'integer', 4, array(
              'type' => 'integer',
              'length' => 4,
+             'fixed' => false,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('username', 'string', 40, array(
+             'type' => 'string',
+             'length' => 40,
+             'fixed' => false,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             ));
+        $this->hasColumn('password', 'string', 128, array(
+             'type' => 'string',
+             'length' => 128,
              'fixed' => false,
              'unsigned' => false,
              'primary' => false,
@@ -135,6 +159,10 @@ abstract class Jms_BaseUser extends Doctrine_Record
              'local' => 'id_status',
              'foreign' => 'id'));
 
+        $this->hasMany('Jms_Address as Address', array(
+             'local' => 'id',
+             'foreign' => 'id_user'));
+
         $this->hasMany('Jms_Article as Article', array(
              'local' => 'id',
              'foreign' => 'id_user'));
@@ -147,7 +175,19 @@ abstract class Jms_BaseUser extends Doctrine_Record
              'local' => 'id',
              'foreign' => 'id_user'));
 
+        $this->hasMany('Jms_Phone as Phone', array(
+             'local' => 'id',
+             'foreign' => 'id_user'));
+
         $this->hasMany('Jms_Recension as Recension', array(
+             'local' => 'id',
+             'foreign' => 'id_user'));
+
+        $this->hasMany('Jms_Skype as Skype', array(
+             'local' => 'id',
+             'foreign' => 'id_user'));
+
+        $this->hasMany('Jms_Tool as Tool', array(
              'local' => 'id',
              'foreign' => 'id_user'));
     }

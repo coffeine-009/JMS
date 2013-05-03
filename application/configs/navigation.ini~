@@ -6,20 +6,23 @@
 home.label = "Home"
 home.uri = "/home"
 
-;//- Registration -//
-registration.label = "Registration"
-registration.uri = "/registration"
+;//- News -//
+;news.label = "News"
+;news.uri = "/news"
 
-;//- Registration.Success -//
-registration_s.label = "Registration success"
-registration_s.uri = "/registration/success"
+;//- Archive -//
+archive.label = "Archive"
+archive.uri = "/archive"
+
+;//- Search -//
+search.label = "Search"
+search.uri = "/search"
 
 ;//- About -//
-about.label = "About"
-about.uri = "/about"
-about.pages.author.label = "Author"
-about.pages.author.uri = "/about/author"
+;about.label = "About"
+;about.uri = "/about"
+;about.pages.author.label = "Author"
+;about.pages.author.uri = "/about/author"
 
-;//- Tmp -//
-tmp.label = "Tmp"
-tmp.uri = "/tmp"
+[author:guest]
+;
