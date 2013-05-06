@@ -36,7 +36,7 @@ class Auth_Adapter
 	}
 	
 	//- Authenticate -//
-	public function authenticate()
+	public function authenticate()// : bool
 	{
 		//- Query to DB -//
 		$response = Doctrine_Query :: create()
