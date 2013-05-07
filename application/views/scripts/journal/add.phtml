@@ -1,1 +1,22 @@
-<br /><br /><center>View script for controller <b>Journal</b> and script/action name <b>add</b></center>
+
+<form action = "/journal/add" method = "post">
+
+	<div class = "field">
+		<label><?= $this -> translate( 'ISSN' ); ?>:</label>
+		<input type = "text" name = "issn" value = ""/>
+	</div>
+	
+	<div class = "field">
+		<label><?= $this -> translate( 'Title' ); ?>:</label>
+		<input type = "text" name = "title" value = ""/>
+	</div>
+	
+	<div class = "field">
+		<label><?= $this -> translate( 'Description' ); ?>:</label>
+		<textarea name = "description" rows="8" cols="40"></textarea>
+	</div>	
+
+		
+	<input type = "submit" value = "Add"/>
+
+</form>

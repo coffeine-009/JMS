@@ -1,0 +1,87 @@
+
+<?php
+	
+	echo 
+	$this -> partial(
+		'widgets/journal/navigation.phtml', 
+		array(
+			'label'	=> 'Journal', 
+			'items'	=> array(
+				array(
+					'label'	=> 'Add', 
+					'uri'	=> '/journal/add'
+				), 
+				array(
+					'label'	=> 'Delete', 
+					'uri'	=> '/journal/delete'
+				), 
+				array(
+					'label'	=> 'Edit', 
+					'uri'	=> '/journal/edit'
+				), 				
+				array(
+					'label'	=> 'View', 
+					'uri'	=> '/journal/view'
+				)
+			)
+		)
+	);
+
+?>
+
+<div class = "journal">
+	
+	<!-- Logotip(First page) -->
+	<img src = "/data/journal/<?= $this -> journal[ 'id' ]; ?>/logotip/logo.jpg" />
+	
+	<!-- Info -->
+	<div class = "info">
+	
+		<!-- Title -->
+		<div class = "title">
+			<?= $this -> journal[ 'title' ]; ?>
+		</div>
+		
+		<!-- ISSN -->
+		<div class = "issn">
+			<?= $this -> journal[ 'issn' ]; ?>
+		</div>
+		
+		<!-- Time of create -->
+		<div class = "creation">
+			<?= $this -> journal[ 'creation' ]; ?>
+		</div>
+		
+		<!-- Description -->
+		<div class = "description">
+			<?= $this -> journal[ 'description' ]; ?>
+		</div>
+	
+	</div>
+	
+	<!-- Numbers of journal -->
+	<div class = "numbers">
+		<label><?= $this -> translate( 'Numbers' ); ?>:</label>
+		<?php foreach( $this -> journal[ 'JournalNumber' ] as $number ): ?>
+		<div class = "number">
+		
+			<div class = "volume">
+				<?= $this -> translate( 'Volume' );?>: <?= $number[ 'volume' ]; ?>
+			</div>
+			<div class = "issue">
+				<a href = "">
+					<?= $this -> translate( 'Issue' );?>: <?= $number[ 'issue' ]; ?>
+				</a>
+			</div>
+		
+		</div>
+		<?php endforeach; ?>
+	
+	</div>
+	
+	
+	<div class = "pager">
+		<?= $this -> pages; ?>
+	</div>
+	
+</div>

@@ -40,6 +40,7 @@
 				function(){
 					//alert( 'main' );
 					//TODO:
+					$( ".pager>a" ).button();
 				}
 			);
 		</script>
@@ -85,7 +86,13 @@
 		<!-- Short logotip -->
 		<div id = "logotip" class = "logotip">
 		
-			Carpathian Mathematical Publications
+			<?php
+				if( isset( $this -> logotip ) )
+				{
+					echo $this -> logotip;
+				}
+			?>
+			<!--Carpathian Mathematical Publications-->
 		
 		</div>
 		

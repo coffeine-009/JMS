@@ -1,11 +1,4 @@
 /* Registration */
-h1
-{
-	border-top		: solid 1px;
-	border-bottom	: solid 1px;
-	border-color	: #eee;
-	text-align		: center;
-}
 
 input[type=submit]
 {

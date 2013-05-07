@@ -12,6 +12,31 @@ body
 	font-size		: small;
 }
 
+h1
+{
+	border-top		: solid 1px;
+	border-bottom	: solid 1px;
+	border-color	: #eee;
+	text-align		: center;
+}
+
+table
+{
+	
+}
+
+	table tr
+	{
+		background		: #ccc;
+		background		: -moz-linear-gradient( top, #fff, #eee, #ccc );
+	}
+	
+	table tr:hover
+	{
+		background		: #999;
+		background		: -moz-linear-gradient( top, #ccc, #999, #ccc );
+	}
+
 /* Main of page */
 /* Header */
 .header
@@ -97,6 +122,87 @@ body
 	margin			: 3px 0 3px 0;
 	padding			: 5px;
 }
+
+	/* Pager */
+	.pager
+	{
+		margin		: 5px 0 0 0;
+		text-align	: center;
+	}
+	
+	/* Journal */
+	.journal
+	{		
+		margin-left	: 20%;
+	}
+	
+	/* Numbers of journal */
+	.journal .numbers
+	{
+		display		: table;
+		margin		: 5px;
+	}
+	
+		/* Number of journal */
+		.journal .numbers .number
+		{
+			display		: table-row;
+		}
+		
+			/* Volume */
+			.journal .numbers .number .volume
+			{
+				border-bottom	: #999 solid 1px;
+				display		: table-cell;
+				padding		: 3px;
+			}
+			
+			/* Issue */
+			.journal .numbers .number .issue
+			{
+				border-bottom	: #999 solid 1px;
+				display		: table-cell;
+				padding		: 3px;
+			}
+			
+	/* Journal :: Add */
+	.field
+	{
+		display		: table-row;
+		line-height	: 32pt;
+	}
+	
+		.field>label
+		{
+			display	: table-cell;
+			padding	: 10px;
+			vertical-align: top;
+		}
+		
+		.field>input
+		{
+			font-size	:large;
+			height		: 40px;
+			width		: 300px;
+		}
+		
+		.field>textarea
+		{
+			font-size	:large;			
+			width		: 300px;
+		}
+
+	.menu_navigation_left
+	{
+		float		: left;
+		width		: 20%;
+	}
+	
+	.menu_navigation_left>b
+	{
+		margin-left		: 10px;
+	}
+	
 
 /* Footer */
 .footer

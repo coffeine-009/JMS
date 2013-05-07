@@ -194,7 +194,7 @@ ENGINE = InnoDB CHARACTER SET = utf8;
 /* -# Journals #- */
 CREATE TABLE `journal`(
 	`id`			INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 		*/
-	`issn`			VARCHAR( 100 ) NOT NULL, 	/* ISSN of registration 	*/
+	`issn`			VARCHAR( 100 ) UNIQUE NOT NULL, /* ISSN of registration */
 	`title`			VARCHAR( 100 ) NOT NULL, 	/* Title of journal 		*/
 	`description`	TEXT, 				/* Short description about journal 	*/
 

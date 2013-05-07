@@ -1,6 +1,31 @@
-<?php
-	Zend_Debug::dump( $this -> journals );
-	
-?>
 
-<?= $this -> pages; ?>
+<table width = "100%">
+	<thead>
+		<tr>
+			<th width = "30%"><?= $this -> translate( 'Title' ); ?></th>
+			<th><?= $this -> translate( 'Description' ); ?></th>
+			<th width = "10%"><?= $this -> translate( 'ISSN' ); ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach( $this -> journals as $journal ): ?>
+		<tr>
+			<td>
+				<a href = "/journal/<?= $journal[ 'id' ]; ?>">
+					<?= $journal[ 'title' ] ?>
+				</a>
+			</td>
+			<td>
+				<?= $journal[ 'description' ] ?>
+			</td>
+			<td>
+				<?= $journal[ 'issn' ] ?>
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>
+
+<div class = "pager">
+	<?= $this -> pages; ?>
+</div>
