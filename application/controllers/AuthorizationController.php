@@ -25,6 +25,8 @@ class AuthorizationController
 
     public function init()
     {
+    	parent :: init();
+    	
     	//- Init others view formats -//
 		$this -> _helper -> getHelper( 'contextSwitch' )
 			-> addActionContext( 'test', 'json' )

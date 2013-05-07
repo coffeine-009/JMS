@@ -44,8 +44,8 @@ print_r( $dbs, 1 ),
 
 //- Generate models -//
 Doctrine :: generateModelsFromDb( 
-	'/home/vitaliy/Projects/Web/jms/www/JMS/docs/models', 
-	//'models', 
+	//'/home/vitaliy/Projects/Web/jms/www/JMS/docs/models', 
+	'models', 
 	array(
 		'doctrine'
 	), 
