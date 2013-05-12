@@ -40,6 +40,7 @@ class JournalController
         $this -> view -> Title = 'Journals';
         $this -> view -> pathOfSite = 'Jourmal => List';
         
+        
     	//- Filters -//
     	$filters = array(
     		'page' => array(
@@ -185,7 +186,7 @@ class JournalController
 	        	-> addFrom( 'j.JournalNumber jn' )
 	        	-> where( 'id = ?', array( $journal_id ) )
 	        	-> orderBy( 'id' );
-	        	
+	       	
 	        //- Pager init -//
 	        $pager = new Doctrine_Pager(
 	        	$query, 
@@ -195,10 +196,10 @@ class JournalController
 	        
 	        //- Journals -//
 	        $journal_data = $pager -> execute(
-	        	array(), 
-	        	Doctrine :: HYDRATE_ARRAY
+	        	//array(), 
+	        	//Doctrine :: HYDRATE_ARRAY
 	        );
-	        
+	        /*
 	        //- Init maket for pager -//
 	        $pagerRange = new Doctrine_Pager_Range_Sliding(
 	        	array(
@@ -224,11 +225,11 @@ class JournalController
 	        $pagerLayout -> setTemplate( '<a href = "{%url}">{%page}</a>' );
 	        $pagerLayout -> setSelectedTemplate( '<span class = "current">{%page}</span>' );
 	        $pagerLayout -> setSeparatorTemplate( '&nbsp' );
-	        Zend_Debug::dump($journal_data);
+			*/
 	        //- Init view -//
 	        $this -> view -> logotip = $journal_data[ 0 ][ 'title' ];
 	        $this -> view -> journal = $journal_data[ 0 ];
-	        $this -> view -> pages = $pagerLayout -> display( null, true );
+	        //$this -> view -> pages = $pagerLayout -> display( null, true );
     	}else
     		{
     			throw new Zend_Controller_Action_Exception( 'Invalid input' );
@@ -244,11 +245,11 @@ class JournalController
         
     	//- Filters -//
     	$filters = array(
-    		'issn' => array(
+    		'*' => array(
 	    		'HtmlEntities', 
 	    		'StripTags', 
 	    		'StringTrim'
-	    	), 
+	    	)/*, 
     		'title' => array(
 	    		'HtmlEntities', 
 	    		'StripTags', 
@@ -258,19 +259,22 @@ class JournalController
 	    		'HtmlEntities', 
 	    		'StripTags', 
 	    		'StringTrim'
-	    	)
+	    	)*/
     	);
     	
     	//- Validators -//
     	$validators = array(
-    		'issn'	=> array( 
+    		'*'	=> array( 
     			'NotEmpty'
+    		), 
+    		'isbn'	=> array( 
+    			
     		), 
     		'title' => array( 
-    			'NotEmpty' 
+    			 
     		), 
     		'description' => array(
-    			'NotEmpty'
+    			
     		)
     	);
     	
@@ -285,7 +289,7 @@ class JournalController
 	    	{
 	    		//- Save info -//
 				$journal = new Jms_Journal();
-		        	$journal -> issn = $input -> issn;
+		        	$journal -> issn = $input -> isbn;//TODO: ISBN
 		        	$journal -> title = $input -> title;
 		        	$journal -> description = $input -> description;
 		        	
@@ -304,14 +308,132 @@ class JournalController
     	}
     }
 
+    //- Edit journal -//
     public function editAction()
     {
-        // action body
+    	//- Get id of journal -//
+    	$journal_id = (int)$this -> getRequest() -> getParam( 'id' );
+    	
+    	//- Get info about journal -//
+    	$journal = Doctrine_Query :: create()
+    		-> from( 'Jms_Journal' )
+    		-> where( 'id = ?', array( $journal_id ) )
+    		-> limit( 1 );
+    	
+    	$journal = $journal -> fetchArray();
+    		
+		//- Init view -//
+        $this -> view -> Title = 'Edit journal';
+        $this -> view -> pathOfSite = 'Jourmal => Edit';
+        $this -> view -> journal = $journal[ 0 ];
+        
+    	//- Filters -//
+    	$filters = array(
+    		'*' => array(
+	    		'HtmlEntities', 
+	    		'StripTags', 
+	    		'StringTrim'
+	    	)
+    	);
+    	
+    	//- Validators -//
+    	$validators = array(
+    		'*'	=> array( 
+    			'NotEmpty'
+    		), 
+    		'isbn'	=> array( 
+    			
+    		), 
+    		'title' => array( 
+    			 
+    		), 
+    		'description' => array(
+    			
+    		)
+    	);
+    	
+    	if( $this -> getRequest() -> isPost() )
+    	{
+	    	$input = new Zend_Filter_Input( $filters, $validators );
+	    		$input -> setData(
+	    			$this -> getRequest() -> getParams()
+	    		);
+    	
+	    	if( $input -> isValid() )
+	    	{
+	    		//- Save info -//
+				$journal = Doctrine :: getTable( 'Jms_Journal' )
+		        	-> find( $journal_id );
+		        	
+		        	$journal -> issn = $input -> isbn;//TODO: ISBN
+		        	$journal -> title = $input -> title;
+		        	$journal -> description = $input -> description;
+		        	
+		        $journal -> save();
+		        
+		        //- Add message -//
+		        $this -> _helper -> flashMessenger 
+					-> addMessage( 'Journal is edited.' );
+		        
+		        //- Redirect to view journal -//
+		        $this -> _redirect( '/journal/' . $journal -> id );
+	    	}else
+	    		{
+	    			throw new Zend_Controller_Action_Exception( 'Invalid input' );
+	    		}
+    	}
     }
 
     public function deleteAction()
     {
-        // action body
+		//- Init view -//
+        $this -> view -> Title = 'Delete journal';
+        $this -> view -> pathOfSite = 'Jourmal => Delete';
+        
+    	//- Filters -//
+    	$filters = array(
+    		'*' => array(
+	    		'HtmlEntities', 
+	    		'StripTags', 
+	    		'StringTrim'
+	    	)
+    	);
+    	
+    	//- Validators -//
+    	$validators = array(
+    		'id'	=> array( 
+    			'NotEmpty', 
+    			'Int'
+    		)
+    	);
+    	
+    	if( $this -> getRequest() -> isGet() )
+    	{
+	    	$input = new Zend_Filter_Input( $filters, $validators );
+	    		$input -> setData(
+	    			$this -> getRequest() -> getParams()
+	    		);
+    	
+	    	if( $input -> isValid() )
+	    	{
+	    		//- Save info -//
+				$journal = Doctrine_Query :: create()
+					-> delete( 'Jms_Journal' )
+		        	-> where( 'id = ?', $input -> id );
+		        	
+		        $journal -> execute();
+		        
+		        //- Add message -//
+		        $this -> _helper -> flashMessenger 
+					-> addMessage( 'Journal is deleted.' );
+		        
+		        //- Redirect to view journal -//
+		        $this -> _redirect( '/journal/list' );
+	    	}else
+	    		{
+	    			throw new Zend_Controller_Action_Exception( 'Invalid input' );
+	    		}
+    	}
     }
 
 

@@ -20,6 +20,19 @@ h1
 	text-align		: center;
 }
 
+/* Forms */
+form input[type=submit]
+{/*
+	background	: #ccc;
+	background	: -moz-radial-gradient( #fff 0%, #ddd 25%, #ccc 50%, #ddd 75%, #fff 100% );
+	border-radius	: 45px;
+	border		: #fff solid 3px;*/
+	font-size	:large;
+	height		: 40px;
+	margin-top	: 10px;
+	width		: 400px;
+}
+
 table
 {
 	
@@ -28,13 +41,21 @@ table
 	table tr
 	{
 		background		: #ccc;
-		background		: -moz-linear-gradient( top, #fff, #eee, #ccc );
+		background		: -moz-linear-gradient( top, #fff, #eee, #eee );
+		
 	}
 	
 	table tr:hover
 	{
 		background		: #999;
 		background		: -moz-linear-gradient( top, #ccc, #999, #ccc );
+	}
+	
+	table tr td
+	{	
+		white-space		: normal;
+		padding			: 5px;
+		vertical-align	: top;
 	}
 
 /* Main of page */
@@ -123,6 +144,13 @@ table
 	padding			: 5px;
 }
 
+	/* Content */
+	.content
+	{		
+		margin-left	: 20%;
+		padding		: 10px;
+	}
+
 	/* Pager */
 	.pager
 	{
@@ -134,14 +162,59 @@ table
 	.journal
 	{		
 		margin-left	: 20%;
+		padding		: 10px;
 	}
+	
+		/* Cover of journal */
+		.journal img
+		{
+			margin-right	: 10px;
+		}
+		
+		.journal>.info
+		{
+			line-height		: 20pt;
+		}
+		
+			.journal>.info>.title
+			{
+				font-size		: 20pt;
+			}
+			
+			.journal>.info>.isbn
+			{
+				font-size		: 10pt;
+				font-style		: italic;
+				line-height		: 15pt;
+			}
+			
+			.journal>.info>.creation
+			{
+				font-size		: 10pt;
+				font-style		: normal;
+				font-weight		: bold;
+				line-height		: 10pt;
+			}
+			
+			.journal>.info>.description
+			{
+				font-size		: 10pt;
+				font-style		: normal;
+				line-height		: 15pt;
+				margin-top		: 5px;
+			}
 	
 	/* Numbers of journal */
 	.journal .numbers
 	{
+		clear		: left;
 		display		: table;
-		margin		: 5px;
 	}
+	
+		.journal>.numbers>label
+		{
+			font-weight		: bold;
+		}
 	
 		/* Number of journal */
 		.journal .numbers .number

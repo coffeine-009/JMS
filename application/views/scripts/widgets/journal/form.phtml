@@ -1,0 +1,24 @@
+<form action = "<?= $this -> action; ?>" method = "post">
+
+	<div class = "field">
+		<label><?= $this -> translate( 'ISBN' ); ?>:</label>
+		<input type = "text" name = "isbn" value = "<?= $this -> data[ 'isbn' ]; ?>" />
+		<span><?= implode( '<br />', $this -> errors[ 'isbn' ] ) ?></span>
+	</div>
+	
+	<div class = "field">
+		<label><?= $this -> translate( 'Title' ); ?>:</label>
+		<input type = "text" name = "title" value = "<?= $this -> data[ 'title' ]; ?>" />
+		<span><?= implode( '<br />', $this -> errors[ 'title' ] ) ?></span>
+	</div>
+	
+	<div class = "field">
+		<label><?= $this -> translate( 'Description' ); ?>:</label>
+		<textarea name = "description" rows="8" cols="40"><?= $this -> data[ 'description' ]; ?></textarea>
+		<span><?= implode( '<br />', $this -> errors[ 'description' ] ) ?></span>
+	</div>	
+
+		
+	<input type = "submit" value = "Add"/>
+
+</form>

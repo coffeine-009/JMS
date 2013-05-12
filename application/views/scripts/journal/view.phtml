@@ -8,20 +8,20 @@
 			'label'	=> 'Journal', 
 			'items'	=> array(
 				array(
+					'label'	=> 'List', 
+					'uri'	=> '/journal/list'
+				), 
+				array(
 					'label'	=> 'Add', 
 					'uri'	=> '/journal/add'
 				), 
 				array(
 					'label'	=> 'Delete', 
-					'uri'	=> '/journal/delete'
+					'uri'	=> '/journal/delete/' . $this -> journal[ 'id' ]
 				), 
 				array(
 					'label'	=> 'Edit', 
-					'uri'	=> '/journal/edit'
-				), 				
-				array(
-					'label'	=> 'View', 
-					'uri'	=> '/journal/view'
+					'uri'	=> '/journal/edit/' . $this -> journal[ 'id' ]
 				)
 			)
 		)
@@ -32,7 +32,10 @@
 <div class = "journal">
 	
 	<!-- Logotip(First page) -->
-	<img src = "/data/journal/<?= $this -> journal[ 'id' ]; ?>/logotip/logo.jpg" />
+	<img src = "/data/journals/<?= $this -> journal[ 'id' ]; ?>/photo/cover.jpg" 
+		width = "240" 
+		align = "left" 
+	/>
 	
 	<!-- Info -->
 	<div class = "info">
@@ -43,7 +46,7 @@
 		</div>
 		
 		<!-- ISSN -->
-		<div class = "issn">
+		<div class = "isbn">
 			<?= $this -> journal[ 'issn' ]; ?>
 		</div>
 		
@@ -78,10 +81,5 @@
 		<?php endforeach; ?>
 	
 	</div>
-	
-	
-	<div class = "pager">
-		<?= $this -> pages; ?>
-	</div>
-	
+		
 </div>

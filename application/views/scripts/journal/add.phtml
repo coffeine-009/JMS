@@ -1,22 +1,44 @@
 
-<form action = "/journal/add" method = "post">
-
-	<div class = "field">
-		<label><?= $this -> translate( 'ISSN' ); ?>:</label>
-		<input type = "text" name = "issn" value = ""/>
-	</div>
+<?php
 	
-	<div class = "field">
-		<label><?= $this -> translate( 'Title' ); ?>:</label>
-		<input type = "text" name = "title" value = ""/>
-	</div>
-	
-	<div class = "field">
-		<label><?= $this -> translate( 'Description' ); ?>:</label>
-		<textarea name = "description" rows="8" cols="40"></textarea>
-	</div>	
+	echo 
+	$this -> partial(
+		'widgets/journal/navigation.phtml', 
+		array(
+			'label'	=> 'Journal', 
+			'items'	=> array(
+				array(
+					'label'	=> 'List', 
+					'uri'	=> '/journal/list'
+				)
+			)
+		)
+	);
 
+?>
+
+<div class = "content">
+
+	<?php
 		
-	<input type = "submit" value = "Add"/>
-
-</form>
+		echo 
+		$this -> partial(
+			'widgets/journal/form.phtml', 
+			array(
+				'action'	=> '/journal/add', 
+				'errors'	=> array(
+					'isbn'			=> array(), 
+					'title'			=> array(), 
+					'description'	=> array()
+				), 
+				'data'	=> array(
+					'isbn'			=> '', 
+					'title'			=> '', 
+					'description'	=> ''
+				)
+			)
+		);
+	
+	?>
+	
+</div>

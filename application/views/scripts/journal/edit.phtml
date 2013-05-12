@@ -1,1 +1,56 @@
-<br /><br /><center>View script for controller <b>Journal</b> and script/action name <b>edit</b></center>
+
+<?php
+	
+	echo 
+	$this -> partial(
+		'widgets/journal/navigation.phtml', 
+		array(
+			'label'	=> 'Journal', 
+			'items'	=> array(
+				array(
+					'label'	=> 'List', 
+					'uri'	=> '/journal/list'
+				), 
+				array(
+					'label'	=> 'Add', 
+					'uri'	=> '/journal/add'
+				), 
+				array(
+					'label'	=> 'Delete', 
+					'uri'	=> '/journal/delete/' . $this -> journal[ 'id' ]
+				), 
+				array(
+					'label'	=> 'View', 
+					'uri'	=> '/journal/' . $this -> journal[ 'id' ]
+				), 
+			)
+		)
+	);
+
+?>
+
+<div class = "content">
+
+	<?php
+		
+		echo 
+		$this -> partial(
+			'widgets/journal/form.phtml', 
+			array(
+				'action'	=> '/journal/edit/' . $this -> journal[ 'id' ], 
+				'errors'	=> array(
+					'isbn'			=> array(), 
+					'title'			=> array(), 
+					'description'	=> array()
+				), 
+				'data'	=> array(
+					'isbn'			=> $this -> journal[ 'issn' ], //TODO: ISBN
+					'title'			=> $this -> journal[ 'title' ], 
+					'description'	=> $this -> journal[ 'description' ]
+				)
+			)
+		);
+	
+	?>
+	
+</div>
