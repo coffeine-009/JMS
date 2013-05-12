@@ -31,6 +31,13 @@
 
 <div class = "content">
 
+	<!-- Logotip(First page) -->
+	<img src = "/data/journals/<?= $this -> journal[ 'id' ]; ?>/photo/cover.jpg" 
+		width = ""
+		style = "max-width : 100%;" 		
+	/>
+
+	<div style = "clear : both; margin-top : 10px;">
 	<?php
 		
 		echo 
@@ -39,9 +46,10 @@
 			array(
 				'action'	=> '/journal/edit/' . $this -> journal[ 'id' ], 
 				'errors'	=> array(
-					'isbn'			=> array(), 
-					'title'			=> array(), 
-					'description'	=> array()
+					'cover'			=> $this -> errors[ 'cover' ], 
+					'isbn'			=> $this -> errors[ 'isbn' ], 
+					'title'			=> $this -> errors[ 'title' ], 
+					'description'	=> $this -> errors[ 'description' ]
 				), 
 				'data'	=> array(
 					'isbn'			=> $this -> journal[ 'issn' ], //TODO: ISBN
@@ -52,5 +60,6 @@
 		);
 	
 	?>
+	</div>
 	
 </div>

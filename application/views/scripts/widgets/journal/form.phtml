@@ -1,4 +1,10 @@
-<form action = "<?= $this -> action; ?>" method = "post">
+<form action = "<?= $this -> action; ?>" method = "post" enctype = "multipart/form-data">
+
+	<div class = "field">
+		<label><?= $this -> translate( 'Cover' ); ?>:</label>
+		<input type = "file" name = "cover" value = "<?= $this -> data[ 'cover' ]; ?>" />
+		<span><?= implode( '<br />', $this -> errors[ 'cover' ] ) ?></span>
+	</div>
 
 	<div class = "field">
 		<label><?= $this -> translate( 'ISBN' ); ?>:</label>

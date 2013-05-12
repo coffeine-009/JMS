@@ -1,0 +1,35 @@
+
+<table width = "100%">
+	<thead>
+		<tr>
+			<th width = "15%"><?= $this -> translate( 'Volume' ); ?></th>
+			<th><?= $this -> translate( 'Issue' ); ?></th>
+			<th width = "20%"><?= $this -> translate( 'Creation' ); ?></th>
+			<th width = "20%"><?= $this -> translate( 'Actions' ); ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach( $this -> journalNumbers as $journalNumber ): ?>
+		<tr>
+			<td>
+				<?= $journalNumber[ 'volume' ]; ?>				
+			</td>
+			<td>
+				<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/number/<?= $journalNumber[ 'id' ]; ?>">
+					<?= $journalNumber[ 'issue' ]; ?>
+				</a>
+			</td>
+			<td align = "center">
+				<?= $journalNumber[ 'creation' ]; ?>				
+			</td>
+			<td align = "center">
+				del, edit
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>
+
+<div class = "pager">
+	<?= $this -> pages; ?>
+</div>

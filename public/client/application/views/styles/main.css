@@ -45,7 +45,7 @@ table
 		
 	}
 	
-	table tr:hover
+	table tbody tr:hover
 	{
 		background		: #999;
 		background		: -moz-linear-gradient( top, #ccc, #999, #ccc );

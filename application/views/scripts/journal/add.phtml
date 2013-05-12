@@ -27,9 +27,10 @@
 			array(
 				'action'	=> '/journal/add', 
 				'errors'	=> array(
-					'isbn'			=> array(), 
-					'title'			=> array(), 
-					'description'	=> array()
+					'cover'			=> $this -> errors[ 'cover' ], 
+					'isbn'			=> $this -> errors[ 'isbn' ], 
+					'title'			=> $this -> errors[ 'title' ], 
+					'description'	=> $this -> errors[ 'description' ]
 				), 
 				'data'	=> array(
 					'isbn'			=> '', 

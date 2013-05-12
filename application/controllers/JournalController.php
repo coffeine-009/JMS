@@ -21,11 +21,10 @@ class JournalController
 	extends
 		BaseController
 {
-
+	///	***	Methods		***	///
     public function init()
     {
     	parent :: init();
-        /* Initialize action controller here */
     }
 
     public function indexAction()
@@ -130,6 +129,7 @@ class JournalController
     }
 
 	//- View -//
+    //- View journal -//
     public function viewAction()
     {
 	    //- Init view -//
@@ -239,6 +239,14 @@ class JournalController
     //- Add new journal -//
     public function addAction()
     {
+    	//- Init -//
+    	$this -> errors = array(
+    		'cover'			=> array(), 
+	    	'isbn'			=> array(), 
+	    	'title'			=> array(), 
+	    	'description'	=> array()
+    	);
+    	
      	//- Init view -//
         $this -> view -> Title = 'Add journal';
         $this -> view -> pathOfSite = 'Jourmal => Add';
@@ -287,13 +295,80 @@ class JournalController
     	
 	    	if( $input -> isValid() )
 	    	{
-	    		//- Save info -//
+	    		//- Save info -//	    			    		
+	    		//- Add journal -//
 				$journal = new Jms_Journal();
 		        	$journal -> issn = $input -> isbn;//TODO: ISBN
 		        	$journal -> title = $input -> title;
 		        	$journal -> description = $input -> description;
 		        	
 		        $journal -> save();
+		        
+		        //- Create file struct for journal -//
+		        $fJournal = new Coffeine_Files_File();
+		        
+		        	if( 
+		        		!$fJournal -> createDirectory( 
+							APPLICATION_PATH .'/../public/data/journals/', 
+							$journal -> id
+		        		) 
+		        		|| 
+		        		!$fJournal -> createDirectory( 
+							APPLICATION_PATH .'/../public/data/journals/' . $journal -> id . '/', 
+							'photo'
+		        		)
+		        	)
+		        	{
+		        		//- Exception :: File struct not created -//
+		        		$this -> errors[ 'cover' ][] = 'Can not create directory';
+		        	}
+		        
+		        //- Upload cover -//
+	    		$cover = new Zend_File_Transfer();
+	    			$cover -> setDestination( 
+	    				APPLICATION_PATH .'/../public/data/journals/' . $journal -> id . '/photo/'
+	    			);
+	    			$cover -> addFilter(
+	    				'Rename', 
+	    				APPLICATION_PATH .'/../public/data/journals/' . $journal -> id . '/photo/cover.jpg', 
+	    				'cover'
+	    			);
+	    			$cover-> addValidator(	    				
+	    				'Count', 
+	    				false, 
+	    				1, 
+	    				'cover'
+	    			);
+	    			//- Validators -//
+	    			$cover -> addValidator(
+	    				'Size', 
+	    				false, 
+	    				array(
+	    					'min'		=> '10kB', 
+	    					'max'		=> '5MB', 
+	    					'bytestring'=> false
+	    				), 
+	    				'cover'
+	    			);
+	    			$cover -> addValidator(
+	    				'IsImage', 
+	    				false, 
+	    				'jpeg', 
+	    				'cover'
+	    			);
+	    		
+	    		if( !$cover -> isValid() )
+	    		{
+	    			//- Exception :: Can not upload file -//
+	    			array_merge(
+	    				$this -> errors[ 'cover' ], 
+	    				$cover -> getErrors()
+	    			);
+	    			
+	    			return false;
+	    		}
+	    		
+	    		$cover -> receive();
 		        
 		        //- Add message -//
 		        $this -> _helper -> flashMessenger 
@@ -303,7 +378,13 @@ class JournalController
 		        $this -> _redirect( '/journal/' . $journal -> id );
 	    	}else
 	    		{
-	    			throw new Zend_Controller_Action_Exception( 'Invalid input' );
+	    			//- Exception :: Input invalid -//
+	    			array_merge(
+	    				$this -> errors[ 'cover' ], 
+	    				$input -> getErrors()
+	    			);
+	    			
+	    			//throw new Zend_Controller_Action_Exception( 'Invalid input' );
 	    		}
     	}
     }
@@ -311,6 +392,14 @@ class JournalController
     //- Edit journal -//
     public function editAction()
     {
+    	//- Init -//
+    	$this -> errors = array(
+    		'cover'			=> array(), 
+	    	'isbn'			=> array(), 
+	    	'title'			=> array(), 
+	    	'description'	=> array()
+    	);
+    	
     	//- Get id of journal -//
     	$journal_id = (int)$this -> getRequest() -> getParam( 'id' );
     	
@@ -371,6 +460,69 @@ class JournalController
 		        	
 		        $journal -> save();
 		        
+		        
+		        //- Upload cover -//
+	    		$cover = new Zend_File_Transfer();
+	    			$cover -> setDestination( 
+	    				APPLICATION_PATH .'/../public/data/journals/' . $journal -> id . '/photo/'
+	    			);
+	    			$cover -> addFilter(
+	    				'Rename', 
+	    				APPLICATION_PATH .'/../public/data/journals/' . $journal -> id . '/photo/cover.jpg', 
+	    				'cover'
+	    			);
+	    			$cover-> addValidator(	    				
+	    				'Count', 
+	    				false, 
+	    				1, 
+	    				'cover'
+	    			);
+	    			//- Validators -//
+	    			$cover -> addValidator(
+	    				'Size', 
+	    				false, 
+	    				array(
+	    					'min'		=> '10kB', 
+	    					'max'		=> '5MB', 
+	    					'bytestring'=> false
+	    				), 
+	    				'cover'
+	    			);
+	    			$cover -> addValidator(
+	    				'IsImage', 
+	    				false, 
+	    				'jpeg', 
+	    				'cover'
+	    			);
+	    		
+	    		if( !$cover -> isValid() )
+	    		{
+	    			//- Exception :: Can not upload file -//
+	    			array_merge(
+	    				$this -> errors[ 'cover' ], 
+	    				$cover -> getMessages()
+	    			);
+	    			
+	    			return false;
+	    		}
+	    		
+	    		//- Create file struct for journal -//
+		        $fJournal = new Coffeine_Files_File();
+		        
+		        	if( 
+		        		!$fJournal -> delete( 
+							APPLICATION_PATH .'/../public/data/journals/' .  
+							$journal -> id . 
+							'/photo/cover.jpg'
+		        		)
+		        	)
+		        	{
+		        		//- Exception :: File struct not created -//
+		        		$this -> errors[ 'cover' ][] = 'Can not reupload cover';
+		        	}
+	    		
+	    		$cover -> receive();
+		        
 		        //- Add message -//
 		        $this -> _helper -> flashMessenger 
 					-> addMessage( 'Journal is edited.' );
@@ -422,6 +574,20 @@ class JournalController
 		        	-> where( 'id = ?', $input -> id );
 		        	
 		        $journal -> execute();
+		        
+		    	//- Create file struct for journal -//
+		        $fJournal = new Coffeine_Files_File();
+		        
+		        	if( 
+		        		!$fJournal -> delete( 
+							APPLICATION_PATH .'/../public/data/journals/'  . 
+							$journal -> id
+		        		)
+		        	)
+		        	{
+		        		//- Exception :: File struct not created -//
+		        		$this -> errors[] = 'Can not delete directory';
+		        	}
 		        
 		        //- Add message -//
 		        $this -> _helper -> flashMessenger 
