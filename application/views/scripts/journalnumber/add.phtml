@@ -1,1 +1,47 @@
-<br /><br /><center>View script for controller <b>Journalnumber</b> and script/action name <b>add</b></center>
+
+<?php
+
+	echo 
+	$this -> partial(
+		'widgets/journalNumber/navigation.phtml', 
+		array(
+			'label'	=> 'Number of journal', 
+			'items'	=> array(
+				array(
+					'label'	=> 'List', 
+					'uri'	=> '/journal/list'//TODO
+				)
+			)
+		)
+	);
+
+?>
+
+<div class = "content">
+
+	<?php
+
+		echo 
+		$this -> partial(
+			'widgets/journalNumber/form.phtml', 
+			array(
+				'action'	=> '/journal/' . $this -> journal[ 'id' ] . '/number/add', 
+				'errors'	=> array(
+					'volume'	=> $this -> errors[ 'volume' ], 
+					'issue'		=> $this -> errors[ 'issue' ]
+				), 
+				'data'	=> array(
+					'volume'	=> $this -> data[ 'volume' ], 
+					'issue'		=> $this -> data[ 'issue' ]
+				)
+			)
+		);
+	
+	?>
+	
+</div>
+<?php 
+Zend_Debug::dump($this -> errors);
+Zend_Debug::dump($this -> data);
+Zend_Debug::dump($this -> journal);
+?>

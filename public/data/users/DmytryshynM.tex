@@ -1,0 +1,488 @@
+%Format:
+\documentclass[12pt,twoside,draft,ua,bysec]{cmpart}
+% Необов'язкові опції :
+% draft - чернетка
+% en, ua, ru - основна мова документа
+% bysec - твердження, леми, означення і т.п. (але не теореми)
+%         нумеруються в межах кожної \section окремо
+% thmbysec - теореми теж нумеруються окремо для кожної \section
+% win   - кодування кирилиці CP-1251 (Windows)
+% koi   - кодування кирилиці KOI8_U  (Unix)
+%
+% Вже завантажено пакети :
+% amsmath,amsfonts,amsthm,amssymb,latexsym
+%
+% Вже означено theorem-like оточення :
+% {theorem}     - теорема
+% {proposition} - твердження
+% {lemma}       - лема
+% {corollary}   - наслідок
+% {remark}      - зауваження
+% {definition}  - означення
+% {example}     - приклад
+% {examples}    - приклади
+% а також їх аналоги з зірочкою без нумерації :
+% {theorem*}, {proposition*} і т.п.
+\def\d{\displaystyle}
+\newtheorem{theor}{~~~~~Теорема}
+\newtheorem{corollar}{~~~~~Наслідок}
+
+\author{Дмитришин М.І.}
+\title{Тензорні добутки абстрактних просторів Бєсова}
+\shorttitle{Тензорні добутки абстрактних просторів Бєсова}
+
+\enabstract{Dmytryshyn M.I.}%
+{Tensor products of abstract Besov spaces}%
+{We prove the interpolation theorem for tensor products of
+abstract Besov spaces, associated with closed operators in Banach
+spaces and show its application to the problems of approximations
+of elements of tensor products of Banach spaces.}
+
+\ruabstract{Дмитришин М.И.}%
+{Тензорные произведения абстрактных пространств Бесова}%
+{Доказана интерполяционная теорема для тензорных произведений
+абстрактных прос\-транств Бесова, ассоциируемых с замкнутыми
+операторами в банахових пространствах, и показано ее применение к
+проблеме  аппроксимаций элементов тензорных произведений банахових
+пространств.}
+
+\uaabstract{Дмитришин М.І.}%
+{Тензорні добутки абстрактних просторів Бєсова}%
+{Доведено інтерполяційну теорему для тензорних добутків
+абстрактних просторів Бєсо\-ва, асоційованих з замкненими
+операторами в банахових просторах, та показано її засто\-сування
+до проблеми  апроксимацій елементів тензорних добутків банахових просторів.}%
+
+
+\subjclass{41A65, 47A57, 47A58, 46E35} \keywords{тензорні добутки,
+абстрактні простори Бєсова, інтерполяційні простори}
+
+\UDC{517.98}
+\pyear{2012} % рік публікації
+\volume{4}   % том
+\issue{2}    % випуск
+\pageno{241} % номер першої сторінки
+\received{28.02.2012}
+%\revised{?}
+%\contentslistfile{../total.lst}
+
+
+\address{Прикарпатський національний університет імені Василя Стефаника, \\ Івано-Франківськ, Україна}
+
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\maketitle
+
+%%% ----------------------------------------------------------------------
+
+\section*{Вступ}
+У праці \cite{DOP}, користуючись векторами експоненціального типу (див.
+\cite{Radyno83})
+замкненого лінійного оператора в бана\-ховому просторі, визначено і досліджено
+поняття квазінормованого
+абс\-трактного простору Бєсова, асоційованого з довільним таким
+оператором. Показано застосування абстрактного простору Бєсова до
+проблеми апроксимацій елементів ба\-на\-хо\-во\-го простору
+векторами експоненціального типу заданого замкненого оператора. У
+цьому зв'язку слід відзначити також праці \cite{G1,G2}.
+
+У даній статті показано, що тензорний добуток абстрактних
+просторів Бєсова є про\-між\-ним інтерполяційним простором між
+тензорним добутком просторів векторів
+екс\-по\-нен\-ці\-аль\-но\-го типу замкнених операторів і
+тензорним добутком банахових прос\-то\-рів, на яких визначено
+відповідні оператори. Встановлено нерівності, які оцінюють
+відстань від заданого елемента тензорного добутку банахових
+просторів  до підпростору, що визначається тензорним добутком
+прос\-то\-рів векторів експоненціального типу.
+
+\section{Означення і попередні відомості}
+Нехай $\big\{{\mathfrak X}_j,\|.\|_{{\mathfrak
+X}_j}\big\}_{j=1}^J$ --- скінченний набір банахових просторів над
+полем комплекс\-них чисел ${\mathbb C},$ $\otimes_j^J{\mathfrak
+X}_j\equiv {\mathfrak X}_1\otimes\ldots\otimes {\mathfrak X}_J$
+--- їх тензорний добуток, на якому задаємо проективну норму
+\begin {eqnarray*}
+\|w\|_{\otimes_j^J{\mathfrak
+X}_j}=\inf\limits_{w=\sum_n\otimes_j^Jx^j_n}\sum_{n=1}^N\|x_n^1\|_{{\mathfrak
+X}_1} \cdot\ldots\cdot\|x_n^J\|_{{\mathfrak X}_J},
+\end{eqnarray*}
+де $\inf$ береться по всіх зображеннях елемента
+$w\in\otimes_j^J{\mathfrak X}_j$ у вигляді суми
+$w=\sum\limits_{n=1}^N\otimes_j^Jx^j_n$ із скінченним $N,$ $x_n^j\in
+{\mathfrak X}_j$ і $\otimes_j^Jx^j_n\equiv
+x_n^1\otimes\ldots\otimes x_n^J\in \otimes_j^J{\mathfrak X}_j.$
+Поповнення простору $\otimes_j^J {\mathfrak X}_j$ у проективній
+нормі позначимо через $\tilde{\otimes}_j^J {\mathfrak X}_j\equiv
+{\mathfrak X}_1\tilde{\otimes}\ldots\tilde{\otimes} {\mathfrak
+X}_J.$
+
+На просторі ${\mathfrak X}_j,$ $j=1,\ldots,J,$ розглядаємо
+необмежений замкнений лінійний оператор $A_j:{\cal D}(A_j)\subset
+{\mathfrak X}_j\to {\mathfrak X}_j$ із щільною областю визначення
+${\cal D}(A_j).$ Для будь-яких чисел $\nu_j>0,$ $1\le
+p_j\le\infty$ визначимо банахові простори цілих векторів
+експоненціального типу оператора $A_j$
+\begin {eqnarray*}
+&&{\mathcal E}_{p_j}^{\nu_j}(A_j)\equiv\left\{x\in {\cal D}(A_j):
+\ \|x\|_{{\mathcal
+E}_{p_j}^{\nu_j}(A_j)}=\left(\sum_{k=0}^\infty\frac{\|A_j^kx\|^{p_j}_{{\mathfrak
+X}_j}} {\nu_j^{kp_j}}\right)^{1/p_j} <\infty\right\},\\
+&&{\mathcal E}_{\infty}^{\nu_j}(A_j)\equiv\left\{x\in {\cal
+D}(A_j): \ \|x\|_{{\mathcal
+E}_{\infty}^{\nu_j}(A_j)}=\sup_{k\in{\mathbb
+Z}_+}\frac{\|A_j^kx\|_{{\mathfrak X}_j}} {\nu_j^{k}}
+<\infty\right\}.
+\end{eqnarray*}
+
+
+Розглянемо об'єднання ${\mathcal
+E}_{p_j}(A_j)=\bigcup_{\nu_j>0}{\mathcal E}_{p_j}^{\nu_j}(A_j),$
+на якому задамо квазінорму
+\begin {eqnarray*}
+|x|_{{\mathcal E}_{p_j}(A_j)}= \|x\|_{{\mathfrak
+X}_j}+\inf\{\nu_j>0:x\in {\mathcal E}_{p_j}^{\nu_j}(A_j)\},
+\end{eqnarray*}
+і побудуємо тензорний добуток $\otimes_j^J  {\mathcal
+E}_{p_j}(A_j)\equiv {\mathcal E}_{p_1}(A_1) \otimes\ldots\otimes
+ {\mathcal E}_{p_J}(A_J)$ з проективною квазінормою
+\begin {eqnarray*}
+|w|_{\otimes_j^J {\mathcal
+E}_{p_j}(A_j)}=\inf_{w=\sum_n\otimes_j^J x^j_n}
+\sum_{n=1}^N|x_n^1|_{{\mathcal E}_{p_1}(A_1)}
+\cdot\ldots\cdot|x_n^J|_{{\mathcal E}_{p_J}(A_J)}.
+\end{eqnarray*}
+Поповнення простору $\otimes_j^J  {\mathcal E}_{p_j}(A_j)$ у цій
+квазінормі позначимо через $\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j).$
+
+Для $0<q\le \infty,$ $0<\theta<1,$ $0<t< \infty,$ використовуючи
+позначення праці \cite{Triebel95}, визначимо ін\-тер\-по\-ляційний
+простір $\big(\tilde{\otimes}_j^J{\mathcal E}_{p_j}(A_j),
+\tilde{\otimes}_j^J \mathfrak X_j\big)_{\theta,q} $ з квазінормою
+$$ |w|_{\big(\tilde{\otimes}_j^J {\mathcal E}_{p_j}(A_j),
+\tilde{\otimes}_j^J \mathfrak X_j\big)_{\theta,q}} =
+\Big(\int_0^\infty \big[t^{-\theta} {\mathcal
+K}(t,w;\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j),\tilde{\otimes}_j^J \mathfrak X_j)\big]^q
+\frac{dt}{t}\Big)^{1/q},$$ де $\d{\mathcal
+K}(t,w;\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j),\tilde{\otimes}_j^J \mathfrak X_j)=
+\inf\limits_{w=u+v} \big(|u|_{\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j)} +t\,\|v\|_{\tilde{\otimes}_j^J \mathfrak
+X_j}\big)$, $u\in\tilde{\otimes}_j^J {\mathcal E}_{p_j}(A_j)$,
+$v\in\tilde{\otimes}_j^J \mathfrak X_j$.
+
+Для чисел $0<\alpha<\infty$ і $0<\tau_j\le\infty$ визначимо
+апроксимаційні простори між квазі\-нор\-мо\-ва\-ним підпростором
+${\mathcal E}_{p_j}(A_j)$ і банаховим простором $\mathfrak X_j$
+$$
+\mathcal B_{p_j,\tau_j}^\alpha(A_j)= \big\{x\in\mathfrak X_j:\,\,
+|x|_{\mathcal B_{p_j,\tau_j}^\alpha(A_j)}<\infty\big\},
+$$
+із квазінормою
+$$
+|x|_{\mathcal B_{p_j,\tau_j}^\alpha(A_j)}=\left\{
+\begin{array}{lll}
+\d\bigg(\int_0^\infty \big(t^\alpha E_{p_j}(t,x)\big)^{\tau_j}
+\frac{dt}{t}\bigg)^{1/\tau_j}&:&0<\tau_j<\infty,
+\\ \d\sup_{t>0}t^\alpha
+E_{p_j}(t,x)&:&\tau_j=\infty,\\
+\end{array}\right.
+$$
+де $\d E_{p_j}(t,x)=\inf_{|a|_{{\mathcal E}_{p_j}(A_j)}\le
+t}\|x-a\|_{\mathfrak X_j},$ $a\in {\mathcal E}_{p_j}(A_j),$ $x\in
+\mathfrak X_j.$ Простір $\mathcal B_{p_j,\tau_j}^\alpha(A_j)$
+назвемо {\em абстрактним простором Бєсова} \cite{DOP}.
+
+Нехай $0<\theta<1$ і $[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta$ позначає простір $\mathcal
+B_{p_j,\tau_j}^\alpha(A_j),$ наділений квазінормою $|x|_{\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)}^\theta$, а  $\otimes_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta$ --- тензорний добуток з
+проективною квазінормою
+\begin {eqnarray*}
+|w|_{\otimes_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta}=\inf_{w=\sum_n\otimes_j^Jx^j_n}
+\sum_{n=1}^N|x_n^1|_{\mathcal B_{p_1,\tau_1}^\alpha(A_1)}^\theta
+\cdot\ldots\cdot|x_n^J|_{\mathcal
+B_{p_J,\tau_J}^\alpha(A_J)}^\theta,
+\end{eqnarray*}
+$\tilde{\otimes}_j^J[\mathcal B_{p_j,\tau_j}^\alpha(A_j)]^\theta$
+--- поповнення простору $\otimes_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta$ у цій квазінормі.
+
+
+\section{Основні результати}
+\begin{theor}\label{t2}
+Нехай  $1\le p_j,q, q_j,\tau_j \le\infty,$ $0<\theta<1.$ Тоді при
+$\tau_j=\theta q_j,$ $\d\theta=\frac{1}{\alpha+1}$ і
+$\d\frac{1}{q}-1=\sum_{j=1}^J\Big(\frac{1}{q_j}-1\Big)$
+виконується така рівність
+\begin {eqnarray}\label{eq211} \big(\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j), \tilde{\otimes}_j^J \mathfrak
+X_j\big)_{\theta,q}=\tilde{\otimes}_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta.
+\end{eqnarray}
+\end{theor}
+
+\begin{proof} Покажемо, що
+\begin {eqnarray}\label{eq2111} \big(\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j), \tilde{\otimes}_j^J \mathfrak
+X_j\big)_{\theta,q}=\tilde{\otimes}_j^J\big( {\mathcal
+E}_{p_j}(A_j), \mathfrak X_j\big)_{\theta,q_j},
+\end{eqnarray}
+де $\big( {\mathcal E}_{p_j}(A_j), \mathfrak
+X_j\big)_{\theta,q_j}$ --- інтерполяційний простір з квазінормою
+$$
+|x|_{\big( {\mathcal E}_{p_j}(A_j), \mathfrak
+X_j\big)_{\theta,q_j}} = \Big(\int_0^\infty \big[t^{-\theta}
+{\mathcal K}(t,x;{\mathcal E}_{p_j}(A_j), \mathfrak
+X_j)\big]^{q_j} \frac{dt}{t}\Big)^{1/q_j},$$  $\d{\mathcal K}(t,x;
+{\mathcal E}_{p_j}(A_j), \mathfrak X_j)= \inf\limits_{x=x_0+x_1}
+\big(|x_0|_{{\mathcal E}_{p_j}(A_j)} +t\,\|x_1\|_{ \mathfrak
+X_j}\big)$, $x_0\in {\mathcal E}_{p_j}(A_j)$, $x_1\in \mathfrak
+X_j$.
+
+Дійсно, оскільки
+\begin {eqnarray*}
+&&{\mathcal K}(t,w;\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j),\tilde{\otimes}_j^J \mathfrak
+X_j)=\inf\limits_{w=u+v} \big(|u|_{\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j)} +t\,\|v\|_{\tilde{\otimes}_j^J \mathfrak
+X_j}\big)\\&&
+=\inf\limits_{\sum_n\otimes_j^Jx^j_n=\sum_n\otimes_j^Ju^j_n+\sum_n\otimes_j^Jv^j_n}
+\left(\inf_{u=\sum_n\otimes_j^Ju^j_n}
+\sum_{n=1}^N|u_n^1|_{{\mathcal E}_{p_1}(A_1)}
+\cdot\ldots\cdot|u_n^J|_{{\mathcal E}_{p_J}(A_J)}\right.\\
+&&+\left.t\,\inf_{v=\sum_n\otimes_j^Jv^j_n}
+\sum_{n=1}^N\|v_n^1\|_{\mathfrak X_1}
+\cdot\ldots\cdot\|v_n^J\|_{\mathfrak
+X_J}\right) \\
+&&\le\inf\limits_{\sum_n\otimes_j^Jx^j_n=\sum_n\otimes_j^Ju^j_n+\sum_n\otimes_j^Jv^j_n}
+\left( \sum_{n=1}^N|u_n^1|_{{\mathcal E}_{p_1}}
+\cdot\ldots\cdot|u_n^J|_{{\mathcal E}_{p_J}}+t
+\sum_{n=1}^N\|v_n^1\|_{\mathfrak X_1}
+\cdot\ldots\cdot\|v_n^J\|_{\mathfrak X_J}\right)\\
+&& \le \sum_{n=1}^N\inf_{x_n^1=u_n^1+v_n^1}\big(|u_n^1|_{{\mathcal
+E}_{p_1}(A_1)}+\tau\|v_n^1\|_{\mathfrak X_1}\big)\cdot\ldots\cdot
+\inf_{x_n^J=u_n^J+v_n^J}\big(|u_n^J|_{{\mathcal
+E}_{p_J}(A_J)}+\tau \|v_n^J\|_{\mathfrak X_J}\big)\\
+&&=\sum_{n=1}^N{\mathcal K}(\tau,x_n^1;{\mathcal E}_{p_1}(A_1),
+\mathfrak X_1)\cdot\ldots\cdot {\mathcal K}(\tau,x_n^J; {\mathcal
+E}_{p_J}(A_J),\mathfrak X_J), \ \ \tau^J=t,
+\end{eqnarray*}
+то, використовуючи нерівність Юнга, маємо
+\begin {eqnarray*}
+&&\hspace{-.8cm}\int_0^\infty \big[t^{-\theta} {\mathcal
+K}(t,w;\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j),\tilde{\otimes}_j^J \mathfrak X_j)\big]^q
+\frac{dt}{t}\le J\sum_{n=1}^N \int_0^\infty\big[\tau^{-\theta
+J}{\mathcal K}(\tau,x_n^1;{\mathcal E}_{p_1}(A_1), \mathfrak X_1)\cdot\ldots\\
+&&\hspace{-.8cm}\ldots\cdot{\mathcal K}(\tau,x_n^J; {\mathcal
+E}_{p_J}(A_J), \mathfrak X_J)\big]^q \frac{d\tau}{\tau}\le
+J\sum_{n=1}^N \Big(\int_0^\infty\big[\tau^{-\theta }{\mathcal
+K}(\tau,x_n^1;{\mathcal E}_{p_1}(A_1), \mathfrak X_1)\big]^{q_1}
+\frac{d\tau}{\tau}\Big)^{q/q_1}\ldots\\
+&&\hspace{-.8cm} \ldots\Big(\int_0^\infty\big[\tau^{-\theta
+}{\mathcal K}(\tau,x_n^J;{\mathcal E}_{p_J}(A_J), \mathfrak
+X_J)\big]^{q_J} \frac{d\tau}{\tau}\Big)^{q/q_J},\ \
+\frac{1}{q}-1=\sum_{j=1}^J\Big(\frac{1}{q_j}-1\Big).
+\end{eqnarray*}
+Тому
+\begin {eqnarray*}
+|w|_{\big(\tilde{\otimes}_j^J {\mathcal E}_{p_j}(A_j),
+\tilde{\otimes}_j^J \mathfrak X_j\big)_{\theta,q}}\le J
+\inf_{w=\sum_n\otimes_j^Jx^j_n}\sum_{n=1}^N|x_n^1|_{\big(
+{\mathcal E}_{p_1}(A_1), \mathfrak X_1\big)_{\theta,q_1}}
+\cdot\ldots\cdot|x_n^J|_{\big( {\mathcal E}_{p_J}(A_J), \mathfrak
+X_J\big)_{\theta,q_J}},
+\end{eqnarray*}
+тобто
+\begin {eqnarray*}
+|w|_{\big(\tilde{\otimes}_j^J  {\mathcal E}_{p_j}(A_j),
+\tilde{\otimes}_j^J \mathfrak X_j\big)_{\theta,q}}\le
+J|w|_{\tilde{\otimes}_j^J \big( {\mathcal E}_{p_j}(A_j), \mathfrak
+X_j\big)_{\theta,q_j}},
+\end{eqnarray*}
+звідки випливає вкладення
+\begin {eqnarray}\label{eq2112} \tilde{\otimes}_j^J \big( {\mathcal E}_{p_j}(A_j), \mathfrak
+X_j\big)_{\theta,q_j} \subset \big(\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j), \tilde{\otimes}_j^J \mathfrak X_j\big)_{\theta,q}.
+\end{eqnarray}
+З іншого боку, використовуючи інтерполяційні нерівності
+\begin {eqnarray}\label{int-kl-eq2111}
+&&|x|_{\big( {\mathcal E}_{p_j}(A_j), \mathfrak
+X_j\big)_{\theta,q_j}}\le c_{\theta,q_j}|x|^{1-\theta}_{{\mathcal
+E}_{p_j}(A_j)}\|x\|^{\theta}_{\mathfrak X_j}, \ \ x\in {\mathcal
+E}_{p_j}(A_j),\nonumber\\
+&&{\mathcal K}(t,w;\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j),\tilde{\otimes}_j^J \mathfrak X_j)\le
+c_{\theta,q}t^{\theta}|w|_{\big(\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j),\tilde{\otimes}_j^J \mathfrak X_j\big)_{\theta,q}},
+w\in{\big(\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j),\tilde{\otimes}_j^J \mathfrak X_j\big)_{\theta,q}},
+\end{eqnarray}
+та нерівність Гельдера, маємо
+\begin {eqnarray*}
+&&|w|_{\tilde{\otimes}_j^J\big( {\mathcal E}_{p_j}(A_j), \mathfrak
+X_j\big)_{\theta,q_j}}=\inf_{w=\sum_n\otimes_j^Jx^j_n}
+\sum_{n=1}^N|x_n^1|_{\big( {\mathcal E}_{p_1}(A_1), \mathfrak
+X_1\big)_{\theta,q_1}} \cdot\ldots\cdot|x_n^J|_{\big( {\mathcal
+E}_{p_J}(A_J), \mathfrak
+X_J\big)_{\theta,q_J}} \\
+&& \le \inf_{w=\sum_n\otimes_j^Jx^j_n}
+\sum_{n=1}^Nc_{\theta,q_1}|x|^{1-\theta}_{{\mathcal
+E}_{p_1}(A_1)}\|x\|^{\theta}_{\mathfrak X_1} \cdot\ldots\cdot
+c_{\theta,q_J}|x|^{1-\theta}_{{\mathcal
+E}_{p_J}(A_J)}\|x\|^{\theta}_{\mathfrak X_J} \\
+&& \le c^{'}_{\theta,q_j}\inf_{w=\sum_n\otimes_j^Jx^j_n}\Big(
+\sum_{n=1}^N|x_n^1|_{{\mathcal E}_{p_1}(A_1)}
+\cdot\ldots\cdot|x_n^J|_{{\mathcal
+E}_{p_J}(A_J)}+\sum_{n=1}^N\|x_n^1\|_{\mathfrak X_1}
+\cdot\ldots\cdot\|x_n^J\|_{\mathfrak X_J}\Big)\\
+&&\le \,c^{''}_{\theta,q_j}t^{-\theta}{\mathcal
+K}(t,w;\tilde{\otimes}_j^J {\mathcal E}_{p_j}(A_j),
+\tilde{\otimes}_j^J \mathfrak X_j)\le
+C_{\theta,q}|w|_{\big(\tilde{\otimes}_j^J {\mathcal E}_{p_j}(A_j),
+\tilde{\otimes}_j^J \mathfrak X_j\big)_{\theta,q}}
+\end{eqnarray*}
+для $w=\sum_{n=1}^N\otimes_j^Jx^j_n\in \big(\tilde{\otimes}_j
+{\mathcal E}_{p_j}(A_j), \tilde{\otimes}_j \mathfrak
+X_j\big)_{\theta,q}$ таких, що $x^j_n\in{\mathcal E}_{p_j}(A_j).$
+Оскільки простір ${\mathcal E}_{p_j}(A_j)$ щільний в просторі
+$\big({\mathcal E}_{p_j}(A_j), \mathfrak X_j\big)_{\theta,q_j},$
+то
+\begin {eqnarray*}
+&&|w|_{\tilde{\otimes}_j^J\big( {\mathcal E}_{p_j}(A_j), \mathfrak
+X_j\big)_{\theta,q_j}}\le
+C_{\theta,q}|w|_{\big(\tilde{\otimes}_j^J {\mathcal E}_{p_j}(A_j),
+\tilde{\otimes}_j^J \mathfrak X_j\big)_{\theta,q}}
+\end{eqnarray*}
+для всіх $w\in{\big(\tilde{\otimes}_j^J{\mathcal E}_{p_j}(A_j),
+\tilde{\otimes}_j^J\mathfrak X_j\big)_{\theta,q}}.$ Звідси
+отримуємо
+\begin {eqnarray}\label{eq2113} \big(\tilde{\otimes}_j^J
+{\mathcal E}_{p_j}(A_j), \tilde{\otimes}_j^J\mathfrak
+X_j\big)_{\theta,q}\subset \tilde{\otimes}_j^J \big( {\mathcal
+E}_{p_j}(A_j), \mathfrak X_j\big)_{\theta,q_j} .
+\end{eqnarray}
+Із вкладень (\ref{eq2112}) і (\ref{eq2113}) випливає рівність (\ref{eq2111}).
+
+Згідно з теоремою 7.1.7 з книги \cite{bergh76}, справедливий наступний
+ізоморфізм квазінормованих просторів
+\begin{equation}\label{eq-n11}
+\big[ \mathcal B_{p_j,\tau_j}^\alpha(A_j)\big]^\theta= \big(
+{\mathcal E}_{p_j}(A_j), \mathfrak X_j\big)_{\theta,q_j}, \quad
+|x|_{\mathcal B_{p_j,\tau_j}^\alpha(A_j)}^\theta\sim |x|_{\big(
+{\mathcal E}_{p_j}(A_j), \mathfrak X_j\big)_{\theta,q_j}},
+\end{equation}
+де $\tau_j=\theta q_j$ і $\d\theta=\frac{1}{\alpha+1}.$ З
+рівностей (\ref{eq-n11}) і (\ref{eq2111}) отримаємо рівність
+(\ref{eq211}).
+\end{proof}
+
+\begin{theor}\label{t3}
+Існують такі числа $c_1(\alpha,\tau_j),$ $c_2(\alpha,\tau_j),$ що
+виконуються нерівності
+\begin {eqnarray}\label{eq21115}
+&&{E}(t,w)\le c_1t^{-\alpha}
+|w|^{\alpha+1}_{\tilde{\otimes}_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta}, \ w\in
+\tilde{\otimes}_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta, \\
+\label{eq21116}
+ &&|w|^{\alpha+1}_{\tilde{\otimes}_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta}\le c_2
+|w|_{\tilde{\otimes}_j^J{\mathcal
+E}_{p_j}(A_j)}^\alpha\|w\|_{\tilde{\otimes}_j^J{\mathfrak X}_j},\
+w\in \tilde{\otimes}_j^J{\mathcal E}_{p_j}(A_j),
+\end{eqnarray}
+де $\d{E}(t,w)=\inf_{|u|_{\tilde{\otimes}_j^J{\mathcal
+E}_{p_j}(A_j)}\le t}\|w-u\|_{\tilde{\otimes}_j^J{\mathfrak X}_j},$
+$u\in \tilde{\otimes}_j^J{\mathcal E}_{p_j}(A_j),$ $w\in
+\tilde{\otimes}_j^J{\mathfrak X}_j.$
+\end{theor}
+
+\begin{proof} Згідно з теоремою 3.11.4(b)  з книги \cite{bergh76},
+для деякого додатного числа $c$ маємо
+%\begin {eqnarray*}
+$|w|_{\big(\tilde{\otimes}_j^J{\mathcal E}_{p_j}(A_j),
+\tilde{\otimes}_j^J \mathfrak X_j\big)_{\theta,q}}\le
+c\,|w|^{1-\theta}_{\tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j)}\|w\|_{\tilde{\otimes}_j^J \mathfrak X_j}^\theta,\ \
+w\in \tilde{\otimes}_j^J {\mathcal E}_{p_j}(A_j).$
+%\end{eqnarray*}
+З цієї нерівності та рівності (\ref{eq211}) при
+$\alpha=(1-\theta)/\theta$ випливає існування такої константи
+$c_1>0,$ що виконується нерівність (\ref{eq21116}).
+
+З інтерполяційної нерівності (\ref{int-kl-eq2111}) та рівності
+(\ref{eq211}) випливає існування такої константи $c_0>0,$ що
+\begin {eqnarray*}
+{\mathcal K}(t,w; \tilde{\otimes}_j^J{\mathcal E}_{p_j}(A_j),
+\tilde{\otimes}_j^J\mathfrak X_j)\le c_0t^\theta
+|w|_{\tilde{\otimes}_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta},\ \ w\in
+\tilde{\otimes}_j^J[\mathcal B_{p_j,\tau_j}^\alpha(A_j)]^\theta.
+\end{eqnarray*}
+
+Покладемо ${\mathcal K}_\infty(t,w; \tilde{\otimes}_j^J{\mathcal
+E}_{p_j}(A_j), \tilde{\otimes}_j^J\mathfrak
+X_j)=\inf\limits_{w=u+v}\max\big\{|u|_{\tilde{\otimes}_j^J{\mathcal
+E}_{p_j}(A_j)},t\|v\|_{\tilde{\otimes}_j^J\mathfrak X_j}\big\}.$
+Оскільки ${\mathcal K}_\infty\le {\mathcal K},$ то
+\begin {eqnarray}\label{eq2111d}
+{\mathcal K}_\infty(t,w; \tilde{\otimes}_j^J {\mathcal
+E}_{p_j}(A_j), \tilde{\otimes}_j^J \mathfrak X_j)\le c_0t^\theta
+|w|_{\tilde{\otimes}_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta},\ \ w\in
+\tilde{\otimes}_j^J[\mathcal B_{p_j,\tau_j}^\alpha(A_j)]^\theta.
+\end{eqnarray}
+
+Згідно з лемою 7.1.2 з \cite{bergh76}, для кожного $t>0$ існує таке
+$s>0,$ що ${\mathcal K}_\infty=s$ і $E(s+0,w)\le s/t\le E(s-0,w).$
+Звідси та з нерівності (\ref{eq2111d}) маємо
+\begin {eqnarray*}
+s^{1-\theta} [E(s,w)]^\theta\le
+c_0|w|_{\tilde{\otimes}_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta},\ \ w\in
+\tilde{\otimes}_j^J[\mathcal B_{p_j,\tau_j}^\alpha(A_j)]^\theta.
+\end{eqnarray*}
+При $\alpha=(1-\theta)/\theta$ отримуємо
+%\begin {eqnarray*}
+$s^\alpha E(s,w)\le
+c_0^{\alpha+1}|w|^{\alpha+1}_{\tilde{\otimes}_j^J[\mathcal
+B_{p_j,\tau_j}^\alpha(A_j)]^\theta},\ \ w\in
+\tilde{\otimes}_j^J[\mathcal B_{p_j,\tau_j}^\alpha(A_j)]^\theta.$
+%\end{eqnarray*}
+Пок\-ла\-даючи  $c_1=c_0^{\alpha+1},$ отримуємо нерівність
+(\ref{eq21115}).
+\end{proof}
+
+\begin{thebibliography}{9}
+
+\bibitem{bergh76} Берг Й., Лёфстрём Й.   Интерполяционные пространства.
+Введение. --- М.: Мир, 1980. ---  264~с.
+\bibitem{G1} Горбачук М.Л., Горбачук В.І. {\it Про наближення гладких векторів замкненого
+оператора цілими векторами експоненціального типу } \sep Укр. мат.
+журн.  --- 1995. --- Т.47, \No5.  --- С. 616--628.
+\bibitem{DOP}
+Дмитришин~М.І., Лопушанський~О.В. {\it Абстрактні простори Бєсова,
+асоційовані із замкненими операторами в банахових просторах } \sep
+Доп. НАН України.  --- 2007.  --- \No12.  --- С. 16--22.
+\bibitem{Radyno83} Радыно Я.В.
+{\it Пространство векторов экспоненциального типа } \sep Докл. АН
+ БССР. --- 1983.  --- Т.27, \No9. --- С.~791--793.
+ \bibitem{G2}
+Радзиевский~Г.В. {\it Прямые и обратные теоремы в задачах о
+  приближении по векторам конечной степени
+} \sep Мат. сб.  --- 1998.  --- Т.189, \No4. --- С. 83--124.
+\bibitem{Triebel95} Трибель Х. Теория интерполяции, функциональные
+  пространства, дифференциальные операторы. --- М.: Мир, 1980. ---
+  664~с.
+\end{thebibliography}
+
+\end{document}

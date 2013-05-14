@@ -1,1 +1,7 @@
-<br /><br /><center>View script for controller <b>Journalnumber</b> and script/action name <b>view</b></center>
+<?php
+	Zend_Debug :: dump( $this -> journalNumbers );
+?>
+
+<div class = "pager">
+	<?= $this -> pages; ?>
+</div>

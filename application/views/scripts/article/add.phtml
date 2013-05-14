@@ -1,0 +1,29 @@
+
+<div style = "text-align: center;"><center>
+<form action = "/article/add" method = "post" enctype="multipart/form-data">
+
+	<div class = "" style = "line-height: 32pt;">
+		<label style = "font-size:x-large;"><?= $this -> translate( 'File of article' ); ?>:</label>
+		<input style = "height: 28pt; font-size:20pt;" type = "file" name = "article"/>	
+		<!-- Submit -->
+		<input class = "submit" type = "submit" value = "Upload" style = "width:150px;height: 28pt; font-size:20pt;" />
+	</div>
+	
+</form></center>
+</div>
+
+<div class = "messages">
+
+	<ul>	
+		<?php foreach( $this -> errors as $err_command => $part ): ?>
+			<?php foreach( $part as $part_name => $val ): ?>
+			<li>
+				<b>Command:</b> <i><?= $err_command; ?></i>, 
+				<b>part:</b> <i><?= $part_name; ?></i>, 
+				<b>msg:</b> <i><?= $val; ?></i>
+			</li>
+			<?php endforeach; ?>
+		<?php endforeach; ?>
+	</ul>
+
+</div>

@@ -21,7 +21,7 @@ h1
 }
 
 /* Forms */
-form input[type=submit]
+/*form input[type=submit]
 {/*
 	background	: #ccc;
 	background	: -moz-radial-gradient( #fff 0%, #ddd 25%, #ccc 50%, #ddd 75%, #fff 100% );
@@ -31,7 +31,7 @@ form input[type=submit]
 	height		: 40px;
 	margin-top	: 10px;
 	width		: 400px;
-}
+}*/
 
 table
 {
@@ -247,15 +247,23 @@ table
 	
 		.field>label
 		{
-			display	: table-cell;
-			padding	: 10px;
-			vertical-align: top;
+			display			: table-cell;
+			font-size		: large;
+			padding			: 10px;
+			line-height		: inherit;
+			vertical-align	: top;
+		}
+		
+		.field>div
+		{
+			display			: table-cell;
+			padding			: 10px;
 		}
 		
 		.field>input
 		{
 			font-size	:large;
-			height		: 40px;
+			height		: 32px;
 			width		: 300px;
 		}
 		
@@ -286,4 +294,11 @@ table
 	font-size		: medium;
 	padding			: 5px;
 	text-align		: center;
+}
+
+
+/* Classes of elements */
+.submit
+{
+	/*font-size	:large;*/	
 }
