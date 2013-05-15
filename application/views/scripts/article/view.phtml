@@ -1,1 +1,71 @@
-<br /><br /><center>View script for controller <b>Article</b> and script/action name <b>view</b></center>
+
+<?php
+	
+	echo 
+	$this -> partial(
+		'widgets/navigation.phtml', 
+		array(
+			'label'	=> 'Article', 
+			'items'	=> array(
+				array(
+					'label'	=> 'List', 
+					'uri'	=> '/articles'
+				), 
+				array(
+					'label'	=> 'Add', 
+					'uri'	=> '/article/add'
+				), 
+				array(
+					'label'	=> 'Delete', 
+					'uri'	=> '/article/' . $this -> article[ 'id' ] . '/delete'
+				), 
+				array(
+					'label'	=> 'Edit', 
+					'uri'	=> '/article/' . $this -> article[ 'id' ] . '/edit/'
+				)
+			)
+		)
+	);
+
+?>
+
+<!-- Article :: View -->
+<div class = "article">
+
+	<!-- Title -->
+	<div class = "title">
+		<?= $this -> article[ 'ArticleLanguage' ][ 0 ][ 'title' ]; ?>
+	</div>
+	
+	<div class = "authors">
+		<?= $this -> article[ 'ArticleLanguage' ][ 0 ][ 'author' ]; ?>
+	</div>
+	
+	<div class = "params">		
+			
+		<div class = "language">
+			<?= $this -> article[ 'code_language' ]; ?>
+		</div>
+		|
+		<div class = "creation">
+			<?= $this -> article[ 'creation' ]; ?>
+		</div>
+	</div>
+	
+	<div class = "status">
+		<?php
+			if( isset( $this -> article[ 'id_journal_number' ] ) )
+			{
+				echo 'Publisher';
+			}else
+				{
+					echo 'Accepted';					
+				}
+		?>
+	</div>
+	
+	<div class = "abstract">
+		<?= $this -> article[ 'ArticleLanguage' ][ 0 ][ 'abstract' ]; ?>
+	</div>
+
+</div>

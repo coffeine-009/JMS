@@ -1,13 +1,53 @@
 
-<form action = "/login" method = "post">
+<div class = "authorization">
 
-	<input type = "email" name = "username" value = "" />
+	<div class = "clasic">
+		<form action = "/login" method = "post">
+		
+			<!-- Username -->
+			<div class = "param">
+				<label>Login:</label>
+				<div>
+					<input type = "email" name = "username" value = "" />
+				</div>
+			</div>
+			
+			<!-- Password -->
+			<div class = "param">
+				<label>Password:</label>
+				<div>
+					<input type = "password" name = "password" />
+				</div>
+			</div>
 	
-	<input type = "password" name = "password" />
+			<!-- Remember me -->
+			<div class = "param_sub">				
+				<input type = "checkbox" name = "remember_me" />
+				<label>Remember me</label>
+			</div>
 	
-	<input type = "submit" value = "OK" />
-
-</form>
+			<div class = "login">
+				<div>		
+					<input type = "submit" value = "Enter" />
+				</div>
+			</div>
+		
+		</form>
+		
+		<!-- Forgot password -->
+		<a href = "">Forgot password?</a>
+		
+	</div>
+	
+	<div class = "social">
+	
+		<button id = "facebook" class = "social_button_login"></button>
+		<button id = "twitter" class = "social_button_login"></button>
+		<button id = "google_plus" class = "social_button_login"></button>
+	
+	</div>
+	
+</div>
 
 <?php 
 	if( !empty( $this -> errors ) )

@@ -1,1 +1,43 @@
-<br /><br /><center>View script for controller <b>Article</b> and script/action name <b>list</b></center>
+
+<table width = "100%">
+	<thead>
+		<tr>
+			<th width = "30%"><?= $this -> translate( 'Title' ); ?></th>
+			<th><?= $this -> translate( 'Authors' ); ?></th>
+			<th width = "15%"><?= $this -> translate( 'Status' ); ?></th>
+			<th width = "10%"><?= $this -> translate( 'Language' ); ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach( $this -> articles as $article ): ?>
+		<tr>
+			<td>
+				<a href = "/article/<?= $article[ 'id' ]; ?>">
+					<?= $article[ 'ArticleLanguage' ][ 0 ][ 'title' ] ?>
+				</a>
+			</td>
+			<td>
+				<?= $article[ 'ArticleLanguage' ][ 0 ][ 'author' ] ?>
+			</td>
+			<td align = "center" valign = "middle">
+				<?php
+					if( isset( $this -> article[ 'id_journal_number' ] ) )
+					{
+						echo 'Publisher';
+					}else
+						{
+							echo '<font color = "green">Accepted</font>';					
+						}
+				?>
+			</td>
+			<td align = "center" valign = "middle">
+				<?= $article[ 'code_language' ] ?>
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>
+
+<div class = "pager">
+	<?= $this -> pages; ?>
+</div>

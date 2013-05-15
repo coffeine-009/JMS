@@ -1,0 +1,348 @@
+%Format:
+\documentclass[12pt,twoside,draft,en,bysec]{cmpart}
+% Необов'язкові опції :
+% draft - чернетка
+%en - основна мова документа
+% bysec - твердження, леми, означення і т.п. (але не теореми)
+%         нумеруються в межах кожної \section окремо
+% thmbysec - теореми теж нумеруються окремо для кожної \section
+% win   - кодування кирилиці CP-1251 (Windows)
+% koi   - кодування кирилиці KOI8_U  (Unix)
+%
+% Вже завантажено пакети :
+% amsmath,amsfonts,amsthm,amssymb,latexsym
+%
+% Вже означено theorem-like оточення :
+% {theorem}     - теорема
+% {proposition} - твердження
+% {lemma}       - лема
+% {corollary}   - наслідок
+% {remark}      - зауваження
+% {definition}  - означення
+% {example}     - приклад
+% {examples}    - приклади
+% а також їх аналоги з зірочкою без нумерації :
+% {theorem*}, {proposition*} і т.п.
+
+
+\author{Bilyak Y.T.,  Komarnitskii M.Ya.}
+\title{On elementarity of radical classes of modules over noncommutative dedekind duo-domains}
+\shorttitle{On elementarity of radical classes of modules}
+
+\enabstract{Bilyak Y.T.,  Komarnitskii M.Ya.}{On elementarity of radical classes
+of modules over noncommutative dedekind duo-domains}
+{We find some sufficient conditions for a radical class of an idempotent radical
+in the category of modules over a Dedekind left bounded duo-domain to be
+axiomatisable. In the case of the integer numbers ring  this result implies  the
+Gorbachuk-Komarnitskii Theorem on  axiomatizable radical classes of abelian
+groups.}
+
+\ruabstract{Биляк Ю.Т., Комарницкий Н.Я.}%
+{Аксиоматизируемость радикальных классов модулей над некоммутативными дедекиндовыми дуо-областями}%
+{Найдены некоторые достаточные условия аксиоматизируемости радикального класса идемпотентного радикала в категории модулей над дедекиндовой левой дуо-областю. В случае кольца целых чисел этот результат имеет следствием теорему Горбачука-Ко\-мар\-ниц\-ко\-го о аксиоматизовности радикальных классов абелевых групп.}
+
+\uaabstract{Біляк Ю.Т., Комарницький М.Я.}%
+{Аксіоматизовність радикальних класів модулів над некомутативними дедекіндовими дуо-областями}%
+{Знайдено  деякі достатні умови аксіоматизовності радикального класу ідемпотентного радикалу в категорії модулів
+над дедекіндовою лівою дуо-областю. У випадку кільця цілих чисел цей результат має наслідком
+теорему Горбачука-Комар\-ни\-ць\-ко\-го про аксіома\-ти\-зовність радикальних класів абелевих груп.}%
+
+
+\subjclass{18B30, 54B30}
+\UDC{515.12+512.58}
+\keywords{noncommutative Dedekind domain, duo-domain, radical, ultraproduct}
+
+\pyear{2012} % рік публікації
+\volume{4}   % том
+\issue{2}    % випуск
+\pageno{197} % номер першої сторінки
+\received{23.09.2012}
+%\revised{?}
+%\contentslistfile{../total.lst}
+
+
+\address{Lviv Ivan Franko National University, \\ Lviv, Ukraine}
+\email{jbilyak@ukr.net}
+
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\maketitle
+
+%%% ----------------------------------------------------------------------
+
+\section*{Basic notions}
+
+%===================================================
+
+We begin with recalling some basic facts and definitions. In this paper by $A$ we  denote an associative ring with the identity $1 \neq 0$, and assume that all modules  are left unitary $A$-modules. The category of left $A$-modules we denote by $A-Mod$.
+Recall that a ring $A$ is called a domain if it not contains  left or right zero divisors  ($a \neq 0$ is a  left zero divisor if there exists $b \neq 0$ such that $ab = 0$). An ideal $P$ of  $A$ is prime if, for all  elements $a,b \in P $,  $ab \in P$ implies that $a\in P$ or $b\in P$.
+A prime ring is a ring with the  zero ideal to be  a prime ideal. A ring $A$ is called  left hereditary if every left ideal is a projective module.  A ring $A$ is left Noetherian if every nonempty set of left ideals has a maximal element. Similarly we can define a right Noetherian and  a right hereditary ring. A ring $A$ is hereditary if it is right and left hereditary. Also a ring $A$ is Noetherian if it is right and left Noetherian. Next recall that a  ring $Q$ is called a quotient ring if every regular element of $Q$ is a unit. Given a quotient ring $Q$, a subring $R$, not necessarily containing $1$, is called a left order in $Q$ if each $q \in Q$ has the form $s^{-1}r$ for some $r, s \in R$.
+
+Let $Q$ be some fixed quotient ring and $R_1, R_2$  left orders of it. Then $R_1$ and $R_2$ are equivalent if there are units $a_1,a_2,b_1,b_2 \in Q$ such that $a_1R_1b_1 \subseteq R_2$ and $a_2R_1b_2 \subseteq R_1$. If $Q$ is a quotient ring and $R$ is a left order in $Q$, then $R$ is called a maximal left order if it is maximal within its equivalence class. A ring $A$ is a noncommutative Dedekind domain if it is a hereditary Noetherian prime ring and is a maximal order.
+A left duo-ring is a ring with every left ideal to be  two-sided. For  noncommutative Dedekind duo-domain (see \cite{k9})  is true the following
+\begin{theorem}
+If  $A$ is a noncommutative Dedekind duo-domain  and  $P$ is a proper ideal of $A$, then  there exist $a_1,a_2 \in A$ such that
+ $$P=a_1A+a_2A.$$
+\end{theorem}
+Recall that an ideal $I$ of a ring  $A$ is called essential if, for any ideal $J$  of $A$, it holds that   $I \cap J\neq (0)$. Moreover, a ring $A$ is called bounded if its every essential ideal  contains a two-sided ideal. An $A$-module $M$ is said to be divisible if $Mc=M$ for any nonzero $c\in A$.
+
+Let   $r:A-Mod \rightarrow A-Mod$ be a functor. We say that $r$ is a preradical of $A-Mod$ if $r$ assigns to each object $M$ a subobject $r(M)$
+in such  way that every morphism $M \rightarrow N$ induces $r(M) \rightarrow r(N)$. A preradical $r$ is called a  radical if $r(M/r(M))=0$ for every object $M$. A  preradical $r$ is idempotent if $r(r(M))=r(M)$.
+
+In this paper all radicals are idempotent. With  every preradical $r$
+we  can associate two classes of objects from $A-Mod$, namely
+$$T_r=\{ M \in A-Mod \mid r(M)=M\}$$
+and
+$$F_r=\{ M \in A-Mod \mid r(M)=0\}.$$
+If $r$ is a radical,  then $T_r$ is  called a radical class and its objects are radical objects, while $F_r$ is a
+torsion-free class consisting of torsion-free objects. This classes have such properties:
+\begin{theorem}
+The class $T_r$ is closed under quotient objects, coproducts and extensions, while $F_r$ is closed under subobjects, products and extensions.
+\end{theorem}
+
+We need (see \cite{k1}) also the following
+\begin{theorem}
+If $A$ is a Dedekind domain and $P$ is its prime ideal, then, for every radical $r$ of  $A-Mod$, the module $A/P$ is either radical or radical-free.
+\end{theorem}
+Recall also some notions of the model theory. We use a language $_AL$ which is appropriate to the left $A$-modules first order language.  A set of all sentences of the language which are true class of modules $\Psi$ is called a theory of a class of modules $\Psi$ and  denoted by $Th(\Psi)$. A set of models of a theory $T$ is any class of modules which satisfies all sentences from $T$. A class is axiomatisable (or elementary) if there is a set of sentences $T$ such that it is exactly the class of models of $T$. Two modules are elementarily equivalent if every sentence which is true in one of them is true in other. Next we give notions about  ultrafilters and ultraproducts.
+
+Let $I$ be a set. Then  $D$ is called a filter over $I$ if $D$ is some nonempty collection of subsets from $I$ satisfying:
+\begin{itemize}
+\item[$(1)$] $\emptyset \notin D $;
+\item[$(2)$] if $S,T \in D $, then $S\cap T \in D$;
+\item[$(3)$] if $S \in D$ and $S \subseteq T \subseteq I$, then $T \in D$.
+\end{itemize}
+A filter $D$ is said to be an ultrafilter if, for every $S \subseteq I$, it holds   $S \in D$ or $I\setminus S \in D$.
+If $\{ A_i \mid  i \in I\}$ is a family of all sets indexed by $I$,  then an ultraproduct of $A_i$ with respect to $D$ is the quotient of $\prod_{i \in I}A_i$ by an equivalence relationship
+$$f \equiv_D g\ \mbox{if and only if}\ \{i \in I \mid f(i)=g(i) \}\ \in D$$
+for any $f,g \in \prod_{i \in I}A_i$. An ultraproduct of the $A_i$ with respect to $D$ is denoted by $\prod_{i \in I}A_i/D$.
+Now we can formulate the following test of  axiomatisability
+\begin{theorem}
+A class of modules is axiomatisable if and only if it is closed under ultraproducts and an elementarily equivalency of modules.
+\end{theorem}\par
+
+%======================================================
+\section{Eklof-Fisher Theorems}
+
+%=======================================================
+
+In this section we consider theorems  from \cite{k6} that are proved for commutative Dedekind domains. In view of \cite{k1}, this results can be used for noncommutative Dedekind duo-domains. First of all, we recall some designations from \cite{k6}. If $M$ is left $A$-module, then $M^{\alpha}$ denote direct sum of $\alpha$ copies of a module $M$. If $P$ is a prime ideal of a Dedekind domain $A$ and $M$
+is a left $A$-module, then $M[P]$ will be the biggest submodule of $M$ that has the annihilator $P$. Let us
+$$
+  U(P,n;M)=
+ \begin{cases}
+dim(P^nM[P]/P^{n+1}M[P]) & \text{if this dimension is finite,}\\
+\infty & \text{in else case.}
+\end{cases}
+$$
+$$ Tf(P;M)=
+\begin{cases}
+lim_{n \rightarrow \infty }dim(P^nM[P]/P^{n+1}M[P]) & \text{if it is finite,}\\
+\infty & \text{in else case.}
+\end{cases}
+$$
+$$ D(P;M)=
+\begin{cases}
+lim_{n \rightarrow \infty }dim(P^nM[P]) & \text{ if it is finite,}\\
+\infty & \text{in else case.}
+\end{cases}
+$$
+It is necessary to say that we consider dimension over $ A/P $. Let
+$$  U^*(P,n;M)=
+\begin{cases}
+0 & \text{if $ U(P,n;M)=0 $ and $A/P$ is infinite,}\\
+\infty & \text{if $ U(P,n;M)\neq 0 $ and $A/P$ is infinite,}\\
+U(P,n;M) & \text{ if $A/P$ is finite.}
+\end{cases}
+$$
+$$ Tf^*(P;M)=
+\begin{cases}
+0 & \text{if $ Tf(P;M)=0 $ and $A/P$ is infinite,}\\
+\infty & \text{if $ Tf(P;M)\neq 0 $ and $A/P$ is infinite,}\\
+Tf(P,n;M) & \text{if $A/P$ is finite.}
+\end{cases}
+$$
+$$ D^*(P;M)=
+\begin{cases}
+0 & \text{if $ D(P;M)=0 $ and $A/P$ is infinite,}\\
+\infty & \text{if $ D(P;M)\neq 0 $ and $A/P$ is infinite,}\\
+D(P;M) & \text{if $A/P$ is finite.} \end{cases} $$
+We say that a module $ M $ has a bounded order if there exists $0\neq\lambda \in A $ such that $\lambda M=0$. $\Omega$ will denote the set of all nonzero prime ideals of a ring $A$. If $P \in \Omega$, then $ M_P $ will be a localization of a module $M$ over $P$.
+\begin{theorem}
+Let $A$ be Dedekind domain and $M$ be a left $A$-module. Then $M$ is elementarily equivalent to a module $\oplus_{P \in \Omega}M_P\oplus M_d$, where
+ $$M_P=\oplus_{n} (A/P^n)^{(\alpha_{P,n})} \oplus A_P ^{(\beta_P)} \ \mbox{and}\ M_d =\oplus_{P \in \Omega}(A/P)^{\gamma_P}
+\oplus K^{(\delta)} .$$
+ Here $ K $ is a field of fractions of a domain and
+$$
+ \alpha_{P,n}= \alpha_{P,n}(M)=
+ \begin{cases}
+  U^*(P,n-1;M) & \mbox{if it is finite,}\\
+\geqslant k=CardA+\aleph_0 & \mbox{ in other case.}
+\end{cases}
+$$
+$$\beta_P= \beta_P(M)=
+\begin{cases} Tf^*(P;M) & \mbox{if it is finite,}\\
+\geqslant k & \mbox{in other case.}
+\end{cases}
+$$
+$$\gamma_P= \gamma_P(M)=
+\begin{cases} D^*(P;M) & \mbox{if it is finite,}\\
+\geqslant k & \mbox{ in other case.}
+\end{cases}
+$$
+$$
+\delta= \delta(M)=
+\begin{cases} 0 & \mbox{if $ M $ have bounded order,}\\
+\geqslant k & \mbox{in other case.}
+\end{cases}
+$$
+\end{theorem}
+According to the fact that a direct sum and a direct product are elementarily equivalent this theorem can be formulated as follows
+\begin{theorem}
+Let $A$ be a Dedekind domain. Then every left $A$-module $M$ is elementarily equivalent to a module $$(\oplus_{n}
+(A/P^n)^{(\alpha_{P,n})}) \oplus A_P ^{(\beta_P)} \oplus (\oplus_{P
+\in \Omega}(A/P)^{\gamma_P}) \oplus K^{(\delta)} ,$$ where $\alpha_{P,n},
+\beta_P, \gamma_P, \delta $ are the same as in the previous theorem.
+\end{theorem}
+\begin{theorem}
+Modules $M$ and $N$ over a Dedekind domain are elementarily equivalent if and only if
+$$ U^*(P,n;M)=U^*(P,n;N),\ Tf^*(P;M)=Tf^*(P;N),\  D^*(P;M)=D^*(P;N),$$
+where modules $M$ and $N$ have a bounded or unbounded order in the same time.
+\end{theorem}
+
+
+%-----------------------------------------------
+\section{Lemmas}
+
+%=================================================
+
+
+\begin{lemma}
+Let $A$ be a  noncommutative Dedekind duo-domain  and let $r$ be a nontrivial radical for which the radical class $T_r$ is axiomatisable. If the class $T_r$ contains a module $ A/P $, where $P$ is some nonzero prime ideal of $A$, then it also contains such modules:
+\begin{itemize}
+\item[$1)$]    the localization $A_P$ of $A$ at a prime ideal $P$;
+\item[$2)$]  the field of fractions $_A K$ of a ring $A$ that is considered as a left $A$-module;
+\item[$3)$] $\widehat{A/P'}$, where $P'$ is an arbitrary nonzero ideal of a  ring $A$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+The class $T_r$ is closed under extensions, therefore $ A/P^n \in T_r $ for arbitrary  $ n \in \mathbb N $.
+
+Let $\textit{D}$ be a countably-incomplet ultrafilter over the set of natural numbers $\mathbb N$. Then, according to the fact that $T_r$ is axiomatisable, we obtain that
+$$ M=(\prod A/P^n)/\textit{D}$$ belong to $T_r$.
+A module $M$  has an unbounded order, and so
+$$ \delta(M)\geq CardA + \aleph_0 .$$
+By the  Eklof-Fisher Theorem (see Theorem 2) the class $T_r$ contains a module for which module ${}_A K $ is a direct summand. Thus $K$ is contained in $T_r$ as an epimorphic image. Similarly,  $K/A \in  T_r$. But $ K/A \cong \bigoplus_{P \in \Pi} A/P $, hence $ A/P \in T_r $ for every  $P\in \Omega $.
+
+
+Consider the case when $ A/P$ is a finite module. Then $$ \beta_P=dim_{A/P} M/(t(M)+PM),$$ where $ t(M) $ is the periodic part of a module $ M $. Now we show that  $\beta_P(M)\neq 0 $. For this, we have to check  that  $ t(M)+PM\neq M $. Let us denote by $1_n $ the coset in $ A/P^n $ with representative $1$. We have to prove that the element $ (1_1, 1_2, ... 1_n, ...) $ of a module $M$ do not belongs to the submodule $ t(M)+PM$.
+By Theorem 2.1, $ P=p_1A+p_2A $, where $ p_1, p_2 \in A $. Thus $x=t+p_1a_1+p_2a_2 $, where $t\in t(M) $, $a_1,a_2 \in M $. Since the annihilator of an element $t$ is power of an ideal $P$,  for some $k \in \mathbb N $ we obtain that $ P^kt=0$. Consequently,
+$$P^kx\subseteq P^{k+1}a_1+P^{k+1}a_2.$$
+Let $$a_1=\overline{(\overline{a'_1}, ... \overline{a'_n},...) }, \ a_2=\overline{(\overline{a''_1}, ... \overline{a''_n},...)},$$
+ where $a'_i, a''_i \in A $ for $ i \in \mathbb N $.
+Therefore from previous inclusion for some set of indexes $ U \in \textit{D} $  is true that
+$$ P^k\subseteq P^{k+1}a'_i+P^{k+1}a''_i+P^i \subseteq P^i.$$
+Hence from $P^i\subseteq P^k$ we obtain that $ P^i=P^k $, $ i\geq k+1 $. But in a Dedekind ring a decomposition  into a product of prime ideals is unique, so we obtain contradiction. Thus $\beta_P(M)\neq 0$. Then, from Theorem 2, $T_r$ contains a module with $A_P$ as a direct summand and, using previous thoughts, $A_P$ lies in $T_r$.
+
+Next if $ A/P$ is an infinite module, then, according to definition of $ T^*f(P,M)$, the equality $ \beta_P=0 $ is true only if
+$$
+lim_{n\rightarrow \infty} dimP^nM/P^n+1M =0
+$$ for all $k$, and therefore $P^kM/P^{k+1}M =0$. From the last equality we obtain $$ P^k=P^{k+1}P^kM=P^{k}M $$ for some  $k$.
+This equation is false for a module $ M $ and arbitrary $ k \in \mathbb N $. Verifying of this fact is similar to those  we have done early in this proof. Therefore $ A/P \in T_r$.
+\end{proof}
+
+Let $\Pi$ be some set of prime ideals in a ring $A$. A module $M$ is $\Pi-$divisible if  $IM=M$ for every ideal $I$ from $\Pi$. For every $\Pi$, a class of all $\Pi$-divisible modules is a radical class for some radical of the category $A-Mod$. This radical we will denote by $r_{\Pi}$.
+\begin{lemma}
+A module $M$ is $ \Pi$-divisible if and only if it is elementarily equivalent  to the module of the form
+
+\begin{equation}\label{eq1}
+ \oplus_{(P\in \Omega \setminus \Pi, n\in N )}((A/P^n)^{\alpha_{P,n}})
+ \oplus
+ (\oplus_{P\in \Omega}A_P ^{\beta_P})
+ \oplus
+ (\oplus_{P\in \Omega} (\widehat{A/P})^{(\gamma_P)})
+ \oplus
+K^{(\delta)},
+\end{equation}
+
+where  $\alpha_{P,n}, \beta_P, \delta, \gamma_P$ are some cardinal numbers.
+\end{lemma}
+\begin{proof}
+We consider a set of sentences of the language ${}_AL$
+$$ \mathcal{C}=\lbrace(\forall x)(\exists y_1) (\exists y_2) (x=p_1y_1+p_2y_2) p_1A+p_2A=P \in \Pi\rbrace .$$
+It is obvious that $ M $ is $ \Pi$-divisible if and only if $M$ is a model of a system of formulas $C$. Therefore the class of $\Pi$-divisible modules is axiomatisable and, consequently, this class is elementarily closed.
+Since $A/P^n$, $A_P$, $A/P$ are $ \Pi$-divisible for $P\in \Pi$ and $K$ is $\Omega$-divisible,  using the fact that class of $\Pi$-divisible groups is closed under direct sums we obtain that modules of the form \ref{eq1} are $\Pi$-divisible.
+If $\alpha_{P,n}\neq 0$ or $ \beta_P \neq 0$ for some $P\in \Pi$, then a module is not $ \Pi$-divisible. Hence all modules which are elementarily equivalent to it are not $\Pi$-divisible too.
+\end{proof}
+
+%======================================================
+\section{Main Result}
+
+
+%========================================================
+
+
+\begin{theorem}
+The radical class of a nontrivial radical $r$ in the category of left modules over a noncommutative Dedekind duo-ring $A$ is axiomatisable if and only if $r=r_\Pi$ for some nonempty subset $\Pi$ of the set of nonzero prime ideals in a ring $A$.
+\end{theorem}
+\begin{proof}
+It is well known that for every prime ideal $P \in \Omega$ the  module $A/P$ is $r$-radical or $r$-radical-free.
+So we have in  $\Omega$ two subsets:
+$$\Pi=\{P \in \Omega \mid A/P \notin F_r \Leftrightarrow A/P \in T_r\}$$
+and
+$$\Omega \setminus \Pi=\{P \in \Omega \mid A/P \in T_r\}.$$
+We have to  show that if the class $T_r$ is axiomatisable, then it contains all
+$\Pi$-divisible modules. It is obvious that $A/P'$ is $\Pi$-divisible for some
+$P'\in \Omega$ if and only if $P'\in \Omega \setminus \Pi$. Thus every
+$\Pi$-divisible module of the form $A/P$ belongs to $ T_r$. In view Lemma 1, the
+class $T_r$ contains all modules of the form: $A_P $, $ A/Q $, $ P \in \Omega
+\setminus \Pi $, $Q\in \Omega$ and a module $ K$. The class $T_r$ is closed
+under extensions, and so therefore $A/P^n$, for  $ P \in \Omega \setminus \Pi$,
+$n\in \mathbb N$, belongs to the class $T_r$. Hence the class  $T_r$ contains
+every module of the form \ref{eq1}. The class $T_r$ is axiomatisable, and so it
+contains all modules that are elementarily equivalent to the module of such
+form. Therefore $T_r$ contains all $ \Pi$-divisible modules. Let $M$ be any
+module from the class $T_r$. We have to prove that $M$ is $\Pi$-divisible. If we
+suppose that this is not true, then, by  the Eklof-Fisher Theorem and Lemma 1,
+there
+exists  $P\in \Pi$ such that one of the invariants  $\alpha_{(P,1)}(M)$, $\beta_P(M)$ of some module $M$ from the class $ T_r $ is nonzero.  As a consequence, $A/P$ or $A_P$ belongs to the class $ T_r $, where $P \in \Pi$. Since $A_P/ PA_P\cong A/P$, we deduce that $ A/P \in T_r $, a contradiction with the definition of the set $ \Pi $. Thus $r=r_\Pi$.
+\end{proof}
+
+\begin{thebibliography}{9}
+
+  \bibitem{k1}  Горбачук Е.Л., Комарницкий Н.Я. \emph{Об аксиоматизируемости
+радикальных и полупростых классов модулей и абелевых груп} // Укр. мат. журн.
+--- 1982. --- Т.34, №2. --- C. 512--533.
+
+  \bibitem{k2} Комарницкий Н.Я. \emph{Об аксиоматизируемости некоторых классов
+модулей, связанных с кру\-че\-ниями } // Мат. исслед.  --- 1980. --- Вып.48. ---
+С. 92--109.
+
+
+\bibitem{k3} Мальцев А.П. Алгебраические системы. --- М.: Наука, 1976. --- 624
+с.
+
+  \bibitem{k4} Eisenbud D., Robson J.C. \emph{Hereditary Noetherian Prime
+Rings}, Journal of Algebra, \textbf{16}  (1970), 86--104.
+
+ \bibitem{k5} Eklof P.C. \emph{The Structure of Ultraproducts of Abelian
+Groups}, Pacific Journal of Mathematics, \textbf{47}, 1 (1973), 67--79.
+
+ \bibitem{k6} Eklof P.C., Fisher E.R.  \emph{The Elementary Theory of Abelian
+Groups}, J. Symbolic Logic, \textbf{39},  3  (1974), 603--604.
+
+ \bibitem{k7} Marubayashi H. \emph{Modules over bounded dedekind prime rings},
+Osaka J. Math., \textbf{9}  (1972), 95--110.
+
+  \bibitem{k8} Prest M. Model theory and modules (London Math. Soc. Lecture Note
+Ser., Vol. 130),  Cambrige Univ. Press., Cambrige, 1988.
+
+ \bibitem{k9} Stenstrom B. Rings of Quotients,
+Springer-Verlag, Berlin-Heidelberg-New York, 1975.
+
+
+\end{thebibliography}
+
+\end{document}

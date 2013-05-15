@@ -30,8 +30,8 @@ class AuthorController
 
     public function indexAction()
     {
-        // action body
-        
+		//- Redirect to default page -//
+		$this -> _redirect( '/article/add' );        
     }
 
 

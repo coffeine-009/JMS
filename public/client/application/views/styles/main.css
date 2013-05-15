@@ -26,7 +26,7 @@ h1
 	background	: #ccc;
 	background	: -moz-radial-gradient( #fff 0%, #ddd 25%, #ccc 50%, #ddd 75%, #fff 100% );
 	border-radius	: 45px;
-	border		: #fff solid 3px;*/
+	border		: #fff solid 3px;*
 	font-size	:large;
 	height		: 40px;
 	margin-top	: 10px;
@@ -37,6 +37,19 @@ table
 {
 	
 }
+
+	table thead tr
+	{
+		background		: #aaa;
+		background		: -moz-linear-gradient( top, #aaa, #eee, #aaa );
+		font-size		: large;
+		line-height		: 21pt;
+	}
+	
+		table thead tr td
+		{
+			
+		}
 
 	table tr
 	{
@@ -55,7 +68,7 @@ table
 	{	
 		white-space		: normal;
 		padding			: 5px;
-		vertical-align	: top;
+		
 	}
 
 /* Main of page */
@@ -157,6 +170,102 @@ table
 		margin		: 5px 0 0 0;
 		text-align	: center;
 	}
+	
+	/*#- Authorization -#*/
+	.authorization
+	{
+		background	: #fff;
+		border		: #000 dashed 1px;;
+		margin		: 20px;
+		text-align	: left;
+	}
+	
+		.authorization .clasic
+		{
+			/*background	: #eee;*/
+			border		: #000 dashed 0px;
+			display		: inline-block;
+			margin		: 10px;
+			padding		: 10px;
+		}
+	
+	.authorization .param
+	{
+		text-align	: left;
+	}
+	
+		.authorization .param label
+		{
+			font-size	: x-large;
+			font-weight	: bold;
+		}
+		
+		.authorization .param div input
+		{
+			font-size	: x-large;
+			height	: 40px;
+			width	: 400px;
+		}
+		
+		.authorization .login
+		{
+			text-align	: left;
+			
+		}
+		
+		.authorization .login div input
+		{
+			height	: 40px;
+			width	: 400px;
+		}
+	
+	.authorization .param_sub
+	{
+		line-height	: 32pt;
+	}
+		
+	.authorization .param_sub label
+	{
+		font-size	: large;
+		font-weight	: normal;
+	}
+		
+		/* Social networks */
+		.authorization .social
+		{
+			/*background		: #ccc;*/
+			border			: #000 dashed 0px;
+			display			: inline-block;
+			margin			: 10px;
+			padding			: 10px;
+			vertical-align	: top;
+		}
+		
+		.authorization .social .social_button_login
+		{
+			border			: #000 solid 2px;;
+			border-radius	: 5px;
+			width 			: 100px;
+			height			: 30px;
+		}
+		
+		#facebook
+		{
+			background			: url( "/data/ui-buttons-dark-socialMedia.jpg" );
+			background-position	: -26px -59px;			
+		}
+		
+		#twitter
+		{
+			background			: url( "/data/ui-buttons-dark-socialMedia.jpg" );
+			background-position	: -26px -98px;			
+		}
+		
+		#google_plus
+		{
+			background			: url( "/data/ui-buttons-dark-socialMedia.jpg" );
+			background-position	: -153px -59px;
+		}
 	
 	/* Journal */
 	.journal
@@ -302,3 +411,78 @@ table
 {
 	/*font-size	:large;*/	
 }
+
+/* Message */
+.message
+{
+	font-size	: large;
+	line-height	: 32pt;
+}
+
+
+/* #- Article :: View -# */
+.article
+{
+	margin-left	: 20%;
+}
+
+	.article .title
+	{
+		border-bottom: #000 solid 1px;
+		font-size	: x-large;
+		font-weight	: bold;
+		line-height	: 32pt;
+		text-align	: left;
+	}
+	
+	.article .authors
+	{	
+		display		: inline-block;
+		font-size	: small;
+		font-weight	: normal;
+		font-style: italic;
+		line-height	: 20pt;
+
+	}
+	
+	.article .params
+	{
+		display		: inline-block;
+		float		: right;
+		color		: #ccc;
+	}
+	
+		.article .creation
+		{
+			color		: #000;
+			display		: inline-block;
+			font-size	: small;
+			font-weight	: normal;
+			line-height	: 20pt;
+	
+		}
+		
+		.article .language
+		{
+			color		: #000;
+			display		: inline-block;
+			font-size	: small;
+			font-weight	: normal;
+			line-height	: 20pt;
+		}
+		
+	.article .status
+		{
+			color		: green;
+			font-size	: small;
+			font-weight	: normal;
+			line-height	: 20pt;
+		}
+	
+	.article .abstract
+	{
+		font-size	: medium;
+		font-weight	: normal;
+		line-height	: 21pt;
+		margin-top	: 10px;
+	}

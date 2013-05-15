@@ -1,0 +1,846 @@
+%Format:
+\documentclass[12pt,twoside,draft,ua,bysec]{cmpart}
+% Необов'язкові опції :
+% draft - чернетка
+% en, ua, ru - основна мова документа
+% bysec - твердження, леми, означення і т.п. (але не теореми)
+%         нумеруються в межах кожної \section окремо
+% thmbysec - теореми теж нумеруються окремо для кожної \section
+% win   - кодування кирилиці CP-1251 (Windows)
+% koi   - кодування кирилиці KOI8_U  (Unix)
+%
+% Вже завантажено пакети :
+% amsmath,amsfonts,amsthm,amssymb,latexsym
+%
+% Вже означено theorem-like оточення :
+% {theorem}     - теорема
+% {proposition} - твердження
+% {lemma}       - лема
+% {corollary}   - наслідок
+% {remark}      - зауваження
+% {definition}  - означення
+% {example}     - приклад
+% {examples}    - приклади
+% а також їх аналоги з зірочкою без нумерації :
+% {theorem*}, {proposition*} і т.п.
+
+
+\author{Сокульська Н.Б.}
+\title{Мероморфні функції скінченного $\lambda$-типу у півсмузі}
+\shorttitle{Мероморфні функції } %(якщо треба)
+
+\enabstract{Sokul's'ka N.B.}%
+{Meromorphic functions of finite $\lambda$-type in a half-strip}%
+{The Nevanlinna characteristic of meromorphic functions in a
+half-strip, such that $f(\sigma)=f(\sigma+ 2 \pi i)$, is
+introduced, and its main properties are investigated. A criterion
+of $\lambda$-type finiteness of holomophic in the half-strip
+functions in terms of Fourier coefficient of $\log |f|$ is
+obtained.}
+
+\ruabstract{Сокульска Н.Б.}%
+{Мероморфные функции конечного $\lambda$-типа в полуполосе}%
+{Введена характеристика Неванлинны мероморфных в полуполосе
+функций таких, что $f(\sigma)=f(\sigma+2 \pi i)$, доказаны ее
+основные свойства. Получен критерий конечности $\lambda$-типа
+голоморфной в полуполосе функции $f$ в терминах коэфициентов Фурье
+логарифма ее модуля. }
+
+\uaabstract{Сокульська Н.Б.}%
+{Мероморфні функції скінченного $\lambda$-типу у півсмузі}%
+{Введено характеристику Неванлінни мероморфних у півсмузі функцій
+таких, що\linebreak  $f(\sigma)= f(\sigma+2\pi i)$, та досліджено її
+основні властивості. Отримано критерій скінченності
+$\lambda$-типу голоморфної в замиканні півсмуги функції $f$ в термінах коефіцієнтів Фур'є логарифма її модуля.}%
+
+
+\subjclass{18B30, 54B30}
+\UDC{517.53}
+\keywords{голоморфна функція, мероморфна функція, функція скінченного $\lambda$-типу, характеристика Неванлінни, теорема Йенсена-Літтлвуда}
+
+\pyear{2012} % рік публікації
+\volume{4}   % том
+\issue{2}    % випуск
+\pageno{328} % номер першої сторінки
+\received{24.03.2012}
+%\revised{?}
+\contentslistfile{../total.lst}
+
+
+\address{Львівський національний університет імені Івана Франка,\\ Львів,
+Україна}
+\email{natalia$\_$sokulska@yahoo.com}
+%\email{ }
+
+
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\maketitle
+
+%%% ----------------------------------------------------------------------
+
+\section*{Вступ}
+
+В 60-70 роках минулого століття американські математики  Л.А.
+Рубел та Б.А. Тейлор \cite{R-T} (див. також \cite{KA}, \cite{K-L})
+розробили метод рядів Фур'є для цілих та мероморфних функцій. На
+відміну від класичних підходів за функцію зростання вони
+запропонували брати довільну додатну, неперервну, неспадну і
+необмежену функцію $\lambda(r)$ і розглядати класи $\Lambda$
+мероморфних функцій скінченного $\lambda$-типу, тобто таких, що
+$T(r,f)\leq A \lambda(Br)$ для довільного $r>0$ і деяких додатних
+сталих $A$ і $B$, де $T(r,f)$ --- характеристика Неванлінни функції
+$f$.
+
+Цей метод дозволив розв'язати низку важливих задач, зокрема, на
+основі детального вивчення коефіцієнтів Фур'є
+$$c_k(r,f)=\frac{1} {2\pi} \int \limits_0^{2\pi} e^{-ik\theta}
+\log |f(re^{i\theta})|d\theta,\quad r>0, \quad  k\in \mathbb{Z},$$
+повністю описати множину нулів цілих функцій з класів $\Lambda$.
+
+В  даній роботі вводиться і досліджується аналог характеристики
+Неванлінни для мероморфних в замиканні  півсмуги $S=\{\sigma+it:
+\sigma>0, 0<t<2\pi \}$ функцій $f$ таких, що
+$f(\sigma)=f(\sigma+2\pi i)$, $\sigma \geq 0$. За допомогою
+методу, запропонованого Дж. Літтлвудом \cite{Li}, встановлюються
+співвідношення для коефіцієнтів Фур'є мероморфних в $S$ функцій,
+вводиться характеристика Неванлінни таких функцій, доводиться
+критерій скінченності їх $\lambda$-типу.
+
+
+\section{Формула Йенсена-Літтлвуда та характеристика Неванлінни мероморфної в півсмузі функції}
+Нехай функція $f$ мероморфна в замиканні півсмуги
+$S=\{\sigma+it:
+\sigma>0, 0<t<2\pi \}$, не має ні
+нулів, ні полюсів на $\partial S$, $f\not\equiv 0$ і, крім того,
+$f(\sigma)=f(\sigma+2\pi i)$, $\sigma\geq0.$
+
+Через $\{s_j\}$ позначимо послідовність нулів функції $f$ в $S$,
+$s_j=\sigma_j+it_j$, через $\{p_j\}$ ---
+послідовність її полюсів в $S$.
+Через $S^\ast$ позначимо смугу $S$ з розрізами
+$\{\tau\sigma_j+it_j\}$, $\{\tau \mbox{Re}p_j+i\mbox{Im}p_j\}$,
+$1\leq\tau<\infty$. Нехай $s_0 \in S^\ast$ і вибране деяке
+значення $\log f(s_0).$ Покладемо
+\begin{eqnarray} {\label {eq_2.1}}
+\log f(s)-\log f(s_0)=\int\limits_{s_0}^s
+\frac{f'(\zeta)}{f(\zeta)}d\zeta,
+\end{eqnarray}
+де інтеграл береться по деякому шляху в $S^\ast \cup \partial S.$
+
+Нехай $n(\eta, f)$ лічильна функція полюсів функції  $f$ у
+прямокутнику
+$R_\eta=\{\sigma+it: 0<\sigma \leq \eta,
+0\leq t< 2\pi \},$
+i
+\begin{eqnarray*} {\label {eq_2.2}}
+N(\sigma,f)=\int\limits_0^\sigma n(\eta,f)d\eta.
+\end{eqnarray*}
+
+Позначимо
+\begin{eqnarray} {\label {eq_2.4}}
+c_0(\sigma, f)=\frac{1}{2\pi}\int\limits_0^{2\pi} \log |f(\sigma
++it)|dt.
+\end{eqnarray}
+
+
+Аналог теореми Йенсена - Літтлвуда (\cite{Li}) формулюється
+наступним чином.
+
+\begin{lemma}
+Нехай функція $f$ мероморфна в замиканні півсмуги $S$,
+$f(\sigma)=f(\sigma+2\pi i),$ $\sigma\geq~0.$ Тоді
+\begin{eqnarray} {\label {eq_2.15}}
+N(\sigma, \frac{1} {f})-N(\sigma, f)=c_0(\sigma, f)-\frac{\sigma}
+{{\sigma}_0} c_0({\sigma}_0, f)+ (\frac{\sigma}
+{{\sigma}_0}-1)c_0(0, f), \quad \sigma\geq{\sigma}_0>0.
+\end{eqnarray}
+\end{lemma}
+
+\begin{proof} Припустимо спочатку, що $f$ не має ні нулів, ні
+полюсів на $\partial S.$
+ Застосувавши принцип аргумента, отримаємо
+$$\frac{1} {2\pi i} \int\limits_{\partial {R_\eta}}
+\frac{f'(\zeta)}{f(\zeta)}d\zeta=n(\eta, \frac{1} {f})-n(\eta,
+{f}).$$
+
+ Межа
+$\partial {R_\eta}$ складається з чотирьох відрізків, тому
+\begin{equation}\label {eq_2.6}
+\frac{1} {2\pi i}\left[\int\limits_{0}^{\eta}
+\frac{f'(\sigma)}{f(\sigma)}d\sigma+i\int\limits_{0}^{2\pi}
+\frac{f'(\eta+it)}{f(\eta+it)}dt-\int\limits_{0}^{\eta}
+\frac{f'(\sigma+2\pi i)}{f(\sigma+2\pi
+i)}d\sigma-i\int\limits_{0}^{2\pi} \frac{f'(it)}{f(it)}dt
+\right]=n(\eta, \frac{1} {f})-n(\eta, {f}).
+\end{equation}
+ Оскільки $f$  має період  $2\pi i$,  то
+$f'$ також має період $2\pi i$, тоді
+$$\int\limits_{0}^{\eta}
+\frac{f'(\sigma)}{f(\sigma)}d\sigma=\int\limits_{0}^{\eta}
+\frac{f'(\sigma+2\pi i)}{f(\sigma+2\pi i)}d\sigma,$$
+ і співвідношення (\ref {eq_2.6}) запишеться наступним чином
+\begin{eqnarray} {\label {eq_2.7}}
+\frac{1} {2\pi i}\left[i\int\limits_{0}^{2\pi}
+\frac{f'(\eta+it)}{f(\eta+it)}dt-i\int\limits_{0}^{2\pi}
+\frac{f'(it)}{f(it)}dt \right]=n(\eta, \frac{1} {f})-n(\eta, {f}).
+\end{eqnarray}
+
+Проінтегруємо рівність (\ref {eq_2.7})  по $\eta$ від $0$ до
+$\sigma$
+\begin{equation} {\label {eq_2.8}}
+\int\limits_0^{\sigma} n(\eta, \frac{1}
+{f})d\eta-\int\limits_0^{\sigma} n(\eta, {f})d\eta=\frac{1}
+{2\pi}\int\limits_0^{\sigma} \int\limits_{0}^{2\pi}
+\frac{f'(\eta+it)}{f(\eta+it)}dt d\eta-\frac{1}
+{2\pi}\int\limits_0^{\sigma} \int\limits_{0}^{2\pi}
+\frac{f'(it)}{f(it)}dt d\eta =
+\mathcal{J}_1-\mathcal{J}_2.
+\end{equation}
+
+Враховуючи означення логарифма (\ref {eq_2.1}) функції $f$, другий
+інтеграл співвідношення (\ref {eq_2.8}) запишемо у вигляді
+\begin{eqnarray} {\label {eq_2.9}}
+\mathcal{J}_2=\frac{1} {2\pi}\int\limits_0^{\sigma}
+\int\limits_{0}^{2\pi} \frac{f'(it)}{f(it)}dt d\eta =
+\frac{\sigma} {2\pi i}[\log f(2\pi i)-\log f(0)],
+\end{eqnarray}
+
+ Застосовуючи теорему
+Фубіні до $\mathcal{J}_1$, отримаємо
+\begin{eqnarray} {\label {eq_2.10}}
+\mathcal{J}_1=\frac{1} {2\pi}\int\limits_{0}^{2\pi} dt
+\int\limits_0^{\sigma} \frac{f'(\eta + it)}{f(\eta + it)} d\eta =
+\frac{1} {2\pi}\int\limits_0^{2\pi}[\log f(\sigma+it)-\log
+f(it)]dt,
+\end{eqnarray}
+ З врахуванням  (\ref {eq_2.9}) і (\ref {eq_2.10}), рівність (\ref {eq_2.8})
+можна записати наступним чином
+\begin{eqnarray} {\label {eq_2.11}}
+N(\sigma, \frac{1} {f})-N(\sigma, f)=l_0(\sigma, f)-l_0(0, f)+i
+\frac{\sigma} {2\pi}[\log f(2\pi i)-\log f(0)],
+\end{eqnarray}
+де $$l_0(\sigma, f)=\frac{1}{2\pi}\int\limits_0^{2\pi} \log
+f(\sigma +it)dt.$$
+
+ Взявши дійсні частини обох боків співвідношення (\ref {eq_2.11}), отримаємо
+\begin{eqnarray*} {\label {eq_2.12}}
+N(\sigma, \frac{1} {f})-N(\sigma, f)=\frac{1} {2\pi}
+\int\limits_0^{2\pi}\log|f(\sigma+it)|dt-\frac{1} {2\pi}
+\int\limits_0^{2\pi}\log|f(it)|dt+ \sigma C_f,
+\end{eqnarray*}
+де $ C_f=\frac{1}{2\pi} [\mbox{Arg}f(0)- \mbox{Arg}f(2\pi i)]$,
+$\mbox{Arg}f=\mbox{Im}\log f$, тобто
+\begin{eqnarray} {\label {eq_2.13}}
+N(\sigma, \frac{1} {f})-N(\sigma, f)=c_0(\sigma, f)-c_0(0, f)+
+\sigma C_f, \quad \sigma >0.
+\end{eqnarray}
+
+З припущення відсутності нулів та полюсів на $\partial S$  та з
+ізольованості наявних випливає існування $\sigma_0>0$ такого, що
+$f\neq 0, \infty $  при $\sigma\leq \sigma_0$. Тому з (\ref
+{eq_2.13}) маємо
+\begin{eqnarray} {\label {eq_2.14}}
+0=\frac{1}{\sigma_0} c_0(\sigma_0, f)-\frac{1}{\sigma_0} c_0(0,
+f)+ C_f, \quad \sigma >0.
+\end{eqnarray}
+
+Поділивши рівність (\ref {eq_2.13}) на $\sigma$ і віднявши від неї
+(\ref {eq_2.14}), одержимо
+\begin{equation*} {\label {eq_2.16}}
+\frac{1} {\sigma}[N(\sigma, \frac{1} {f})-N(\sigma, f)]=\frac{1}
+{\sigma}c_0(\sigma, f)-\frac{1} {{\sigma}_0} c_0({\sigma}_0, f)+
+\left(\frac{1} {{\sigma}_0}-\frac{1} {\sigma}\right)c_0(0, f),  \quad
+\sigma\geq{\sigma}_0>0,
+\end{equation*}
+ звідки й випливає (\ref {eq_2.15}).
+
+При незначній модифікації доведення для випадку, коли нулі чи полюси
+функції $f$ лежать на $\partial S$ отримаємо рівність (\ref{eq_2.15}).
+\end{proof}
+
+Позначимо
+\begin{eqnarray} {\label {eq_2.5}}
+m_0(\sigma, f)=\frac{1}{2\pi}\int\limits_0^{2\pi} {\log}^+
+|f(\sigma +it)|dt,
+\end{eqnarray}
+де $x^+=\max\{x,0\}.$
+
+\begin{definition}
+Нехай функція $f$ мероморфна в $ \overline{S}$, $f\not\equiv 0$ i
+$f(\sigma)=f(\sigma+2\pi i)$. Характеристикою Неванлінни функції
+$f$ називається
+\begin{equation} {\label {eq_2.17}}
+T(\sigma, f)=m_0(\sigma, f)-\frac{\sigma} {{\sigma}_0}
+m_0({\sigma}_0, f)+ \left(\frac{\sigma} {{\sigma}_0}-1\right)m_0(0, f)+
+N(\sigma, f),
+\quad \sigma\geq{\sigma}_0>0.
+\end{equation}
+\end{definition}
+
+Властивості $T(\sigma, f)$ опишемо наступною теоремою.
+
+\begin{theorem}{\label {th_2.1}} Нехай $f$ --- мероморфна в $\overline{S}$
+функція, $f\not\equiv 0$ i $f(\sigma)=f(\sigma+2\pi i).$  Тоді її
+характеристика Неванлінни $T(\sigma, f)$ володіє наступними
+властивостями:
+\begin{itemize}
+\item[(i)] $T(\sigma, f)$ --- опукла відносно $\sigma,$ при $\sigma \geq
+\sigma_0$;
+\item[(ii)]$T({\sigma}_0, f)$ =0;
+\item[(iii)]$T(\sigma, f)$ --- неспадна, при $\sigma \geq\sigma_0$;
+\item[(iv)]$T(\sigma, f)=T(\sigma, \frac{1}{f}),$ при $\sigma \geq\sigma_0$.
+%\item[(v)]$T(\sigma, f)$ - невід'ємна при $\sigma \geq \sigma_0$;
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Нехай $\log z=\log|z|+i\arg_0 z$, $0\leq \arg_0 z<2 \pi$,
+$z\neq 0.$ Тоді функція $F(z)=f(\log z)$ мероморфна при $|z|\geq 1$
+і $f(\log|z|)=f(\log|z|+2\pi i).$
+
+Зобразимо функцію $F$ у вигляді частки двох функцій $\frac{H}
+{G}$, де $H$, $G$ --- голоморфні при $|z|\geq 1$ без спільних
+нулів, i $h(s)=H(e^s)$, $g(s)=G(e^s).$
+Тоді, застосовуючи (\ref {eq_2.15}) до $g$, маємо
+$$N(\sigma, {f})=N(\sigma,\frac{1} {g})=c_0(\sigma,
+g)-\frac{\sigma} {{\sigma}_0} c_0({\sigma}_0,g)+
+\left(\frac{\sigma} {{\sigma}_0}-1\right)c_0(0,g) ,\nonumber
+\\ \quad \sigma\geq{\sigma}_0>0.$$
+
+Враховуючи, що $(a-b)^++b=max(a,b),$ характеристику (\ref{eq_2.17}) функції
+$f=\frac{h}{g}$ запишемо у вигляді:
+\begin{eqnarray} {\label {eq_2.21}}
+T(\sigma, f)=\frac{1}
+{2\pi}\int\limits_0^{2\pi}\max(\log|h({\sigma+it)}|,\log|g({\sigma+it}
+)|)dt\nonumber
+\\-\frac{\sigma}
+{{\sigma}_0} \frac{1}
+{2\pi}\int\limits_0^{2\pi}\max(\log|h({\sigma_0+it})|,\log|g({{\sigma}_0+it}
+)|)dt\nonumber
+\\
++\left(\frac{\sigma} {{\sigma}_0}-1\right)\frac{1}
+{2\pi}\int\limits_0^{2\pi}\max(\log|h({it})|,\log|g({it})|)dt,
+\quad \sigma\geq{\sigma}_0>0.
+\end{eqnarray}
+
+Позначимо $I(\sigma,f)=\frac{1}
+{2\pi}\int\limits_0^{2\pi}\max(\log|h({\sigma+it})|,\log|g({\sigma+it})|)dt.$
+
+Тоді $I(\sigma,F)=\frac{1}
+{2\pi}\int\limits_0^{2\pi}\max(\log|H(e^{\sigma+it})|,\log|G(e^{\sigma+it})|)dt.$
+
+Функція $u(z)=\max(\log|H(z)|,\log|G(z)|)$  субгармонійна при
+$|z|\geq 1,$ тому $I(\sigma,F)$ опукла \cite[ст. 27]{He}, \cite[ст.
+49]{BVH},  при $\sigma\geq 0$.
+
+Згідно з (\ref {eq_2.21})
+\begin{eqnarray} {\label {eq_2.18}}
+T(\sigma, f)=I(\sigma,f)-\frac{\sigma} {{\sigma}_0}
+I({\sigma}_0,f) +\left( \frac{\sigma} {{\sigma}_0}-1\right)I(0,f),
+\quad \sigma\geq{\sigma}_0>0.
+\end{eqnarray}
+
+Оскільки $T(\sigma,f)$ є сумою опуклої відносно
+$\sigma\geq\sigma_0$ функції $I(\sigma,f)$ та лінійної функції
+$A\sigma+B$, то властивість $(i)$ виконується.
+За властивістю опуклості $I(\sigma,f),$ при $0\leq\sigma$ маємо
+ $I({\sigma}_0,f)\leq \frac{\sigma-{\sigma}_0} {\sigma} I(0,f)+
+\frac{{\sigma}_0} {\sigma} I({\sigma},f).$
+ Звідси, $ 0\leq I({\sigma},f)-\frac{\sigma} {{\sigma}_0} I({\sigma}_0,f)+
+\left(\frac{\sigma}
+{{\sigma}_0}-1\right) I(0,f).$
+Таким чином, згідно з (\ref {eq_2.18}) ми отримали, що $T(\sigma,f)\geq 0.$
+Якщо $\sigma={\sigma}_0$, то з (\ref {eq_2.18}) випливає, що
+$T({\sigma}_0, f)=0$.
+
+Оскільки $T(\sigma,f)$ опукла, відносно $\sigma,$ при
+$\sigma\geq\sigma_0$, то за теоремою 1.6 із \cite [ст. 28]{He-Ke}
+(див також \cite [ст. 11]{BVH}) в кожній точці вона має похідну
+справа і
+$$\lim\limits_{\sigma\rightarrow\sigma_0+0}
+\frac{T(\sigma,f)-T(\sigma_0,f)}{\sigma-\sigma_0}=
+\lim\limits_{\sigma\rightarrow\sigma_0+0}
+\frac{T(\sigma,f)}{\sigma-\sigma_0}=T_+'(\sigma_0,f)\geq0.$$
+Похідна справа опуклої функції за цією ж теоремою не спадає. Тому
+$0\leq T_+'(\sigma_0,f)\leq T_+'(\sigma,f), \quad \sigma\geq
+\sigma_0$. Отож, характеристика $T(\sigma,f)$ неспадна.
+
+Покажемо, що виконується властивість $\textsl{(iv)}$.
+Застосуємо рівність (\ref {eq_2.15}) до функції $\frac{1}{f}$:
+\begin{equation*} {\label {eq_2.41}}
+N(\sigma, f)- N(\sigma, \frac{1} {f})=c_0(\sigma, \frac{1}{f})-\frac{\sigma}
+{{\sigma}_0} c_0({\sigma}_0, \frac{1}{f})+ (\frac{\sigma}
+{{\sigma}_0}-1)c_0(0, \frac{1}{f}), \quad \sigma\geq{\sigma}_0>0.
+\end{equation*}
+
+Враховуючи (\ref {eq_2.4}) i властивість $\log
+x=\log^+x-\log^+\frac{1}{x},$ для $x> 0$, отримаємо
+\begin{eqnarray*} {\label {eq_2.42}}
+N(\sigma, f)- N(\sigma, \frac{1} {f})=\frac{1}{2\pi}\int\limits_0^{2\pi} \log^+\frac{1}{|f(\sigma
++it)|}dt-\frac{1}{2\pi}\int\limits_0^{2\pi} \log^+|f(\sigma+it)|dt\nonumber
+\\-\frac{\sigma} {{\sigma}_0} \frac{1}{2\pi}\int\limits_0^{2\pi} \log^+\frac{1}{|f(\sigma_0
++it)|}dt+\frac{\sigma} {{\sigma}_0} \frac{1}{2\pi}\int\limits_0^{2\pi} \log^+{|f(\sigma_0
++it)|}dt\nonumber
+\\+(\frac{\sigma}
+{{\sigma}_0}-1)\frac{1}{2\pi}\int\limits_0^{2\pi} \log^+\frac{1}{|f(it)|}dt-(\frac{\sigma}
+{{\sigma}_0}-1)\frac{1}{2\pi}\int\limits_0^{2\pi} \log^+{|f(it)|}dt , \quad \sigma\geq{\sigma}_0>0.
+\end{eqnarray*}
+Звідси,
+\begin{eqnarray} {\label {eq_2.43}}
+\frac{1}{2\pi}\int\limits_0^{2\pi} \log^+|f(\sigma+it)|dt-\frac{\sigma} {{\sigma}_0} \frac{1}{2\pi}\int\limits_0^{2\pi} \log^+{|f(\sigma_0
++it)|}dt+(\frac{\sigma}
+{{\sigma}_0}-1)\frac{1}{2\pi}\int\limits_0^{2\pi} \log^+{|f(it)|}dt\nonumber
+\\+N(\sigma, f)\nonumber
+\\= \frac{1}{2\pi}\int\limits_0^{2\pi} \log^+\frac{1}{|f(\sigma
++it)|}dt-\frac{\sigma} {{\sigma}_0} \frac{1}{2\pi}\int\limits_0^{2\pi} \log^+\frac{1}{|f(\sigma_0
++it)|}dt+(\frac{\sigma}
+{{\sigma}_0}-1)\frac{1}{2\pi}\int\limits_0^{2\pi}
+\log^+\frac{1}{|f(it)|}dt\nonumber
+\\+ N(\sigma, \frac{1} {f}) , \quad \sigma\geq{\sigma}_0>0.
+\end{eqnarray}
+З рівності (\ref {eq_2.43}) та  означення 1.1 отримуємо
+\textsl{(iv)}.
+ Теорему доведено.
+\end{proof}
+
+\section{Коефіцієнти Фур'є мероморфної в півсмузі функції}
+
+Нехай $f$ --- відмінна від тотожного нуля функція, що голоморфна в замиканні
+прямокутника
+$R_\sigma=\{\eta+it: 0 < \eta \leq \sigma,
+0 \leq t < 2\pi\}$  і
+$f(\sigma)=f(\sigma+2 \pi i)$.
+Припустимо, що $f$ не має нулів на $\partial R_\sigma$. Через
+$\{s_j\}$  позначимо множину нулів  $f$ в $R_\sigma$,
+($s_j={\sigma}_j+it_j$).
+
+Нехай  $R^\ast_\sigma=R_\sigma \setminus {\bigcup\limits_j\{\tau
+\sigma_j+it_j\}}$, $1\leq \tau <\infty$ і $\log f(s)$ визначений
+як в (\ref {eq_2.1}), де інтеграл береться по деякому шляху в
+$R^\ast_\sigma\bigcup\partial R_\sigma$.
+
+Покладемо:
+\begin{eqnarray} {\label {eq_2.33}}
+l_k(\sigma, f)=\frac{1}{2\pi}\int\limits_0^{2\pi} e^{-ikt}\log
+f(\sigma +it)dt,\quad k\in \mathbb{Z};
+\end{eqnarray}
+\begin{eqnarray*} {\label {eq_2.34}}
+c_k(\sigma, f)=\frac{1}{2\pi}\int\limits_0^{2\pi} e^{-ikt}\log
+|f(\sigma +it)|dt,\quad k\in \mathbb{Z}.
+\end{eqnarray*}
+
+\begin{lemma}{\label {l_2.1}} При виконанні зроблених  вище припущень правильні
+наступні співвідношення:
+\begin{equation} {\label {eq_3.01}}
+l_k(\sigma,f)=e^{k\sigma}l_k(0,f) + \frac{1}{k}
+\sum\limits_{s_j\in R_\sigma} \left( \frac{e^\sigma}{e^{s_j}}
+\right)^k-\frac{1}{k} \sum\limits_{s_j\in R_\sigma}
+\frac{1}{e^{ikt_j}}
+ -\frac{i}{2\pi}
+\frac{e^{k\sigma}-1}{k} [\log{f(2\pi i)}-\log {f(0)}],\
+k\in\mathbb{Z};
+\end{equation}
+\begin{equation} {\label {eq_3.00}}
+c_k(\sigma,f)= \frac{e^{k\sigma}\alpha_k (f)-e^{-k\sigma}\overline{\alpha_{-k}}(f)} {2 k}
++\frac{1}{2 k}
+\sum\limits_{s_j\in R_\sigma}\left[ \left(
+\frac{e^\sigma}{e^{s_j}} \right)^k- \left(
+\frac{e^{\overline{s_j}}}{e^\sigma} \right)^{k}\right],\
+k\in\mathbb{N}.
+\end{equation}
+де $c_{-k}(\sigma,f)=\overline{c_{k}}(\sigma,f),$ $ \alpha(f)=\frac{1}
+{2\pi}\int\limits_0^{2\pi}
+e^{-ikt}\frac{f'(it)} {f(it)}dt.$
+\end{lemma}
+
+\begin{proof} Нехай $\eta<\sigma$.
+Застосуємо принцип аргумента до функції $\frac{f'(s)}
+{f(s)}  e^{-ks}$ в прямокутнику $R_\eta$.  % при $\sigma>0$
+Отримаємо:
+\begin{eqnarray} {\label {eq_3.3}}
+\int\limits_{\partial R_\eta}\frac{f'(\zeta)} {f(\zeta)}
+ e^{-k\zeta}d\zeta = 2\pi i \sum\limits_{s_j\in R_\eta}
+ e^{-ks_j},\quad k\in\mathbb{Z}\setminus\{0\}.
+\end{eqnarray}
+
+ Оскільки $\partial R_\eta$ складається з 4-х відрізків, то (\ref
+ {eq_3.3}) набуде вигляду:
+\begin{eqnarray} {\label {eq_3.4}}
+\int\limits_{0}^{\eta} \frac{f'(\gamma)}{f(\gamma)} e^{-k\gamma}
+d\gamma+i\int\limits_{0}^{2\pi} \frac{f'(\eta+it)}{f(\eta+it)}
+e^{-k(\eta+it)} dt-\int\limits_{0}^{\eta} \frac{f'(\gamma+2\pi
+i)}{f(\gamma+2\pi i)} e ^{-k(\gamma+2\pi i )}d\gamma \nonumber \\
+-i\int\limits_{0}^{2\pi} \frac{f'(it)}{f(it)}e^{-ikt}dt=2\pi i
+\sum\limits_{s_j\in R_\eta} e^{-ks_j},\quad
+k\in\mathbb{Z}\setminus\{0\}.
+\end{eqnarray}
+
+Зважаючи на $2\pi i$-періодичність функцій $f(s)$ та $e^{-ks}$,
+співвідношення (\ref {eq_3.4}) запишемо наступним чином
+\begin{eqnarray} {\label {eq_3.5}}
+i\int\limits_{0}^{2\pi} \frac{f'(\eta+it)}{f(\eta+it)}
+e^{-k(\eta+it)} dt-i\int\limits_{0}^{2\pi}
+\frac{f'(it)}{f(it)}e^{-ikt}dt=2\pi i \sum\limits_{s_j\in R_\eta}
+e^{-ks_j},\quad k\in\mathbb{Z}\setminus\{0\}.
+\end{eqnarray}
+
+Домножимо (\ref {eq_3.5}) на $\frac{e^{k\eta}}{i}$,
+проінтегруємо отриману рівність  по $\eta$ від $0$ до $\sigma$.
+\begin{equation} {\label {eq_3.6}}
+\int\limits_{0}^{\sigma} e^{k\eta}\int\limits_{0}^{2\pi}
+\frac{f'(\eta+it)}{f(\eta+it)} e^{-k(\eta+it)} dt
+d\eta-\int\limits_{0}^{\sigma} e^{k\eta}\int\limits_{0}^{2\pi}
+\frac{f'(it)}{f(it)}e^{-ikt}dt d\eta
+=2\pi \int\limits_{0}^{\sigma} e^{k\eta} \sum\limits_{s_j\in
+R_\eta} e^{-ks_j} d\eta,
+\end{equation}
+$k\in\mathbb{Z}\setminus\{0\}.$
+До першого інтегралу рівності (\ref {eq_3.6}) застосуємо теорему
+Фубіні.
+\begin{eqnarray} {\label {eq_3.37}}
+\int\limits_{0}^{\sigma} e^{k\eta}\int\limits_{0}^{2\pi}
+\frac{f'(\eta+it)}{f(\eta+it)} e^{-k(\eta+it)} dt
+d\eta=\int\limits_{0}^{2\pi} \int\limits_{0}^{\sigma}
+e^{k\eta}\frac{f'(\eta+it)}{f(\eta+it)} e^{-k(\eta+it)}d\eta dt\nonumber\\
+=\int\limits_{0}^{2\pi} e^{-ikt}[\log f(\sigma+it)-\log f(it)]dt.
+\end{eqnarray}
+
+Другий інтеграл співвідношення (\ref {eq_3.6}) дає
+\begin{eqnarray} {\label {eq_3.38}}
+\int\limits_{0}^{\sigma} e^{k\eta}\int\limits_{0}^{2\pi}
+\frac{f'(it)}{f(it)} e^{-ikt} dt d\eta=
+\frac{e^{k\sigma}-1}{k}\int\limits_{0}^{2\pi} \frac{f'(it)}{f(it)}
+e^{-ikt} dt= \frac{e^{k\sigma}-1}{i
+k}\int\limits_{0}^{2\pi}e^{-ikt} d(\log(it))\nonumber
+\\ =-i \frac{e^{k\sigma}-1}{k}[\log f(2\pi i)-\log f(0)]+\left(e^{k\sigma}-1\right) \int\limits_{0}^{2\pi} e^{-ikt}\log f(it)
+dt.
+\end{eqnarray}
+
+
+ Використавши означення логарифма функції і (\ref {eq_2.33}), з (\ref {eq_3.6}) - (\ref {eq_3.38}) отримаємо:
+\begin{eqnarray} {\label {eq_3.8}}
+\int\limits_{0}^{\sigma} e^{k\eta} \sum\limits_{s_j\in R_\eta}
+e^{-ks_j} d\eta=l_k(\sigma,f)-e^{k\sigma}l_k(0,f)+\frac{i}{2\pi}
+\frac{e^{k\sigma}-1}{k}\left[\log f(2\pi i)-\log f(0)\right],
+\end{eqnarray}
+$k\in\mathbb{Z}\setminus\{0\}.$ Інтегруючи в інтегралі Стільтєсса, отримуємо:
+\begin{eqnarray} {\label {eq_3.10}}
+\int\limits_{0}^{\sigma} e^{k\eta}\sum\limits_{s_j\in R_\eta}
+e^{-ks_j}d\eta=
+ \frac{1}{k}e^{k\sigma}
+\sum\limits_{s_j\in R_\sigma} e^{-ks_j}- \frac{1}{k}
+\sum\limits_{s_j\in R_\sigma}e^{k\sigma_j} e^{-ks_j} \nonumber\\
+=\frac{1}{k} \sum\limits_{s_j\in R_\sigma} \left(
+\frac{e^\sigma}{e^{s_j}} \right)^k-\frac{1}{k} \sum\limits_{s_j\in
+R_\sigma} \frac{1}{e^{ikt_j}}, \quad k\in\mathbb{Z}\setminus\{0\}.
+\end{eqnarray}
+Із врахуванням (\ref {eq_3.10}), співвідношення  (\ref {eq_3.8})
+набуває вигляду
+\begin{equation} {\label {eq_3.11}}
+l_k(\sigma,f)= e^{k\sigma}l_k(0,f) +\frac{1}{k}
+\sum\limits_{s_j\in R_\sigma} \left( \frac{e^\sigma}{e^{s_j}}
+\right)^k-\frac{1}{k} \sum\limits_{s_j\in R_\sigma}
+\frac{1}{e^{ikt_j}}-\frac{i}{2\pi}
+\frac{e^{k\sigma}-1}{k}\left[\log f(2\pi i)-\log f(0)\right],
+\end{equation}
+$k\in\mathbb{Z}\setminus\{0\}.$
+Враховуючи рівність  (\ref {eq_2.15}), отримаємо (\ref {eq_3.01}).
+Оскільки
+$c_k(\sigma,f)=\frac{l_k(\sigma,f)+\overline{l_{-k}(\sigma,f)}}
+{2}$, $k\in\mathbb{N},$
+ то, використовуючи (\ref {eq_3.11}), маємо
+\begin{eqnarray} {\label {eq_3.12}}
+2c_k(\sigma,f)=l_k(\sigma,f)+\overline{l_{-k}(\sigma,f)}=
+e^{k\sigma}l_k(0,f)+\overline{e^{-k\sigma}l_{-k}(0,f)}
+\nonumber \\
++\frac{1}{k} \sum\limits_{s_j\in R_\sigma} \left(
+\frac{e^\sigma}{e^{s_j}} \right)^k-\frac{1}{k} \sum\limits_{s_j\in
+R_\sigma} \frac{1}{e^{ikt_j}}-\frac{1}{k} \sum\limits_{s_j\in
+R_\sigma} \left( \frac{e^\sigma}{\overline{e^{s_j}}}
+\right)^{-k}+\frac{1}{k} \sum\limits_{s_j\in R_\sigma} \frac{1} {
+e^{ikt_j}}
+\nonumber\\
+-\frac{i}{2\pi} \frac{e^{k\sigma}-1}{k} \left[\log f(2\pi i)-\log f(0)\right]-\frac{i}{2\pi} \frac{e^{-k\sigma}-1}{k}
+\left[\overline{\log f(2\pi i)}-\overline{\log f(0)}\right] ,\quad k\in\mathbb{N}.
+\end{eqnarray}
+Але,  використавши (\ref {eq_2.33}), можемо
+записати
+$$l_k(0,f)+\overline{l_{-k}(0,f)}=\frac{1} {2\pi}\int\limits_0^{2\pi}e^{-ikt}\log f(it)dt
++\frac{1} {2\pi}\overline{\int\limits_0^{2\pi}e^{ikt}\log
+f(it)dt}, \quad k\in\mathbb{N}.$$
+
+Проінтегруємо частинами в обох інтегралах:
+$$\frac{1} {2\pi}\int\limits_0^{2\pi}e^{-ikt}\log f(it)dt=\frac{i} {2\pi k}\left[\log f(2\pi i)-\log f(0)\right]
++\frac{1} {2\pi k}\int\limits_0^{2\pi} e^{-ikt}\frac{f'(it)}
+{f(it)}dt, \quad k\in\mathbb{N},$$
+$$\frac{1} {2\pi}\overline{\int\limits_0^{2\pi}e^{ikt}\log f(it)dt}=\frac{i} {2\pi k}\left[\overline{\log f(2\pi i)}-\overline{\log f(0)}\right]
+-\frac{1} {2\pi k}\int\limits_0^{2\pi}
+e^{-ikt}\overline{\left(\frac{f'(it)} {f(it)}\right)}dt, \quad
+k\in\mathbb{N}.$$
+
+Враховуючи вище отримані обчислення, рівність (\ref {eq_3.12}) набуде вигляду:
+\[\begin{split}
+&2c_k(\sigma,f)=\frac{i} {2\pi}\frac{e^{k\sigma}}{k}\left[\log
+f(2\pi i)-\log f(0)\right] +\frac{i}
+{2\pi}\frac{e^{-k\sigma}}{k}\left[\overline{\log f(2\pi
+i)}-\overline{\log f(0)}\right] \\&+\frac{e^{k\sigma}}
+{2\pi k}\int\limits_0^{2\pi} e^{-ikt}\frac{f'(it)} {f(it)}dt
+-\frac{e^{-k\sigma}} {2\pi k}\int\limits_0^{2\pi}
+e^{-ikt}\overline{\left(\frac{f'(it)}
+{f(it)}\right)}dt+\frac{1}{k} \sum\limits_{s_j\in R_\sigma}
+\left(\frac{e^\sigma}{e^{s_j}} \right)^k -\frac{1}{k}
+\sum\limits_{s_j\in R_\sigma} \left(
+\frac{e^\sigma}{\overline{e^{s_j}}} \right)^{-k}
+\\&-\frac{i}{2\pi} \frac{e^{k\sigma}-1}{k} \left[\log
+f(2\pi i)-\log f(0)\right]-\frac{i}{2\pi} \frac{e^{-k\sigma}-1}{k}
+\left[\overline{\log f(2\pi i)}-\overline{\log f(0)}\right]
+\\&=\frac{i}{2\pi}\frac{e^{k\sigma}} {k}\left[\log |f(2\pi
+i)|-\log |f(0)|\right]-\frac{e^{k\sigma}} {2\pi k
+}\left[\arg_0{f(2\pi i)}- \arg_0{f(0)}\right]\\&
++\frac{i} {2\pi}\frac{e^{-k\sigma}} {k}\left[\log |f(2\pi i)|-\log
+|f(0)|\right] +\frac{e^{-k\sigma}} {2\pi k}\left[\arg_0{f(2\pi
+i)}- \arg_0{f(0)}\right]\\&
++\frac{1}{k} \sum\limits_{s_j\in R_\sigma} \left(
+\frac{e^\sigma}{e^{s_j}} \right)^k\!\!-\frac{1}{k} \sum\limits_{s_j\in
+R_\sigma} \left( \frac{\overline{e^{s_j}}}{e^\sigma} \right)^{k}
++e^{k\sigma}\frac{1} {2\pi
+k}\int\limits_0^{2\pi} e^{-ikt}\frac{f'(it)}
+{f(it)}dt-e^{-k\sigma}\frac{1} {2\pi
+k}\int\limits_0^{2\pi} e^{-ikt}\overline{\left(\frac{f'(it)} {f(it)}\right)}dt
+\\& -\frac{i}{2\pi} \frac{e^{k\sigma}-1}{k} \left[\log |f(2\pi i)|-\log
+|f(0)|\right]+
+ \frac{e^{k\sigma}-1}{2\pi k}\left[\arg_0{f(2\pi i)}- \arg_0{f(0)}\right]
+\\&-\frac{i} {2\pi} \frac{e^{-k\sigma}-1}{k} \left[\log
+|f(2\pi i)|-\log |f(0)|\right]-\frac{e^{-k\sigma}-1}{2\pi k}
+\left[\arg_0{f(2\pi i)}- \arg_0{f(0)}\right] ,\quad
+k\in\mathbb{N}.
+\end{split}\]
+
+Використовуючи те, що $f(\sigma)=f(\sigma+2\pi i)$, з останньої рівності
+отримуємо:
+\[
+2c_k(\sigma,f)= e^{k\sigma}\frac{1} {2\pi k}\!\int\limits_0^{2\pi}
+e^{-ikt}\frac{f'(it)} {f(it)}dt -e^{-k\sigma}\frac{1} {2\pi
+k}\!\int\limits_0^{2\pi} e^{-ikt}\overline{\frac{f'(it)} {f(it)}}dt
++\frac{1}{k} \sum\limits_{s_j\in R_\sigma}\left[ \left(
+\frac{e^\sigma}{e^{s_j}} \right)^k\!\!\!-\! \left(
+\frac{\overline{e^{s_j}}}{e^\sigma}
+\right)^{k}\right],
+\]
+$k\in\mathbb{N}.$
+Звідси випливають рівності (\ref {eq_3.00}).
+
+Рівність $c_{-k}(\sigma,f)=\overline{c_k(\sigma,f)}$,
+випливає безпосередньо з введення $c_k(\sigma,f)$. Лема {\ref {l_2.1}} доведена.
+\end{proof}
+
+Нехай $f$ --- відмінна від тотожного нуля функція, що мероморфна  в замиканні
+прямокутника
+$R_\sigma=\{\eta+it: 0 < \eta \leq \sigma,
+0 \leq t < 2\pi\}$ і
+$f(\sigma)=f(\sigma+2 \pi i)$.
+Припустимо, що $f$ не має ні нулів, ні полюсів на $\partial
+R_\sigma$. Через $\{s_j\}$ позначимо множину нулів  $f$ в
+$R_\sigma$, через $\{p_j\}$ --- множину її полюсів в $R_\sigma$
+($s_j={\sigma}_j+it_j, p_j=\mbox{Re}p_j+i\mbox{Im}p_j$).
+
+Нехай  $R^\ast_\sigma=R_\sigma \setminus ({\bigcup\limits_j{\{\tau
+\sigma_j+it_j\} \cup\{\tau \mbox{Re}p_j+i\mbox{Im}p_j\}}})$,
+$1\leq \tau <\infty$ і $\log f(s)$ визначений як в (\ref {eq_2.1}), де
+інтеграл береться по деякому шляху в $R^\ast_\sigma\bigcup\partial
+R_\sigma$.
+
+ Аналогічними
+міркуваннями прийдемо до наступного твердження.
+
+\begin{lemma}{\label {l_2.2}} За вище зроблених припущень правильні наступні співвідношення:
+\begin{eqnarray} {\label {eq_3.43}}
+c_k(\sigma,f)= \frac{e^{k\sigma}\alpha_k
+(f)-e^{-k\sigma}\overline{\alpha_{-k}(f)}} {2 k}
+\nonumber\\+\frac{1}{2 k} \sum\limits_{s_j\in R_\sigma}\left[
+\left( \frac{e^{\sigma}}{e^{s_j}} \right)^k- \left(
+\frac{e^{\overline{s_j}}}{e^\sigma} \right)^{k}\right]-\frac{1}{2
+k} \sum\limits_{p_j\in R_\sigma}\left[ \left(
+\frac{e^\sigma}{e^{p_j}} \right)^k- \left(
+\frac{e^{\overline{p_j}}}{e^\sigma} \right)^{k}\right],\nonumber\\
+c_{-k}(\sigma,f)=\overline{c}_{k}(\sigma,f)\quad
+k\in\mathbb{N}.
+\end{eqnarray}
+де  $ \alpha(f)=\frac{1} {2\pi}\int\limits_0^{2\pi}
+e^{-ikt}\frac{f'(it)} {f(it)}dt  ,\quad k\in\mathbb{N}. $
+\end{lemma}
+
+
+
+\section{Мероморфні в півсмузі функції скінченного $\lambda$ - типу}
+
+\begin{definition}
+Додатна неспадна неперервна і необмежена функція $\lambda(\sigma),$ при $\sigma
+> \sigma_0$  називається \textit{функцією зростання}.
+\end{definition}
+
+\begin{definition}
+Нехай $\lambda(\sigma)$ --- функція зростання, $f$ --- мероморфна функція
+в $\overline{S}$, $f\not\equiv 0$ i $f(\sigma)=f(\sigma+2\pi i)$.
+Функція \textit{$f$} називається \textit{функцією скінченного
+$\lambda$-типу}, якщо $\exists~A,~B~>~0$ такі, що
+    $ T(\sigma,f)\leq A \lambda(\sigma+B)$
+для всіх $\sigma\geq \sigma_0$.
+\end{definition}
+
+Клас мероморфних в $S$ функцій скінченного $\lambda$-типу позначимо через
+$\Lambda$, а клас голоморфних в $S$ функцій скінченного $\lambda$-типу
+позначимо через $ \Lambda_H $.
+
+\begin{theorem}
+ Нехай функція $f$ голоморфна в замиканні півсмуги $S$ і така, що $f\not\equiv
+0$, $ f( \sigma )=f( \sigma+it ),$
+$\lambda (\sigma) $ --- функція зростання така, що
+$\sigma=O(\lambda(\sigma)),\quad \sigma\rightarrow\infty$. Тоді
+наступні твердження еквівалентні.
+\begin{itemize}
+ \item [(i)] $f\in\Lambda_H;$
+ \item [(ii)]$ |c_k(\sigma,f)|\leq A \lambda(\sigma+B),$ для всіх $\sigma
+>\sigma_0$ і деяких $A, B>0$, $k\in \mathbb{Z}$;
+ \item [(iii)] $|c_k(\sigma,f)|\leq \frac{A \lambda(\sigma+B)}{|k|+1},$ для всіх
+$\sigma >\sigma_0$ і деяких $A, B>0$, $k\in \mathbb{Z}$.
+\end{itemize}
+\end{theorem}
+
+\begin{proof} Якщо виконується $(i)$, то $ T(\sigma,f)\leq A \lambda(\sigma+B),$ при деяких $A, B>0$ і всіх
+$\sigma>\sigma_0$. Тоді згідно з (\ref {eq_2.4}), властивістю
+$|\log x|=\log^+x+\log^+\frac{1}{x}$, де $x> 0$, і пунктом (iv)
+теореми 1 отримаємо
+$$|c_k(\sigma, f)|=\frac{1}{2\pi}\left|\int\limits_0^{2\pi} e^{-ikt}\log
+|f(\sigma +it)|dt\right|\leq \frac{1}{2\pi}\int\limits_0^{2\pi} \left|\log
+|f(\sigma +it)|\right|dt $$
+$$\leq \frac{1}{2\pi}\int\limits_0^{2\pi} \log^+
+|f(\sigma +it)|dt+\frac{1}{2\pi}\int\limits_0^{2\pi} \log^+
+\frac{1}{|f(\sigma +it)|}dt$$
+$$\leq
+m_0(\sigma,f)+\left(\frac{\sigma}{\sigma_0}-1\right)m_0(0,f)+m_0(\sigma,\frac{1}
+{f})+\left(\frac{\sigma}{\sigma_0}-1\right)m_0(0,\frac{1}{f})$$
+$$-\left(\frac{\sigma}{\sigma_0}-1\right)\frac{1}{2\pi}\int\limits_0^{2\pi} |\log
+|f(it)||dt\leq
+2T(\sigma,f)+\frac{\sigma}{\sigma_0}\frac{1}{2\pi}\int\limits_0^{2\pi}
+|\log |f(it)||dt$$
+$$\leq 2A\lambda(\sigma+B)+C\sigma\leq
+A_1\lambda(\sigma+B),\quad k\in \mathbb{Z},$$ де  $C$ стала,
+$A_1=\max\{2A,C\}$.
+
+Нехай виконується $(ii)$. Тоді з рівності  (\ref {eq_3.00}) маємо:
+
+$$e^{-k}c_k(\sigma+1,f)-c_k(\sigma,f) =
+-\frac{\overline{\alpha_{-k}(f)}} {2 k}
+(e^{-k(\sigma+2)}-e^{-k\sigma}) +\frac{1}{2k}
+\sum\limits_{\sigma<\sigma_j\leq\sigma+1} \left(
+\frac{e^\sigma}{e^{s_j}} \right)^k$$
+$$- \frac{e^{-k}} {2k}\sum\limits_{0<\sigma_j\leq\sigma+1} \left( \frac{e^{\overline{s_j}}} {e^{\sigma+1}}
+\right)^{k}+\frac{e^{-k}} {2k}\sum\limits_{0<\sigma_j\leq\sigma} \left( \frac{e^{\overline{s_j}}} {e^{\sigma}}
+\right)^{k}  ,\quad k\in\mathbb{N}. $$
+
+Звідси
+
+\begin{eqnarray*} {\label {eq_3.15}}
+|c_k(\sigma,f)| \leq \frac{|c_k(\sigma+1,f)|}{e^k}
++\frac{|\overline{\alpha_{-k}(f)}|} {2 k}
++\frac{n(\sigma+1,\frac{1}{f})}{2k} +
+\frac{n(\sigma+1,\frac{1}{f})}{2ke^k} +
+\frac{n(\sigma,\frac{1}{f})}{2k} ,\quad k\in\mathbb{N}.
+\end{eqnarray*}
+
+Але, оскільки
+
+$$N(\sigma+1,\frac{1} {f})\geq \int\limits_0^{\sigma+1} n(\eta,\frac{1}{f})d\eta\geq \int\limits_\sigma^{\sigma+1} n(\eta,\frac{1}{f})d\eta\geq
+n(\sigma,\frac{1}{f}), $$
+то
+\begin{eqnarray*} {\label {eq_3.16}}
+|c_k(\sigma,f)| \leq \frac{|c_k(\sigma+1,f)|}{e^k}
++\frac{|\overline{\alpha_{-k}(f)}|} {2 k}
++\frac{N(\sigma+1,\frac{1}{f})}{2k} +
+\frac{N(\sigma+1,\frac{1}{f})}{2ke^k} +
+\frac{N(\sigma,\frac{1}{f})}{2k} ,\quad k\in\mathbb{N}.
+\end{eqnarray*}
+
+Враховуючи (\ref {eq_2.15}), отримаємо таку
+нерівність
+\begin{eqnarray} {\label {eq_3.17}}
+N(\sigma, \frac{1} {f})< |c_0(\sigma, f)|+ C_1\sigma, \quad
+\sigma\geq{\sigma}_0>0,
+\end{eqnarray}
+де $C_1$ --- стала.
+
+Використовуючи властивість $c_{-k}=\overline{c_k}$, умову $(ii)$  та   (\ref {eq_3.17}), отримуємо
+
+
+\begin{eqnarray*} {\label {eq_3.18}}
+|c_k(\sigma,f)| \leq \frac{A_1\lambda(\sigma+B_1)}{|k|+1}, \quad k\in\mathbb{Z},
+\end{eqnarray*}
+для всіх $\sigma\geq \sigma_0>0$  і деяких $A_1, B_1$, таких, що
+$A_1=\max\{4A,3C_1\}, B_1=B+1.$
+
+
+Припустимо, що виконується $(iii)$, тоді
+
+$$T(\sigma, f)=m_0(\sigma, f)-\frac{\sigma} {{\sigma}_0}
+m_0({\sigma}_0, f)+ (\frac{\sigma} {{\sigma}_0}-1)m_0(0, f)\leq \frac{1} {2\pi}
+\int \limits_0^{2\pi} |\log|f(\sigma+it)||dt $$
+$$+C\sigma\leq \left[\frac{1} {2\pi} \int \limits_0^{2\pi}\left| \log|f(\sigma+it)|\right|^2
+dt\right]^{\frac{1}{2}}+C\sigma= \left[\sum
+\limits_{k\in\mathbb{Z}}|c_k(\sigma,f)|^2\right]^\frac{1}{2}+C\sigma$$
+$$\leq A \left[\sum\limits_{k\in\mathbb{Z}}
+\frac{1}{(|k|+1)^2}\right]^{\frac{1}{2}}\lambda(\sigma+B)+C\sigma\leq
+A_2\lambda(\sigma+B),$$
+при всіх $\sigma\geq{\sigma}_0>0$ і для деяких сталих $C, A_2$, а це означає, що
+$f\in\Lambda_H.$ Таким чином, з \textsl{(iii)} випливає \textsl{(i)}.
+\end{proof}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{BVH} Бридун А.М., Бродяк О.Я., Васильків Я.В., Христіянин А.Я. Опуклі,
+гармонійні та субгармонійні функції. Задачі і теореми. --- Львів: Видавницто
+    ЛНУ ім. І. Франка, 2011. --- 106 с.
+
+\bibitem{KA} Кондратюк А.А. Ряды Фурье и мероморфные функции. --- Л.: Вища
+школа, 1988. --- 196 с.
+
+\bibitem{He} Хейман У.К. Мероморфные функции. --- М.: Мир, 1966. --- 288 с.
+
+\bibitem{He-Ke} Хейман У., Кеннеді П.  Субгармонические функции. --- М.: Мир,
+1980. --- 304 с.
+
+\bibitem{K-L} Kondratyuk A., Laine I.
+{\it Meromorphic functions in multiply connected domains}, Fourier series method in complex analysis
+ (Merkrij\"{a}rvi, 2005), Univ. Joensuu Dept. Math. Rep. Ser.,
+{\bf 10} (2006), 9--111.
+
+\bibitem{Li} Littlewood J. E. {\it On the zeros of the Riemann
+zeta-function}, Proc. Camb. Philos. Soc., {\bf 22} (1924), 295--318.
+
+\bibitem{R-T} Rubel L.A., Taylor B.A. \emph{ Fourier series method for
+meromorphic and entire functions}, Bull. Soc. Math. France, {\bf 96} (1968),
+53--96.
+
+
+
+
+
+
+
+ % \bibitem{k1} Иосида К. Функциональный анализ. -- М.: Мир, 1967. -- 624 с.
+
+ % \bibitem{k2} Малицька Г.П. \emph{Системи рiвнянь типу Колмогорова} // Укр.
+% мат. журн. -- 2009. -- Т.12, №3. -- С. 1650--1563.
+
+ % \bibitem{k3} Dineen S. Complex analysis on infinite-dimensional spaces,
+% Springer Monographs in Mathematics,
+% Springer-Verlag London, Ltd., London, 1999.
+
+
+\end{thebibliography}
+
+\end{document}

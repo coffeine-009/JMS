@@ -1,0 +1,489 @@
+%Format:
+\documentclass[12pt,twoside,draft,ua,bysec]{cmpart}
+% Необов'язкові опції :
+% draft - чернетка
+%  ua - основна мова документа
+% bysec - твердження, леми, означення і т.п. (але не теореми)
+%         нумеруються в межах кожної \section окремо
+% thmbysec - теореми теж нумеруються окремо для кожної \section
+% win   - кодування кирилиці CP-1251 (Windows)
+% koi   - кодування кирилиці KOI8_U  (Unix)
+%
+% Вже завантажено пакети :
+% amsmath,amsfonts,amsthm,amssymb,latexsym
+%
+% Вже означено theorem-like оточення :
+% {theorem}     - теорема
+% {proposition} - твердження
+% {lemma}       - лема
+% {corollary}   - наслідок
+% {remark}      - зауваження
+% {definition}  - означення
+% {example}     - приклад
+% {examples}    - приклади
+% а також їх аналоги з зірочкою без нумерації :
+% {theorem*}, {proposition*} і т.п.
+
+
+\author{Бродяк О.Я., \fbox{Васильків Я.В.}}
+\title{Зображення логарифма цілої  функції багатьох комплексних змінних}
+\shorttitle{Зображення логарифма цілої в $\mathbb{C}^n$ функції}
+\enabstract{Brodyak O.Ya., \fbox{Vasyl'kiv Ya.V.}}%
+{ Representation of logarithm of entire function in several complex variables}%
+{The integral representation of some branch of an entire on $\mathbb{C}^n$
+function which generalized the Poisson-Jensen-Stoll Formula is obtained.}
+\ruabstract{Бродяк О.Я., \fbox{Василькив Я.В.}}%
+{Представление логарифма целой  функции многих комплексных переменных}%
+{Получено  интегральное представление определенной ветви логарифма целой
+в $\mathbb{C}^n$ функции, обобщающее формулу Пуассона-Иенсена-Штоля.}
+
+
+\uaabstract{Бродяк О.Я., \fbox{Васильків Я.В.}}%
+{Зображення логарифма цілої  функції багатьох комплексних змінних}%
+{Отримано інтегральне зображення певної гілки логарифма цілої в $\mathbb{C}^n$
+функції, яке узагальнює формулу Пуассона-Іенсена-Штоля.}%
+
+
+\subjclass{31B10, 32A15}
+\UDC{517.550.4+517.552}
+\keywords{ціла функція багатьох комплексних змінних, інтегральне зображення}
+
+\pyear{2012} % рік публікації
+\volume{4}   % том
+\issue{2}    % випуск
+\pageno{204} % номер першої сторінки
+\received{20.02.2012}
+%\revised{?}
+%\contentslistfile{../total.lst}
+
+
+\address{Національний університет "Львівська політехніка",\\
+Львівський національний університет імені Івана Франка,\\ Львів, Україна}
+\email{brodyakoksana@mail.ru, yavvasylkiv@gmail.com}
+
+
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\maketitle
+
+%%% ----------------------------------------------------------------------
+\footnotetext{Робота виконана в рамках науково-дослідних тем "Нові методи
+комплесного і функціонального аналізу в теорії мероморфних і субгармонійних
+функцій, теорії операторів та нелінійних динамічних систем" (номер
+держреєстрації 0112U001272) та  "Дослідження властивостей
+$\delta$-субгармонійних та мероморфних функцій,
+ряди Фур'є" (но\-мер держреєстрації 0111U002152).}
+
+\section{Вступ}
+Оператори зовнішнього диференціювання $\partial$ і $\overline{\partial}$ в
+$\mathbb{C}^n$
+визначають співвідношеннями (див., напр., \cite[Глава 1]{k1})
+$$
+  \partial=\sum_{k=1}^n\frac{\partial}{\partial\,w_k}\,d\,w_k,\qquad \overline{\partial}=\sum_{k=1}^n\frac{\partial}{\partial\,\overline{w}_k}\,d\,\overline{w}_k,
+$$
+де $w_k=x_k+i\,y_k,\ \overline{w}_k=x_k-i\,y_k,\ \{x_k,y_k\}\subset\mathbb{R},\ k=1,2,\dots,n$, а
+$$
+\frac{\partial}{\partial\,w_k}=\frac12\left(\frac{\partial}{\partial\,x_k}-i\,\frac{\partial}{\partial\,y_k}\right),\qquad
+\frac{\partial}{\partial\,\overline{w}_k}=\frac12\left(\frac{\partial}{\partial\,x_k}+i\,\frac{\partial}{\partial\,y_k}\right)
+$$
+--- оператори формальних похідних. Покладемо
+$$
+d:=\partial+\overline{\partial}=\sum_{k=1}^n\left(\frac{\partial}{\partial\,x_k}\,d\,x_k+\frac{\partial}{\partial\,y_k}\,d\,y_k\right),\quad
+d^{\bot}:=i(\partial-\overline{\partial})=\sum_{k=1}^n\left(\frac{\partial}{\partial\,y_k}\,d\,x_k-\frac{\partial}{\partial\,x_k}\,d\,y_k\right).
+$$
+
+Нехай
+$$
+\omega^{n-1}(\eta)=\left(\frac{1}{4}d^{\bot}d\,\log|\eta|^{2}\right)^{n-1},\qquad \eta\in\mathbb{C}^n\setminus\{0\},
+$$
+--- однорідна метрична форма  Фубіні-Штуді,
+$$
+\sigma(\eta)=-\,\frac{1}{2\pi^n}\,d^\bot\log|\eta|\wedge\omega^{n-1}(\eta)
+$$
+--- метрична форма Пуанкаре (тобто нормована форма об'єму на сферах
+$\mathbf{S}^n(r)=\{\eta\in\mathbb{C}^n:|\eta|=r\},\ 0<r<+\infty$).
+
+Нехай $f(w)$ --- ціла в $\mathbb{C}^n\ (n\in\,\mathbb{N})$ функція, $f(0)=1$,
+$\mathcal{Z}_f=f^{-1}(\{0\})=\{w\in \mathbb{C}^n:\,f(w)=0\}$ --- її
+нульова поверхня, а $\nu_f$ --- функція кратності нульової поверхні
+$\mathcal{Z}_f$ (тобто пара $(\mathcal{Z}_f,\nu_f)$ ---
+дивізор функції $f$).
+
+Покладемо $\langle
+w,\eta\rangle=w_1\overline{\eta}_1+\dots+w_n\overline{\eta}_n,\
+\{w,\eta\}\subset\mathbb{C}^n$,
+$\mathbf{B}^n(t)=\{\eta\in\mathbb{C}^n:\,|\eta|<t\}$,
+$\overline{\mathbf{B}}^n(t)=\{\eta\in\mathbb{C}^n:\,|\eta|\leq t\}$,
+$\overline{\mathbf{B}}_*^n(t)=\overline{\mathbf{B}}^n(t)\cap\mathbb{C}_*^n$,
+$\mathbb{C}_*^n=\mathbb{C}^n\setminus\bigcup\limits_{\zeta\in\mathcal{Z}_f}
+\zeta(a)$,
+де $\zeta(a)=a\,\zeta,\ a\in[1,+\infty)$, $ 0<t<+\infty$.
+
+В роботі \cite{a1} доведено один багатовимірний аналог формули Пуассона-Іенсена. Наведемо його формулювання лише для випадку голоморфної в області $G\subset\mathbb{C}^n$ функції.
+
+Для $y\in\mathbb{C},\ |y|<1$ і $n\in\mathbb{N}$ позначимо (див. \cite[c.
+165]{a1} або \cite[c. 403]{a2})
+$$
+L(y):=L_n(y):=\frac{1}{(n-1)!}\,\frac{d^{n-1}}{d\,y^{n-1}}\left[w^{n-1}\,{\mathrm {Log}}\,(1-y)\right],
+$$
+де символ Log означає головне значення логарифма.
+
+
+\begin{theorem}
+ Нехай $f\not\equiv0$
+--- голоморфна у відкритій зв'язній множині $G\subset\mathbb{C}^n$ функція.
+Припустимо, що $\overline{\mathbf{B}}^n(r)\subseteq G$  і
+$\mathcal{Z}_f\cap \mathbf{B}^n(s)=\emptyset$ при деякому
+$0<s<r<+\infty$. Припустимо також, що $f(0)=1$. В кулі
+$\mathbf{B}^n(s)$ визначимо функцію $\log\,f(w)$ умовою
+$\log\,f(0)=0$. Якщо $w\in\mathbf{B}^n(s)$, то
+$$
+\log\,f(w)=2\int_{\mathbf{S}^n(r)}\log\,\left|f(\eta)\right|\left[\frac{r^{2\,n}}{(r^2-\langle w,\eta\rangle)^n}-1\right]\,\sigma(\eta)\,
+$$
+\begin{equation}\label{eq0}
++\,\frac{1}{\pi^{n-1}}\int_{\mathcal{Z}_f\cap\overline{\mathbf{B}}^n(r)}\,\nu_f(\eta)\,\left(L\left(\frac{\langle w,\eta\rangle}{|\eta|^2}\right)-
+L\left(\frac{\langle w,\eta\rangle}{r^2}\right)\right)\,\omega^{n-1}(\eta).
+\end{equation}
+\end{theorem}
+
+\begin{remark}
+ Нехай виконуються умови теореми 1. Тоді для всіх  $w \in \mathbf{B}^n(s)$
+$$
+\log\,f(w)=2\,\int_{\mathbf{S}^n(r)}\log|f(\eta)|\left(\frac{r^{2n}}{(r^2-\langle w,\eta\rangle)^n}-1\right)\sigma(\eta)
+$$
+$$
++\frac{1}{\pi^{n-1}}\int_s^r\frac{dt}{t}
+\int_{\mathcal{Z}_f\cap
+\overline{\mathbf{B}}^n(t)}\nu_f(\eta)
+\left(1-\frac{t^n\,|\eta|^n}{(t|\eta|-\langle
+w,\eta\rangle)^n}\right)\omega^{n-1}(\eta)
+$$
+\begin{equation}\label{eq10}
++\frac{1}{\pi^{n-1}}\int_s^r\frac{dt}{t}
+\int_{\mathcal{Z}_f\cap \overline{\mathbf{B}}^n(t)}\nu_f(\eta) \left(1-\frac{r^{2n}|\eta|^n}{(r^2|\eta|-t\langle w,\eta\rangle)^n}\right)\omega^{n-1}(\eta),
+\end{equation}
+де перший і третій інтеграли є голоморфними в $\mathbf{B}^n(r)$ функціями, а
+другий --- голоморфною в $\mathbf{B}^n(s)$  функцією.
+\end{remark}
+Покажемо, що зображення (\ref{eq0}), після відповідних перетворень, набуде
+вигляду (\ref{eq10}).
+Справді, спочатку подамо співвідношення (\ref{eq0}) у наступному вигляді
+$$
+\log\,f(w)=2\,\int_{\mathbf{S}^n(r)}\log|f(\eta)|\left(\frac{r^{2n}}{(r^2-\langle w,\eta\rangle)^n}-1\right)\sigma(\eta)
+$$
+$$
++\frac{1}{\pi^{n-1}}\int_{\overline{\mathbf{B}}^n(r)}\nu_f(\eta)\left[L\left(\frac{\langle w,\eta\rangle}{|\eta|^2}\right)
+-L\left(\frac{\langle w,\eta\rangle}{r\,|\eta|}\right)
+\right]\,\omega^{n-1}(\eta)
+$$
+$$
++\frac{1}{\pi^{n-1}}\int_{\overline{\mathbf{B}}^n(r)}\nu_f(\eta)\left[L\left(\frac{\langle w,\eta\rangle}{r\,|\eta|}\right)-L\left(\frac{\langle w,\eta\rangle}{r^2}\right)\right]\,\omega^{n-1}(\eta).
+$$
+Тоді (див. \cite[ с. 405]{a2}), враховуючи, що для $z\in\mathbb{C},\ |z|<1\,$
+\begin{equation}\label{eq12}
+\qquad L(z)=-\,\sum_{p=1}^{+\infty}C_{p+n-1}^p\,\frac{z^p}{p}\qquad\textrm{та}\qquad\frac{1}{(1-z)^n}=\sum_{p=0}^{+\infty}C_{p+n-1}^p\, z^p,
+\end{equation}
+ і той факт, що $\nu_f(\eta)=0$ для $\eta\in\mathbf{B}^n(s)$, маємо
+$$
+\frac{1}{\pi^{n-1}}\,\int_{\overline{\mathbf{B}}^n(r)}\nu_f(\eta)\left(L\left(\frac{\langle w,\eta\rangle}{|\eta|^2}\right)-L\left(\frac{\langle w,\eta\rangle}{r\,|\eta|}\right)
+\right)\,\omega^{n-1}(\eta)
+$$
+$$
+=-\frac{1}{\pi^{n-1}}\,\int_{\overline{\mathbf{B}}^n(r)}\nu_f(\eta)\left(\sum_{p=1}^{+\infty}\,C_{p+n-1}^p\,\frac{\langle w,\eta\rangle^p}{|\eta|^p}\right)\,\omega^{n-1}(\eta)\,
+\int_{|\eta|}^r\frac{d\,t}{t^{p+1}}
+$$
+$$
+=-\frac{1}{\pi^{n-1}}\,\int_0^r\left[\int_{|\eta|\leq t}\nu_f(\eta)\,\left(\sum_{p=1}^{+\infty}\,C_{p+n-1}^p\,\frac{\langle w,\eta\rangle^p}{|\eta|^p}\right)\,\omega^{n-1}(\eta)\right]\,\frac{d\,t}{t^{p+1}}
+$$
+$$
+=\frac{1}{\pi^{n-1}}\,\int_s^r\left[\int_{s\leq|\eta|\leq\,t}
+\nu_f(\eta)\,\left(1-\left(\frac{t|\eta|}{t|\eta|-\langle w,\eta\rangle}\right)^n\right)\omega^{n-1}(\eta)\right]\frac{d\,t}{t},
+$$
+і, відповідно,
+$$
+\frac{1}{\pi^{n-1}}\,\int_{\overline{\mathbf{B}}^n(r)}\nu_f(\eta)\,\left(L\left(\frac{\langle w,\eta\rangle}{r\,|\eta|}\right)-L\left(\frac{\langle w,\eta\rangle}{r^2}\right)
+\right)\,\omega^{n-1}(\eta)
+$$
+$$
+=-\frac{1}{\pi^{n-1}}\,\int_{\overline{\mathbf{B}}(r)}\nu_f(\eta)\,\left(\sum_{p=1}^{+\infty}\,C_{p+n-1}^p\,\frac{\langle w,\eta\rangle^p}{r^2\,|\eta|^p}\right)\,\omega^{n-1}(\eta)\,
+\int_{|\eta|}^r\,t^{p-1}\,d\,t
+$$
+$$
+=-\frac{1}{\pi^{n-1}}\,\int_0^r\,\left[\,\int_{|\eta|\leq t}\nu_f(\eta)\,\left(\sum_{p=1}^{+\infty}\,C_{p+n-1}^p\,\frac{\langle w,\eta\rangle^p}{r^2\,|\eta|^p}\right)\,\omega^{n-1}(\eta)\right]\,t^{p-1}\,d\,t
+$$
+$$
+=\frac{1}{\pi^{n-1}}\,\int_s^r\left[\int_{s\leq|\eta|\leq\,t}
+\nu_f(\eta)\left(1-\left(\frac{r^2|\eta|}{r^2|\eta|-t\langle w,\eta\rangle}\right)^n\right)\omega^{n-1}(\eta)\right]\frac{d\,t}{t}.
+$$
+Враховуючи сказане вище, одержуємо (\ref{eq10}).
+
+
+При доведенні    теореми 1  істотно використано наступні два оператори:
+
+\noindent $1^0$.\ інтегральний оператор
+$$
+\delta^n[g](\zeta):=(n-1)\,\int_0^1(1-t)^{n-2} \,g(t\zeta)\,d\,t,
+$$
+
+\noindent $2^0$. диференціальний оператор
+$$
+\delta_n[g](\zeta):=\frac{1}{(n-1)!}\,\frac{d^{n-1}}{d\,z^{n-1}}\left[z^{n-1}\,g(z\zeta)\right]\Big|_{z=1},
+$$
+а також їх властивості (див. \cite{a1}--\cite{a3}), сформульовані у наступному
+твердженні.
+
+\begin{proposition}
+  Нехай  $g$ голоморфна в $\mathbf{B}^n(r)\subset\mathbb{C}^n\ (n\geq2)$
+функція, $\zeta\in \mathbf{B}^n(r)$, $0<r<+\infty$. Тоді
+\vskip10pt
+\noindent {\it a}) \quad $ \delta^n[g]$ {\it голоморфна в} $ \mathbf{B}^n(r)$;
+\vskip10pt
+\noindent {\it b}) \quad
+$\delta^n[g](\zeta)=\int\limits_{\mathbf{S}^n(1)}\,g(\langle\zeta,
+\eta\rangle\eta)\,\sigma(\eta)$;
+\vskip10pt
+\noindent {\it c}) \quad якщо $g(0)=0$, {\it то} $\delta_n[g](0)=0$;
+\vskip10pt
+\noindent {\it d}) \quad $\delta_n[g]$ {\it голоморфна в} $\mathbf{B}^n(r)$;
+\vskip10pt
+\noindent {\it e}) \quad $\delta_n\circ\delta^n[g]=\delta^n\circ\delta_n[g]=g$.
+\end{proposition}
+
+ Формулу Пуассона-Іенсена-Штоля (\ref{eq0}) в роботі \cite{a4}
+узагальнено на випадок плюрісубгармонійних в $\mathbb{C}^n$ функцій.
+
+\section{Зображення логарифма цілої в $\mathbb{C}^n$ функції}
+Мета цієї роботи узагальнити теорему 1 на випадок логарифмів цілих в $\mathbb{C}^n$ функцій. З цією метою подамо наступне означення.
+
+\begin{definition}
+Для цілої  в $\mathbb{C}^n$ функції $f(w)$, $f(w)\ne0$ для всіх $w$ із  $\mathbf{B}^n(s)$ при деякому $0<s<+\infty,\ f(0)=1$, покладемо
+$$
+\log\,f(w):=\int_0^{|w|}\frac{f'_x(xw/|w|)}{f(xw/|w|)}\,d\,x,\quad w\in\mathbb{C}_*^n,\quad \log\,f(0)=0.
+$$
+\end{definition}
+
+ Правильна наступна теорема.
+
+\begin{theorem}
+ Нехай $f(w)$ --- ціла в $\mathbb{C}^n$ функція, $ f(w)\ne0$ в
+$\mathbf{B}^n(s)$ при деякому $0<s<R<+\infty$, $f(0)=1,\ |w|=r$. Тоді для всіх
+$w\in \mathbf{B}_*^n(R)$
+$$
+\log\,f(w)=2\,\int_{\mathbf{S}^n(R)}\log|f(\eta)|\left(\frac{R^{2n}}{(R^2-\langle w,\eta\rangle)^n}-1\right)\sigma(\eta)
+$$
+$$
++\frac{1}{\pi^{n-1}}
+\int_{\mathcal{Z}_f\cap \mathbf{B}^n(R)}\nu_f(\eta)\, \omega^{n-1}(\eta)\int_0^r\left(1-\frac{r^n\,|\eta|^{2n}}{(r|\eta|^2-t\langle w,\eta\rangle)^n}\right)\frac{dt}{t}
+$$
+\begin{equation}\label{eq1}
++\frac{1}{\pi^{n-1}}
+\int_{\mathcal{Z}_f\cap \mathbf{B}^n(R)}\nu_f(\eta)\,\omega^{n-1}(\eta)\int_0^r \left(\frac{R^{2n}r^n}{(R^2r-t\langle w,\eta\rangle)^n}-1\right)\frac{dt}{t}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+ В ідейному плані доведення цієї теореми є модифікацією доведення теореми 1 з
+\cite{a4}
+(порівн. з \cite[Теорема 1.7]{a1}). Нехай $ z\in\mathbb{C},\ |z|<R,\
+\zeta\in\mathbf{S}^n(1),\ f_\zeta(z)=f(z\zeta)$ --- зріз-функція $f$.
+З огляду на узагальнену формулу Шварца  (див.  теореми 1 та 2 з \cite{a5} при
+$u=\log|f_\zeta|$)  та формулу Ієнсена \cite{a6}, маємо
+$$
+\log\,f_\zeta(z)- \sum_{|a_j|\leq |z|}\nu_{f_\zeta}(a_j)\,\log\left(1-\frac{z}{a_j}\right) =
+\frac{2}{2\pi}\int_0^{2\pi}\log|f_\zeta(Re^{i\theta})|\, \frac{z}{Re^{i\theta}-z}\,d\,\theta
+$$
+\begin{equation}\label{eq2}
++\sum_{|z|<|a_j|< R}\nu_{f_\zeta}(a_j)\,\log\left(1-\frac{z}{a_j}\right) -\sum_{|a_j|< R}\nu_{f_\zeta}(a_j)\,\log\left(1-\frac{z\,\overline{a}_j}{R^2}\right),
+\end{equation}
+де $ a_j\in\mathcal{Z}_{f_\zeta},\  z\in\mathbf{B}_*^1(R)$.
+
+Покладемо
+$$
+F(z\zeta):=\log\,f_\zeta(z)- \sum_{|a_j|\leq |z|}\nu_{f_\zeta}(a_j)\,\log\left(1-\frac{z}{a_j}\right).
+$$
+Зауважимо, що правий бік співвідношення (\ref{eq2}) є голоморфною в
+$\mathbf{B}^1(R)$ функцією  від змінної $z$ для всіх $\zeta\in\mathbf{S}^n(1)$,
+а лівий --- голоморфною функцією від змінної $z\in\mathbf{B}^1(R)$ для всіх
+$\zeta\in\mathbf{S}^n(1)$ таких, що $z\,\zeta\in\mathbf{B}_*^n(R)$. Тоді, з
+теореми про усунення відрізка \cite[Теорема 4.15]{a7} випливає, що зріз-функця
+$F(z\zeta)$  також є голоморфною в $\mathbf{B}^1(R)$ функцією від змінної $z$
+для всіх $\zeta\in\mathbf{S}^n(1)$, тобто для всіх $z\,\zeta\in
+\mathbf{B}^n(R)$.
+
+Зважаючи на те, що
+$$
+\log\left(1-\frac{z}{a}\right)=-\int\limits_0^{|z|}\frac{t\,z\,\overline{a}}{|z|\,|a|^2-t\,z\,\overline{a}}\,\frac{d\,t}{t},\qquad
+\log\left(1-\frac{z\,\overline{a}}{R^2}\right)=-\int\limits_0^{|z|}\frac{t\,z\,\overline{a}}{R^2\,|z|-t\,z\,\overline{a}}\,\frac{d\,t}{t},
+$$
+подамо співвідношення (\ref{eq2}) у наступному вигляді
+$$
+\log\,f_\zeta(z) +\sum_{|a_j|\leq |z|}\nu_{f_\zeta}(a_j)\int_0^{|z|}\frac{t\,z\,\overline{a}_j}{|z|\,|a_j|^2-
+tz\overline{a}_j}\frac{d\,t}{t}=\frac{2}{2\pi}\int_0^{2\pi}\log|f_\zeta(Re^{i\theta})|\, \frac{z\,Re^{-i\theta}}{R^2-z\,Re^{-i\theta}}\,d\,\theta
+$$
+\begin{equation}\label{eq3}
+- \sum_{|z|<|a_j|<R }\nu_{f_\zeta}(a_j)\int_0^{|z|}\frac{t\,z\,\overline{a}_j}{|z|\,|a_j|^2-tz\overline{a}_j}\frac{d\,t}{t}+\sum_{|a_j|< R}\nu_{f_\zeta}(a_j)\int_0^{|z|}\frac{t\,z\,\overline{a}_j}{R^2\,|z|-t\,z\,\overline{a}_j}\frac{d\,t}{t}.
+\end{equation}
+
+Візьмемо $w\in\mathbf{B}^n(R)$ і $\zeta\in\mathbf{S}^n(1)$. Замінимо в (\ref{eq3}) $z$ на $\langle w,\zeta\rangle$ і зауважимо, що
+$|\langle w,\zeta\rangle|<R$. Тоді
+$$
+F(\langle w,\zeta\rangle\,\zeta):=\log\,f(\langle w,\zeta\rangle\,\zeta)+\sum_{|a_j|\leq |\langle w,\zeta\rangle|}
+\nu_{f_\zeta}(a_j)\int_0^{|\langle w,\zeta\rangle|}\frac{t\langle w,\,a_j\zeta\rangle}{|\langle w,\zeta\rangle|\,|a_j\,\zeta|^2-t\langle w,a_j\zeta\rangle}\frac{d\,t}{t}
+$$
+$$
+=\int_0^{2\pi}\log|f(Re^{i\theta}\zeta)|\, \frac{\langle w,\,Re^{i\theta}\zeta\rangle}{R^2-\langle w,\,Re^{i\theta}\zeta\rangle}\frac{d\,\theta}{\pi}-
+\sum_{|\langle w,\zeta\rangle|<|a_j|< R}\nu_{f_\zeta}(a_j)
+$$
+\begin{equation}\label{eq4}
+\times\int\limits_0^{|\langle w,\zeta\rangle|}\frac{t\langle w,\,a_j\zeta\rangle}{|\langle w,\zeta\rangle|\,|a_j\,\zeta|^2-t\langle w,a_j\zeta\rangle}\frac{d\,t}{t}-\sum_{|a_j|< R}\nu_{f_\zeta}(a_j)\int\limits_0^{|\langle w,\zeta\rangle|}\frac{t\,\langle w,a_j\zeta\rangle}{R^2\,|\langle w,\zeta\rangle|-t\,\langle w,a_j\zeta\rangle}\frac{d\,t}{t}.
+\end{equation}
+
+Тепер усереднимо всі складові співвідношення (\ref{eq4}) за параметром
+$\zeta\in\mathbf{S}^n(1)$.
+Враховуючи п. $b)$ твердження 1.1, маємо
+\begin{equation}\label{eq5}
+\int_{\mathbf{S}^n(1)}F(\langle w,\zeta\rangle\,\zeta)\sigma(\zeta)=\delta^n[F](w).
+\end{equation}
+Крім того, позаяк метрична форма Пуанкаре $\sigma(\bullet)$ інваріантна відносно обертань \cite[Твердження 1.4.7]{a8}, то
+\begin{equation}\label{eq6}
+\int_{\mathbf{S}^n(1)}\frac{\sigma(\zeta)}{2\,\pi}\int_0^{2\,\pi}\log|f(Re^{i\theta}\zeta)|\frac{\langle w,\,Re^{i\theta}\zeta\rangle}{R^2-\langle w,\,Re^{i\theta}\zeta\rangle}\,d\,\theta=\int_{\mathbf{S}^n(R)}\log|f(\eta)|\frac{\langle w,\eta\rangle}{R^2-\langle w,\eta\rangle}\sigma(\eta).
+\end{equation}
+
+Інтегрування по $\mathbf{S}^n(1)$ можна здійснити спочатку по
+перетину $\mathbf{S}^n(1)$ з комплексною прямою
+$l_\zeta:=\{\xi=\lambda\,\zeta\},\ \lambda\in\mathbb{C},\
+\zeta\in\mathbf{S}^n(1)$, тобто по колу $\{|\lambda|=1\}$, а потім по сукупності
+$\{l_\zeta\}$ таких прямих (див., напр., \cite[Глава 3]{a9}, \cite[с.
+254-255]{a10}). Оскільки на комплексній прямій $l_\zeta$ форма
+$-\dfrac{1}{2\,\pi}\,d^{\bot}\,\log\,|\xi|=\dfrac{d\,\theta}{2\,\pi}$, де $\theta=\textrm{arg}\,\lambda$, то враховуючи, що $\sigma(\xi)=-\dfrac{1}{2\,\pi^n}\,d^{\bot}\,\log\,|\xi|\wedge\,\omega^{n-1}(\xi)$ і ті
+факти, що метрична форма $\omega^{n-1}(\bullet)$ інваріантна відносно розтягів та обертань,  одержимо
+$$
+\int_{\mathbf{S}^n(1)}\sigma(\zeta)\sum_{|a_j|\leq |\langle w,\zeta\rangle|}\nu_{f_\zeta}(a_j)
+\int_0^{|\langle w,\zeta\rangle|}\frac{t\langle w,\,a_j\zeta\rangle}{|\langle w,\zeta\rangle|\,|a_j|^2-t\langle w,a_j\zeta\rangle}\frac{d\,t}{t}
+$$
+$$
+=\int_{\{l_\zeta\}}\frac{\omega^{n-1}(\xi)}{\pi^{n-1}}\int_0^{2\pi}\frac{d\,\theta}{2\pi}\sum_{|a_je^{i\theta}|\leq |\langle w,\zeta\rangle|}
+\nu_{f_\zeta}(a_je^{i\theta})\int_0^{|\langle w,\zeta\rangle|}\frac{\langle t\,w,\,a_je^{i\theta}\zeta\rangle}{|\langle w,\zeta\rangle|\,|a_je^{i\theta}|^2-
+t\langle w,a_je^{i\theta}\zeta\rangle}\frac{d\,t}{t}
+$$
+\begin{equation}\label{eq7}
+=\frac{1}{\pi^{n-1}}\int_{\mathcal{Z}_f\cap\overline{\mathbf{B}}^n(r)}\nu_{f}(\eta)\omega^{n-1}(\eta)\int_0^r\frac{t\,\langle w,\eta\rangle}
+{r|\eta|^2-t\langle w,\eta\rangle}\frac{d\,t}{t},
+\end{equation}
+$$
+\int_{\mathbf{S}^n(1)}\sigma(\zeta)\sum_{|\langle w,\zeta\rangle|<|a_j|< R}\nu_{f_\zeta}(a_j)\int_0^{|\langle w,\zeta\rangle|}
+\frac{t\langle w,\,a_j\zeta\rangle}{|\langle w,\zeta\rangle|\,|a_j|^2-t\langle w,a_j\zeta\rangle}\frac{d\,t}{t}
+$$
+$$
+=\int_{\{l_\zeta\}}\frac{\omega^{n-1}(\xi)}{\pi^{n-1}}\int_0^{2\pi}\frac{d\,\theta}{2\pi}
+\sum_{|\langle w,\zeta\rangle|<|a_je^{i\theta}|< R}\nu_{f_\zeta}(a_je^{i\theta})\int_0^{|\langle w,\zeta\rangle|}
+\frac{\langle t\,w,\,a_je^{i\theta}\zeta\rangle}{|\langle w,\zeta\rangle|\,|a_je^{i\theta}|^2-t\langle w,a_je^{i\theta}\zeta\rangle}\frac{d\,t}{t}
+$$
+\begin{equation}\label{eq11}
+=\frac{1}{\pi^{n-1}}\int_{\mathcal{Z}_f\cap\{\mathbf{B}^n(R)\setminus\overline{\mathbf{B}}^n(r)\}}\nu_{f}(\eta)\omega^{n-1}(\eta)
+\int_0^r\frac{t\,\langle w,\eta\rangle}{r|\eta|^2-t\langle w,\eta\rangle}\frac{d\,t}{t},
+\end{equation}
+$$
+\int_{\mathbf{S}^n(1)}\sigma(\zeta)\sum_{|a_j|< R}\nu_{f_\zeta}(a_j)\int_0^{|\langle w,\zeta\rangle|}\frac{t\,
+\langle w,a_j\zeta\rangle}{R^2\,|\langle w,\zeta\rangle|-t\,\langle w,a_j\zeta\rangle}\frac{d\,t}{t}
+$$
+$$
+=\int_{\{l_\zeta\}}\frac{\omega^{n-1}(\xi)}{\pi^{n-1}}\int_0^{2\pi}\frac{d\,\theta}{2\pi}\sum_{|a_je^{i\theta}|<R}
+\nu_{f_\zeta}(a_je^{i\theta})\int_0^{|\langle w,\zeta\rangle|}\frac{t\,\langle w,a_je^{i\theta}\zeta\rangle}{R^2\,|
+\langle w,\zeta\rangle|-t\,\langle w,a_je^{i\theta}\zeta\rangle}\frac{d\,t}{t}
+$$
+\begin{equation}\label{eq8}
+=\frac{1}{\pi^{n-1}}\int_{\mathcal{Z}_f\cap\mathbf{B}^n(R)}\nu_{f}(\eta)\omega^{n-1}(\eta)\int_0^r\frac{t\langle w,\eta\rangle}{R^2r-t\langle w,\eta\rangle}\frac{d\,t}{t}.
+\end{equation}
+
+Отже, з урахуванням співвідношень (\ref{eq5}), (\ref{eq6}), (\ref{eq11}) та (\ref{eq8}), маємо
+$$
+\delta^n[F](w)=\int_{\mathbf{S}^n(R)}\log|f(\eta)|\frac{\langle w,\eta\rangle}{R^2-\langle w,\eta\rangle}\sigma(\eta)
+$$
+$$
+-\frac{1}{\pi^{n-1}}\int_{\mathcal{Z}_f\cap\{\mathbf{B}^n(R)\setminus\overline{\mathbf{B}}^n(r)\}}\nu_{f}(\eta)\omega^{n-1}
+(\eta)\int_0^r\frac{t\,\langle w,\eta\rangle}{r|\eta|^2-t\langle w,\eta\rangle}\frac{d\,t}{t}
+$$
+\begin{equation}\label{eq9}
++\frac{1}{\pi^{n-1}}\int_{\mathcal{Z}_f\cap\mathbf{B}^n(R)}\nu_{f}(\eta)\omega^{n-1}(\eta)\int_0^r\frac{t\langle w,\eta\rangle}{R^2r-t\langle w,\eta\rangle}\frac{d\,t}{t}.
+\end{equation}
+Застосовуючи тепер оператор $\delta_n$ до співвідношення (\ref{eq9}) і враховуючи, що
+$$
+\delta_n\circ\delta^n[F]=F,\qquad \delta_n\left[\frac{\langle w,\bullet\rangle}{R^2 -\langle
+w,\bullet\rangle}\right]=\frac{R^{2n}}{(R^2-\langle w,\bullet\rangle)^n}-1,
+$$
+$$
+\delta_n\left[\frac{t\,\langle \,w,\bullet\rangle} {r|\bullet|^2 -t\,\langle
+w,\bullet\rangle}\right]=\frac{r^n|\bullet|^{2n}}{(r|\bullet|^2-t\langle w,\bullet\rangle)^n}-1,\quad
+\delta_n\left[\frac{t\langle w,\bullet\rangle} {R^2r -t\langle
+w,\bullet\rangle}\right]=\frac{R^{2n}r^n}{(R^2r-t\langle w,\bullet\rangle)^n}-1,
+$$
+і співвідношення (\ref{eq4}) та (\ref{eq7}), отримуємо (\ref{eq1}) для всіх $w\in\mathbf{B}_*^n(R)$.
+\end{proof}
+
+\section{Завершальне зауваження}
+\begin{remark}
+Нехай виконуються умови теореми 2 і нехай $w\in\mathbf{B}^n(s)$. Тоді, враховуючи співвідношення (\ref{eq12}), співвідношення (\ref{eq1}) набуде вигляду
+$$
+\log\,f(w)=2\int_{\mathbf{S}^n(R)}\log\,\left|f(\eta)\right|\left[\frac{R^{2\,n}}{(R^2-\langle w,\eta\rangle)^n}-1\right]\,\sigma(\eta)\,
+$$
+$$
++\,\frac{1}{\pi^{n-1}}\int_{\mathcal{Z}_f\cap\mathbf{B}^n(R)}\,\nu_f(\eta)\,\left(L\left(\frac{\langle w,\eta\rangle}{|\eta|^2}\right)-
+L\left(\frac{\langle w,\eta\rangle}{R^2}\right)\right)\,\omega^{n-1}(\eta),
+$$
+тобто отримуємо твердження теореми 1.
+\end{remark}
+
+
+\begin{thebibliography}{11}
+
+\bibitem{a4}  Бродяк О.Я., Васильків Я.В., Тарасюк С.І.
+\emph{$H(p,q)$-розвинення плюрісубгармонійних в $\mathbb{C}^n$ функцій} // Вісн.
+Харківського національного у-ту. Серія "Математика, прикладна математика і
+механіка". --- 2010. ---  №931. --- С. 73--92.
+
+\bibitem{a7} Гольдберг А.А., Шеремета М.М., Заболоцький М.В., Скасків О.Б.
+Комплексний аналіз. --- Львів: Афіша, 2008. --- 203~с.
+
+\bibitem{a8} Рудин У. Теория функций в единичном шаре из $\mathbb{C}^n$. --- М.:
+Мир, 1984. --- 455~c.
+
+\bibitem{a9} Чирка Е.М. Комплексные аналитические множества. --- М.: Наука,
+1985. --- 272~с.
+
+\bibitem{a10} Шабат Б.В. Введение в комплексный анализ, Ч. 2. --- М.: Наука,
+1985. ---  464~с.
+
+\bibitem{k1} Шабат Б.В.  Распределение значений голоморфных отображений. ---
+М.: Наука, 1982. --- 288~с.
+
+\bibitem{a6} Jensen J.L.~W.V.  \emph{Sur un nouvel et important theoreme de la
+theorie des fonctions}, Acta Math., {\bf22}, (1899), 359--364.
+
+\bibitem{a5} Kondratyuk A.A., Vasyl'kiv Ya.~V. \emph{Congjugate of subharmonic
+function}, Math. Stud., \textbf{13}, 13  (2010), 173-180.
+
+\bibitem{a3} Kujala R.O. \emph{Functions of finite $\lambda$-type in several
+complex variables}, Trans. Amer. Math. Soc., {\bf 161}, (1971), 327--358.
+
+\bibitem{a2} Stoll W. \emph{About entire and meromorphic functions of
+exponential type}, Proc. Sympos. Pure Math., Amer. Math. Soc. Providence, R.I.,
+ {\bf 11}, (1968), 392--430.
+\bibitem{a1} Stoll W. \emph{Normal familes of non-negative divisors}, Math. Z.,
+{\bf 84}, (1964), 154--218.
+
+
+
+
+
+
+
+
+
+
+
+\end{thebibliography}
+
+\end{document}

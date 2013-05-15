@@ -271,6 +271,10 @@ class AuthorizationController
 
     public function loginAction()
     {
+    	//- Init view -//
+        $this -> view -> Title = 'Authorization';
+        $this -> view -> pathOfSite = 'Authorization => Login';
+        
         //- Validators -//
 		$validators = array(
 			'username'	=> array(

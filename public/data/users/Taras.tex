@@ -1,0 +1,450 @@
+%Format:
+\documentclass[12pt,twoside,ua,draft,bysec]{cmpart}
+% Необов'язкові опції :
+
+% draft - чернетка\grave{}
+% en, uk, ru - основна мова документа
+% bysec - твердження, леми, означення і т.п. (але не теореми)
+%         нумеруються в межах кожної \section окремо
+% thmbysec - теореми теж нумеруються окремо для кожної \section
+% win   - кодування кирилиці CP-1251 (Windows)
+% koi   - кодування кирилиці KOI8_U  (Unix)
+%
+% Вже завантажено пакети :
+% amsmath,amsfonts,amsthm,amssymb,latexsym
+%
+% Вже означено theorem-like оточення :
+% {theorem}     - теорема
+% {proposition} - твердження
+% {lemma}       - лема
+% {corollary}   - наслідок
+% {remark}      - зауваження
+% {definition}  - означення
+% {example}     - приклад
+% {examples}    - приклади
+% а також їх аналоги з зірочкою без нумерації :
+% {theorem*}, {proposition*} і т.п.
+
+
+
+
+
+
+\def\C{{ \mathbb{C}}}
+\def\U{{\mathcal{U}}}
+    \def\N{{ \mathbb{N}}}
+    \def\R{{ \mathbb{R}}}
+    \def\Q{{ \mathbb{Q}}}
+    \def\Z{{ \mathbb{Z}}}
+    \def\K{{ \mathbb{K}}}
+        \def\P{{ \mathcal{P}}}
+            \def\W{{ \mathcal{W}}}
+    \def\I{{ \mathcal{I}}}
+ \def\E{{ \mathcal{E}}}
+  \def\A{{ \mathcal{A}}}
+   \def\eN{{\mathcal{N}}}
+  \def\spn{{ \rm{ span }}}
+   \def\Ker{{ \rm{ Ker }}}
+      \def\deg{{ \rm{ deg }}}
+\def\d{\displaystyle}
+\def\<{{\langle}}
+\def\>{{\rangle}}
+\def\cal{\mathcal}
+
+
+\author{Тарас О.Г.}
+\title{Алгебри блочно-діагональних аналітичних функцій на банахових просторах}
+%\shorttitle{Коротка назва для колонтитулів (якщо треба)}
+
+\enabstract{Taras O.}%
+{Block-diagonal algebras of analytic functions on Banach spaces}%
+{In this work we consider about algebras block diagonal of analytic functions on the space $ \ell_1 $ and $\ell_2$ and investigate spectra of these algebras.}
+
+\ruabstract{Тарас О.Г.}%
+{Алгебры блочно-диагональных аналитических функций на банаховых пространствах}%
+{В работе рассмотрено алгебры блочно-диагональных функций на пространстве $\ell_1$ и $\ell_2$  и исследовано спектры этих алгебр.}
+
+\uaabstract{Тарас О.Г.}%
+{Алгебри блочно-діагональних аналітичних функцій на банахових просторах}%
+{В роботі розглянуто алгебри блочно-діагональних аналітичних функцій на
+просторах $\ell_1$ та $\ell_2$ та досліджено спектри цих алгебр.}
+
+\subjclass{46E30, 46J20}
+\UDC{517.98}
+
+\pyear{2012} % рік публікації
+\volume{4}   % том
+\issue{2}    % випуск
+\pageno{340} % номер першої сторінки
+\received{09.10.2012}
+%\revised{}
+\contentslistfile{../total.lst}
+
+
+\address{Прикарпатський національний університет імені Василя Стефаника,\\ Івано-Франківськ, Україна}
+
+
+\keywords{спектр, множина максимальних ідеалів, блочно-діагональні аналітичні функції, поліном, простір $\ell_1$}
+
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\maketitle
+%%% ----------------------------------------------------------------------
+
+
+%\def\C{\mathbb{C}}
+%\def\N{\mathbb{N}}
+%\def\R{\Bbb R}%    \def\R{{I \! \!  R}}
+%\def\Q{\Bbb Q}%    \def\Q{{I \! \!  Q}}
+%\def\Z{\Bbb Z}%    \def\Z{{Z\! \! \!  Z}}
+% \def\Z   % \def\Z{{/ \! \!  Z}}
+%\def\K{\Bbb K}    %\def\K{{I \! \!  K}}
+
+%\def\d{\displaystyle}
+%\def\Rad{{\rm Rad }}
+%\def\span{{\rm span}}
+%\def\ord{{\rm ord}}
+%\def\as{{\rm as\, }}
+
+%\def\<{{\langle}}
+%\def\>{{\rangle}}
+
+%\newcommand{\con}{\mathop{+\:\!\!\!\!\!\!\times }\limits }
+%\newcommand{\bul}{\mathop{\bullet}\limits }
+%\newcommand{\bgs}{\mathop{\bigstar}\limits }
+
+%\begin{document}
+
+
+\section*{Вступ}
+
+\sloppy
+
+
+Нехай $X$ --- банаховий простір над полем комплексних чисел $\C$, $H_b(X)$  ---
+алгебра аналітичних функцій обмеженого типу на  $X$, тобто $H_b(X)$ складається
+з аналітичних функцій, обмежених на обмежених підмножинах в $X$. $M_b(X)$ --
+множина ненульових лінійних мультиплікативних функціоналів (характерів) на
+$H_b(X)$. Множину  $M_b(X)$ також називають спектром алгебри  $H_b(X)$ (див. \cite{AB, ACG2}).\par
+
+Відомо, що  $H_b(X)$ є проективною границею банахових алгебр
+$H_{uc}^{\infty}(B_r)$ --- рівномірно неперервних аналітичних функцій на кулі
+$B_r \subset X, r\in \N$. Зокрема $H_b(X)=\cap H_{uc}^{\infty}(B_r)$. Тому
+$M_b(X)$ є індуктивною границею множин $M_b(B_r)$ характерів $H_{uc}^\infty
+(B_r)$. Зокрема, (див. \cite{ACG}),
+$$M_b(X)=\cup M_b(B_r).$$
+Позначимо $A_n$ --- алгебру, породжену поліномами степеня $\leq n$, зокрема
+$A_1$ --- алгебра, породжена лінійними функціоналами і сталими функціями. Нехай
+$I_n$ --- ідеал, породжений $n$-однорідними поліномами з  $A_n$. Легко бачити,
+що $I_1\subset I_2\subset \ldots \subset I_n\subset \ldots $ (див. \cite{Z2}).
+
+\begin{theorem} \label{4} \cite{Z} Існує характер  $\varphi \in M_b(X)$, який розділяє ідеали $I_k\neq I_{k+1}$, тобто $\varphi (I_k)=0, \varphi (I_{k+1})\neq 0$  .
+\end{theorem}
+Ця теорема є одним з результатів, що дозволяє описати елементи спектру алгебри $H_b(X)$. Проте, у явному вигляді важко зобразити конкретні елементи $M_b(X)$.
+
+
+\section{Підмножина  $\eN_m$ банахового векторного простору}
+
+Нехай $X$ --- банаховий простір  з  топологічним базисом Шаудeра $\{e_k\}.$
+Розглянемо підмножини $X$:
+\begin{gather*}
+\eN_1=\eN_1(X)=\bigcup_{k}\{\lambda e_k, \lambda \in \C\}, \\
+\eN_2=\eN_2(X)=\bigcup_{k\neq j} \spn(e_k,e_j)=\bigcup_{k,j} (\C e_k \oplus \C e_j), \\
+\ldots \\
+\eN_m=\eN_m(X)=\bigcup_{k_1\neq \ldots \neq k_m} \spn(e_{k_1},\ldots ,e_{k_m})=\bigcup_{k_1\neq \ldots \neq k_m } (\C e_{k_1} \oplus \ldots \oplus \C e_{k_m}) , \\
+\ldots .
+\end{gather*}
+           \begin{remark} Якщо простір $X$ є скінченновимірним, то $\eN_m=X,$ для $m=dim X$.
+            \end{remark}
+
+      Нехай $H_b(\eN_m)$ --- алгебра звужень функцій з $H_b(X)$ на $\eN_m$,
+$M_b(\eN_m)$ --- відповідна множина характерів. Аналогічно, як у випадку
+$H_b(X)$ алгебру $H_b(\eN_m)$  (див. \cite{ACG}) можна розглядати як перетин
+рівномірних алгебр $H_{uc}^{\infty}(\eN_m(r))$, де $\eN_m (r)=B(r) \cup \N_m,
+r\in \N$:
+    \begin{gather*}
+        H_b(\eN_m)=\cap H_{uc}^{\infty}(\eN_m (r)), \\
+        M_b(\eN_m)=\cup M_b(\eN_m(r)).
+    \end{gather*}
+
+
+
+
+
+
+Легко бачити, що оператор звуження $T_m: H_b(X) \to H_b(\eN_m)$ є гомоморфізмом
+алгебр.  Відомо, що ядро кожного гомоморфізму є ідеал і тому $H_b(\eN_m)$ є
+фактор-простором по ядру $\Ker{T_m}$ гомоморфізму $T_m$:
+\begin{gather*} H_b(\eN_m)=H_b(X)/{\Ker{T_m}}.
+\end{gather*}
+
+
+
+                    \begin{proposition} Нехай $\varphi \in M_b(\eN_m)$, тоді $\varphi$ можнa продовжити до характера $\tilde{\varphi}$ на $H_b(X)$ за формулою: $\tilde{\varphi} = \varphi \circ T_m.$
+                    \end{proposition}
+
+                            \begin{proof} Оскільки $\varphi \in M_b(\eN_m)$,
+$T_m$ --- гомоморфізм, то $\varphi \circ T_m$ також є лінійним мультиплікативним
+функціоналом і ${\varphi \circ T_m : H_b(X) \to \C,}$ тому $\varphi \circ T_m$
+--- характер з $M_b(X)$. Оскільки $\varphi \circ T_m$ можна вважати продовження
+$\varphi $ у $M_b(X)$, то $\tilde{\varphi} := \varphi \circ T_m.$
+                            \end{proof}
+
+
+        Таким чином, вивчення спектру алгебри $H_b(X)$ можна звести до вивчення
+вужчої множини --- спектру алгебри $H_b(\eN_m)$ і спробувати узагальнити
+отримані результати на  $H_b(X)$. \par
+
+                    Використовуючи біноміальну формулу, запишемо загальний
+вигляд $n$-однорідного полінома $P \in P(^n X)$ для довільного $x=(x_1, \ldots ,
+x_k, \ldots)\in X$:
+
+                    \begin{gather} \label{1}
+                    P(x)=\sum_{k_1, \ldots , k_m} \sum_{n_1+\ldots+n_m=n} x_{k_1}^{n_1}\ldots x_{k_m}^{n_m} \overline{P}(e_{k_1}^{n_1},\ldots , e_{k_m}^{n_m}),
+                    \end{gather}
+                    де $\overline{P}$ --- симетрична $n$-лінійна форма, яка
+відповідає поліному $P$.
+
+                    На підмножинах $\eN_m$ простору  $X$ загальний вигляд поліномів дещо простіший:
+
+                    \begin{gather*}
+                    P\in P(^n \eN_1):      P(x)=\sum_{k}\sum_{n}C_k x_k^n, \\
+                     P\in P(^n \eN_2):      P(x)=\sum_{k\neq j}\sum_{m}a_{kj} x_k^{n-m} x_j^m, \\
+                     \ldots, \\
+                     P\in P(^n \eN_m):      P(x)=\sum_{k_1\neq\ldots \neq k_m}\sum_{n_1+\ldots +n_m=n}a_{n_1}\ldots a_{n_m} x_{k_1}^{n_1}\ldots  x_{k_m}^{n_m}, \\
+                     \ldots.
+                    \end{gather*}
+
+                     Тобто фактично від полінома $P(x)\in P(^n X)$ при обмеженні на $\eN_m$ залишається тільки його $m$-вимірна ``діагональ''. Такі поліноми називають блочно-діагональними (див.\cite{DG}) або діагональними у випадку $m=1$.
+
+
+                      \begin{proposition} Простір поліномів $P(^m\eN_m),$ $\eN_m\subset X$ ізоморфний до простору поліномів $P(^m X)$:
+                        \begin{gather}\label{5} P(^m\eN_m)\cong P(^m X).
+                        \end{gather}
+                        \end{proposition}
+
+                        \begin{proof}
+                        Нехай $x=\sum_k x_k e_k.$ Для доведення ізоморфності
+достатньо показати, що оператор звуження $T_m: X \to \eN_m$ є бієктивним  та
+неперервним. Неперервність випливає автоматично з обмеженості оператора. Всі
+поліноми $P(x)$ розглядаємо на одиничних базисних векторах $e_1, \ldots , e_k,
+\ldots $, тобто на одиничній кулі, тому $||P||=1.$ \par
+
+                        Оператор $T_m$ є інєктивним тоді і тільки тоді, коли ядро цього оператора $\Ker{T_m}$ складається тільки з $\{0\}$. Знайдемо множину поліномів, для яких $T_m(P)=0$. Запишемо загальний вигляд полінома~(\ref{1}), звуженого на $\eN_m.$ Для довільного $x\in \eN_m$ існує набір базисних векторів $e_{k_1}, \ldots , e_{k_m}$ такий, що $x=x_{k_1}e_{k_1}+ \ldots x_{k_m}e_{k_m}$. Тому
+
+
+                       \[ P(x)=P(\lambda_{k_1} e_{k_1} + \ldots \lambda_{k_m} e_{k_m})= \sum_{n_1+\ldots + n_m=m} \lambda_{k_1}^{n_1} \ldots \lambda_{k_m}^{n_m} P(e_{k_1}^{n_1}, \ldots ,e_{k_m}^{n_m} ). \]
+
+                       Даний добуток буде дорівнювати нулю тоді і тільки тоді,
+коли для всіх $k_1, \ldots , k_m$ значення  $\overline{P}(e_{k_1}^{n_1}, \ldots
+,e_{k_m}^{n_m})$ в рівності~(\ref{1}) буде дорівнювати нулю. Серед поліномів
+степеня $m$ --- це тільки нульові поліноми. Це означає, що $\Ker{T_m} =\{0\}$ в
+просторі $P(^mX)$. \par
+
+                       Оскільки $T_m$ є оператором звуження, тому для кожного
+образа оператора з $P(^m\eN_m)$ існує прообраз з $P(^m X)$ i $T_m$ є бієктивним
+оператором. А, отже, $T_m$ --- ізоморфізм. Це і доводить ізоморфність просторів
+$P(^m\eN_m),$ $\eN_m\subset X$ і $P(^m X)$ .
+                        \end{proof}
+
+
+                            \begin{theorem} Для кожного характера $\psi \in M_b(X)$ існує послідовність  $\varphi_m \in M_b(\eN_m) $ така, що послідовність продовжень $\widetilde{\varphi}_m\in M_b(X)$ збігається до  $\psi$ в слабко поліноміальній топології. Тобто, $\varphi_m(P) \to \psi(P)$ при $m\to \infty$ для кожного полінома $P\in H_b(X).$
+                            \end{theorem}
+
+\begin{proof}
+    Позначимо $\psi_m$ --- звуження функціонала $\psi$ на $P(^{\leq m}\eN_m)$
+--- простір поліномів степеня $\leq m$ на $\eN_m$. Оскільки простір $P(^m
+\eN_m)$ ізоморфний простору $P(^m X)$ відносно оператора звуження $T_m$ для
+кожного натурального $m$,  то функціоналу $\psi_m$ відповідає функціонал
+$\varphi_m \in P(^{\leq m}\eN_m)^*$ такий, що $\widetilde{\varphi}_m=\psi \circ
+T_m.$ Нехай $P$ --- поліном степеня $n$. Тоді, для $m\geq n$,
+$\psi(P)=\psi_m(P)=\psi_m \circ T(P)=\widetilde{\varphi}_m (P)$. Оскільки $T$
+--- гомоморфізм, то $\widetilde{\varphi}_m$ --- гомоморфізми і, отже $\varphi_m$
+--- гомоморфізми. Таким чином, ми знайшли послідовність $(\varphi_m)\subset
+M(\eN_m)$ таку, що $\widetilde{\varphi}_m(P)=\psi(P)$ при $m \geq n= \deg P$.
+Тому
+    \begin{gather}\label{6}\widetilde{\varphi}_m(P)\to \psi(P)   \textrm{ при } m\to \infty
+    \end{gather}
+   для довільного полінома $P$.
+\end{proof}
+
+            \begin{remark} Питання, чи буде виконуватись~(\ref{6}) для довільної аналітичної функцій $f\in H_b(X)$ є відкритим, оскільки не відомо, чи залишок $||\psi (f) - \tilde{\varphi}_m (f) ||$ буде прямувати до нуля в топології Гельфанта.
+            \end{remark}
+
+
+                \begin{remark} \label{3}  $P(^2\eN_1) \ncong P(^2 X)$. Дійсно, довільний поліном другого степеня вигляду $\sum_{i\neq j}x_i x_j$ на множині $\eN_1\subset X$ буде дорівнювати нулю, тому не можливо встановити бієкцію між цими просторами.
+
+                \end{remark}
+
+
+                 Цей висновок аналогічно можна узагальнити на випадок $\eN_m:$
+
+                 \begin{remark} $P(^n\eN_m) \ncong P(^n X)$, $\eN_m \subset X$, якщо $n > m.$
+                 \end{remark}
+
+
+
+\section{Опис множини характерів алгебри діагональних поліномів на $\ell_1$}
+  Нехай   $X=\ell_1$. Розглянемо добуток лінійних функціоналів $f(x)=\sum_{k}a_k x_k$, $g(x)=\sum_{k} b_k x_k$, $x=(x_1,\ldots, x_k,\ldots)\in \ell_1$ і обмежимо його на $\eN_1(\ell_1)$. Оскільки $x\in \eN_1(\ell_1),$ то $x=(0, \ldots, x_k, 0, \ldots)$ або $x=x_ke_k$ для деякого $k \geq 1$, тому лінійні функціонали $f, g $ на $\eN_1(\ell_1)$ матимуть вигляд:
+  \begin{gather*}
+  f(x)=a_k x_k,   g(x)=b_k x_k \textrm{ і їх добуток } h(x)=a_k x_k \cdot b_k x_k= c_k x_k^2.
+  \end{gather*}
+ Оскільки $(a_k)_{k=1}^\infty, (b_k)_{k=1}^\infty \in \ell_{\infty}$ (як коефіцієнти), то добуток $k$-тих координат $a_k \cdot b_k =c_k$, $k \geq 1$ визначить послідовність $(c_k)_{k=1}^\infty$, яка також буде належити до $\ell_{\infty}.$ \par
+
+
+        Якщо $A_1(X)$ --- алгебра, породжена поліномами степеня $n, $ $n\leq 1$
+і $A_1(\eN_1)$ --- відповідне обмеження алгебри  $A_1(X)$ на підмножину $\eN_1$,
+то множина функцій $H_b(\ell_1)|_{\eN_1}$  наближається всеможливими
+алгебраїчними комбінаціями лінійних функціоналів з $A_1(\eN_1)$:
+        \begin{gather*} A_1(\eN_1)=H_b(\eN_1), \qquad \eN_1\subset \ell_1.
+        \end{gather*}
+
+            \begin{theorem} Множиною характерів на $H_b(\eN_1)$ є стоун-чехівська компактифікація $\beta \N$ множини натуральних чисел. Довільний характер $\varphi \in \beta \N$ має вигляд:
+                    \begin{gather*}
+                    \varphi (P)=\lim_{\U} P(e_k), \textrm{ де }  P\in P(^1 \eN_1), \U - \textrm{ деякий фіксований ультрафільтр на } \N.
+                    \end{gather*}
+                  \end{theorem}
+
+                  \begin{proof}Як було зауважено вище, $H_b(\eN_1)=A_1(\eN_1)$, тому кожен характер на $H_b(\eN_1)$ визначається своїми значеннями на $P(^1\eN_1)$. З іншого боку, кожен поліном $P\in P(^1\eN_1)$ має вигляд:
+                    \begin{gather}\label{8} P(x)=P(x_k e_k)=a_k x_k, \textrm{ де } P(e_k)=a_k.
+                    \end{gather}
+                  Перебираючи всеможливі $x\in \eN_1$, кожному поліному $P\in P(^1\eN_1)$, можна поставити у відповідність послідовність елементів $\{a_k\}\subset \ell_{\infty}$. \par
+                    Нехай $\varphi $ -- характер на $P(^1\eN_1)$, тоді
+                        \begin{gather*}(P \cdot Q)(e_k)=a_k \cdot b_k, \textrm{ де } P(e_k)=a_k,  Q(e_k)=b_k,
+                        \end{gather*}
+                    і, таким чином,
+                        \begin{gather*} \varphi(\{a_k\}\cdot \{b_k\})=\varphi(\{a_k\})\varphi(\{b_k\}).
+                        \end{gather*}
+                    Це означає, що функціонал $\varphi$ діє як
+мультиплікативний функціонал на $\ell_{\infty}$, а, отже, $\varphi$ --- характер
+на $\ell_{\infty}$. Множиною характерів на $\ell_{\infty}$, а, отже, і на
+$P(^1\eN_1)$ є стоун-чехівська компактифікація множини $\N$,  тобто
+$M(\ell_{\infty})=\beta (\N).$ Як відомо, $\beta(\N)$ можна розглядати як
+множину всіх ультрафільтрів на $\N$.\par
+                        Нехай $\varphi \in \beta(\N),$ тоді існує ультрафільтр на $\N$, що $\varphi (P)=\lim_{\U} a_k,$ де $P\in P(^1\eN_1)$, $a_k \in \ell_{\infty}$ і з (\ref{8}) маємо:
+                            \begin{gather*}\varphi(P)=\lim_{\U} P(e_k), \qquad P\in P(^1\eN_1).
+                            \end{gather*}
+                        Операція взяття границі є лінійною і мультиплікативною,
+тому $\varphi$ --- характер на $H_b(\eN_1)$.
+
+ Отже, множиною характреів на $H_b(\eN_1)$ є стоун-чехівська компактифікація
+$\beta(\N)$. \end{proof}
+
+
+
+
+
+
+
+\section{Випадок простору $\ell_2$}
+
+
+                    Нехай $X=\ell_2$. Аналогічно $f(x)=a_k x_k$ i $g(x)=b_k x_k$
+--- обмеження лінійних функціоналів на $\eN_1 (\ell_2)$ такі, що ряди $\sum_k
+|a_k|^2$ i  $\sum_k |b_k|^2$ збіжні. Не завжди, використовуючи всеможливі
+алгебраїчні комбінації, ми зможемо отримати поліноми степенів $\geq 2$. Отже, не
+всі аналітичні функції з $H_b(\eN_1)$ ми зможемо наблизити лінійними
+функціоналами $f(x)$ i $g(x)$ (як у випадку простору $\ell_1$) i $A_1(\eN_1)\neq
+H_b(\eN_1).$
+
+
+                    \begin{example}
+                        Розглянемо поліном вигляду $h(x)=\sum_k x_k^2$ на $\eN_1 \subset \ell_2.$ Достатньо показати, що не існує функціоналів $f, g \in \ell_2^{*}$ таких, що їх добуток дорівнює $x_k^2$. Припустимо, що $f(x)=\sum a_k x_k, g(x)=\sum b_k x_k.$ Тоді
+                        \begin{gather*}
+                            a_k x_k \cdot b_k x_k =x_k^2, \textrm{ отже } a_k \cdot b_k =1.
+                        \end{gather*}
+                        Але ряди  $(a_k^2)_{k=1}^\infty$ i  $(b_k^2)_{k=1}^\infty$ неможуть бути одночасно для кожного абсолютно збіжними, тому  функціоналів $f(x)$ i $g(x)$ не існує.
+                    \end{example}
+
+
+
+
+                    Розглядаючи алгебри $A_n(\eN_1)$  на просторі $\ell_2$, можна стверджувати, що
+                    \begin{gather*}
+                    A_1(\eN_1)\neq A_2(\eN_1).
+                    \end{gather*}
+
+                    Наступне твердження є аналогом теореми \ref{4} для
+$H_b(\eN_1).$
+
+                    \begin{proposition}
+                        Нехай $I_1(\eN_1)$ i $I_2(\eN_1)$ --- відповідні ідеали
+алгебр $A_1(\eN_1)$ i $A_2(\eN_1)$. Існує характер $\varphi \in M_b(\eN_1)$
+такий, що $\varphi(I_1)=0, \varphi(I_2)\neq 0$ i
+                        \begin{gather} \label{7}
+                            \varphi_{\U} (P)=\lim_{\U} P(e_k),
+                        \end{gather}
+                        де $\U$ --- деякий фіксований вільний ультрафільтр на
+множині натуральних чисел.
+                    \end{proposition}
+
+                    \begin{proof}
+                       Покажемо, що рівність  (\ref{7}) задовольняє умови даного твердження. \par
+                         Якщо $P$ --- лінійний поліном, то
+                            \begin{gather*}
+                                P(x)=\sum_k c_k x_k \textrm{ i } \varphi_{\U}(P)=\lim_{k\to \infty} c_k =0
+                            \end{gather*}
+
+                            оскільки ряд $\sum_k |c_k|^2$ є збіжним. Отже,
+                            \begin{gather*}
+                            \varphi(P)=\lim_{\U} P(e_k)=0.
+                            \end{gather*}
+                        Нехай $P(x)=\sum_k x_k^2 \in A_2(\eN_1).$ Тоді,
+                        \begin{gather*}
+                            \varphi (P)=\lim_{\U} P(e_k)=\lim_{\U} 1=1 \neq 0.
+                        \end{gather*}
+
+                        Функціонал, який визначається рівністю (\ref{7}) дорівнює нулю на всіх однорідних поліномах першого степеня з $H_b(\eN_1)$ і не дорівнює нулю на поліномах другого степеня. Дана рівність дійсно задовольняє умови твердження.
+
+                    \end{proof}
+
+                  Алгебра $A_3(\eN_1)\neq A_2(\eN_1), \eN_1\subset \ell_2,$ оскільки поліноми вигляду
+                  \begin{gather}\label{9}
+                  P(x)=\sum c_k x_k^3,  \{c_k\}\in\ell_{\infty}, x\in \eN_1(\ell_2)
+                  \end{gather}
+                  не породжуються, в загальному випадку, алгебраїчними комбінаціями поліномів з $A_2(\eN_1).$ Проте, між поліномами вигляду ($\ref{9}$) та поліномами з $A_2(\eN_1)$ існує алгебраїчна залежність:
+                  \begin{gather*}
+                  P^2(x)-Q^3(x)=0,
+                  \end{gather*}
+                  де $Q(x)=\sum \sqrt[3]{c_k^2} x_k^2 \in A_2(\eN_1).$ Тому, якщо $\varphi \in M_b(\eN_1)$ такий, що $\ker{\varphi} \supset I_2,$ то ${\ker{ \varphi} \supset I_3.}$ Тобто, не існує характера, який розділяє ідеали $I_2$ та $I_3$. Для $m>3,$ легко бачити, що $A_m(\eN_1)=A_3(\eN_1).$ Таким чином, у випадку $\eN_1\subset \ell_2, $ $M_b(\eN_1)=M(A_3(\eN_1)).$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------
+\begin{thebibliography}{99}
+%\bibitem{T} Тарас О.Г., Узагальнення продовження Аренса на спектр аналітичних функцій на банаховій алгебрі // Прикладні проблеми механіки і математики. -- 2010. -- 8. -- С. 78--83.
+\bibitem{AB}	Aron R.M., Berner P.D.\emph{ A Hahn-Banach extension theorem for
+analytic mappings}, Bull. Soc. Math. France., \textbf{106} (1978), 3--24.
+\bibitem{ACG} Aron R.M., Cole B.J., Gamelin T.W. \emph{Spectra of algebras
+of analytic functions on a Banach space,} J. Reine Angew. Math., \textbf{415}
+(1991), 51--93.
+\bibitem{ACG2} Aron R.M., Cole B.J., Gamelin T.W. \emph{Weak-star continuous
+analytic functions,} Can. J. Math., \textbf{47} (1995), 673--683.
+%\bibitem{AGGM} Aron R.M., Galindo P.,Garcia D., and Maestre M., \emph{Regularity and algebras of analytic functions in infinite dimensions,} Trans. Amer. Math. Soc., \textbf{348}, (1996), 543–559.
+\bibitem{DG} Davie A.M., Gamelin T.W. \emph{A theorem on polynomial-star
+aproximation,} Proc. Amer. Math. Soc., \textbf{106} (1989), 351--356.
+\bibitem{Z} Zagorodnyuk A. \emph{Spectra of Algebras of Entire Functions on
+Banach Spaces,} Proc. Amer. Math. Soc., \textbf{134} (2006), 2559--2569.
+\bibitem{Z2} Zagorodnyuk A. \emph{Spectra of Algebras of Analytic Functions and
+Polynomials on Banach Spaces,} Contemporary Math., \textbf{435} (2007),
+381--194.
+
+\end{thebibliography}
+\end{document}

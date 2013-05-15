@@ -1,0 +1,548 @@
+%Format:
+\documentclass[12pt,twoside,draft,ua]{cmpart}
+%,bysec
+% Необов'язкові опції :
+% draft - чернетка
+% en, ua, ru - основна мова документа
+% bysec - твердження, леми, означення і т.п. (але не теореми)
+%         нумеруються в межах кожної \section окремо
+% thmbysec - теореми теж нумеруються окремо для кожної \section
+% win   - кодування кирилиці CP-1251 (Windows)
+% koi   - кодування кирилиці KOI8_U  (Unix)
+%
+% Вже завантажено пакети :
+% amsmath,amsfonts,amsthm,amssymb,latexsym
+%
+% Вже означено theorem-like оточення :
+% {theorem}     - теорема
+% {proposition} - твердження
+% {lemma}       - лема
+% {corollary}   - наслідок
+% {remark}      - зауваження
+% {definition}  - означення
+% {example}     - приклад
+% {examples}    - приклади
+% а також їх аналоги з зірочкою без нумерації :
+% {theorem*}, {proposition*} і т.п.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\font\blarge=cmr17 scaled\magstep1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\Bb Приклад: $\Bb Z$
+\font\Bbb=msbm10 scaled \magstep1
+\def\Bb#1{\hbox{\Bbb #1}}
+\def\bfrac#1#2#3{\mathchoice%
+%        {\lower.7ex\hbox{$\mathop{\kern0pt\fam0#1}\limits_{#2}^{#3}\textfont0=\blarge$}}%
+        {\mathop{\kern0pt\vphantom{\sum}\lower4.1pt\hbox{$\fam0#1\textfont0=\blarge$}}\limits_{#2}^{#3}}%
+        {\hbox{$\mathop{\kern0pt\fam0#1}\limits_{#2}^{#3}$}}%
+        {\hbox{$\mathop{\kern0pt\fam0#1}\limits_{#2}^{#3}$}}%
+        {\hbox{$\mathop{\kern0pt\fam0#1}\limits_{#2}^{#3}$}}}
+%\newcommand{\SC}{\scriptstyle}
+%\newcommand{\ds}{\displaystyle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\F}[2]{\bfrac{D}{#1}{#2}}
+
+
+
+\author{Антонова Т.М.}
+\title{Про прості кругові множини абсолютної збіжності гіллястих ланцюгових дробів спеціального вигляду}
+\shorttitle{Про прості кругові множини абсолютної збіжності ГЛД}
+
+\enabstract{Antonova T.M.}%
+{On simple circular sets of absolute convergence for branched continued fractions of the special form}%
+{The radiuses of the circles with centre in origin of coordinates that are simple sets of absolute convergence for branched continued fractions of the special form have been investigated.}
+
+
+\ruabstract{Антонова Т.Н.}%
+{О простых круговых множествах абсолютной сходимости ветвящихся цепных дробей специального вида}%
+{Исследованы значения радиусов кругов с центром в начале координат, являющихся простыми множествами абсолютной сходимости ветвящихся цепных дробей специального вида.}
+
+\uaabstract{Антонова Т.М.}%
+{Про прості кругові множини абсолютної збіжності гіллястих ланцюгових дробів спеціального вигляду}%
+{Досліджено значення радіусів кругів з центром у початку координат, які є простими множинами абсолютної збіжності гіллястих ланцюгових дробів спеціального вигляду.}%
+
+
+\subjclass{40A15}
+\UDC{517.524}
+\keywords{гіллястий ланцюговий дріб, підхідний дріб, множина абсолютної збіжності}
+
+\pyear{2012} % рік публікації
+\volume{4}   % том
+\issue{2}    % випуск
+\pageno{165} % номер першої сторінки
+\received{19.09.2012}
+%\revised{?}
+%\contentslistfile{../total.lst}
+
+
+\address{Національний університет ``Львівська політехніка'',\\ Львів, Україна}
+\email{tamara\_antonova@ukr.net}
+
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\maketitle
+
+%%% ----------------------------------------------------------------------
+
+Об'єктом дослідження є гілляcтий ланцюговий дріб (ГЛД) вигляду
+\begin{equation}\label{eq1}
+ b_0+\F{k=1}{\infty}\sum \limits_{i_{k} =1}^{i_{k-1} }\frac{a_{i(k)} } {1}  ,
+\end{equation}
+де $b_0,a_{i(k)}$ --- комплексні сталі, $i_0=N$ --- кількість гілок розгалужень, $i(k)$ --- мультиіндекс, $i(k)\in I$,
+\begin{equation*}
+I=\left\{i(k): i(k)=i_{1}i_{2}...i_{k}; 1\leq i_k\leq i_{k-1};k=1,2,...\right\}.
+\end{equation*}
+
+Підхідними дробами $n$-го порядку ($n$-ми апроксимантами) ГЛД (\ref{eq1}) називаються вирази
+\begin{equation*}
+ f_0=b_0, \
+  f_n=b_0+\F{k=1}{n}\sum \limits_{i_{k} =1}^{i_{k-1} }\frac{a_{i(k)} } {1}  , \
+ n=1,2,... .
+\end{equation*}
+
+ГЛД  (\ref{eq1}) називається збіжним, якщо існує скінченна границя $f=\displaystyle\lim_{n\rightarrow \infty} f_n$. Число $f$ вважається значенням збіжного ГЛД (\ref{eq1}).
+ГЛД (\ref{eq1}) збігається абсолютно, якщо збігається ряд $\displaystyle\sum_{k=1}^{\infty}\left|f_k-f_{k-1}\right|$.
+
+Послідовність $\left\{E_{i(k)}\right\}$ непорожніх множин  $E_{i(k)}\subseteq {\mathbb C}$, $i(k)\in I$,  називається послідовністю множин збіжності (абсолютної збіжності), якщо за умови
+\begin{equation*}
+a_{i(k)}\in E_{i(k)},\ \ i(k)\in I,
+\end{equation*}
+ГЛД (\ref{eq1}) збігається (збігається абсолютно). Якщо  $E_{i(k)}=E$ для всіх $i(k)\in I$, то $E$ називається простою множиною збіжності (абсолютної збіжності) ГЛД  (\ref{eq1}).
+
+Напевно, найвідомішою простою множиною збіжності звичайних ланцюгових (неперервних) дробів є круг Ворпіцького  \cite{k4} --- круг з центром у початку координат і радіусом $\displaystyle\frac{1}{4}$. Встановлені значення радіусів простих кругових множин збіжності для деяких багатовимірних узагальнень неперервних дробів --- ГЛД загального вигляду \cite{k3}, двовимірних неперервних дробів \cite{k5}, інтегральних ланцюгових дробів \cite{k6}.
+У даній роботі розглядається питання про радіуси простих кругових (з центром у початку координат) множин абсолютної збіжності ГЛД вигляду (\ref{eq1}).
+
+
+\begin{proposition} \cite{k1}
+ГЛД (\ref{eq1}) збігається абсолютно, якщо існують такі додатні сталі
+$t_{i(k)}$, $i(k)\in I,$
+що для всіх можливих мультиіндексів виконується умова
+\begin{equation*}\label{eq2}
+\left|a_{i(k)}\right|\leq t_{i(k)}\left(1-\displaystyle\sum_{i_{k+1}=1}^{i_k} t_{i(k+1)}\right),\ \ i(k)\in I.
+\end{equation*}
+\end{proposition}
+
+Для доведення твердження 1 використовується метод мажорант і оцінка
+\begin{equation}\label{eq3}
+\left| Q^{(n)}_{i(k)}\right| \geq \overline{Q}^{(n)}_{i(k)}\geq 1-\displaystyle\sum_{i_{k+1}=1}^{i_k} t_{i(k+1)},\
+i(k)\in I,\ n=1,2,\ldots,\ 1\leq k \leq n,
+\end{equation}
+де  $Q^{(n)}_{i(k)},\  \overline{Q}^{(n)}_{i(k)} $ --- скінченні ГЛД вигляду
+\begin{equation*}
+Q^{(k)}_{i(k)}=\overline{Q}^{(k)}_{i(k)}=1,\
+Q^{(n)}_{i(k)}=1+\F{p=k+1}{n} \sum \limits_{i_{p} =1}^{i_{p-1} }\frac{a_{i(p)} }{1}, \
+\overline{Q}^{(n)}_{i(k)}=1+\F{p=k+1}{n} \sum \limits_{i_{p} =1}^{i_{p-1} }\frac{-\left|a_{i(p)}\right|}{1},
+\end{equation*}
+\begin{equation*}
+k=1,\:2,\:\ldots,\ n>k,
+\end{equation*}
+які називаються залишками ГЛД (\ref{eq1}) і ГЛД
+\begin{equation*}
+ b_0+\F{k=1}{\infty} \sum \limits_{i_{k} =1}^{i_{k-1} }
+ \frac{-\left|a_{i(k)}\right|}{1}
+\end{equation*}
+відповідно.
+
+	З твердження 1 випливає, що послідовність множин
+\begin{equation*}
+E_{i(k)}=\left\{z:z\in {\mathbb C},\ |z|\leq t_{i(k)}\left(1-\displaystyle\sum_{i_{k+1}=1}^{i_k} t_{i(k+1)}\right) \right\},\  i(k)\in I,\
+%k=1,2,\ldots ,
+\end{equation*}
+де $t_{i(k)}$ --- деякі додатні числа, такі, що
+$\displaystyle\sum_{i_{k}=1}^{i_{k-1}} t_{i(k)}< 1,\ i(k)\in I$, є послідовністю множин абсолютної збіжності ГЛД (\ref{eq1}), а радіус круга з центром у початку координат, що є простою множиною абсолютної збіжності ГЛД (\ref{eq1}) з $N$  гілками розгалужень, можна визначити з умови
+\begin{equation*}
+R_N=\displaystyle \inf_{i(k)\in I } t_{i(k)}\left(1-\displaystyle\sum_{i_{k+1}=1}^{i_k} t_{i(k+1)}\right).
+\end{equation*}
+
+	Якщо  $t_{i(k)}=\displaystyle\frac{1}{2i_{k-1}}$, $i(k)\in I$, твердження 1 перетворюється на аналог ознаки Ворпіцького для ГЛД (\ref{eq1}) \cite{k2}. У цьому випадку шуканий радіус дорівнює
+ \begin{equation*}
+R_N=\displaystyle \min_{1\leq i_{k-1} \leq N } \frac{1}{2i_{k-1}}\cdot\frac{1}{2}=\frac{1}{4N},
+\end{equation*}
+як і для ГЛД загального вигляду з $N$  гілками розгалужень, для яких константа $\displaystyle\frac{1}{4N}$  є непокращуваною \cite{k3}. Якщо $t_{i(k)}=t_{i_k}$, $i(k)\in I$, то радіус круга з центром у початку координат, який є простою множиною абсолютної збіжності ГЛД (\ref{eq1}), можна визначити з умови
+\begin{equation}\label{eq4}
+R_N=\displaystyle \min_{1\leq k \leq N } t_k \left(1-\displaystyle\sum_{p=1}^{k} t_{p}\right).
+\end{equation}
+
+
+\begin{proposition}
+Радіус простої кругової з центром у початку координат множини абсолютної збіжності ГЛД (\ref{eq1}) --- це  $N$-й член послідовності $\left\{R_k \right\}$,  де
+\begin{equation}\label{eq5}
+0<R_1\leq \displaystyle \frac{1}{4},\ R_{k+1}=\displaystyle \frac{R_k}{(R_k+1)^2},\
+k=1,2,\ldots .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Нехай $\left\{ r_k \right\}$ --- послідовність таких додатних чисел, що
+\begin{equation}\label{eq6}
+0<r_1<1,\ r_{k+1}=\displaystyle\frac{r_k\left(1-r_k\right)}{r_k\left(1-r_k\right)+1},\
+k=1,2,\ldots,
+\end{equation}
+і
+\begin{equation}\label{eq7}
+t_1=r_N,\ t_p=r_{N-p+1}\displaystyle \prod^{p-1}_{l=1} {\left(1-r_{N-l+1}\right)},\
+p=2,\ldots,N.
+\end{equation}
+
+Зауважимо, що
+\begin{equation}\label{eq8}
+1-\displaystyle \sum^{k}_{p=1}t_p =\displaystyle \prod^{k}_{p=1} {\left(1-r_{N-p+1}\right)},\
+k=1,\ldots, N.
+\end{equation}
+
+Дійсно,
+\begin{equation*}
+1-t_1=1-r_N,\ 1-t_1-t_2=1-r_N-r_{N-1}\left(1-r_N\right)=\left(1-r_{N-1}\right)\left(1-r_N\right).
+\end{equation*}
+Припускаючи, що рівність (\ref{eq8}) справджується для деякого значення  $k,\;1\leq k<N$, отримаємо
+\begin{equation*}
+1-\displaystyle \sum^{k+1}_{p=1}{t_p}=1-\displaystyle \sum^{k}_{p=1}{t_p}-t_{k+1}
+=\displaystyle \prod^{k}_{p=1} {\left(1-r_{N-p+1}\right)}-
+r_{N-k}\displaystyle \prod^{k}_{p=1} {\left(1-r_{N-p+1}\right)}=
+\displaystyle \prod^{k+1}_{p=1} {\left(1-r_{N-p+1}\right)},
+\end{equation*}
+тобто рівність (\ref{eq8}) справджується для значення  $k+1$, отже, справджується і для всіх значень
+$k,\ 1\leq  k\leq N$.
+
+	Покажемо, що
+\begin{equation}\label{eq9}
+t_{k}\left(1-\displaystyle\sum_{p=1}^{k}t_{p}\right)=r_{N}\left(1-r_{N}\right),\
+k=1,\ldots, N.
+\end{equation}
+
+Із співвідношень (\ref{eq6}) випливає, що
+\begin{equation}\label{eq10}
+0<r_{k+1}<1,\ r_{k}\left(1-r_{k}\right)=\displaystyle\frac{r_{k+1}}{1-r_{k+1}},\
+k=1,2,\ldots .
+\end{equation}
+
+Перевіримо правильність рівності (9) для $k=1,\:2$ :
+\begin{equation*}
+t_1\left(1-t_1\right)=r_N\left(1-r_N\right),
+\end{equation*}
+\begin{equation*} t_2\left(1-t_1-t_2\right)=r_{N-1}\left(1-r_N\right)\cdot\left(1-r_{N-1}\right)\left(1-r_N\right)=r_N\left(1-r_N\right).
+\end{equation*}
+Нехай рівність (\ref{eq9}) справджується для деякого значення $k,\;1\leq k<N$. Тоді з (\ref{eq7}),
+(\ref{eq9})  і (\ref{eq10}) випливає, що
+\begin{equation*}
+t_{k+1}\left(1-\displaystyle\sum_{p=1}^{k+1}t_p \right)
+=r_{N-k}\displaystyle\prod_{l=1}^{k}\left(1-r_{N-l+1}\right)\cdot
+\displaystyle\prod_{l=1}^{k+1}\left(1-r_{N-l+1}\right)
+\end{equation*}
+\begin{equation*}
+=r_{N-k}\left(1-r_{N-k}\right)
+\displaystyle\prod_{l=1}^{k}\left(1-r_{N-l+1}\right)^2=
+\frac{r_{N-k+1}}{1-r_{N-k+1}}\left(1-r_{N-k+1}\right)^2\displaystyle\prod_{l=1}^
+{k-1}\left(1-r_{N-l+1}\right)^2
+\end{equation*}
+\begin{equation*}
+=r_{N-k+1}\displaystyle\prod_{l=1}^{k-1}\left(1-r_{N-l+1}\right)\cdot
+\displaystyle\prod_{l=1}^{k}\left(1-r_{N-l+1}\right)=
+t_k\left(1-\displaystyle\sum_{p=1}^{k}t_p \right)=r_N\left(1-r_{N}\right).
+\end{equation*}
+
+Таким чином, рівність (\ref{eq9}) справджується для всіх значень $k,\ 1\leq  k\leq N$.
+
+Нехай елементи послідовності $\left\{R_k \right\}$ визначаються у такий спосіб:
+ \begin{equation*}
+R_k=r_k\left(1-r_{k}\right),\ k=1,\!2,\!\ldots\:,
+\end{equation*}
+де послідовність $\left\{r_k\right\}$  означена за допомогою співвідношень (\ref{eq6}).
+Тоді
+\begin{equation*}
+0<R_1=r_1\left(1-r_1\right)\leq \frac{1}{4},
+\end{equation*}
+\begin{equation*}
+R_{k+1}=r_{k+1}\left(1-r_{k+1}\right)=
+\frac{r_k\left(1-r_k\right)}{r_k\left(1-r_k\right)+1}\cdot\frac{1}{r_k\left(1-r_k\right)+1}=
+\frac{R_k}{\left(R_k+1\right)^2},\ k=1,\!2,\!\ldots\: .
+\end{equation*}
+
+Враховуючи рівності (\ref{eq4}), (\ref{eq9}), доходимо висновку про правильність твердження 2.
+\end{proof}
+
+\begin{proposition}
+Для елементів послідовності $\{R_m\}$, які визначаються співвідношеннями (\ref{eq5}), справджується оцінка
+\begin{equation}\label{eq11}
+\frac{1}{2(m-1)+\displaystyle\frac{1}{R_1}+\displaystyle\sum_{k=2}^{m}\frac{1}{2k}}\leq R_m \leq
+\frac{1}{2(m+1)+R_1},\ m=2,3,\ldots .
+\end{equation}
+\end{proposition}
+
+\begin{proof} Використовуємо метод математичної індукції. Покажемо спочатку, що
+ \begin{equation}\label{eq12}
+\frac{1}{R_m}\geq R_1+2(m+1),\ m=2,3,\:,\ldots.
+\end{equation}
+
+Перевіримо правильність нерівності (\ref{eq12}) для $m=2$. Із співвідношень (\ref{eq5}) випливає, що
+\begin{equation*}
+\frac{1}{R_2}=R_1+\frac{1}{R_1}+2\geq R_1+4+2=R_1+2\cdot 3,
+\end{equation*}
+тобто для $m=2$ нерівність (\ref{eq12}) справджується.
+Припускаючи, що нерівність (\ref{eq12}) справджується для деякого $m=k$  і використовуючи (\ref{eq5}), одержимо
+ \begin{equation*}
+\frac{1}{R_{k+1}}=R_k+\frac{1}{R_k}+2\geq R_k+R_1+2(k+1)+2>R_1+2((k+1)+1),
+\end{equation*}
+а це означає, що нерівність (\ref{eq12}) справджується для всіх $m=2,3,\ldots\;$.
+
+З іншого боку,
+\begin{equation*}
+\frac{1}{R_2}=R_1+\frac{1}{R_1}+2\leq\frac{1}{4}+\frac{1}{R_1}+2=\frac{1}{R_1}+2(2-1)+\frac{1}{2\cdot 2},
+\end{equation*}
+тобто для $m=2$ справджується нерівність
+\begin{equation}\label{eq13}
+\frac{1}{R_m}\leq \frac{1}{R_1}+2(m-1)+\displaystyle\sum_{k=2}^{m}\frac{1}{2k}.
+\end{equation}
+Припускаючи, що нерівність (\ref{eq13}) справджується для деякого значення $m>2$ і враховуючи  (\ref{eq5}), (\ref{eq12}), одержимо
+\begin{equation*}
+\frac{1}{R_{m+1}}=R_m+\frac{1}{R_m}+2\leq
+R_m+\frac{1}{R_1}+2(m-1)+\displaystyle\sum_{k=2}^{m}\frac{1}{2k}+2\leq
+\end{equation*}
+\begin{equation*}
+\leq \frac{1}{R_1+2(m+1)}+\frac{1}{R_1}+2m+\displaystyle\sum_{k=2}^{m}\frac{1}{2k}<
+\frac{1}{R_1}+2((m+1)-1)+\displaystyle\sum_{k=2}^{m+1}\frac{1}{2k},
+\end{equation*}
+отже, нерівність (\ref{eq13}) справджується для довільних $m=2,3,\ldots\;$. З нерівностей (\ref{eq12}), (\ref{eq13}) випливає правильність нерівності (\ref{eq11}).
+\end{proof}
+
+\begin{remark*}
+Оскільки
+ \begin{equation*}
+R_N-\frac{1}{4N}\geq
+\frac{1}{2(N-1)+\displaystyle\sum_{k=2}^{N}\frac{1}{2k}+\frac{1}{R_1}}-\frac{1}{4N}>
+\frac{1}{\displaystyle\frac{9}{4}(N-1)+\frac{1}{R_1}}-\frac{1}{4N},\ N\geq 2,
+\end{equation*}
+то за умови  $R_1>\displaystyle\frac{4}{7N+9}$ виконується нерівність $R_N>\displaystyle\frac{1}{4N}$ ,
+тобто радіус круга з центром у початку координат, який є простою множиною абсолютної збіжності ГЛД вигляду(\ref{eq1}) з $N$ гілками розгалужень, може бути більшим, ніж радіус круга з центром у початку координат, який є простою множиною абсолютної збіжності ГЛД загального вигляду з $N$ гілками розгалужень.
+%\end{remark}
+
+%\begin{remark}
+Значення $R_k,\ k=2,3,\ldots,$ які визначаються співвідношеннями (\ref{eq5}), залежать від $R_1$, $R_k<\displaystyle\frac{1}{4}$, а функція $f(x)=\displaystyle \frac{x}{(x+1)^2}$  монотонно зростає для $0<x<1$. Тому
+\begin{equation*}
+R_k\left(R_1\right)\leq R_k\left(\frac{1}{4}\right)=R_k^*,\ k=2,3,\ldots \;,
+\end{equation*}
+де $\left\{R_k^* \right\}$ -- послідовність додатних чисел, що визначаються у такий спосіб:
+\begin{equation}\label{eq14}
+R_1^*=\frac{1}{4},\ R_{k+1}^*=\frac{R_k^*}{\left(R_k^*+1\right)^2},\ k=1,2,\ldots\;.
+\end{equation}
+Згідно з твердженням 3 правильною є така оцінка:
+\begin{equation*}
+\frac{1}{2(N+1)+\displaystyle\sum_{k=2}^{N}\frac{1}{2k}}\leq R_N^* \leq
+\frac{4}{8(N+1)+1},\ N=2,3,\ldots .
+\end{equation*}
+\end{remark*}
+
+\begin{proposition}
+ГЛД вигляду
+\begin{equation}\label{eq15}
+ 1+\F{k=1}{\infty} \sum \limits_{i_{k} =1}^{i_{k-1} }\frac{-R}{1^{i_k}} ,\ R>0,
+\end{equation}
+з $N$ гілками розгалуження ($i_0=N$) збігається тоді і лише тоді, коли
+\begin{equation}\label{eq16}
+ R\leq R_N^*,
+\end{equation}
+де $\left\{R_k^*\right\}$  --- послідовність додатних чисел, що визначаються
+рівностями (\ref{eq14}). Значення ГЛД (\ref{eq15}) дорівнює
+\begin{equation*}
+ \left(1-r_1\right)\left(1-r_2\right)\ldots\left(1-r_N\right),
+\end{equation*}
+де
+\begin{equation}\label{eq17}
+r_N=\frac{1-\sqrt{1-4R}}{2},
+\end{equation}
+\begin{equation}\label{eq18}
+r_k=\frac{1}{2}\left(1-\sqrt{\frac{1-5r_{k+1}}{1-r_{k+1}}} \right),\
+k=N-1,N-2,\ldots,\;1\;.
+ \end{equation}
+\end{proposition}
+
+\begin{proof}
+За умов (\ref{eq16}), (\ref{eq14})  для ГЛД (\ref{eq15}) виконуються умови
+тверджень 1 і 2. Тому,  враховуючи твердження 2 і зауваження, доходимо висновку
+про достатність умов (\ref{eq16}), (\ref{eq14})  для збіжності ГЛД (\ref{eq15}).
+
+$n$-й підхідний дріб ГЛД (\ref{eq15}), $n=0,1,\:\ldots\:$, дорівнює його деякому залишку, а саме:
+\begin{equation}\label{eq21}
+\tilde{f}_{n}=1+\F{k=1}{n}\sum\limits_{i_k=1}^{i_{k-1}}\frac{-R}{1^{i_k}}=1+\F{
+p=2}{n+1} \sum \limits_{i_{p} =1}^{i_{p-1}}
+\frac{-R }{1^{i_p}}= \tilde{Q}_{i(1)}^{(n+1)},\ \ i_1=i_0\ .
+\end{equation}
+Розв'язуючи рівняння (\ref{eq18}) відносно $r_{k+1}$, отримаємо
+\begin{equation*}
+r_{k+1}=\frac{r_k\left(1-r_k\right)}{r_k\left(1-r_k\right)+1},
+\end{equation*}
+отже, за умов (\ref{eq17}), (\ref{eq18}) для $r_1,\:r_2,\:\ldots,\:r_N$ виконуються співвідношення (\ref{eq6}).
+
+Оскільки для ГЛД (\ref{eq15}) справджуються умови тверджень 1 і 2, то для його
+залишків є правильною оцінка типу (3). Враховуючи рівності (\ref{eq7}),
+(\ref{eq8}) і (\ref{eq21}), одержимо
+\begin{equation}\label{eq26}
+\tilde{f}_{n}\geq
+\left(1-r_1\right)\left(1-r_2\right)\ldots\left(1-r_N\right).
+\end{equation}
+
+Доведення необхідності проводимо за індукцією по кількості розгалужень ГЛД вигляду (\ref{eq15}).
+Позначимо через $f_{k,m}$ $k$-й підхідний дріб ГЛД вигляду (\ref{eq15}) з $m$  гілками розгалуження.
+
+У випадку $m=1$  ГЛД  (\ref{eq15}) перетворюється на звичайний неперервний дріб
+\begin{equation*}
+ 1+\F{k=1}{\infty} \frac{-R}{1^{k}} ,\ R>0,
+\end{equation*}
+який збігається тоді і лише тоді, коли $R\leq R_1^*=\displaystyle \frac{1}{4}$  \cite{k4}, причому
+\begin{equation*}
+\displaystyle \lim\limits_{k\rightarrow\infty} f_{k,1}= \frac{1+\sqrt{1-4R}}{2}=1-r_1 ,
+\end{equation*}
+де $r_1= \displaystyle\frac{1-\sqrt{1-4R}}{2}$.
+
+Якщо  $m\geq 2$,  тоді
+ \begin{equation*}
+f_{k+1,m}= f_{k+1,m-1}-\frac{R}{f_{k,m}},\ \ k=0,1,\:\ldots\:,\  m=2,3,\:\ldots\:,
+\end{equation*}
+або
+\begin{equation}\label{eq19}
+f_{k+1,m}+\frac{R}{f_{k,m}}= f_{k+1,m-1},\ \ k=0,1,\:\ldots\:,\  m=2,3,\:\ldots\:.
+\end{equation}
+
+Припустимо, що ГЛД (\ref{eq15}) з $m=2$  збігається. Тоді
+\begin{equation*}
+\displaystyle \lim\limits_{k\rightarrow\infty} \left( f_{k+1,2}+\frac{R}{f_{k,2}}\right)=
+\lim\limits_{k\rightarrow\infty} f_{k+1,1},
+\end{equation*}
+отже, $R\leq \displaystyle\frac{1}{4}$, і можна записати, що $R=r_2\left(1-r_2\right)$,
+де $ r_2=\displaystyle\frac{1-\sqrt{1-4R}}{2}$,  і  $\lim\limits_{k\rightarrow\infty} f_{k+1,1}=1-r_2$.
+З урахуванням припущення про збіжність ГЛД (\ref{eq15}) з $m=2$  доходимо висновку, що  $F_2= \displaystyle \lim\limits_{k\rightarrow\infty} f_{k,2}\neq 0$ при $ R\leq\displaystyle\frac{1}{4},$ а $F_2$  є дійсним коренем рівняння
+\begin{equation}\label{eq20}
+F_2^2-\left(1-r_2\right)F_2+r_2\left(1-r_2\right)=0.
+\end{equation}
+
+Дискримінант рівняння (\ref{eq20})
+\begin{equation*}
+D=\left(1-r_2\right)^2-4r_2\left(1-r_2\right)=\left(1-r_2\right)\left(1-5r_2\right)
+\end{equation*}
+буде невід'ємним за вище наведених припущень лише тоді, коли
+\begin{equation*}
+r_2\leq r_2^*=\displaystyle\frac{1}{5}\,,
+\end{equation*}
+а
+\begin{equation*}
+r_2^*\left(1-r_2^*\right)=\displaystyle\frac{4}{25}=R_2^*.
+\end{equation*}
+
+У випадку $D>0$ рівняння (\ref{eq20}) має два корені:
+\begin{equation*}
+\displaystyle\frac{1-r_2-\sqrt{\left(1-r_2 \right)\left(1-5r_2\right)}}{2};\
+\displaystyle\frac{1-r_2+\sqrt{\left(1-r_2 \right)\left(1-5r_2\right)}}{2}.
+\end{equation*}
+
+Нехай
+\begin{equation*}
+r_1=\frac{1}{2}\left(1-\sqrt{\frac{1-5r_2}{1-r_2}} \right) .
+\end{equation*}
+
+	Тоді у випадку $D>0$ менший з коренів рівняння дорівнює $\left(1-r_2\right)r_1$, а більший -- $\left(1-r_2\right)\left(1-r_1\right).$
+
+Враховуючи нерівність (\ref{eq26}), доходимо висновку, що
+\begin{equation*}
+F_2= \displaystyle \lim\limits_{k\rightarrow\infty} f_{k,2}\geq \left(1-r_2\right)\left(1-r_1\right),
+\end{equation*}
+отже,
+\begin{equation*}
+F_2=\left(1-r_2\right)\left(1-r_1\right)=
+\displaystyle\frac{1-r_2+\sqrt{\left(1-r_2 \right)\left(1-5r_2\right)}}{2}.
+\end{equation*}
+
+ 	Таким чином, твердження 4 правильне для ГЛД вигляду (\ref{eq15}) з двома гілками розгалужень ($i_0=2$).
+
+	Припустимо, що твердження 4 правильне для ГЛД (\ref{eq15}) з  $m$ гілками розгалужень, $m\geq 2$. Розглянемо необхідні умови збіжності ГЛД вигляду (\ref{eq15}), кількість гілок розгалужень якого дорівнює  $m+1$. Використовуючи (\ref{eq19}) і міркуючи аналогічно, як у випадку $m=2$, маємо
+\begin{equation*}
+R\leq R_{m}^{*},\
+\displaystyle \lim\limits_{k\rightarrow\infty} \left( f_{k+1,m+1}+\frac{R}{f_{k,m+1}}\right)=
+\lim\limits_{k\rightarrow\infty} f_{k+1,m}=F_{m}=\prod\limits_{k=2}^{m+1} \left(1-r_k \right),
+\end{equation*}
+ де
+\begin{equation*}
+r_{m+1}=\frac{1-\sqrt{1-4R}}{2},\
+r_k=\frac{1}{2}\left(1-\sqrt{\frac{1-5r_{k+1}}{1-r_{k+1}}} \right),\
+k=m,\ldots,\;2\;.
+\end{equation*}
+Значення  $F_{m+1}= \displaystyle \lim\limits_{k\rightarrow\infty} f_{k,m+1}$  --- дійсний корінь рівняння
+\begin{equation*}
+F_{m+1}^2-\prod\limits_{k=2}^{m+1}\left(1-r_k\right)F_{m+1}+r_{m+1}\left(1-r_{m+1}\right)=0,
+\end{equation*}
+дискримінант якого дорівнює
+\begin{equation}\label{eq22}
+D=\prod\limits_{k=2}^{m+1}\left(1-r_k\right)^2-4r_{m+1}\left(1-r_{m+1}\right).
+\end{equation}
+
+	Для елементів послідовності $\left\{r_k\right\}$  і довільного натурального числа  $m$  справджується рівність
+\begin{equation}\label{eq23}
+\prod\limits_{k=l}^{m}\left(1-r_k\right)^2=\frac{1-r_l}{r_l}r_m\left(1-r_m \right),\
+1\leq l\leq m.
+\end{equation}
+
+Дійсно, при $m=l$  рівність (\ref{eq23}) очевидна:
+\begin{equation*}
+\left(1-r_m\right)^2=\frac{1-r_m}{r_m}r_m\left(1-r_m \right).
+\end{equation*}
+Якщо рівність (\ref{eq23})  справджується для деякого значення $l,\;2\leq l\leq m $, то
+ \begin{equation*}
+\prod\limits_{k=l-1}^{m}\left(1-r_k\right)^2=
+\left(1-r_{l-1}\right)^2\frac{1-r_l}{r_l}r_m\left(1-r_m \right)=
+\end{equation*}
+\begin{equation*}
+=\left(1-r_{l-1}\right)^2\frac{1}{r_{l-1}\left(1-r_{l-1} \right)}r_{m}\left(1-r_m \right)
+=\frac{\left(1-r_{l-1} \right)}{r_{l-1}}r_m\left(1-r_m \right),
+\end{equation*}
+отже, рівність (\ref{eq23}) справджується для всіх $l,  1\leq l \leq m$.
+
+ Тому
+\begin{equation}\label{eq24}
+r_{m+1}\left(1-r_{m+1}\right)=\frac{r_2}{1-r_2}\prod\limits_{k=2}^{m+1}\left(1-r_k\right)^2.
+\end{equation}
+
+Підставляючи рівність (\ref{eq24}) у вираз (\ref{eq22}), отримаємо
+\begin{equation*}
+D=\prod\limits_{k=2}^{m+1}\left(1-r_k\right)^2\left(1-4\frac {r_2}{1-r_2}\right)\geq 0\Rightarrow
+r_2\leq r_2^*\leq \frac{1}{5},
+\end{equation*}
+\begin{equation*}
+R_{m+1}=r_{m+1}\left(1-r_{m+1}\right)\leq r_{m+1}^*\left(1-r_{m+1}^*\right)\leq R_{m+1}^*.
+\end{equation*}
+
+Враховуючи оцінку (\ref{eq26}), доходимо висновку, що
+\begin{equation*}
+F_{m+1}=\frac{1}{2}\prod\limits_{k=2}^{m+1}\left(1-r_k\right)\left(1-\sqrt{\frac {1-5r_2}{1-r_2}}\right)=
+\prod\limits_{k=1}^{m+1}\left(1-r_k\right),
+\end{equation*}
+ отже, твердження 4 правильне і для ГЛД вигляду (\ref{eq15}), кількість гілок розгалужень якого дорівнює  $m+1$.
+\end{proof}
+
+
+	Таким чином, $N$-й член послідовності $\left\{ R_m^*\right\}$, яка визначається співвідношеннями (\ref{eq14}), --- це максимально можливий радіус круга з центром у початку координат, який є множиною абсолютної збіжності ГЛД  (\ref{eq15}) з $N$ гілками розгалужень.
+
+\begin{thebibliography}{6}
+
+  \bibitem{k1} Антонова Т.М., Боднар Д.І. \emph{Області збіжності гіллястих
+ланцюгових дробів спеціального вигляду} // Теорія наближення функцій та її
+застосування. Праці ІМ НАН України. --- 2000. --- Т.31. --- С.~5--18.
+
+  \bibitem{k2} Баран О.Є. \emph{Аналог ознаки Ворпіцького для гіллястих
+ланцюгових дробів спеціального вигляду} // Мат. методи та фіз.-мех. поля. ---
+1996. --- Т.39, №2. --- С.~39--46.
+
+  \bibitem{k3} Боднар Д.И. Ветвящиеся цепные дроби. ---  К.: Наук. думка,
+1986. --- 176~с.
+
+  \bibitem{k4} Джоунс У., Трон В. Непрерывные дроби. Аналитическая теория и
+приложения. --- М.: Мир, 1985. --- 414~с.
+
+  \bibitem{k5} Кучмінська Х.Й. Двовимірні неперервні дроби. --- Львів: ІППММ ім.
+Я.С.Підстригача, 2010. --- 218~с.
+
+  \bibitem{k6} Сявавко М.С. Інтегральні ланцюгові дроби. --- К.: Наук. думка,
+1994. --- 206~с.
+
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,385 @@
+%Format:
+\documentclass[12pt,twoside,draft,en,bysec]{cmpart}
+% Необов'язкові опції :
+% draft - чернетка
+% en, ua, ru - основна мова документа
+% bysec - твердження, леми, означення і т.п. (але не теореми)
+%         нумеруються в межах кожної \section окремо
+% thmbysec - теореми теж нумеруються окремо для кожної \section
+% win   - кодування кирилиці CP-1251 (Windows)
+% koi   - кодування кирилиці KOI8_U  (Unix)
+%
+% Вже завантажено пакети :
+% amsmath,amsfonts,amsthm,amssymb,latexsym
+%
+% Вже означено theorem-like оточення :
+% {theorem}     - теорема
+% {proposition} - твердження
+% {lemma}       - лема
+% {corollary}   - наслідок
+% {remark}      - зауваження
+% {definition}  - означення
+% {example}     - приклад
+% {examples}    - приклади
+% а також їх аналоги з зірочкою без нумерації :
+% {theorem*}, {proposition*} і т.п.
+
+
+\author{Labachuk O.V., Zagorodnyuk A.V.}
+\title{Multiplicative polynomial mappings on commutative Banach algebras}
+\shorttitle{Multiplicative polynomials on commutative algebras}
+
+\enabstract{Labachuk O.V., Zagorodnyuk A.V.}%
+{Multiplicative polynomial mappings on commutative Banach algebras}%
+{We consider the multiplicative polynomial mappings on commutative
+algebras in this work. We call a multiplicative polynomial
+trivial, if it can be represented as a product of characters. In
+the paper we investigate the following question: does there exists
+a nontrivial multiplicative polynomial functional on a commutative
+algebra?}
+
+\ruabstract{Лабачук О.В., Загороднюк А.В.}%
+{Мультипликативные полиномиальные отображения на коммутативных банаховых алгебрах}%
+{В этой работе мы рассматриваем мультипликативные полиномиальные
+отображение на коммутативных алгебрах. Мультипликативный полином,
+которой можна записать произведением характеров, назовем
+тривиальным. Исследуем вопрос: существует ли не\-три\-виаль\-ный
+мультипликативный полином на коммутативной алгебре?}
+
+\uaabstract{Лабачук О.В., Загороднюк А.В.}%
+{Мультиплікативні поліноміальні відображення на кому\-та\-тив\-них банахових алгебрах}%
+{У цій роботі ми розглядаємо мультиплікативні поліноміальні
+відображення на кому\-та\-тив\-них алгебрах. Мультиплікативний
+поліном, що розкладається в добуток характерів,
+на\-зи\-ва\-ти\-ме\-мо тривіальним. Досліджуємо питання: чи існує
+нетривіальний
+мультип\-лі\-ка\-тив\-ний поліном на комутативній алгебрі?}%
+
+
+\subjclass{15A69, 46J20, 46G20} \UDC{517.98}
+\keywords{multiplicative polynomial functional, characters,
+commutative algebras}
+
+\pyear{2012} % рік публікації
+\volume{4}   % том
+\issue{2}    % випуск
+\pageno{284} % номер першої сторінки
+\received{03.09.2012}
+%\revised{?}
+\contentslistfile{../total.lst}
+
+
+\address{Vasyl Stefanyk Precarpathian National University,\\
+Ivano-Frankivsk, Ukraine}
+%\email{olabachuk@gmail.com}
+
+
+
+
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\maketitle
+
+%%% ----------------------------------------------------------------------
+
+\section*{Introduction and definitions}
+
+Let $X$ and $Y$ be linear spaces. A map $P_n: X\to Y$ is an \emph{
+$n$ degree homogeneous polynomial} ($n$-homogeneous polynomial) if
+there is an $n$-linear mapping $B_n: \underbrace{X\times
+X\times\ldots \times X}_n \to Y$ such that
+$P_n(x)=B_n(x,x,\ldots,x).$
+
+
+Note that according to the polarization formula (see \cite{Mu}),
+for every $n$-homogeneous po\-ly\-no\-mial $P_n$ there exists a
+unique symmetric $n$-linear mapping $B_n,$ associated with $P_n.$
+
+The polynomial mapping $P$ between algebras $X$ and $Y$ is called
+\emph{multiplicative,} if $P(x_1\cdot x_2)=P(x_1)\cdot P(x_2)$ for
+every $x_1,x_2 \in X.$ It is known that every multiplicative
+polynomial functional is homogeneous (\cite{Z-p}).
+
+Let us denote by $M(X)$ the set of characters (linear
+multiplicative functionals) on the algebra $X.$ It is clear that
+the product of characters
+$\phi_1\cdot\phi_2\cdot\ldots\cdot\phi_n,$ $\phi_k\in M(X),$
+$k=1,\ldots,n$ is a multiplicative polynomial functional.
+
+We call a multiplicative polynomial \emph{trivial}, if it can be
+represented as a product of characters.
+
+There is an example of nontrivial multiplicative polynomial on
+noncommutative algebra. Let us consider the algebra of square
+$n\times n$ matrixes $M_n.$ The mapping $d(A)=\det(A)$ is a
+multiplicative polynomial functional, but $d(A)$ is not a product
+of characters because $M_n$ has no nonzero characters. So, it is
+interesting to know: \emph{Does there exists a nontrivial
+multiplicative polynomial functional on a commutative algebra?}
+
+
+
+
+
+\section{Main results}
+
+\begin{proposition}
+
+If a commutative semi-simple Banach algebra $A$ without nilpotent
+elements admits  a nontrivial multiplicative polynomial, then the
+algebra $P(\mathbb{C}^m)$ of polynomials of $m$ variables admits a
+nontrivial multiplicative polynomial for some $m.$
+
+\end{proposition}
+
+\proof Let $P$ be a nontrivial multiplicative polynomial map.
+Without loss of the ge\-ne\-ra\-li\-ty we can assume that $P$ is
+irreducible. Then there exists a finite dimensional subspace $V$
+in $ A$ such that the restriction of $P$ onto $V$ is irreducible
+\cite{Zag}.
+
+Let us consider a subalgebra $A_0$  generated by elements in $V$
+and the unity of $A.$ This subalgebra is finitely generated and
+has no nilpotent elements. It is well known in Algebraic Geometry
+that such algebra is isomorphic to a ring of all polynomials on an
+algebraic variety. That is, $A_0$ is isomorphic to
+$P(\mathbb{C}^m)/I$ for some $m$ where $I$ is an ideal in
+$P(\mathbb{C}^m).$ Let $T: P(\mathbb{C}^m)\rightarrow
+P(\mathbb{C}^m)/I$ be the factor map and $P_0$ be the restriction
+of $P$ onto $A_0.$ Then $P_0\circ T$ is a required irreducible
+nontrivial multiplicative polynomial on $P(\mathbb{C}^m).$
+\hfill$\square$
+
+So, it can be useful to investigate the algebra $P(\mathbb{C}^m)$
+of polynomials of $m$ variables.
+
+
+\begin{theorem}
+
+Every multiplicative  $n$ degree polynomial functional  can be
+represented as a product of characters on the algebra
+$P(\mathbb{C})$ of polynomials of one complex variable.
+
+\end{theorem}
+
+\begin{proof}
+Let $D_n: P(\mathbb{C}) \rightarrow \mathbb{C}$ be a
+multiplicative $n$ degree polynomial functional. $D_n$ is a
+homogeneous polynomial map. According to \cite{Z-p} there is a
+character $d_n$ on the symmetric tensor product
+$\underbrace{P(\mathbb{C})\otimes_s\ldots\otimes_sP(\mathbb{C})}_n=\otimes^n_sP(\mathbb{C})$
+such that $D_n(p)=d_n(\otimes^np)$ for every $p\in P(\mathbb{C}).$
+
+Let us describe the algebra $\otimes^n_sP(\mathbb{C}).$ Every
+element of this algebra can be presented by
+$$\sum_i
+\underbrace{p_i\otimes\ldots\otimes p_i}_n,$$ where $p_i\in
+P(\mathbb{C}).$ Every element like $\otimes^np_i$ is a polynomial
+of $n$ variables $p_i(x_1)\cdot\ldots\cdot p_i(x_n).$ So, algebra
+$\otimes^n_sP(\mathbb{C})$ is isomorphic to the algebra of
+ polynomials of $n$ variables, that are symmetric about the permutation of this variables.
+ Let us denote it by
+$P_s(\mathbb{C}^n).$
+
+It is well known that for every symmetric polynomial
+$p(x_1,\ldots,x_n)$ there exists a polynomial $q,$ such that
+$$p(x_1,\ldots,x_n)=q(G_1(x_1,\ldots,x_n),\ldots,G_n(x_1,\ldots,x_n)),$$
+ where $$G_1(x_1,\ldots,x_n)=x_1+\ldots+x_n,$$
+$$G_2(x_1,\ldots,x_n)=x_1x_2+x_1x_3+\ldots+x_{n-1}x_n,$$
+$$\ldots    \ldots     \ldots$$
+$$G_n=x_1x_2\cdot\ldots\cdot x_n,$$
+that is $G_i,$ $i=1,\ldots,n$ are the elementary symmetric
+polynomials. The mapping $p \mapsto q$ is an isomorphism from the
+algebra $P_s(\mathbb{C}^n)$ of symmetric polynomials onto the
+algebra of all polynomials $P(\mathbb{C}^n).$ Every character of
+algebra $P(\mathbb{C}^n)$ is an evaluation of some point
+$\mathbb{C}^n.$ So, there is a correspondence between characters
+$d_n$ on $\otimes^nP(\mathbb{C})$ and some characters $\varphi$ on
+$P(\mathbb{C}^n),$ which is an evaluation of polynomial $q$ at
+some point $(\alpha_1, \ldots, \alpha_n)\in \mathbb{C}^n.$ That
+is,
+$$d_n(\otimes^n p)=d_n(p(x_1)\cdot\ldots \cdot p(x_n))=\varphi(q(x_1,\ldots,x_n))=q(\alpha_1, \ldots, \alpha_n),$$ where
+$p(x_1)\cdot\ldots \cdot
+p(x_n)=q(G_1(x_1,\ldots,x_n),\ldots,G_n(x_1,\ldots,x_n)).$ Let
+$x_1^0,\ldots,x_n^0$ be the solutions of system  $$ \left\{
+\begin{array}{ll} x_1+x_2+\ldots+x_n=\alpha_1; &  \\ x_1x_2+x_1x_3+\ldots+x_{n-1}x_n=\alpha_2; &
+\\ \ldots \ldots \ldots \ldots &
+\\ x_1x_2\cdot\ldots\cdot x_n=\alpha_n
+\end{array} \right..$$ According to the Viet theorem,
+$x_1^0,\ldots,x_n^0$ are the solutions of the equation
+$$x^n-\alpha_1x^{n-1}+\alpha_2x^{n-2}+\ldots+(-1)^n\alpha_n=0.$$
+
+Then $D_n(p)=q(\alpha_1, \ldots, \alpha_n)=p(x_1^0)\cdot\ldots
+\cdot p(x_n^0),$ that was needed to show.
+\end{proof}
+
+To prove of this theorem we  use the existence of a homomorphism
+from $\otimes^nP(\mathbb{C})=P(^n\mathbb{C})$ onto
+$\otimes^n_sP(\mathbb{C}).$ It is easy to show that this condition
+is sufficient in the general case.
+
+\begin{theorem}
+If there exists a surjective homomorphism  $\phi: \otimes^n A
+\rightarrow \otimes^n_{s}A,$  then every $n$-homogeneous
+multiplicative polynomial on algebra $A$ can be represented as a
+product of characters.
+\end{theorem}
+
+\begin{proof} Suppose that there exists the surjective homomorphism $\phi$
+from $\otimes^n A$ onto $\otimes^n_{s}A.$ For a given
+$n$-homogeneous multiplicative polynomial $D(x), x\in A,$ it is
+defined a character $d$ on $\otimes^n_{s}A$ such that
+$$d(\otimes^np)=D(x).$$
+Thus
+$$\otimes^n A
+\rightarrow \otimes^n_{s}A \rightarrow \mathbb{C}$$
+
+Let $p\in \otimes^n_{s}A$ and $u\in \varphi^{-1}(p),$ $u\in
+\otimes^n A.$ Then $d\circ \varphi$ is a character on $\otimes^n
+A$ and $d\circ \varphi(u)=d(p).$ According to \cite{je}, every
+character of $\otimes^n A$ is of the form
+$$d\circ \varphi(a\otimes\ldots\otimes a)=\psi_1(a)\ldots\psi_n(a),$$
+$a\in A$ for some characters $\psi_1,\ldots,\psi_n$ on $A.$ So if
+$p=a\otimes\ldots\otimes a,$ then $$D(a)=d(p)=d\circ
+\varphi(u)=\psi_1(a)\ldots\psi_n(a),$$ that is, $D$ is trivial.
+\end{proof}
+
+
+\begin{corollary}
+
+Let $A$ be the completion of algebra $P(\mathbb{C})$ in some
+locally convex metrizabled topology $\tau,$ such that $(A, \tau)$
+is a topology algebra. Then every multiplicative polynomial by $n$
+degree on $A$ can be presented as a product of characters.
+
+\end{corollary}
+
+\begin{theorem}
+Every multiplicative polynomial of second degree is trivial on the
+algebra $P(\mathbb{C}^2)$ of polynomials of two variables.
+
+\end{theorem}
+
+\begin{proof}
+We use a similar idea that in proof of  Theorem 1. Let $D_2:
+P(\mathbb{C}^2) \rightarrow \mathbb{C}$ be a homogeneous
+ multiplicative polynomial by second degree. Due to
+\cite{Z-p}, there exists the character $d$ on the symmetric tensor
+product $P(\mathbb{C}^2)\otimes_sP(\mathbb{C}^2)$ such that
+$D_2(p)=d_2(p\otimes p)$ for any $p\in P(\mathbb{C}^2).$
+
+The algebra $P(\mathbb{C}^2)\otimes_sP(\mathbb{C}^2)$ is
+isomorphic to an algebra of four variables polynomials generated
+by $p(x_1,y_1)p(x_2,y_2)$, which are symmetric about the
+permutations of pairs  $x_1,y_1$ and $x_2,y_2$ simultaneously.
+These polynomials are called block-symmetric polynomials.
+
+A polynomial wich is symmetric with respect to the permutation of
+pairs
+ $x_1,y_1$ and
+$x_2,y_2,$ can be presented by polynomials $R_1=x_1+x_2,$
+$R_2=x_1x_2,$ $R_3=y_1+y_2,$ $R_4=y_1y_2,$ $R_5=x_1y_2+x_2y_1,$
+that is $p(x_1,y_1)p(x_2,y_2)=q(R_1,R_2,R_3,R_4,R_5).$ But the
+polynomials $R_1,R_2,R_3,R_4,R_5$ are algebraically depending and
+this dependence can be wrote by the following formula:
+$$R_5^2-R_1R_3R_5+R_1^2R_4-4R_2R_4+R_3^2R_2=0.\eqno(1)$$
+
+Thus the polynomial $q$ is an element of factor-algebra which is
+generated by polynomial $(1)$ and it is determined by this
+polynomial zeros. The character $d$ on
+$P(\mathbb{C}^2)\otimes_sP(\mathbb{C}^2)$ is a value of polynomial
+$q$ at the point $(\alpha_1, \alpha_2,\alpha_3,\alpha_4,
+\alpha_5),$ which is the solution of the equation $(1),$ that is
+$$d(p\otimes p)=d(p(x_1,y_1)p(x_2,y_2))=q(\alpha_1, \alpha_2,\alpha_3,\alpha_4, \alpha_5),$$
+where $p(x_1,y_1)p(x_2,y_2)=q(R_1,R_2,R_3,R_4,R_5).$ Let
+$x_1^0,x_2^0,y_1^0,y_2^0$ be the solution of the equations system
+$$ \left\{
+\begin{array}{ll} x_1+x_2=\alpha_1; &  \\ x_1x_2=\alpha_2; &
+\\ y_1+y_2=\alpha_3;  &
+\\ y_1y_2=\alpha_4; &
+\\ x_1y_2+x_2y_1=\alpha_5
+\end{array} \right..$$ According to the Viet theorem
+the pairs  $x_1^0,x_2^0$  and $y_1^0,y_2^0$ are the solution of
+the equations
+$$x^2-\alpha_1x+\alpha_2=0,$$
+$$y^2-\alpha_3x+\alpha_4=0$$
+respectively. Now we need to put $\alpha_5=x_1^0y_2^0+x_2^0y_1^0.$
+Then $D_2(p)=q(\alpha_1, \alpha_2,\alpha_3,\alpha_4,
+\alpha_5)=p(x_1^0,y_1^0)p(x_2^0,y_2^0),$ that was needed to show.
+\end{proof}
+
+Using similar methods and recent results on block-symmetric
+polynomials \cite{bl-sym} it is possible to prove an analogue of
+Theorem 3 for $n$ degree multiplicative polynomials on
+$P(\mathbb{C}^2).$
+
+
+
+
+%% Оформлення літератури
+\begin{thebibliography}{99}
+
+
+\bibitem{bl-sym}
+Загороднюк А.В., Кравцiв В.В. \emph{Симетричнi полiноми на
+добутках банахових просторiв}
+// Карпат. мат. публ., --- 2010. --- Т.2, №1. --- C. 59--71.
+
+\bibitem{Kol}  Колмогоров А.,
+ Фомин С. Елементы теории функций  и функционального анализа.
+--- М.: Наука, 1976. --- 543 с.
+
+\bibitem{Ga}
+ Gamelin T.W. Analytic functions on Banach spaces in Complex
+Function
+  Theory, Ed. Gauthier and Sabidussi,  Kluwer Academic
+  Publishers, Amsterdam, 1994.
+
+\bibitem{je}
+ Lamadrid J.~G. \textit{Uniform cross norms and tensor products of
+Banach algebras,}  Bull. Amer. Math. Soc., \textbf{69}, 6 (1963),
+797--803.
+
+\bibitem{Mu}
+Mujica J. Complex Analysis in Banach Spaces, North-Holland,
+  Amsterdam, New York, Oxford, 1986.
+
+\bibitem{Ru}  Rudin W. Functional Analysis, McGraw-Hill, New
+York, 1973.
+
+\bibitem{Z-p}  Zagorodnyuk A.V. {\it Multiplicative polynomial operators on
+topological
+algebras,} Contemporary Mathematics, \textbf{232} (1999),
+357--361.
+
+
+\bibitem{Zag}  Zagorodnyuk A.V. {\it On polynomial orthogonality on
+Banach spaces,} Math. Studii, \textbf{14}, 2 (2000),
+189--192.
+
+
+
+
+
+
+\end{thebibliography}
+
+\end{document}
+
+\begin{thebibliography}{9}
+
+  \bibitem{k1} Иосида К. Функциональный анализ. --- М.: Мир, 1967. --- 624 с.
+
+  \bibitem{k2} Малицька Г.П. \emph{Системи рiвнянь типу Колмогорова} // Укр.
+мат. журн. --- 2009. --- Т.12, №3. --- С. 1650--1563.
+
+  \bibitem{k3} Dineen S. Complex analysis on infinite-dimensional spaces,
+Springer Monographs in Mathematics,
+Springer-Verlag London, Ltd., London, 1999.
+
+
+\end{thebibliography}
+
+%\end{document}
