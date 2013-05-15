@@ -272,6 +272,7 @@ class AuthorizationController
     public function loginAction()
     {
     	//- Init view -//
+        $this -> view -> logotip = strtoupper('Authorization');
         $this -> view -> Title = 'Authorization';
         $this -> view -> pathOfSite = 'Authorization => Login';
         

@@ -12,6 +12,11 @@ body
 	font-size		: small;
 }
 
+a
+{
+	color	: #333;
+}
+
 h1
 {
 	border-top		: solid 1px;
@@ -175,7 +180,7 @@ table
 	.authorization
 	{
 		background	: #fff;
-		border		: #000 dashed 1px;;
+		border		: #000 dashed 1px;
 		margin		: 20px;
 		text-align	: left;
 	}
@@ -202,8 +207,11 @@ table
 		
 		.authorization .param div input
 		{
-			font-size	: x-large;
+			color 		: #777;			
+			font-size	: large;
+			font-weight:bold;
 			height	: 40px;
+			padding-left:5px;
 			width	: 400px;
 		}
 		
@@ -382,17 +390,67 @@ table
 			width		: 300px;
 		}
 
+	/* Menu :: Navigation */
 	.menu_navigation_left
 	{
+		/*background	: #eee;
+		background	: -moz-linear-gradient( top, #fff, #eee, #fff );*/
+		font-size	: large;
 		float		: left;
+		margin-top	: 5px;
 		width		: 20%;
 	}
 	
-	.menu_navigation_left>b
-	{
-		margin-left		: 10px;
-	}
+		.menu_navigation_left .label
+		{
+			background	: #ddd;
+			background	: -moz-linear-gradient( top, #eee, #eee, #ccc );
+			font-weight	: bold;
+			margin		: 5px;
+			padding		: 5px;
+		}
+		
+		.menu_navigation_left ul
+		{
+			list-style	: none;/*url( "" );*/
+			margin		: 0;
+			padding: 0;
+		}
+		
+			.menu_navigation_left ul li
+			{
+				background	: #eee;
+				background	: -moz-linear-gradient( top, #eee, #eee, #fff );				
+				font-style	: italic;
+				margin		: 1px 5px 0 5px;
+				padding		: 5px;
+			}
+			
+			.menu_navigation_left ul li:hover
+			{
+				background	: #eee;
+				background	: -moz-linear-gradient( top, #eee, #ccc, #fff );				
+				font-style	: italic;
+				font-weight	: bold;
+				margin		: 1px 5px 0 5px;
+				padding		: 5px;
+			}
+			
+			.menu_navigation_left ul li a
+			{
+				color		: #000;
+			}
+			
+			.menu_navigation_left ul li a:hover
+			{
+				color		: #777;
+			}
 	
+	/* Content */
+	.content
+	{
+		margin-left	: 20%;
+	}
 
 /* Footer */
 .footer
@@ -415,10 +473,17 @@ table
 /* Message */
 .message
 {
+	color		: blue;
 	font-size	: large;
 	line-height	: 32pt;
 }
 
+.messages
+{
+	color		: red;
+	font-size	: large;
+	line-height	: 32pt;
+}
 
 /* #- Article :: View -# */
 .article
@@ -474,7 +539,7 @@ table
 	.article .status
 		{
 			color		: green;
-			font-size	: small;
+			font-size	: medium;
 			font-weight	: normal;
 			line-height	: 20pt;
 		}
@@ -485,4 +550,15 @@ table
 		font-weight	: normal;
 		line-height	: 21pt;
 		margin-top	: 10px;
+	}
+	
+.download
+{
+	line-height	: 25pt;
+}
+	
+	.download label
+	{
+		font-size	: small;
+		font-weight	: bold;
 	}

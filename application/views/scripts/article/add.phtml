@@ -1,34 +1,54 @@
 
-<div style = "text-align: center;">
-	<div class = "message">
-		Choose file from your article in TeX for upload and click Upload button
-	</div>
-<center>
-<form action = "/article/add" method = "post" enctype="multipart/form-data">
+<?php
+	
+	echo 
+	$this -> partial(
+		'widgets/navigation.phtml', 
+		array(
+			'label'	=> 'Article', 
+			'items'	=> array(
+				array(
+					'label'	=> 'List', 
+					'uri'	=> '/articles'
+				)
+			)
+		)
+	);
 
-	<div class = "" style = "line-height: 32pt;">
-		<label style = "font-size:x-large;"><?= $this -> translate( 'File of article' ); ?>:</label>
-		<input style = "height: 28pt; font-size:20pt;" type = "file" name = "article"/>	
-		<!-- Submit -->
-		<input class = "submit" type = "submit" value = "Upload" style = "width:150px;height: 28pt; font-size:20pt;" />
+?>
+
+<div class = "content">
+	<div style = "text-align: left;">
+		<div class = "message">
+			Choose file from your article in TeX for upload and click Upload button
+		</div>
+	
+	<form action = "/article/add" method = "post" enctype="multipart/form-data">
+	
+		<div class = "" style = "line-height: 21pt;">
+			<label style = "font-size:x-large;"><?= $this -> translate( 'Article' ); ?>:</label>
+			<input style = "font-size:18pt;" type = "file" name = "article"/>	
+			<!-- Submit -->
+			<input class = "submit" type = "submit" value = "Upload" style = "font-size:18pt;" />
+		</div>
+		
+	</form>
+	
 	</div>
 	
-</form>
-</center>
-</div>
-
-<div class = "messages">
-
-	<ul>	
-		<?php foreach( $this -> errors as $err_command => $part ): ?>
-			<?php foreach( $part as $part_name => $val ): ?>
-			<li>
-				<b>Command:</b> <i><?= $err_command; ?></i>, 
-				<b>part:</b> <i><?= $part_name; ?></i>, 
-				<b>msg:</b> <i><?= $val; ?></i>
-			</li>
+	<div class = "messages">
+	
+		<ul>	
+			<?php foreach( $this -> errors as $err_command => $part ): ?>
+				<?php foreach( $part as $part_name => $val ): ?>
+				<li>
+					<i>Command:</i> <b><?= $err_command; ?></b>, 
+					<i>part:</i> <b><?= $part_name; ?></b>, 
+					<i>msg:</i> <b><?= $val; ?></b>
+				</li>
+				<?php endforeach; ?>
 			<?php endforeach; ?>
-		<?php endforeach; ?>
-	</ul>
-
+		</ul>
+	
+	</div>
 </div>

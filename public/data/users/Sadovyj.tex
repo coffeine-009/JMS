@@ -1,0 +1,1143 @@
+%Format:
+\documentclass[12pt,twoside,en,bysec]{cmpart}
+% Необов'язкові опції :
+% draft - чернетка
+% en, ua, ru - основна мова документа
+% bysec - твердження, леми, означення і т.п. (але не теореми)
+%         нумеруються в межах кожної \section окремо
+% thmbysec - теореми теж нумеруються окремо для кожної \section
+% win   - кодування кирилиці CP-1251 (Windows)
+% koi   - кодування кирилиці KOI8_U  (Unix)
+%
+% Вже завантажено пакети :
+% amsmath,amsfonts,amsthm,amssymb,latexsym
+%
+% Вже означено theorem-like оточення :
+% {theorem}     - теорема
+% {proposition} - твердження
+% {lemma}       - лема
+% {corollary}   - наслідок
+% {remark}      - зауваження
+% {definition}  - означення
+% {example}     - приклад
+% {examples}    - приклади
+% а також їх аналоги з зірочкою без нумерації :
+% {theorem*}, {proposition*} і т.п.
+
+%For photos
+\usepackage{graphics}
+\usepackage[dvips]{graphicx}
+\usepackage[usenames,dvipsnames]{color}
+
+
+\author{Sadovyj D.Yu.}
+\title{Asymptotic approximation of solution to quasilinear elliptic
+boundary-value problem in a two-level thick junction of type 3:2:2}
+\shorttitle{Homogenization of quasilinear problem in a thick junction of type
+3:2:2}
+
+\enabstract{Sadovyj D.Yu.}%
+{Asymptotic approximation of solution to quasilinear elliptic boundary-value
+problem in a two-level thick junction of type 3:2:2}%
+{We consider quasilinear elliptic boundary-value problem in a
+two-level thick junction $\Omega_\varepsilon$ of type $3:2:2$, which is the
+union of a cylinder $\Omega_0$ and a large number of $\varepsilon$-periodically
+situated thin discs with varying thickness. Different Robin boundary conditions
+with perturbed parameters are given on the surfaces of the thin discs. The
+leading terms of the asymptotic expansion are constructed and the corresponding
+estimate in  Sobolev space is obtained.}
+
+\ruabstract{Садовой Д.Ю.}%
+{Асимптотическая апроксимация решения квазилинейной эллиптической краевой задачи в двухуровневом густом соединении типа 3:2:2}%
+{Рассматривается квазилинейная эллиптическая краевая задача в двухуровневом густом соединении $\Omega_\varepsilon$ типа $3:2:2$, которое состоит из цилиндра $\Omega_0$ и большого количества $\varepsilon$-периодически присоединённых тонких дисков переменной толщины. На поверхностях тонких дисков из обоих уровней задаются разные краевые условия третьего рода с воз-мущёнными коэффициентами. Строятся главные члены асимптотического разложения и показывается соответствующая оценка в пространстве Соболева.}
+
+\uaabstract{Садовий Д.Ю.}%
+{Асимптотична апроксимація розв'язку квазілінійної еліптичної крайової задачі в дворівневому густому з'єднанні типу 3:2:2}%
+{Розглядається квазілінійна еліптична крайова задача в дворівневому густому з'єднанні типу $3:2:2$, яке є об'єднанням циліндру $\Omega_0$ та великої кількості $\varepsilon$-періодично розташова-них тонких дисків змінної товщини. На поверхнях тонких дисків з обох рівнів задані різні крайові умови третього роду зі збуреними параметрами. Будуються головні члени асимптотики та доводиться відповідна оцінка в просторі Соболєва.}%
+
+
+\subjclass{35B27, 35J65, 35B40, 35C20, 74K30}
+\UDC{517.956}
+\keywords{homogenization, quasilinear problem, elliptic problem, asymptotic approximation, thick junction}
+
+\pyear{2012} % рік публікації
+\volume{4}   % том
+\issue{2}    % випуск
+\pageno{297} % номер першої сторінки
+\received{8.05.2012}
+%\revised{?}
+\contentslistfile{../total.lst}
+
+
+\address{Taras Shevchenko National University,\\ Kyiv, Ukraine}
+\email{sadovyj@univ.kiev.ua}
+
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\maketitle
+
+%%% ----------------------------------------------------------------------
+
+\footnotetext{The author was partly supported by joint European grant EUMLS-FP7-People-2011-IRSES Project number 295164}
+
+\section*{Introduction}
+
+A thick junction of type $m:k:d$ is a union of some domain, which is called the junction's body, and a large number of $\varepsilon$-periodically alternating thin domains, which are attached to some manifold (the joint zone) on the boundary of the junction's body. The small parameter $\varepsilon$ characterizes  distance between  neighboring thin domains and their thickness. The type $m:k:d$ of a thick junction refers, respectively, to the limiting dimensions (as $\varepsilon \to 0$) of the junction's body, the joint zone and each of the attached thin domains.
+
+The subject of the investigation of boundary-value problems in thick junctions is the asymptotic behavior of solutions to such problems as $\varepsilon \to 0$, i.e. when the number of the attached thin domains infinitely increases and their thickness tends to zero.
+
+The first researches in this direction were carried out in
+\cite{Khrus,Kot-Kh,MarKhrus}, where the convergence theorems for Green function
+of the Neumann problem for the Helmholz equation in the junction's body were
+proved. In these papers either the assumption about the convergence of certain
+components of the boundary-value problem was made, or explicit representations
+of certain quantities were used, which was possible under certain configurations
+of the junction's body (the half-space). In \cite{MN93d}--\cite{Mel'nyk-1},
+\cite{N95} thick junctions were classified, asymptotic methods for the
+investigation
+of main boundary-value problems of mathematical physics in thick junctions
+of different types were developed, the convergence theorems were proved, the first
+terms of asymptotic expansions were constructed, and the corresponding estimates
+were proved. It was shown that qualitative properties of solutions essentially depend on the junction's type and
+the conditions given on the boundaries of the attached thin domains (see also  \cite{B-G-M,B-Gaudiello-Gri,MC3}).
+
+As an extension of the investigation, in papers \cite{MDM,D-M,M-V-2} thick junctions of more complicated geometric structure were considered, namely multi-level thick junctions. A multi-level thick junction is a thick junction, in which thin domains are divided into finitely many levels depending on their geometric structure and boundary conditions imposed on their surfaces. Besides, thin domains from each level
+$\varepsilon$-periodically alternate along the joint zone.
+In these papers linear boundary-value problems in thick junctions of types $2:1:1$ and $3:2:1$
+were considered. Moreover, there a new qualitative difference in the asymptotic behavior of solutions to boundary-value problems in multi-level thick junctions was noticed, namely the "multi-phase" \ effect in the domain that is filled up simultaneously by the thin domains from different levels.
+
+The successful applying in nanotechnology and microelectronics  of
+constructions, which have form of thick junctions (see Fig.~1 and
+\cite{Lav-Kn-Pid}--\cite{Lyshevski}), has lead to effective studying of
+boundary-value problems in thick junctions of various types and more complicated
+structure (see also \cite{B-G-M}--\cite{AppAn}, \cite{Mel-m2as-08,MC3}).
+
+
+\begin{figure}\label{radiator}
+\begin{center}
+\includegraphics[height=4cm]{rad_cyl1}
+\end{center}
+\caption{Heat radiator that has form of a thick junction of type $3:2:2$.}
+\end{figure}
+
+In the present paper we consider quasilinear parabolic boundary-value problem in a two-level thick junction of type $3:2:2$, which consists of a cylinder $\Omega_0$ and a large number of thin annular discs with varying thickness, which are $\varepsilon$-periodically attached to $\Omega_0$. Different nonhomogeneous Robin boundary conditions are given on the surfaces of the thin discs from various levels. The leading terms of the asymptotic expansion for a solution to this problem are constructed and the asymptotic estimate in Sobolev space is proved.
+
+The outline of the paper is as follows. In Section \ref{STATEMENT_ELLIPTIC} thick junction $\Omega_\varepsilon$ is described and quasilinear elliptic boundary-value problem in this thick junction is stated. In Section \ref{SECTION_FORMAL} outer and inner asymptotic expansions for the solution $u_\varepsilon$ are constructed and homogenized boundary-value problem is obtained. In Section \ref{SECTION_ASYMPT_ESTIM} approximation function $R_\varepsilon$ for solution $u_\varepsilon$ is constructed and asymptotic estimate is proved. In Section \ref{SECTION_DISCUSS} the obtained results are discussed.
+
+\section{Statement of Problem}\label{STATEMENT_ELLIPTIC}
+
+Let $0< d_0 < d_2 \le d_1$ and   $0< b_2 < b_1 <1$; $h_i:
+[d_0, \, d_i] \rightarrow (0, \, 1), \ i=1, \, 2,$ are piecewise smooth functions. Suppose that  functions $h_i$ satisfy the following conditions:
+$$
+0<b_i-\frac{h_i(s)}{2}, \  b_i+\frac{h_i(s)}{2}<1 \quad \forall s \in [d_0,\,d_i], \ i=1, \, 2, \quad
+b_2+\frac{h_2(s)}{2}< b_1-\frac{h_1(s)}{2} \quad \forall s \in
+[d_0, \, d_2].
+$$
+These inequalities imply that for all $s \in [d_0, \, d_i]$ the intervals
+$$
+I_i(s):=\left(b_i-\frac{h_i(s)}{2}, \, b_i+\frac{h_i(s)}{2}\right), \quad i=1,\,2,
+$$
+belong to interval $(0, \, 1)$, don't have common points and don't adjoin.
+
+We additionally assume that  functions $h_1, \, h_2$ are constant in some neighborhood of $d_0$, i.e. there exists $\delta >0$ such that $h_i(s) = h_i(d_0)$ for all $s \in [d_0, \, d_0 + \delta], \ i=1, \, 2$.
+
+Consider a model thick junction $\Omega_{\varepsilon}$ of type $3:2:2$ (see Fig.~2) that consists of cylinder
+$$
+\Omega_0 = \{ x = (x_1, \, x_2, \, x_3) \in \mathbb{R}^3 : \ \, 0< x_2 <l,
+\ \, r:= \sqrt{x_1^2 + x_3^2} < d_0 \}
+$$
+and $2 N$ thin annular discs
+$$
+G_\varepsilon^{(1)}(j)=\{ x \in \mathbb{R}^3: \ \, |x_2- \varepsilon (j+b_1)|<\frac{\varepsilon h_1 (r)}{2}, \ \, d_0 \leq r <d_1 \},
+$$
+$$
+G_\varepsilon^{(2)}(j)=\{ x \in \mathbb{R}^3: \ \, |x_2- \varepsilon (j+b_2)|<\frac{\varepsilon h_2 (r)}{2}, \ \, d_0 \leq r <d_2 \},
+$$
+where $j= \overline{0, \, N-1}, \ \varepsilon = l/N,$ i.e.
+$$
+\Omega_{\varepsilon}=\Omega_0 \cup G_{\varepsilon}, \quad
+G_{\varepsilon}=G^{(1)}_{\varepsilon} \cup
+G^{(2)}_{\varepsilon}, \quad G^{(1)}_{\varepsilon}=
+\cup_{j=0}^{N-1} G_\varepsilon^{(1)}(j), \quad G^{(2)}_{\varepsilon}= \cup_{j=0}^{N-1}
+G_\varepsilon^{(2)}(j).
+$$
+Here $N$ is a large integer. Therefore, $\varepsilon$
+is a small parameter, which characterizes  distance between  neighboring thin discs and their thickness.
+
+ Denote by $S_\varepsilon^{(1)}$ and $S_\varepsilon^{(2)}$ the union of the lateral surfaces of the thin discs from the first and the second level, respectively, and by $S^\pm$ the bases of  cylinder $\Omega_0$, i.e.
+\begin{gather*}
+S_\varepsilon^{(i)} := \{ x \in \partial G_\varepsilon^{(i)} : \ \, |x_2 - \varepsilon (j+b_i)| = \varepsilon  h_i(r) / 2, \ j = \overline{0, N-1}, \ r \in (d_0, \, d_i)\}, \quad i=1, \, 2,
+\\[2mm]
+S^- = \{ x \in \partial \Omega_0 : \ x_2=0\},
+\quad S^+ = \{ x \in \partial \Omega_0 : \ x_2=l\}, \quad S^\pm=S^+ \cup S^-.
+\end{gather*}
+
+Also we introduce the following notations:
+\begin{gather*}
+\overline{\Omega}_i=\overline{\Omega}_0 \cup \overline{D}_i,
+\quad D_i=\{x \in \mathbb{R}^3 : \ 0<x_2<l, \ d_0 < r < d_i \}, \ i=1, \, 2,
+\\
+Q^{(i)}_0=\{ x \in \partial \Omega_i : \
+r=d_i\}, \ i=\overline{0,2}, \quad
+Q^{(i)}_{\varepsilon}= \{ x \in \partial G_{\varepsilon}^{(i)} : \ r=d_i\}, \ i=1, \, 2,
+\\
+\Upsilon_\varepsilon^{(i)} = S_\varepsilon^{(i)} \cup Q_\varepsilon^{(i)}, \quad \Theta^{(i)}_{\varepsilon} = G^{(i)}_{\varepsilon} \cap \partial\Omega_0 , \ i=1, \, 2, \quad \Theta_\varepsilon = \Theta_\varepsilon^{(1)} \cup  \Theta_\varepsilon^{(2)}, \quad Q_\varepsilon^{(0)} = Q_0^{(0)} \setminus \Theta_\varepsilon.
+\end{gather*}
+
+
+
+\begin{figure}[t]
+\begin{center}
+\begin{picture}(300, 150)
+\put(2,90){\vector(0, 1){60}} \put(0,65){\line(1,0){4}}
+\put(0,132){\line(1,0){4}} \put(0,114){\line(1,0){4}}
+\put(0,62){\llap{0}} \put(0,90){\llap{$d_0$}}
+\put(0,114){\llap{$d_2$}} \put(0, 132){\llap{$d_1$}}
+\put(0,145){\llap{$x_3$}}
+
+{ \thicklines \put(2,40){\line(0, 1){50}}
+\put(2,40){\line(1,0){11}} \put(2,90){\line(1,0){11}} \put(301,90){\line(1,0){11}} \put(301,40){\line(1,0){11}}
+%\put(0,0){\line(1,0){300}}
+%\put(0,0){\line(0, \, 1){150}}
+
+
+\multiput(17,102)(38,0){8}{\line(1,3){4}}
+\multiput(13,90)(38,0){8}{\line(0, 1){12}}
+\multiput(9,114)(38,0){8}{\line(1,0){12}}
+\multiput(17,102)(38,0){8}{\line(0,-1){12}}
+\multiput(13,102)(38,0){8}{\line(-1,3){4}}
+\multiput(17,90)(38,0){8}{\line(1,0){15}}
+
+\multiput(32,90)(38,0){8}{\line(0,1){7}}
+\multiput(32,97)(38,0){8}{\line(-1,5){5}}
+\multiput(27,122)(38,0){8}{\line(1,2){5}}
+\multiput(32,132)(38,0){8}{\line(1,0){3}}
+\multiput(35,132)(38,0){8}{\line(1,-2){5}}
+\multiput(40,122)(38,0){8}{\line(-1,-5){5}}
+\multiput(35,97)(38,0){8}{\line(0,-1){7}}
+\multiput(35,90)(38,0){7}{\line(1,0){16}}
+
+\multiput(17,28)(38,0){8}{\line(1,-3){4}}
+\multiput(13,40)(38,0){8}{\line(0, -1){12}}
+\multiput(9,16)(38,0){8}{\line(1,0){12}}
+\multiput(17,28)(38,0){8}{\line(0,1){12}}
+\multiput(13,28)(38,0){8}{\line(-1,-3){4}}
+\multiput(17,40)(38,0){8}{\line(1,0){15}}
+\put(43,65){\circle{1}}
+
+\multiput(32,40)(38,0){8}{\line(0,-1){7}}
+\multiput(32,33)(38,0){8}{\line(-1,-5){5}}
+\multiput(27,8)(38,0){8}{\line(1,-2){5}}
+\multiput(32,-2)(38,0){8}{\line(1,0){3}}
+\multiput(35,-2)(38,0){8}{\line(1,2){5}}
+\multiput(40,8)(38,0){8}{\line(-1,5){5}}
+\multiput(35,33)(38,0){8}{\line(0,1){7}}
+\multiput(35,40)(38,0){7}{\line(1,0){16}}
+
+
+ \put(312,40){\line(0, 1){50}}
+} \put(314,65){\vector(1,0){22}} \put(315,55){$l$}
+\put(328,55){$x_2$}
+
+\multiput(43,42)(0, 10){5}{\line(0,1){5}}
+\put(45,60){$\varepsilon$}
+%\multiput(15,2)(0, \, 10){22}{\line(0, \, 1){5}} \put(16,110){$\varepsilon
+%b_1$} \multiput(34,22)(0, \, 10){18}{\line(0, \, 1){5}}
+%\put(35,110){$\varepsilon b_2$}
+\end{picture}
+\caption{The cross-section of  thick junction $\Omega_{\varepsilon}$ of type $3:2:2$ ($N=8$).}
+\end{center}
+\end{figure}
+
+In thick junction $\Omega_\varepsilon$ we consider the quasilinear elliptic boundary-value problem
+\begin{equation}
+\label{task1}\left\{
+        \begin{array}{rcll}
+    - \Delta u_{\varepsilon} + \vartheta_0(u_\varepsilon) &=& f_{\varepsilon}
+                    &\mbox{in} \ \Omega_{\varepsilon}  , \\[2mm]
+    \partial_{\nu} u_{\varepsilon} + \varepsilon   \vartheta_1(u_\varepsilon) &=& \varepsilon^{\beta} g_{\varepsilon}
+                    &\mbox{on} \ S_{\varepsilon}^{(1)} ,
+    \\[2mm]
+    \partial_{\nu} u_{\varepsilon} +  \vartheta_1(u_\varepsilon) &=& 0
+                    &\mbox{on} \ Q_{\varepsilon}^{(1)} ,
+    \\[2mm]
+    \partial_{\nu} u_{\varepsilon} + \varepsilon^\alpha   \vartheta_2(u_\varepsilon) &=& \varepsilon^{\beta} g_{\varepsilon}
+                    &\mbox{on} \ \Upsilon_{\varepsilon}^{(2)} ,
+    \\[2mm]
+    \partial_{\nu} u_\varepsilon &=& 0\
+                    &\mbox{on} \ Q_\varepsilon^{(0)},
+    \\[2mm]
+    \partial_{x_2}^p u_{\varepsilon}|_{S^-} &=&     \partial_{x_2}^p u_{\varepsilon}|_{S^+},
+                    &p=0, \, 1,
+    \\[2mm]
+        \left. [u_\varepsilon] \right|_{r=d_0}
+    =\left. [\partial_r u_\varepsilon] \right|_{r=d_0} &=&0
+                    &\mbox{on} \ \Theta_\varepsilon.
+   \end{array}\right.
+\end{equation}
+Here $\partial_{\nu}=\partial/\partial \nu$ is the outward normal derivative; $\alpha, \ \beta \geq 1$ are parameters;
+ the square brackets denote the jump of the enclosed quantities. For the right-hand sides of problem (\ref{task1}) we assume that $f_\varepsilon \in L^2(\Omega_\varepsilon)$, $g_\varepsilon \in H^1(D_1)$ and
+$$
+\exists C_0 > 0 \quad \exists \varepsilon_0>0 \quad \forall \varepsilon \in (0, \, \varepsilon_0): \quad \| g_\varepsilon\|_{L^2(D_1)} + \|\partial_{x_2} g_\varepsilon\|_{L^2(D_1)}\le C_0.
+$$
+Functions $\vartheta_i$ are Lipschitz-continuous (which is equal to $\vartheta_i \in W^{1,\infty}_{\rm loc}(\mathbb{R})$) and
+\begin{equation}\label{nonlin_condin}
+\exists c_1, \, c_2 >0: \quad c_1 \le \vartheta_i'(s) \le c_2 \quad  \mbox{for a.e. }  s \in \mathbb{R}, \ i=\overline{0,\, 2}.
+\end{equation}
+
+Consider spaces $H_\varepsilon = \{ \varphi \in H^1(\Omega_\varepsilon): \ \varphi|_{S^-} = \varphi|_{S^+} \}$.
+
+A function $u_\varepsilon \in H_\varepsilon$ is a weak solution to problem (\ref{task1}) if for any function $\varphi \in
+H_\varepsilon$ the following integral identity holds:
+\begin{multline}\label{weakdef}
+\int_{\Omega_{\varepsilon}} (\nabla u_{\varepsilon}\cdot
+\nabla \varphi + \vartheta_0(u_\varepsilon) \, \varphi)\, dx +\varepsilon
+ \int_{S^{(1)}_{\varepsilon}} \vartheta_1(u_{\varepsilon}) \,
+    \varphi \,  d\sigma_x + \int_{Q_\varepsilon^{(1)}} \vartheta_1(u_\varepsilon) \, \varphi \, d\sigma_x
+\\
++\varepsilon^{\alpha}  \int_{\Upsilon^{(2)}_{\varepsilon}} \vartheta_2(u_{\varepsilon}) \, \varphi \, d\sigma_x
+= \int_{\Omega_{\varepsilon}} f_{\varepsilon} \,
+    \varphi \, dx
++\varepsilon^{\beta} \int_{S^{(1)}_{\varepsilon}\cup
+    \Upsilon^{(2)}_{\varepsilon}}
+    g_{\varepsilon} \, \varphi \, d\sigma_x.
+\end{multline}
+
+By the same arguments as in \cite{Mel-m2as-08} we  can prove that for any fixed $\varepsilon > 0$ there exists a unique weak solution to problem~(\ref{task1}).
+
+\textsf{The aim is to study the asymptotic behavior of the  solution to problem (\ref{task1}) as $\varepsilon \to 0$, i.e. when the number of the attached thin discs infinitely increases and their thickness tends to zero.}
+
+\section{Formal Asymptotic Expansions for the Solution}\label{SECTION_FORMAL}
+
+Only in this Section for formal calculations we assume that  functions $f_\varepsilon, \, g_\varepsilon$ do not depend on $\varepsilon$, i.e.  $f_\varepsilon = f_0$ in $\Omega_1$ and $g_\varepsilon = g_0$ in $D_1$, and they are smooth in $\overline \Omega_1 $ and $\overline D_1$, respectively.
+
+\subsection{Outer Expansions}
+
+We seek the leading terms of the asymptotic expansion for solution $u_\varepsilon$, restricted to $\Omega_0$, in the form
+\begin{equation}\label{exp_out_cyl}
+u_\varepsilon(x) \approx  u_0^+(x) + \sum_{k\ge1} \varepsilon^k  u_k^+ (x), \quad x \in \Omega_0,
+\end{equation}
+and, restricted to the thin discs $G^{(i)}_\varepsilon(j), \ j=\overline{0 , N-1},$ in the form
+\begin{equation}\label{exp_out_discs}
+u_\varepsilon(x) \approx u_0^{i,-}(x) + \sum_{k \ge 1} \varepsilon^k u_k^{i,-}(x, \, \xi_2 - j), \quad x \in G_\varepsilon^{(i)}(j), \quad i=1,\,2,
+\end{equation}
+where $\xi_2 = x_2 / \varepsilon$.
+
+Expansions (\ref{exp_out_cyl}) and (\ref{exp_out_discs}) are usually called \textsl{outer expansions}.
+
+With the help of Taylor's formula we get
+\begin{equation}\label{Taylor+}
+\vartheta_0(u_\varepsilon(x)) = \vartheta_0 (u_0^+(x))  + \vartheta_0'(\, \cdot \, ) \sum_{k\ge1} \varepsilon^k  u_k^+ (x), \quad x \in \Omega_0.
+\end{equation}
+
+Plugging the series (\ref{exp_out_cyl}) into the first equation of problem (\ref{task1}) and the boundary conditions on $S^\pm$, using (\ref{Taylor+}) and collecting coefficients of the same powers of $\varepsilon$, we get the following relations for   function $u_0^+$:
+$$
+\left\{
+\begin{array}{rcll}
+- \Delta u_0^+  + \vartheta_0(u_0^+) &=& f_0 & \mbox{in} \  \Omega_0, \\[2mm]
+\partial_{x_2}^p u_0^+|_{S^-} &=& \partial_{x_2}^p u_0^+|_{S^+}, & p=0, \, 1.
+\end{array}
+\right.
+$$
+
+Now let us find the limit relations in   domains $D_i, \ i=1,\,2$, which are filled up by the thin discs from $i$-th level as $\varepsilon$ tends to zero. Assuming for a moment that   functions $u_k^{i,-}$ are smooth, we write their Taylor series with respect to $x_2$ at the point $\varepsilon (j + b_i)$ and pass to the "rapid" \ variable $\xi_2 = x_2 / \varepsilon.$ Then (\ref{exp_out_discs}) takes the form
+\begin{equation}\label{exp_out_fast}
+u_\varepsilon(x) \approx u_0^{i,-}(x_1, \, \varepsilon  (j+b_i), \, x_3) + \sum_{k\ge1} \varepsilon^k  V_k^{i,j}(\tilde{x}, \, \xi_2), \quad x \in G^{(i)}_\varepsilon(j),
+\end{equation}
+where $\tilde{x}:=(x_1, \, x_3)$, and
+\begin{multline}\label{V}
+V_k^{i,j}(\tilde{x}, \, \xi_2) = \sum_{m=0}^{k-1} \frac{(\xi_2 - j - b_i)^m}{m!}
+\frac{\partial^m u_{k-m}^{i,-}}{\partial x_2^m} (x_1, \, \varepsilon  (j+b_i), \, x_3, \, \xi_2 - j)
+\\
++ \frac{(\xi_2 - j - b_i)^k}{k!} \frac{\partial^k u_0^{i,-}}{\partial x_2^k} (x_1, \, \varepsilon  (j+b_i), \, x_3).
+\end{multline}
+
+Further we will indicate   arguments of functions only if their absence may cause confusion.
+
+The outward unit normal to the lateral surfaces of the thin discs except a set of zero measure is as follows:
+\begin{equation}\label{normal}
+\nu_\varepsilon (x)=\frac{1}{ \sqrt{ 1 + 4^{-1} \varepsilon^2
+|h_i'(r)|^2 }} \left( - \frac {\varepsilon h_i'(r) x_1}{2 r}, \, \pm
+1 , \, - \frac{\varepsilon h_i'(r) x_3} {2 r} \right), \quad x \in S_\varepsilon^{(i)}, \ i=1,\,2,
+\end{equation}
+where "$+$" \  and "$-$" \  refer, respectively, to the left and the right parts of the lateral surface of each thin disc. Obviously, $({ 1 + \varepsilon^2 4^{-1} |h_i'(r)|^2 })^{-\frac{1}{2}} = 1 + {\cal O}(\varepsilon^2), \ \varepsilon \to 0.$
+
+Again with the help of Taylor's formula we obtain
+\begin{equation}\label{Taylor-}
+\vartheta_0(u_\varepsilon(x)) = \vartheta_0 (u_0^{i,-}(x_1, \, \varepsilon(j+b_i), \, x_3)) + \vartheta_0'(\, \cdot \, ) \sum_{k\ge1} \varepsilon^k  V_k^{i,j}(\tilde{x}, \, \xi_2, \, t), \ x \in G_\varepsilon^{(i)}.
+\end{equation}
+
+Let us put (\ref{exp_out_fast}) into (\ref{task1}) instead of $u_\varepsilon$. Taking into account (\ref{normal}), (\ref{Taylor-}) and that the Laplace operator in the variables $(\tilde{x}, \, \xi_2)$ has the form $\Delta_x = \Delta_{\tilde{x}} + \varepsilon^{-2} \frac{\partial^2}{\partial \xi_2^2}$ and collecting   coefficients of the same powers of $\varepsilon$, we arrive at one-dimensional boundary-value problems with respect to $\xi_2$ for functions $V_k^{i,j}$.
+
+Problems for $V_1^{i,j}$ read
+\begin{equation}\label{hom_sec}
+\left\{
+\begin{array}{rcll}
+\partial^2_{\xi_2\xi_2} V_1^{i,j} &=& 0, & \xi_2 \in I_{h_i(r)}(j) := ( - \frac{h_i(r)}{2} + j+ b_i , \, \frac{h_i(r)}{2} + j + b_i),\\[2mm]
+\partial_{\xi_2} V_1^{i,j} &=& 0, & \xi_2 = \pm \frac{h_i(r)}{2} + j + b_i,
+\end{array}
+\right. \qquad (i=1, \, 2)
+\end{equation}
+where $\partial_{\xi_2} = \frac{\partial}{\partial\xi_2}, \ \partial^2_{\xi_2\xi_2} = \frac{\partial^2}{\partial \xi_2^2}.$ Here the variables $\tilde{x}$ are regarded as parameters.
+
+It follows from (\ref{hom_sec}) that $V_1^{i,j}$ do  not depend on $\xi_2$. Therefore, $V_1^{i,j}$ are equal to some functions $\varphi^{(i)}_1 (x_1, \, \varepsilon (j+b_i), \, x_3), \ x \in G_\varepsilon^{(i)}(j)$, which will be defined later. Then, due to (\ref{V}) we have
+\begin{multline}\label{with_phi}
+u_1^{i,-}(x_1, \, \varepsilon (j+b_i), \, x_3, \, \xi_2 - j) = \varphi^{(i)}_1 (x_1, \, \varepsilon (j+b_i), \, x_3) \\ - (\xi_2 -j -b_i) \partial_{x_2} u_0^{i,-} (x_1, \, \varepsilon (j+b_i), \, x_3), \quad x \in G_\varepsilon^{(i)}(j).
+\end{multline}
+
+Boundary-value problems for $V_2^{1,j}$ and $V_2^{2,j}$ have the view
+\begin{equation}\label{hom_V^1}
+\left\{
+\begin{array}{ll}
+-\partial^2_{\xi_2\xi_2} V_2^{1,j} = ( \Delta_{\tilde{x}} u_0^{1,-} - \vartheta_0(u_0^{1,-}) + f_0)|_{x_2 = \varepsilon (j+b_1)}, & \xi_2 \in I_{h_1(r)}(j),\\[2mm]
+\pm \partial_{\xi_2} V_2^{1,j} = (2^{-1} \nabla_{\tilde{x}} h_1 \cdot \nabla_{\tilde{x}} u_0^{1,-} - \vartheta_1 (u_0^{1,-}) + \delta_{\beta,1} g_0) |_{x_2 = \varepsilon (j+b_1)}, & \xi_2 = \pm \frac{h_1(r)}{2} + j +  b_1,
+\end{array}
+\right.
+\end{equation}
+and
+\begin{equation}\label{hom_V^2}
+\left\{
+\begin{array}{ll}
+-\partial^2_{\xi_2\xi_2} V_2^{2,j} = (\Delta_{\tilde{x}} u_0^{2,-} - \vartheta_0(u_0^{2,-}) + f_0)|_{x_2 = \varepsilon (j+b_2)}, & \xi_2 \in I_{h_2(r)}(j),\\[2mm]
+\pm \partial_{\xi_2} V_2^{2,j} = (2^{-1} \nabla_{\tilde{x}} h_2 \cdot \nabla_{\tilde{x}} u_0^{2,-} -  \delta_{\alpha,1} \vartheta_2(u_0^{2,-}) + \delta_{\beta,1} g_0)|_{x_2 = \varepsilon (j+b_2)}, & \xi_2 = \pm \frac{h_2(r)}{2}  + j + b_2,
+\end{array}
+\right.
+\end{equation}
+respectively, where $\delta_{\alpha,1}, \, \delta_{\beta,1}$ are Kronecker's symbols.
+
+The solvability conditions for problems (\ref{hom_V^1}) and (\ref{hom_V^2}) read
+\begin{multline}\label{inD1}
+- \mbox{div}_{\tilde{x}} (h_1 \nabla_{\tilde{x}} u_0^{1,-}) + h_1 \vartheta_0(u_0^{1,-})
+    + 2 \vartheta_1 (u_0^{1,-}) = h_1 f_0 + 2 \delta_{\beta,1}  g_0,\\  x_2 = \varepsilon (j+b_1), \ r \in (d_0, \, d_1),
+\end{multline}
+\begin{multline}\label{inD2}
+-\mbox{div}_{\tilde{x}} (h_2 \nabla_{\tilde{x}} u_0^{2,-}) + h_2 \vartheta_0(u_0^{2,-}) + 2 \delta_{\alpha,1} \vartheta_2 (u_0^{2,-})  = h_2 f_0 + 2 \delta_{\beta,1} g_0, \\ x_2 = \varepsilon (j+b_2), \ r \in (d_0, \, d_2),
+\end{multline}
+respectively.
+
+Putting (\ref{exp_out_fast}) into the Robin boundary conditions on $Q_\varepsilon^{(i)},$ we get
+\begin{eqnarray}\label{inQ1}
+\partial_r u_0^{1,-} + \vartheta_1 ( u_0^{1,-})& = &0, \quad x \in Q_\varepsilon^{(1)}, \ x_2 = \varepsilon(j+b_1),\\
+\label{inQ2}
+\partial_r u_0^{2,-} &= &0,  \quad x \in Q_\varepsilon^{(2)}, \ x_2 = \varepsilon(j+b_2).
+\end{eqnarray}
+
+In order to find   conditions in   joint zone $Q_0^{(0)}$ we use the method of matched asymptotic expansions for   outer expansions (\ref{exp_out_cyl}), (\ref{exp_out_fast}) and an inner expansion which will be constructed in the next subsection.
+
+\subsection{Inner Expansion}\label{SECTION_JUNCTION_LAYER}
+
+In a neighborhood of   joint zone $Q_0^{(0)}$ we introduce the "rapid" \ coordinates $\xi=(\xi_1, \, \xi_2)$, where $\xi_1 = - (r- d_0) / \varepsilon$ and $\xi_2=x_2 / \varepsilon.$ Here $(r, \, x_2, \, \theta) \in \mathbb{R}^3$ are cylindric coordinates: $r=\sqrt{x_1^2 + x_3^2}, \ \tan(\theta)=x_3/x_1$.
+The Laplace operator in the coordinates $(\xi_1, \, \xi_2, \, \theta)$ has the form
+\begin{equation}\label{Laplace}
+\Delta_x = \varepsilon^{-2} \Delta_\xi - \varepsilon^{-1} \frac{1}{d_0- \varepsilon  \xi_1} \frac{\partial}{\partial \xi_1} + \frac{1}{(d_0 - \varepsilon \xi_1)^2} \frac{\partial^2}{\partial \theta^2}.
+\end{equation}
+
+We seek the leading terms of the inner expansion in a neighborhood of $Q_0^{(0)}$ in the form
+\begin{multline}\label{exp_in}
+u_\varepsilon(x) \approx u_0^+(x)|_{r=d_0} + \varepsilon \big( Z_1(\xi) \partial_{x_2} u_0^+(x)|_{r=d_0} \\ - \big(\eta(x_2) \Xi_1(\xi) + (1-\eta(x_2)) \Xi_2(\xi)\big) \partial_r u_0^+(x)|_{r=d_0}\big) + \ldots,
+\end{multline}
+where $Z_1, \ \Xi_1, \ \Xi_2$ are some functions, which are 1-periodic with respect to $\xi_2$ and defined in the union $\Pi:=\Pi^+ \cup \Pi^-_1 \cup \Pi^-_2$ of semiinfinite strips
+$$
+\Pi^+ = \{ \xi \in \mathbb{R}^2: \ \, \xi_1 > 0, \ \xi_2 \in (0, \, 1)\},
+\qquad
+\Pi^-_i = \{ \xi \in \mathbb{R}^2: \ \, \xi_1 \le 0, \ \xi_2 \in I_i(d_0) \}, \quad i=1, \, 2,
+$$
+(see definition of $I_i(d_0)$ in Section \ref{STATEMENT_ELLIPTIC}), $\eta $ is some function, which will be defined from matching conditions.
+
+Putting (\ref{exp_in}) into the differential equation of problem (\ref{task1}) with regard to (\ref{Laplace}) and into the corresponding boundary conditions and collecting coefficients of the same powers of $\varepsilon$, we get the junction-layer problems for  functions $Z_1, \ \Xi_1, \ \Xi_2.$ Functions $\Xi_1$ and $\Xi_2$ are  solutions to the following homogeneous problem:
+\begin{equation}\label{junction-layer_Xi}
+\left\{
+\begin{array}{rcll}
+-\Delta_\xi \Xi &=&0 &\mbox{in } \Pi, \\[2mm]
+\partial_{\xi_2} \Xi &=&0 &\mbox{on } (\partial \Pi^-_1 \cup \partial \Pi^-_2) \cap \{ \xi \in \mathbb{R}^2: \ \xi_1 < 0\}, \\[2mm]
+\partial_{\xi_1} \Xi &=&0 &\mbox{on } \partial \Pi \cap \{ \xi \in \mathbb{R}^2 : \ \xi_1 = 0\}, \\[2mm]
+\partial_{\xi_2}^p \Xi|_{\xi_2 =0} &=& \partial_{\xi_2}^p \Xi|_{\xi_2=1}, &p=0, \, 1, \ \xi_1 > 0.
+\end{array}
+\right.
+\end{equation}
+
+Main asymptotic relations for   functions $\Xi_1, \ \Xi_2$ can be obtained from general results on the asymptotic behavior of solutions to elliptic problems in domains with different exits to infinity (see, for instance, \cite{Nazarov-Plamen}). However, for  domain $\Pi$, we can define more exactly the asymptotic relations for  junction-layer solutions $\Xi_1, \ \Xi_2$ in the same way as in papers \cite{MN96,M99zaa}.
+
+\begin{proposition} There exist two solutions $\Xi_1, \ \Xi_2 \in H^1_{\sharp, \rm loc}(\Pi)$ to problem (\ref{junction-layer_Xi}), which have the following differentiable asymptotics:
+\begin{eqnarray}\label{xi_asymt_1}
+\Xi_1 = \left\{
+    \begin{array}{ll}
+    \xi_1 + {\cal O}(\exp(-2  \pi \xi_1)), & \xi_1 \to +\infty, \ \xi \in \Pi^+,\\
+    \alpha_1^{(1)} + {\cal O} (\exp(\pi  h_1^{-1}(d_0)  \xi_1)), & \xi_1 \to - \infty, \ \xi \in \Pi^-_1,\\
+    h_2^{-1}(d_0)  \xi_1 + \alpha_1^{(2)} + {\cal O}(\exp(\pi  h_2^{-1}(d_0)  \xi_1)), & \xi_1 \to - \infty, \ \xi \in \Pi^-_2,
+    \end{array}
+    \right. \\ \label{xi_asymt_2}
+\Xi_2 = \left\{
+    \begin{array}{ll}
+    \xi_1 + {\cal O}(\exp(-2 \pi \xi_1)), & \xi_1 \to +\infty, \ \xi \in \Pi^+,\\
+    h_1^{-1}(d_0)  \xi_1 + \alpha_2^{(1)} + {\cal O}(\exp(\pi   h_1^{-1}(d_0)  \xi_1)), & \xi_1 \to - \infty, \ \xi \in \Pi^-_1,\\
+    \alpha_2^{(2)} + {\cal O} (\exp(\pi  h_2^{-1}(d_0)  \xi_1)), & \xi_1 \to - \infty, \ \xi \in \Pi^-_2.
+    \end{array}
+    \right.
+\end{eqnarray}
+Here $H^1_{\sharp,\rm loc}(\Pi) = \{ u: \Pi \to \mathbb{R} \, :  \ \,  u(\xi_1, \, 0) = u(\xi_1, \, 1) \ \mbox{for any} \ \xi_1>0, \ u\in H^1(\Pi_R) \ \mbox{for any}$ $R>0\}$, $\Pi_R = \{\xi \in \Pi: \ \, -R < \xi_1 < R\}$; $\alpha_1^{(i)}, \ \alpha_2^{(i)}, \ i=1, \, 2,$ are some fixed constants.
+
+Any other solution to problem (\ref{junction-layer_Xi}), which has a polynomial growth at infinity, can be represented as a linear combination $c_0 + c_1 \Xi_1 + c_2 \Xi_2$.
+\end{proposition}
+
+Function $Z_1$ is a solution to the following problem:
+\begin{equation}\label{junction-layer_Z}
+\left\{
+\begin{array}{rcll}
+-\Delta_\xi Z &=&0 &\mbox{in } \Pi, \\[2mm]
+\partial_{\xi_2} Z &=&-1 &\mbox{on } (\partial \Pi^-_1 \cup \partial \Pi^-_2) \cap \{ \xi \in \mathbb{R}^2: \ \xi_1 < 0\},\\[2mm]
+\partial_{\xi_1} Z &=&0 &\mbox{on } \partial \Pi \cap \{ \xi \in \mathbb{R}^2: \ \xi_1 = 0\}, \\[2mm]
+\partial_{\xi_2}^p Z|_{\xi_2=0} &=& \partial_{\xi_2}^p Z|_{\xi_2=1}, &p=0, \, 1, \ \xi_1 > 0.
+\end{array}
+\right.
+\end{equation}
+
+Similarly to \cite{MN96,M99zaa,Nazarov} it is easy to verify that there exists a unique solution $Z_1 \in H^1_{\sharp,\rm loc}(\Pi)$ with the following asymptotics:
+\begin{equation}\label{z_asympt}
+Z = \left\{
+    \begin{array}{ll}
+    {\cal O}(\exp(-2  \pi \xi_1)), & \xi_1 \to +\infty, \ \xi \in \Pi^+,\\
+    - \xi_2 + b_1 + \alpha_3^{(1)} + {\cal O} (\exp(\pi  h_1^{-1}(d_0)  \xi_1)), & \xi_1 \to - \infty, \ \xi \in \Pi^-_1,\\
+    - \xi_2 + b_2 + \alpha_3^{(2)} + {\cal O} (\exp(\pi  h_2^{-1}(d_0)  \xi_1)), & \xi_1 \to - \infty, \ \xi \in \Pi^-_2.
+    \end{array}
+    \right.
+\end{equation}
+
+Now let us verify matching conditions for   outer expansions (\ref{exp_out_cyl}), (\ref{exp_out_discs}) and   inner expansion (\ref{exp_in}), namely, the leading terms of the asymptotics of the outer expansions as $\xi_1 \to \pm0 $ must coincide with the leading terms of the asymptotics of the inner expansion as $\xi_1 \to \pm\infty$. Near the point $(x_1, \, \varepsilon( j + b_i), \, x_3) \in Q_0^{(0)}$ function $u_0^+$ has the following asymptotics:
+\begin{multline*}
+u_0^+(x) \approx u_0^+(x_1, \, \varepsilon( j + b_i), \, x_3)|_{r=d_0}
+ + \varepsilon(\xi_2 - j -b_i) \partial_{x_2} u_0^+(x_1, \, \varepsilon( j + b_i), \, x_3)|_{r=d_0}
+\\ - \varepsilon \xi_1  \partial_r u_0^+(x_1, \, \varepsilon( j + b_i), \, x_3)|_{r=d_0} + \ldots\quad \mbox{as} \ \xi_1 \to 0+, \ (x) \in \Omega_0.
+\end{multline*}
+Taking into account the asymptotics of $Z_1, \ \Xi_1$ and $\Xi_2$ as $\xi_1\to+\infty$, we see that the matching conditions are satisfied for   expansions (\ref{exp_out_cyl}) and (\ref{exp_in}).
+
+The asymptotics of (\ref{exp_out_discs}) in the neighborhood of $(x_1, \, \varepsilon( j + b_i), \, x_3) \in Q_0^{(0)}$ are equal to
+\begin{multline}\label{match_discs}
+u_0^{i,-}(x_1, \, \varepsilon( j + b_i), \, x_3 )|_{r=d_0} + \varepsilon  \big(\varphi^{(i)}_1(x_1, \, \varepsilon( j + b_i), \, x_3 )|_{r=d_0}
+\\
+ - \xi_1 \partial_r u_0^{i,-}(x_1, \, \varepsilon( j + b_i), \, x_3 )|_{r=d_0} \big)  + \ldots  \quad \mbox{as} \ \xi_1 \to 0-, \ x \in G_\varepsilon^{(i)}(j), \  i=1, \, 2.
+\end{multline}
+It follows from (\ref{xi_asymt_1}), (\ref{xi_asymt_2}) and (\ref{z_asympt}) that the first terms of the asymptotics of (\ref{exp_in}) in the neighborhood of $(x_1, \, \varepsilon( j + b_i), \, x_3) \in Q_0^{(0)}$ are
+\begin{multline}\label{match_in_1}
+u_0^+(x_1, \, \varepsilon( j + b_1), \, x_3)|_{r=d_0} + \varepsilon \big( \alpha_3^{(1)} \partial_{x_2} u_0^+(x_1, \, \varepsilon( j + b_1), \, x_3)|_{r=d_0}
+\\
+ -\big(\alpha_1^{(1)} \eta(\varepsilon (j + b_1)) + (h_1^{-1}(d_0) \xi_1 + \alpha_2^{(1)}) (1- \eta(\varepsilon( j + b_1)) )\big) \partial_r u_0^+ (x_1, \, \varepsilon( j + b_1), \, x_3)|_{r=d_0} \big) \\ \mbox{as} \ \xi_1 \to -\infty, \ x \in G_\varepsilon^{(1)}(j),
+\end{multline}
+and
+\begin{multline}\label{match_in_2}
+u_0^+(x_1, \, \varepsilon( j + b_2), \, x_3)|_{r=d_0} + \varepsilon \, \big( \alpha_3^{(2)} \partial_{x_2} u_0^+ (x_1, \, \varepsilon( j + b_2), \, x_3)|_{r=d_0}
+\\
+ -\big((h_2^{-1}(d_0) \xi_1 + \alpha_1^{(2)})  \eta(\varepsilon( j + b_2) ) + \alpha_2^{(2)}  (1- \eta(\varepsilon ( j + b_2)  )) \big) \partial_r u_0^+ (x_1, \, \varepsilon( j + b_2), \, x_3 )|_{r=d_0} \big) \\ \mbox{as} \ \xi_1 \to -\infty, \ x \in G_\varepsilon^{(2)}(j).
+\end{multline}
+
+Comparing the first terms of (\ref{match_discs}), (\ref{match_in_1}) and (\ref{match_in_2}), we get
+\begin{equation}\label{conjugation1}
+u_0^+(x) = u_0^{i,-}(x), \quad x \in Q_0^{(0)}, \ x_2 = \varepsilon(j + b_i), \ i=1, \, 2.
+\end{equation}
+
+Comparing the second terms of (\ref{match_discs}), (\ref{match_in_1})  and (\ref{match_in_2}), we find that
+\begin{equation}\label{phi_def}
+\varphi_1^{(i)}(x) = \alpha_3^{(i)}  \partial_{x_2} u_0^+(x), \quad x \in Q_0^{(0)}, \ x_2 = \varepsilon(j+b_i), \ i=1, \, 2,
+\end{equation}
+and
+\begin{equation}\label{conj_j_2}
+\begin{array}{rcll}
+(1 - \eta)  h_1^{-1}(d_0) \partial_r u_0^+(x)&=& \partial_r u_0^{1,-}(x),& x \in Q_0^{(0)} , \ x_2 = \varepsilon(j+b_1)\\[2mm]
+\eta h_2^{-1}(d_0) \partial_r u_0^+(x) &=& \partial_r u_0^{2,-}(x), & x \in Q_0^{(0)}, \ x_2 = \varepsilon(j+b_2).
+\end{array}
+\end{equation}
+
+
+Since the points $\{ \varepsilon(j+b_i) : \ j=\overline{0, N-1}\}$, $i=1, \, 2,$ make up the $\varepsilon$-net of the segment $[0, \, l]$, we can extend equalities (\ref{with_phi}), (\ref{inD1}), (\ref{inD2}) in  domains $D_i$, equalities (\ref{inQ1}), (\ref{inQ2})  in $Q_0^{(1)}$ and $Q_0^{(2)}$, respectively, and equalities (\ref{conjugation1}), (\ref{phi_def}) and (\ref{conj_j_2})  in $Q_0^{(0)}$. As a result, from equalities (\ref{conj_j_2}) we derive the relation
+$$
+\eta(x_2)= \frac{h_2(d_0)  \partial_r u_0^{2,-}|_{r=d_0}}{h_1(d_0)  \partial_r u_0^{1,-}|_{r=d_0} + h_2(d_0)  \partial_r u_0^{2,-}|_{r=d_0}}, \quad x_2 \in (0, \, l),
+$$
+and obtain
+$$
+\partial_r u_0^+ = h_1(d_0)  \partial_r u_0^{1,-} + h_2(d_0)  \partial_r u_0^{2,-}, \quad x \in Q_0^{(0)}.
+$$
+
+By virtue of (\ref{conjugation1}) and (\ref{phi_def}) we can define $\varphi_1^{(i)}$ as follows:
+$$
+\varphi_1^{(i)}(x) = \alpha_3^{(i)}  \partial_{x_2} u_0^{i,-}(x), \quad x \in D_i, \ i=1, \, 2.
+$$
+
+\subsection{The Homogenized Problem}\label{SECTION_LIMIT_PROBLEM_1}
+
+With the help of the first terms $u_0^+$, $u_0^{1,-}$ and $u_0^{2,-}$ of   asymptotic expansions (\ref{exp_out_cyl}) and (\ref{exp_out_discs}) we define multi-sheeted function
+$$
+{\bf U}_0(x) =
+\left\{
+\begin{array}{ll}
+u_0^+(x), & x \in \Omega_0, \\
+u_0^{1,-}(x), & x \in D_1 , \\
+u_0^{2,-}(x), & x \in D_2 ,
+\end{array}
+\right.
+$$
+or in a short form ${\bf U}_0 = (u_0^+, \, u_0^{1,-}, \, u_0^{2,-})$.
+It follows from the foregoing that the components of function ${\bf U}_0$ must satisfy the relations
+\begin{equation}\label{res_3}
+\left\{
+\begin{array}{rcll}
+-\Delta u_0^+ + \vartheta_0(u_0^+)&=&f_0
+            &\mbox{in} \ \Omega_0,
+\\[2mm]
+\partial_{x_2}^p u_0^+|_{S^-}&=&\partial_{x_2}^p u_0^+|_{S^+}, & p=0, \, 1,
+\\[4mm]
+- {\rm div}_{\tilde{x}} (h_1(r)  \nabla_{\tilde{x}} u_0^{1,-}) + h_1(r) \vartheta_0(u_0^{1,-})&&\\
++ 2 \vartheta_1 (u_0^{1,-}) &=&h_1(r) f_0 + 2  \delta_{\beta,1} g_0
+            &\mbox{in} \ D_1,
+\\[2mm]
+\partial_{\nu} u_0^{1,-} + \vartheta_1 (u_0^{1,-})&=& 0
+            &\mbox{on} \ Q_0^{(1)},
+\\[4mm]
+- {\rm
+div}_{\tilde{x}} \big( h_2(r) \nabla_{\tilde{x}} u_0^{2,-} \big) + h_2(r) \vartheta_0(u_0^{2,-})&&\\ + 2 \delta_{\alpha,1} \vartheta_2 (u_0^{2,-}) &
+=& h_2(r) f_0 + 2 \delta_{\beta,1} g_0
+            &\mbox{in} \ D_2,
+\\[2mm]
+\partial_{\nu} u_0^{2,-} &=& 0
+            &\mbox{on} \ Q_0^{(2)},
+\\[4mm]
+u_0^+|_{Q_0^{(0)}} &=& u_0^{1,-}|_{Q_0^{(0)}} = u_0^{2,-}|_{Q_0^{(0)}},
+\\[2mm]
+\partial_r u_0^+ &=& h_1(d_0) \partial_r u_0^{1,-} + h_2(d_0) \partial_r u_0^{2,-}
+            &\mbox{on} \ Q_0^{(0)}.
+\end{array}
+\right.
+\end{equation}
+These relations form {\sl the homogenized problem} for problem (\ref{task1}).
+
+We introduce space ${\cal V}_0 := L^2(\Omega_0)\times L^2(D_1)\times L^2(D_2)$ of multi-sheeted functions with the scalar product
+$$
+({\bf u} , {\bf v} )_{{\cal V}_0}=\int_{\Omega_0} u_0  v_0
+\, dx + \sum_{i=1}^{2} \int_{D_i} u_i v_i \, dx,
+$$
+where
+$$
+{\bf u}(x)=
+\left\{
+\begin{array}{ll}
+u_0(x), & x \in \Omega_0,\\
+u_1(x), & x \in D_1,\\
+u_2(x), & x \in D_2,
+\end{array}
+\right.
+\qquad
+\mbox{and}
+\qquad
+{\bf v}(x)=
+\left\{
+\begin{array}{ll}
+v_0(x), & x \in \Omega_0,\\
+v_1(x), & x \in D_1,\\
+v_2(x), & x \in D_2,
+\end{array}
+\right.
+$$
+or in a short form ${\bf u}=(u_0, \, u_1, \, u_2)$ and ${\bf v}=(v_0, \, v_1, \, v_2)$, belong to ${\cal V}_0$. Also we introduce anisotropic Sobolev space of multi-sheeted functions
+\begin{multline*}
+{\cal H}_0:= \{ {\bf u} = (u_0 , \, u_1, \, u_2) \in {\cal V}_0: \ \,
+u_0 \in H^1(\Omega_0), \ u_0|_{S^-}= u_0|_{S^+}; \\ \exists \, \partial_{x_j} u_i \in L^2(D_i),\ j=1, \, 3, \ i=1, \, 2;\
+u_0|_{Q_0^{(0)}} = u_1|_{Q_0^{(0)}} = u_2|_{Q_0^{(0)}} \}
+\end{multline*}
+with the inner product
+$$
+({\bf u},{\bf v})_{{\cal H}_0}=
+\int_{\Omega_0}(\nabla
+                u_0\cdot\nabla v_0 + u_0 v_0) \,dx
++\sum\limits_{i=1}^2\int_{D_i} (
+\nabla_{\tilde{x}} u_i  \cdot \nabla_{\tilde{x}} v_i + u_i v_i )\,dx.
+$$
+It is obvious that ${\cal H}_0$ is continuously embedded in
+${\cal V}_0$.
+
+A function ${\bf U}_0 = (u_0^+, \, u_0^{1,-}, \, u_0^{1,-}) \in {\cal H}_0$ is a weak solution to problem (\ref{res_3}) if for any function $\varphi = (\varphi_0, \, \varphi_1, \, \varphi_2) \in {\cal H}_0$ the   integral identity
+$$
+\int_{\Omega_0}(\nabla
+                u_0^+\cdot\nabla \varphi_0 + \vartheta_0(u_0^+) \, \varphi_0) \,dx
++\sum\limits_{i=1}^2\int_{D_i} h_i(r) (
+\nabla_{\tilde{x}} u_0^{i,-} \cdot \nabla_{\tilde{x}} \varphi_i  + \vartheta_0(u_0^{i,-}) \, \varphi_i) \, dx
+$$ $$
++ 2 \int_{D_1} \vartheta_1(u_0^{1,-}) \, \varphi_1 \, dx + h_1(d_1) \int_{Q_0^{(1)}} \vartheta_1(u_0^{1,-}) \, \varphi_1 \, d\sigma_x + 2 \delta_{\alpha,1} \int_{D_2} \vartheta_2(u_0^{2,-}) \, \varphi_2 \, dx $$
+$$
+=\int_{\Omega_0} f_0 \varphi_0 \, dx + \sum_{i=1}^2 \int_{D_i} (h_i f_0 + 2 \delta_{\beta,1} g_0) \varphi_i \, dx
+$$
+holds.
+
+Using the properties of  functions $\vartheta_i$ similarly as in \cite{Mel-m2as-08} we can prove that there exists a unique weak solution to problem~(\ref{res_3}).
+
+\section{Approximation and Asymptotic Estimates}\label{SECTION_ASYMPT_ESTIM}
+
+Let ${\bf U}_0= (u_0^+, \, u_0^{1,-}, \, u_0^{2,-})$ be the unique weak solution to problem (\ref{res_3}). With the help of ${\bf U}_0$ and  solutions $Z_1, \ \Xi_1, \ \Xi_2$ of   junction-layer problems (\ref{junction-layer_Xi}) and (\ref{junction-layer_Z}) we construct the main terms of  expansions (\ref{exp_out_cyl}), (\ref{exp_out_discs}) and (\ref{exp_in}). Consider  smooth cut-off function $\chi_0(r)$, which is equal to 1 as $|r-d_0|<\delta_0/2$ and 0 as $|r-d_0|>\delta_0$, where $\delta_0 \in (0, \, \delta)$ is some fixed number. Matching the outer expansions with the inner expansion with the help of $\chi_0$, we define  approximation function $R_\varepsilon$:
+\begin{equation}\label{approx_in_cyl}
+R_\varepsilon(x) := R_\varepsilon^+(x)  = u_0^+(x) + \varepsilon \, \chi_0(r) {\cal N}^+(\xi, \, x_2, \, \theta), \quad x \in \Omega_0,
+\end{equation}
+$$
+R_\varepsilon(x) := R_\varepsilon^{i,-}(x)=u_0^{i,-}(x) + \varepsilon \left( \tilde{Y}_i\left(\frac{x_2}{\varepsilon}\right) \partial_{x_2} u_0^{i,-}(x) +  \chi_0(r) {\cal N}^{i,-}(\xi, \, x_2, \, \theta)\right),
+$$
+\begin{equation}\label{approx_in_G(j)}
+ x \in G_\varepsilon^{(i)}(j), \quad i=1, \, 2.
+\end{equation}
+Here
+$$
+{\cal N}^+(\xi, \, x_2, \, \theta) = Z_1(\xi) \partial_{x_2} u_0^+|_{r=d_0} + \big(\xi_1 - \eta(x_2) \Xi_1(\xi) - (1 - \eta(x_2))  \Xi_2(\xi)\big)  \partial_r u_0^+|_{r=d_0},
+$$
+\begin{multline*}
+{\cal N}^{i,-} (\xi, \, x_2, \, \theta) = (Z_1(\xi) - \tilde{Y}_i(\xi_2))  \partial_{x_2} u_0^+|_{r=d_0}
+\\
++ \big( {\cal Y}_i(\xi_1, \, x_2)  - \eta(x_2)  \Xi_1(\xi) - (1 - \eta(x_2))  \Xi_2(\xi) \big)  \partial_r u_0^+|_{r=d_0},
+\end{multline*}
+where $\tilde{Y}_i(s):= -s + [s] + b_i + \alpha_3^{(i)}, \ [s]$ is the integer part of $s \in \mathbb{R}, \ i=1, \, 2$, and
+$$
+\begin{array}{rcl}
+{\cal Y}_1(\xi_1, \, x_2) &:=& h_1^{-1}(d_0) \xi_1 (1- \eta(x_2)), \\
+{\cal Y}_2(\xi_1, \, x_2)&:=& h_2^{-1}(d_0) \xi_1 \eta(x_2),
+\end{array} \quad \xi_1 \le 0, \ x_2 \in (0, \, l).
+$$
+Obviously, $R_\varepsilon \in H_\varepsilon$.
+
+
+\begin{theorem}\label{theor1}
+Let $f_0 \in H^3(\Omega_1), \ \partial^p_{x_2} f_0|_{S^-} = \partial^p_{x_2} f_0|_{S^+}, \ p=0, \, 1, \ g_0 \in H^1(D_1)$.
+
+Then for any $\mu > 0$ there exist positive constants $\varepsilon_0, \ c_0$ such that for all $\varepsilon \in (0, \, \varepsilon_0)$ the difference between   solution $u_\varepsilon$ to problem (\ref{task1}) and   approximation function $R_\varepsilon$ defined by (\ref{approx_in_cyl}) and (\ref{approx_in_G(j)}), where ${\bf U}_0 = ( u_0^+, \, u_0^{1,-}, \, u_0^{2,-})$ is a weak solution to problem~(\ref{res_3}), satisfies the inequality
+\begin{equation}\label{Result3}
+\| u_\varepsilon - R_\varepsilon \|_{H^1(\Omega_\varepsilon)} \le c_0 \, ( \| f_\varepsilon - f_0 \|_{L^2(\Omega_\varepsilon)} + \varepsilon^{1-\mu} + \varepsilon^{\delta_{\alpha,1} (2 - \alpha) + \alpha - 1}  + \varepsilon^{\beta-1} \| g_\varepsilon - g_0 \|_{L^2(D_1)}^{\delta_{\beta,1}}).
+\end{equation}
+\end{theorem}
+\begin{proof}\textbf{Discrepancies in domain $\Omega_0$.} It follows from the first two relations in (\ref{res_3}) and from the theorem's assumptions that $\partial^2_{x_2 x_2} u_0^+|_{S^-} = \partial^2_{x_2 x_2} u_0^+|_{S^+}$. Then, according to the properties of     $Z_1, \ \Xi_1, \ \Xi_2$ and $u_0^+$, function $R_\varepsilon^+$ satisfies   the boundary conditions of problem (\ref{task1}) on $\partial \Omega_\varepsilon \cap \partial \Omega_0$.
+
+Problems (\ref{junction-layer_Xi}) and (\ref{junction-layer_Z}) imply
+\begin{equation}\label{deltaN}
+\Delta_\xi {\cal N}^+=0, \quad \Delta_\xi {\cal N}^{i,-}=0 \qquad   \xi \in \Pi, \   x_2 \in (0, \, l), \   \theta \in [0, \, 2 \pi], \ i=1, \, 2.
+\end{equation}
+Let us consider the obvious equality
+\begin{equation}\label{komutator}
+\Delta_{\tilde{x}} (\chi_0(r) {\cal N}) = \mbox{div}_{\tilde{x}} ({\cal N} \nabla_{\tilde{x}} \chi_0(r)) + \nabla_{\tilde{x}} \chi_0(r) \cdot \nabla_{\tilde{x}} {\cal N} + \chi_0(r) \Delta_{\tilde{x}} {\cal N}, \qquad {\cal N} = {\cal N}(\xi, \, x_2, \, \theta).
+\end{equation}
+Using (\ref{Laplace}), (\ref{res_3}), (\ref{deltaN}) and (\ref{komutator}), we get
+$$
+-\Delta R_\varepsilon^+(x) - f_\varepsilon(x)
+= f_0(x) - f_\varepsilon(x)
+- \vartheta_0(u_0^+(x)) +
+\chi_0(r) ( r^{-1} \partial_{\xi_1} {\cal N}^+(\xi, \, x_2, \, \theta)
+$$
+$$
+- 2 \partial^2_{\xi_2 x_2} {\cal N}^+(\xi, \, x_2, \, \theta))
+-\varepsilon \, \textrm{div}_{\tilde{x}} ({\cal N}^+|_{\xi_1 = -(r-d_0)/\varepsilon} \nabla_{\tilde{x}} \chi_0(r)) + \chi_0'(r) \partial_{\xi_1} {\cal N}^+(\xi, \, x_2, \, \theta)
+$$
+\begin{equation}\label{wow_body}
+-\varepsilon \chi_0(r) \partial^2_{x_2 x_2} {\cal N}^+(\xi, \, x_2, \, \theta) - \varepsilon \, r^{-2} \chi_0(r) \, \partial^2_{\theta \theta} {\cal N}^+(\xi, \, x_2, \, \theta), \quad x \in \Omega_0.
+\end{equation}
+We multiply (\ref{wow_body}) by a test function $\psi \in H_\varepsilon$, integrate by parts in $\Omega_0$ and take into account the boundary conditions, satisfied by $R_\varepsilon^+$. This yields
+\begin{equation}\label{discrep_in_Omega0}
+\int_{\Omega_0} ( \nabla R_\varepsilon^+ \cdot \nabla \psi + \vartheta_0(R_\varepsilon^+) \psi)  \, dx - \int_{\Theta_\varepsilon} \partial_r R_\varepsilon^+ \psi \, d\sigma_x
+- \int_{\Omega_0} f_\varepsilon  \psi \, dx
+= I_0^+(\varepsilon, \, \psi) + \ldots + I_4^+(\varepsilon, \, \psi),
+\end{equation}
+where
+$$
+\begin{array}{rcl}
+{ \displaystyle I_0^+(\varepsilon, \, \psi) } &:=& { \displaystyle \int_{\Omega_0} (f_0 - f_\varepsilon)  \psi \, dx ,}
+\\[4mm]
+{\displaystyle I_1^+(\varepsilon, \, \psi) }&:=& {\displaystyle   \int_{\Omega_0} (\vartheta_0(R^+_\varepsilon) - \vartheta_0 (u_0^+)) \psi \, dx,}
+\\[4mm]
+{ \displaystyle I_2^+(\varepsilon, \, \psi) }&:=& {\displaystyle   \int_{\Omega_0} \chi_0 (r^{-1} \partial_{\xi_1} {\cal N}^+ -  \partial_{x_2 \xi_2}^2 {\cal N}^+)  \psi \, dx,}
+\\[4mm]
+{\displaystyle I_3^+(\varepsilon, \, \psi) } &:=& {\displaystyle   \varepsilon \int_{\Omega_0} {\cal N}^+ \nabla_{\tilde{x}} \chi_0 \cdot \nabla_{\tilde{x}} \psi \, dx + \int_{\Omega_0} \chi_0'  \partial_{\xi_1} {\cal N}^+  \psi \, dx ,}
+\\[4mm]
+{\displaystyle I_4^+(\varepsilon, \, \psi) } &:=& {\displaystyle \varepsilon  \int_{\Omega_0} \chi_0 \partial_{x_2} {\cal N}^+  \partial_{x_2} \psi \, dx + \varepsilon \int_{\Omega_0}  r^{-2}  \chi_0  \partial_\theta {\cal N}^+ \partial_\theta \psi \, dx.}
+\end{array}
+$$
+
+\textbf{Discrepancies in the thin discs.} One can readily check that
+\begin{equation}\label{approx_on_Q_varepsiloni}
+\begin{array}{rcll}
+\partial_r R_\varepsilon^{1,-} & =& -\vartheta_1(u_0^{1,-}) - \varepsilon \tilde Y_1 \left(\displaystyle \frac{x_2}{\varepsilon} \right) \partial_{x_2} \vartheta_1(u_0^{1,-}), & x \in Q_\varepsilon^{(1)},
+\\
+\partial_r R_\varepsilon^{2,-} &= &0, & x \in Q_\varepsilon^{(2)},
+\end{array}
+\end{equation}
+\begin{equation}\label{approx_on_Theta}
+\partial_r R_\varepsilon^{i,-} = \varepsilon  \tilde{Y}_i\left(\frac{x_2}{\varepsilon}\right) \partial_{r x_2}^2 u_0^{i,-} + \partial_r R_\varepsilon^+, \quad x \in \Theta_\varepsilon^{(i)}, \ i=1, \, 2.
+\end{equation}
+Taking into account (\ref{normal}) and that   functions $h_i$ are constant in a neighborhood of $d_0$, we derive that
+\begin{multline}\label{approx_on_S_varepsilon}
+\partial_\nu R_\varepsilon^{i,-} = \frac{\varepsilon}{\sqrt{1 + 4^{-1} \varepsilon^2 |h_i'(r)|^2}} \left(
+\pm \tilde{Y}_i\left(\frac{x_2}{\varepsilon}\right) \partial_{x_2 x_2}^2 u_0^{i,-} \pm \chi_0 \frac{\partial}{\partial x_2} ({\cal N}^{i,-}|_{\xi_2=x_2/\varepsilon})  \right.
+\\
+\left.
+- \frac{1}{2} \nabla_{\tilde{x}} h_i \cdot \nabla_{\tilde{x}} (u_0^{i,-} + \varepsilon \tilde{Y}_i \left(\frac{x_2}{\varepsilon}\right) \partial_{x_2} u_0^{i,-})
+\right), \quad x \in S_\varepsilon^{(i)}, \ i=1, \, 2,
+\end{multline}
+where "$+$" \  and "$-$" \ refer to the left and the right parts of the lateral surfaces of the thin discs, respectively.
+
+Relations (\ref{Laplace}), (\ref{res_3}), (\ref{deltaN}) and (\ref{komutator}) yield
+$$
+-\Delta R_\varepsilon^{i,-}(x) - f_\varepsilon(x)= f_0(x) -f_\varepsilon(x)
+- \vartheta_0(u_0^{i,-})
+$$
+$$
++\chi_0(r) ( r^{-1} \partial_{\xi_1} {\cal N}^{i,-}(\xi, \, x_2, \, \theta)
+- 2 \partial_{\xi_2 x_2}^2 {\cal N}^{i,-}(\xi, \, x_2, \, \theta))
+- \varepsilon \textrm{div}_{\tilde{x}} ({\cal N}^{i,-}|_{\xi_1 = - (r- d_0)/\varepsilon}  \nabla_{\tilde{x}} \chi_0(r))
+$$
+$$
++ \chi_0'(r) \partial_{\xi_1} {\cal N}^{i,-}(\xi, \, x_2, \, \theta)
+- \varepsilon \chi_0(r) \partial_{x_2 x_2}^2 {\cal N}^{i,-}(\xi, \, x_2, \, \theta)
+-\varepsilon \chi_0(r) r^{-2} \partial_{\theta \theta}^2 {\cal N}^{i,-}(\xi, \, x_2, \, \theta)
+$$
+$$
++ \nabla_{\tilde{x}} (\ln h_i(r)) \cdot \nabla_{\tilde{x}} u_0^{i,-}
+- \varepsilon \textrm{div} \big( \tilde{Y}_i\left(\frac{x_2}{\varepsilon}\right)  \nabla (\partial_{x_2} u_0^{i,-})\big)
+$$
+\begin{equation}\label{approx_in_G_before_integrating}
+- 2 (1-\delta_{i,2}( 1-\delta_{\alpha,1})) h_i^{-1}(r) \vartheta_i(u_0^{i,-}) + 2 \delta_{\beta,1} h_i^{-1}(r) g_0(x), \quad x \in G_\varepsilon^{(i)}.
+\end{equation}
+
+Consider the integral identity
+\begin{equation}\label{Sequal}
+\int_{S_{\varepsilon}^{(i)}} \frac{\varepsilon h_i(r)}{2
+\sqrt{1 + 4^{-1} \varepsilon^2 |h_i'(r)|^2}} \, \varphi \,d\sigma_x =
+\int_{G_{\varepsilon}^{(i)}} \varphi \,dx - \varepsilon
+\int_{G_{\varepsilon}^{(i)}} Y_i \left( \frac{x_2}{\varepsilon}
+\right) \, \partial_{x_2} \varphi \,dx, \qquad i=1, \, 2,
+\end{equation}
+where $Y_i(s)=-s+[s]+b_i$ and $[s]$ is the integer part of $s$, $\varphi \in
+H^1(G_\varepsilon^{(i)})$ is an arbitrary function. We multiply (\ref{approx_in_G_before_integrating}) by a test function $\psi \in H_\varepsilon$ and integrate by parts in $G_\varepsilon^{(i)}$, using (\ref{Sequal}) and taking into account  relations (\ref{approx_on_Q_varepsiloni}), (\ref{approx_on_Theta}), (\ref{approx_on_S_varepsilon}). This yields
+\begin{multline}\label{discrep_in_G1}
+\int_{G_\varepsilon^{(1)}}  (\nabla R_\varepsilon^{1,-} \cdot \nabla \psi + \vartheta_0( R_\varepsilon^{1,-}) \psi ) \, dx + \varepsilon \int_{S_\varepsilon^{(1)}} \vartheta_1(R_\varepsilon^{1,-})  \psi \, d\sigma_x
++ \int_{Q_\varepsilon^{(1)}} \vartheta_1(R_\varepsilon^{1,-})  \psi \, d\sigma_x
+\\
++\int_{\Theta_\varepsilon^{(1)}} \partial_r R_\varepsilon^+ \psi \, d\sigma_x
+- \int_{G_\varepsilon^{(1)}} f_\varepsilon  \psi \, dx - \varepsilon^\beta \int_{S_\varepsilon^{(1)}} g_\varepsilon  \psi \, d\sigma_x
+= I_0^{1,-}(\varepsilon, \, \psi) + \ldots + I_7^{1,-}(\varepsilon, \, \psi)
+\end{multline}
+and
+\begin{multline}\label{discrep_in_G2}
+\int_{G_\varepsilon^{(2)}}  ( \nabla R_\varepsilon^{2,-} \cdot \nabla \psi  + \vartheta_0( R_\varepsilon^{1,-}) \psi ) \, dx + \varepsilon^\alpha \int_{\Upsilon_\varepsilon^{(2)}} \vartheta_2(R_\varepsilon^{2,-})  \psi \, d\sigma_x
++ \int_{\Theta_\varepsilon^{(2)}} \partial_r R_\varepsilon^+ \psi \, d\sigma_x
+\\
+- \int_{G_\varepsilon^{(2)}} f_\varepsilon \psi \, dx - \varepsilon^\beta \int_{\Upsilon_\varepsilon^{(2)}} g_\varepsilon \psi \, d\sigma_x
+= I_0^{2,-}(\varepsilon, \, \psi) + \ldots + I_7^{2,-}(\varepsilon, \, \psi)
+\end{multline}
+for all $\psi \in H_\varepsilon$, where
+\begin{flushleft}
+${\displaystyle  I_0^{i,-}(\varepsilon, \, \psi) := \int_{G_\varepsilon^{(i)}} (f_0 - f_\varepsilon)  \psi \, dx ,}$ \\
+${\displaystyle I_1^{i,-}(\varepsilon, \, \psi) :=  \int_{G_\varepsilon^{(i)}} ( \vartheta_0(R_\varepsilon^{i,-}) - \vartheta_0(u_0^{i,-}) ) \psi \, dx, }$
+${\displaystyle  I_2^{i,-}(\varepsilon, \, \psi) :=  \int_{G_\varepsilon^{(i)}} \chi_0  ( r^{-1} \partial_{\xi_1} {\cal N}^{i,-} -  \partial_{x_2 \xi_2}^2 {\cal N}^{i,-} ) \psi \, dx,}$ \\
+${\displaystyle  I_3^{i,-}(\varepsilon, \, \psi) :=   \varepsilon \int_{G_\varepsilon^{(i)}} {\cal N}^{i,-} \nabla_{\tilde{x}} \chi_0 \cdot \nabla_{\tilde{x}} \psi \, dx   + \int_{G_\varepsilon^{(i)}} \chi_0' \partial_{\xi_1} {\cal N}^{i,-} \psi \, dx ,}$ \\
+${\displaystyle  I_4^{i,-}(\varepsilon, \, \psi) := \varepsilon \int_{G_\varepsilon^{(i)}} \chi_0 \partial_{x_2} {\cal N}^{i,-} \partial_{x_2} \psi \, dx +    \varepsilon \int_{G_\varepsilon^{(i)}} r^{-2} \chi_0 \partial_\theta {\cal N}^{i,-} \partial_\theta \psi \, dx,}$ \\
+${\displaystyle  I_5^{i,-}(\varepsilon, \, \psi) := \varepsilon \int_{G_\varepsilon^{(i)}} Y_i\left( \frac{x_2}{\varepsilon} \right) \partial_{x_2} (\psi  \nabla_{\tilde{x}} u_0^{i,-} \cdot \nabla_{\tilde{x}} \ln h_i) \, dx}$
+$$
+{\displaystyle  +  \varepsilon \int_{G_\varepsilon^{(i)}} \tilde{Y}_i \left( \frac{x_2}{\varepsilon} \right) \nabla (\partial_{x_2} u_0^{i,-}) \cdot \nabla \psi \, dx  , \qquad i=1, \, 2,}
+$$
+${\displaystyle  I_6^{1,-}(\varepsilon, \, \psi) := - \varepsilon \int_{S_\varepsilon^{(1)}} \frac{\vartheta_1(u_0^{1,-})   \psi}{\sqrt{1 + 4^{-1} \varepsilon^2 |h_1'(r)|^2}} \, d\sigma_x -  2 \varepsilon  \int_{G_\varepsilon^{(1)}} Y_1\left(\frac{x_2}{\varepsilon} \right)  h_1^{-1} \partial_{x_2} (\vartheta_1(u_0^{1,-}) \psi) \, dx}$
+$$
++ \varepsilon \int_{S_\varepsilon^{(1)}} \vartheta_1(R_\varepsilon^{1,-}) \psi  \, d\sigma_x + \int_{Q_\varepsilon^{(1)}} (\vartheta_1(R_\varepsilon^{1,-}) - \vartheta_1(u_0^{1,-}) - \varepsilon \tilde{Y}_1\left(\frac{x_2}{\varepsilon}\right) \partial_{x_2} \vartheta_1(u_0^{1,-})) \psi \, d\sigma_x,
+$$
+${\displaystyle  I_6^{2,-}(\varepsilon, \, \psi) := - \varepsilon   \delta_{\alpha,1}  \int_{S_\varepsilon^{(2)}} \frac{ \vartheta_2(u_0^{2,-})  \psi}{\sqrt{1 + 4^{-1} \varepsilon^2 |h_2'(r)|^2}} \, d\sigma_x }$
+$$
+- 2  \varepsilon  \delta_{\alpha,1}  \int_{G_\varepsilon^{(2)}} Y_2\left(\frac{x_2}{\varepsilon} \right)  h_2^{-1} \partial_{x_2} (\vartheta_2(u_0^{2,-}) \psi) \, dx
++ \varepsilon^\alpha \int_{\Upsilon_\varepsilon^{(2)}} \vartheta_2(R_\varepsilon^{2,-}) \psi \, d\sigma_x,
+$$
+${\displaystyle  I_7^{1,-}(\varepsilon, \, \psi) :=  \varepsilon  \delta_{\beta,1} \int_{S_\varepsilon^{(1)}} \frac{g_0  \psi}{\sqrt{1 + 4^{-1} \varepsilon^2 |h_1'(r)|^2}} \, d\sigma_x }$
+$$
++ 2  \varepsilon  \delta_{\beta,1} \int_{G_\varepsilon^{(1)}} Y_1 \left( \frac{x_2}{\varepsilon} \right)  h_1^{-1}   \partial_{x_2} (g_0   \psi) \, dx - \varepsilon^\beta \int_{S_\varepsilon^{(1)}} g_\varepsilon  \psi \, d\sigma_x,
+$$
+${\displaystyle  I_7^{2,-}(\varepsilon, \, \psi) := \varepsilon   \delta_{\beta,1} \int_{S_\varepsilon^{(2)}} \frac{g_0  \psi}{\sqrt{1 + 4^{-1} \varepsilon^2 |h_2'(r)|^2}} \, d\sigma_x}$
+$$
++ 2  \varepsilon   \delta_{\beta,1} \int_{G_\varepsilon^{(2)}} Y_2 \left( \frac{x_2}{\varepsilon} \right)   h_2^{-1}  \partial_{x_2} (g_0  \psi) \, dx - \varepsilon^\beta \int_{\Upsilon_\varepsilon^{(2)}} g_\varepsilon   \psi \, d\sigma_x.
+$$
+\end{flushleft}
+
+\textbf{Asymptotic estimates.} After summing (\ref{discrep_in_Omega0}), (\ref{discrep_in_G1}) and (\ref{discrep_in_G2}) we see that   function $R_\varepsilon$ defined by (\ref{approx_in_cyl}) and (\ref{approx_in_G(j)}) satisfies the integral identity
+\begin{multline}\label{temp}
+\int_{\Omega_\varepsilon} ( \nabla R_\varepsilon \cdot \nabla \psi + \vartheta_0(R_\varepsilon) \psi )\, dx + \varepsilon \int_{S_\varepsilon^{(1)}} \vartheta_1(R_\varepsilon) \psi \, d\sigma_x
++ \int_{Q_\varepsilon^{(1)}} \vartheta_1(R_\varepsilon) \psi \, d\sigma_x
+\\
++ \varepsilon^\alpha \int_{\Upsilon_\varepsilon^{(2)}}
+\vartheta_2(R_\varepsilon) \psi \, d\sigma_x
+-\int_{\Omega_\varepsilon} f_\varepsilon  \psi \, dx - \varepsilon^\beta \int_{S_\varepsilon^{(1)} \cup \Upsilon_\varepsilon^{(2)}} g_\varepsilon  \psi \, d\sigma_x
+= F_\varepsilon(\psi)
+\end{multline}
+for any $\psi \in H_\varepsilon$, where $F_\varepsilon(\psi) := I_0^\pm + \ldots + I_4^\pm + I_5^- + I_6^- + I_7^-$, $I_k^- := I_k^{1,-} + I_k^{2,-}, \ k=\overline{0,7}, \ I_m^\pm := I_m^+ + I_m^-$, $m=\overline{0,4}$.
+
+It follows from (\ref{weakdef}) and (\ref{temp}) that
+\begin{multline}\label{corrector_identity}
+\int_{\Omega_\varepsilon} ( \nabla (R_\varepsilon - u_\varepsilon) \cdot \nabla \psi  + (\vartheta_0(R_\varepsilon) - \vartheta_0(u_\varepsilon)) \psi) \, dx
++ \varepsilon \int_{S_\varepsilon^{(1)}} (\vartheta_1(R_\varepsilon) - \vartheta_1(u_\varepsilon)) \psi \, d\sigma_x
+\\
++ \int_{Q_\varepsilon^{(1)}} (\vartheta_1(R_\varepsilon) - \vartheta_1(u_\varepsilon)) \psi \, d\sigma_x
++ \varepsilon^\alpha \int_{\Upsilon_\varepsilon^{(2)}} (\vartheta_2(R_\varepsilon) - \vartheta_2(u_\varepsilon)) \psi \, d\sigma_x = F_\varepsilon(\psi)
+\end{multline}
+for all $\psi \in H_\varepsilon.$
+
+Now we are going to estimate $F_\varepsilon(\psi)$.
+
+With the help of Cauchy-Schwartz-Bunyakovskii inequality we obtain
+$$
+|I_0^\pm(\varepsilon, \, \psi)| \le \| f_\varepsilon - f_0 \|_{L^2(\Omega_\varepsilon )}  \; \| \psi \|_{H^1(\Omega_\varepsilon)}.
+$$
+
+\begin{remark}
+Here and further all constants $c_i, \, C_i$ in asymptotic estimates are independent of $\varepsilon$.
+\end{remark}
+
+With the help of (\ref{nonlin_condin}), Taylor's formula and Cauchy-Schwartz-Bunyakovskii inequality we derive that
+$$
+|I_1^+(\varepsilon, \, \psi)| =
+\varepsilon \left|\int_{\Omega_0} \vartheta_0'( \, \cdot \,) \chi_0 {\cal N}^+ \psi \, dx \right| \le \varepsilon c_0 \| \psi \|_{H^1(\Omega_\varepsilon)}.
+$$
+Similarly we estimate $I_1^-$. Thus, $|I_1^\pm(\varepsilon, \, \psi)| \le \varepsilon C_1 \| \psi \|_{H^1(\Omega_\varepsilon)}.$
+
+Since   functions $\partial_{\xi_1} {\cal N}^+, \ \partial_{x_2 \xi_2}^2 {\cal N}^+, \ \partial_{\xi_1} {\cal N}^{i,-}, \ \partial_{x_2 \xi_2}^2 {\cal N}^{i,-}$ exponentially decrease as $|\xi_1| \to \infty$ (see (\ref{xi_asymt_1}), (\ref{xi_asymt_2}) and (\ref{z_asympt})), then from Lemma 3.1 in \cite{DeMaio-Melnyk} we derive that
+$$
+\forall \mu > 0 \quad \exists C_2> 0 \quad \exists \varepsilon_0 > 0 \quad \forall \varepsilon \in (0,\, \varepsilon_0): \quad | I_2^\pm (\varepsilon, \, \psi) | \le \varepsilon^{1-\mu} C_2  \| \psi \|_{H^1(\Omega_\varepsilon)}.
+$$
+
+The integrals in $I_3^\pm(\varepsilon, \, \psi)$ are in fact over
+$$
+\mbox{supp}(\chi_0'(r)) \cap \Omega_\varepsilon = \{ x \in \Omega_\varepsilon: \ \, \delta_0/2 < |r- d_0| < \delta_0 \},
+$$
+where, according to (\ref{junction-layer_Xi}) and (\ref{junction-layer_Z}),   functions ${\cal N}^+, \ \partial_{\xi_1} {\cal N}^+, \ \partial_{\xi_1} {\cal N}^{i,-}$ are exponentially small, and   function ${\cal N}^{i,-}$ can be estimated by some constant $c_1$. Thus,
+$$
+| I_3^\pm(\varepsilon, \, \psi) | \le \varepsilon C_3  \| \psi \|_{H^1(\Omega_\varepsilon)}.
+$$
+
+The integrals in $I_4^\pm$ are over $\{ x\in \mathbb{R}^3: \  |r - d_0| < \delta_0 \}$ and they can be estimated, extracting if necessary the exponentially decreasing part in the corresponding integrand and then using Cauchy-Schwartz-Bunyakovskii inequality. Consider, for example, the integral
+$$
+\left| \int_{G_\varepsilon^{(1)}} \chi_0  \partial_{x_2} {\cal N}^{1,-} \partial_{x_2} \psi \, dx \right| =
+\left| \int_{G_\varepsilon^{(1)}} \chi_0   \left( ( Z_1 - \tilde{Y}_1) \partial_{x_2 x_2}^2 u_0^+|_{r=d_0}  \right.\right.
+$$
+$$- (h_1^{-1}(d_0) \xi_1 + \Xi_1 - \Xi_2) \eta' \partial_r u_0^+|_{r=d_0}
+$$
+$$
+\left. \vphantom{\int_{G_\varepsilon^{(1)}}} \left.+(h_1^{-1}(d_0) \xi_1 (1-\eta)  - \eta \Xi_1 - (1-\eta) \Xi_2 ) \partial_{x_2 r}^2 u_0^+|_{r=d_0} \vphantom{\tilde{Y}_1} \right) \partial_{x_2} \psi \, dx \right|
+$$
+$$
+\le c_2 \| \psi \|_{H^1(\Omega_\varepsilon)} \left( \sqrt{\int_0^T \int_{G_\varepsilon^{(1)}} \chi_0 |Z_1 - \tilde{Y}_1|^2 \, dx dt}
+\right.
+$$
+$$
++\| \alpha_1^{(1)} \eta  + \alpha_2^{(1)} (1 - \eta) +(\alpha_1^{(1)} -\alpha_2^{(1)})\eta'\|_{L^2(G_\varepsilon^{(1)})}
+$$
+$$
++ \sqrt{ \int_{G_\varepsilon^{(1)}} \chi_0 \big|h_1^{-1}(d_0) \xi_1 + (\Xi_1-\alpha_1^{(1)}) - (\Xi_2  - \alpha_2^{(1)})\big|^2 \,  dx }
+$$
+$$
+\left.+
+\sqrt{ \int_{G_\varepsilon^{(1)}} \chi_0 \big| \eta (\Xi_1-\alpha_1^{(1)}) + (1- \eta) (\Xi_2 - h_1^{-1}(d_0) \xi_1 -\alpha_2^{(1)})  \big|^2 \, dx } \,
+\right)
+$$
+$$
+\le c_3 \, \| \psi \|_{H^1(\Omega_\varepsilon)} \left( \sqrt{2 \pi l d_0  \varepsilon} \| Z_1 - \tilde{Y}_1 \|_{L^2(\Pi_1^-)}
++ \sqrt{|G_\varepsilon^{(1)}|}\right.
+$$
+$$
++ \sqrt{2 \pi l d_0  \varepsilon} \, \| h_1^{-1}(d_0) \xi_1 + (\Xi_1-\alpha_1^{(1)}) - (\Xi_2  - \alpha_2^{(1)}) \|_{L^2(\Pi_1^-)}
+$$
+$$
+\left.+ \sqrt{2 \pi l d_0  \varepsilon} \, \| \eta (\Xi_1-\alpha_1^{(1)}) + (1- \eta) (\Xi_2 - h_1^{-1}(d_0) \xi_1 -\alpha_2^{(1)}) \|_{L^2(\Pi_1^-)} \vphantom{ \sqrt{|G_\varepsilon^{(1)}|}}\right),
+$$
+where $|G_\varepsilon^{(1)}|$ is the measure of $G_\varepsilon^{(1)}$. Relations (\ref{xi_asymt_1}), (\ref{xi_asymt_2}) and (\ref{z_asympt}) show that the norms in the right-hand side of the last inequality are bounded in $\varepsilon$. Similarly we can estimate the rest of the integrals in $I_4^\pm(\varepsilon, \, \psi)$. As a result, we obtain
+$$
+|I_4^\pm (\varepsilon, \, \psi) | \le \varepsilon C_5 \| \psi \|_{H^1(\Omega_\varepsilon)}.
+$$
+
+\begin{remark} Constants  $C_3$ and $C_4$ depend on
+$$
+\sup_{x \in Q_0^{(0)}, \ t \in (0,\, T)} \left| \frac{\partial^{|\alpha|}}{\partial x_1^{\alpha_1} \partial x_2^{\alpha_2} \partial x_3^{\alpha_3}}  u_0^+(x)\right|, \quad |\alpha| = \alpha_1 + \alpha_2 + \alpha_3 \le 2, \ \alpha_k \ge0, \ k= \overline{1, \, 3}.
+$$
+Extending   homogenized problem (\ref{res_3}) periodically in $x_2$ through the planes $\{ x \in \mathbb{R}^3: \ x_2 = 0\}$ and $\{ x \in \mathbb{R}^3: \ x_2 = l\}$ and taking into account the assumptions for $f_0$ and $g_0$, by virtue of classical results on the smoothness of solutions to boundary-value problems  we conclude that these quantities are bounded.
+\end{remark}
+
+Since $f_0$ is smooth, then $\partial_{x_2} u_0^{i,-} \in H^1(D_i), \ i=1, \, 2.$ Consequently,
+$$
+|I_5^- (\varepsilon, \, \psi)| \le \varepsilon c_4  \sum_{i=1}^2 (\| u_0^{i,-} \|_{H^1(D_i)} + \| \partial_{x_2} u_0^{i,-} \|_{H^1(D_i)})  \| \psi \|_{H^1(\Omega_\varepsilon)}
+\le \varepsilon C_5 \| \psi \|_{H^1(\Omega_\varepsilon)} .
+$$
+
+In order to estimate $I_6^-$ we consider   summand $I_6^{2,-}$ when $\alpha=1$. Obviously, the second integral in $I_6^{2,-}$ can be estimated by $\varepsilon  c_5  \| \psi \|_{H^1(\Omega_\varepsilon)}$. Using Taylor's formula and obvious equality
+$$
+1 - \frac{1}{a} = \frac{a^2 -1}{a^2+a} \qquad (a^2 + a \ne 0)
+$$
+we derive that the sum of the first and the third integrals in $I_6^{2,-}$ is equal to
+$$
+4^{-1} \varepsilon^3 \int_{S_\varepsilon^{(2)}} \frac{|h_2'(r)|^2 \, \vartheta_2(u_0^{2,-}) \psi}{1 + 4^{-1} \varepsilon^2 |h_2'(r)|^2 + \sqrt{1 + 4^{-1} \varepsilon^2 |h_2'(r)|^2}} \, d\sigma_x
+$$
+$$
+\varepsilon^2  \int_{S_\varepsilon^{(2)}} \vartheta_2'(\, \cdot \, ) (\tilde{Y}_2 \left( \frac{x_2}{\varepsilon} \right) \partial_{x_2} u_0^{2,-} + \chi_0  {\cal N}^{2,-})  \psi \, dx
++ \varepsilon \, \int_{Q_\varepsilon^{(2)}} \vartheta_2(R_\varepsilon) \psi \, d\sigma_x
+$$
+$$
+=: J_1(\varepsilon, \, \psi) + J_2(\varepsilon, \, \psi) + J_3(\varepsilon, \, \psi).
+$$
+With the help of (\ref{nonlin_condin}) and (\ref{Sequal}) we obtain $|J_1(\varepsilon, \, \psi) + J_2(\varepsilon, \, \psi)| \le \varepsilon c_6 \| \psi \|_{H^1(\Omega_\varepsilon)}$. Taking into account (\ref{nonlin_condin}), properties of the trace operator and the fact that $f_0$ is smooth, we get $|J_3(\varepsilon, \, \psi)| \le \varepsilon c_7 \| \psi \|_{H^1(\Omega_\varepsilon)}$. Thus, in case $\alpha = 1$ we have
+$$
+|I_6^{2,-}(\varepsilon, \, \psi)| \le \varepsilon c_8 \| \psi \|_{H^1(\Omega_\varepsilon)}.
+$$
+In case $\alpha>1$ with the help of (\ref{Sequal}) we obtain $|I_6^{2,-}(\varepsilon, \, \psi)| \le \varepsilon^{\alpha-1} c_9 \| \psi \|_{H^1(\Omega_\varepsilon)}$.
+
+Similarly to $I_6^{2,-}(\varepsilon, \, \psi)$, we estimate $I_6^{1,-}(\varepsilon, \, \psi)$ and $I_7^-(\varepsilon, \, \psi)$. As a result, we get
+$$
+|I_6^{1,-}(\varepsilon, \, \psi)| \le \varepsilon C_6 \| \psi \|_{H^1(\Omega_\varepsilon)}
+$$
+and
+$$
+|I_7^-(\varepsilon, \, \psi) | \le C_7 \left\{
+\begin{array}{ll}
+(\varepsilon + \| g_0 - g_\varepsilon \|_{L^2(D_1)} )  \| \psi \|_{H^1(\Omega_\varepsilon)}, & \beta =1, \\[2mm]
+\varepsilon^{\beta-1} \| \psi \|_{H^1(\Omega_\varepsilon)}, & \beta >1.
+\end{array} \right.
+$$
+
+Thus,
+\begin{equation}\label{Finish}
+|F_\varepsilon(\psi)| \le C_8 \, ( \| f_\varepsilon - f_0 \|_{L^2(\Omega_\varepsilon)} + \varepsilon^{1-\mu} + \varepsilon^{\delta_{\alpha,1} (2 - \alpha) + \alpha - 1}
++ \varepsilon^{\beta-1} \| g_\varepsilon - g_0 \|_{L^2(D_1 )}^{\delta_{\beta,1}}) \| \psi \|_{H^1(\Omega_\varepsilon)},
+\end{equation}
+where $\mu > 0$ is an arbitrary number. Setting in (\ref{corrector_identity}) $\psi := R_\varepsilon - u_\varepsilon$ and using (\ref{Finish}) and obvious inequality
+$$
+(\vartheta_i(s_1) - \vartheta_i(s_2))(s_1 - s_2) \ge c_1 (s_1 - s_2)^2 \qquad \forall s_1, \, s_2 \in \mathbb{R}, \ i=\overline{0,2},
+$$
+which follows from (\ref{nonlin_condin}), we obtain estimate (\ref{Result3}).
+\end{proof}
+
+\section{Discussion of the Obtained Results}\label{SECTION_DISCUSS}
+
+As we can see from the obtained results, the homogenized problem~(\ref{res_3}) for problem~(\ref{task1}) is a nonstandard boundary-value problems for multi-sheeted function ${\bf U}_0$ in anisotropic Sobolev space ${\cal H}_0$ (see Section \ref{SECTION_LIMIT_PROBLEM_1}). This problem consists of three boundary-value problems (in domains $\Omega_0$ and $D_i, \ i=1,\,2$), connected with each other by the conjugation conditions (on $Q_0^{(0)}$).
+
+The nonhomogeneous Robin boundary conditions on the lateral surfaces of the thin discs in problem~(\ref{task1}) are transformed as $\varepsilon \to 0$ into new summands in the differential equations in  domains $D_i, \ i=1,\,2,$ in   problem~(\ref{res_3}). These summands show us the influence of the perturbed parameters $\alpha$ and $\beta$. If $\alpha > 1$, then summand $2 \delta_{\alpha,1} \vartheta_1(u_0^{2,-})$ vanishes. From physical point of view this means that the outer heat conduction coefficient is too small, and we can neglect this heat exchange. If $\beta>1$, then summands $2 \delta_{\beta,1} g_0$ vanish, which means that the temperature of the environment is too small, and we can consider it equal to zero.
+
+Also functions $h_i, \ i=1,\,2$, which describe the relative thickness of the thin discs from the $i$-th level, are transformed into the coefficients of the differential equations in   domains $D_i$, respectively. The variable $x_2$ is involved as a parameter in the boundary-value problems in $D_i, \ i=1,\,2$, which shows us the influence of the type of  thick junction $\Omega_\varepsilon$ on the asymptotic behavior of   solution $u_\varepsilon$.
+
+From results proved in the present paper it follows that for applied
+problems in thick junctions we can use the  homogenized problem (\ref{res_3}), which is simpler, instead of
+the initial problem~(\ref{task1}) with sufficient plausibility.
+
+\vskip5mm
+{\large \bf Acknowledge}
+
+The author is grateful to professor T.~A.~Mel'nyk for the statement of   problem, attention during it's solving and discussion of obtained results.
+
+{\footnotesize
+
+\begin{thebibliography}{90}
+
+\bibitem{B-Gaudiello-Gri} {Blanchard~D., Gaudiello~A., Griso~G.} \emph{Junction
+of a Periodic Family of Elastic Rods with 3d Plate}, J. Math. Pures Appl., {\bf
+88}, 9 (2007), 1-33 (Part I);  J. Math. Pures Appl., {\bf 88}, 9 (2007),
+149--190 (Part II).
+\bibitem{B-G-M} {Blanchard~D.,  Gaudiello~A., Mel'nyk~T.A.} \emph{Boundary
+Homogenization and Reduction of Dimension in a Kirchhoff-Love Plate}, SIAM
+Journal on Mathematical Analysis, {\bf 39}, 6 (2008), 1764--1787.
+
+\bibitem{B-Gaudiello-Mos} {Blanchard~D., Gaudiello~A., Mossino~J.} \emph{Highly
+Oscillating Boundaries and  Reduction of Dimension: the Critical Case}, Analysis
+and Application, {\bf 5} (2007), 137--163.
+
+\bibitem{AppAn} {Chechkin~G.A., Mel'nyk~T.A.} \emph{Asymptotics of
+Eigenelements to Spectral Problem in Thick Cascade Junction with Concentrated
+Masses}, Applicable Analysis; {\tt http://www.tandfonline.com/doi/abs/DOI:
+10.1080/00036811.2011.602634}
+
+\bibitem{MDM} {De~Maio~U., Durante~T., Mel'nyk~T.A.} \emph{Asymptotic
+Approximation for the Solution to the Robin Problem in a Thick Multi-Level
+Junction}, Mathematical Models and Methods in Applied Sciences (M$^3$AS), {\bf
+15}, 12 (2005), 1897--1921.
+
+\bibitem{DeMaio-Melnyk} {De~Maio~U., Mel'nyk~T.A.}  \emph{Asymptotic Solution
+to a Mixed Boundary-Value Problem in a Thick Multi-Structure of Type $3:2:2$},
+Ukrainian Mathematical Bulletin, {\bf 2}, 4 (2005), 467--485.
+
+
+\bibitem{D-M} {Durante~T., Mel'nyk~T.A.} \emph{Asymptotic Analysis of a
+Parabolic Problem in a Thick Two-Level Junction}, Journal of Math. Physics,
+Analysis, Geometry, {\bf 3}, 3 (2007), 313--341.
+
+\bibitem{Gaev} {Gaevsky~H., Greger~K., Zakharias~K.} Nonlinear Operator
+Equations and Operator Differential Equations, Mir, Moscow, 1975. (in Russian)
+
+\bibitem{Khrus} {Khruslov~E.Ya.} \emph{On the Resonance Phenomenas in One
+Problem of Diffraction}, Teor. Funkts., Funkts. Anal. i Prilozhen., {\bf 10}
+(1968), 113--120. (in Russian)
+
+\bibitem{Kot-Kh} {Kotliarov~V.P., Khruslov~E.Ya.} \emph{On a Limit Boundary
+Condition of Some Neumann Problem}, Teor. Funkts., Funkts. Anal. i  Prilozhen.,
+{\bf 10} (1970), 83--96. (in Russian)
+
+\bibitem{Lav-Kn-Pid} {Lavrentovich~Y.I., Knyzkova~T.V., Pidlisnyuk~V.V.}
+\emph{The Potential of Application of New Nanostructural Materials for
+Degradation of Pesticides in Water}, Proceedings of the 7th International HCH
+and Pesticides Forum "Towards the establishment of an obsolete POPS/pecticides
+stockpile fund for Central and Eastern European countries and new independent
+states". Kyiv, 2003, 167--169.
+
+\bibitem{Lenczner} {Lenczner~M.} \emph{Multiscale Model for Atomic Force
+Microscope Array Mechanical Behavior}, Applied Physics Letters, {\bf 90} (2007),
+901--908.
+
+\bibitem{Lyshevski} {Lyshevshi~S.E.} Mems and Nems: Systems, Devices, and
+Structures, CRC Press, Boca Raton, FL, 2002.
+
+\bibitem{MarKhrus} {Marchenko~V.A., Khruslov~E.Ya.} Boundary Value Problems
+in Domains with Finegrained Boundary, Naukova Dumka, Kiev, 1974. (in Russian)
+
+\bibitem{M99zaa} {Mel'nyk T.A.} \emph{Homogenization of the Poisson Equation
+in a Thick Periodic Junction}, Zeitschrift f\"ur Analysis und ihre Anwendungen,
+{\bf 18}, 4 (1999), 953--975.
+
+\bibitem{Mel-m2as-08} {Mel'nyk~T.A.} \emph{Homogenization of a Boundary-Value
+Problem with a Nonlinear Boundary Condition in a Thick Junction of Type 3:2:1},
+Math. Models Meth. Appl. Sci., {\bf 31} (2008), 1005--1027.
+
+\bibitem{Mel'nyk-1} {Mel'nyk~T.A.} \emph{Homogenization of a Singularly
+Perturbed Parabolic Problem in a Thick Periodic Junction of the Type 3:2:1},
+Ukr. Math. Journal, {\bf 52}, 11 (2000), 1737--1748.
+
+
+\bibitem{MC3} {Mel'nyk~T.A., Chechkin~G.A.} \emph{Homogenization of a
+Boundary-Value Problem in a Thick 3-dimensional Multi-Level Junction}, Russian
+Academy of Sciences. Sbornik. Mathematics., {\bf 200}, 3 (2009), 357--383.
+
+
+
+\bibitem{MN00} {Mel'nyk~T.A., Nazarov~S.A.} \emph{Asymptotic Analysis of the
+Neumann Problem of the Junction of a Body and Thin Heavy Rods}, St.-Petersburg
+Math. J., {\bf 12}, 2 (2001), 317--351.
+
+
+\bibitem{MN96} {Mel'nyk~T.A., Nazarov~S.A.} \emph{Asymptotics of the Neumann
+Spectral Problem Solution in a Domain of "Thick Comb"}, Tr. Sem. im.
+I.~G.~Petrovskogo, {\bf 19} (1996), 138--174. (in Russian)
+
+
+\bibitem{MN93d} {Mel'nyk~T.A., Nazarov~S.A.} \emph{The Asymptotic Structure of
+the Spectrum in the Problem of Harmonic Oscillations of a Hub with Heavy Spokes}
+Russ. Acad. Sci. Dokl., Math., {\bf 48}, 3 (1994), 428--432.
+
+
+\bibitem{M-V-2} {Mel'nik~T.A., Vashchuk~P.S.} \emph{Homogenization of a
+Boundary-Value Problem with Mixed Type of Boundary Conditions in a Thick
+Junction}, Partial Differential Equations, {\bf 43}, 5 (2007), 677--684.
+
+\bibitem{N95} {Nazarov~S.A.} \emph{Junctions of Singularly Degenerating Domains
+with Different Limit Dimension}, Tr. Sem. im. I.~G.~Petrovskogo, {\bf 18}
+(1995), 1-78 (Part~I); Tr. Sem. im. I.~G.~Petrovskogo, {\bf 20} (2000), 155--196
+(Part~II). (in Russian)
+
+\bibitem{Nazarov} {Nazarov~S.A.}  \emph{The Polynomial Property Selfadjoint
+Elliptic Boundary-Value Problems and Algebraic Description Their Atributes},
+Usp. Mat. Nauk, {\bf 54}, 5 (1999), 77--142. (in Russian)
+
+\bibitem{Nazarov-Plamen} {Nazarov~S.A., Plamenevskii~B.A.} Elliptic Problems
+in Domains with Piecewise Smooth Boundaries, Walter~de~Gruyter, Berlin, 1994.
+
+\end{thebibliography}
+
+\end{document}

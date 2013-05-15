@@ -1,4 +1,11 @@
 
+<?php if( !empty( $this -> errors ) ): ?>
+<div class = "message-error" style = "margin:20px; padding :10px; color:red;font-size:large;">
+		<?= implode( '<br/>', $this -> errors ); ?>		
+</div>
+<?php endif; ?>
+
+
 <div class = "authorization">
 
 	<div class = "clasic">
@@ -48,8 +55,3 @@
 	</div>
 	
 </div>
-
-<?php 
-	if( !empty( $this -> errors ) )
-		echo implode( '<br/>', $this -> errors );
-?>

@@ -1,0 +1,616 @@
+%Format:
+\documentclass[12pt,twoside,draft,ua,bysec]{cmpart}
+% Необов'язкові опції :
+% draft - чернетка
+% en, ua, ru - основна мова документа
+% bysec - твердження, леми, означення і т.п. (але не теореми)
+%         нумеруються в межах кожної \section окремо
+% theorembysec - теореми теж нумеруються окремо для кожної \section
+% win   - кодування кирилиці CP-1251 (Windows)
+% koi   - кодування кирилиці KOI8_U  (Unix)
+%
+% Вже завантажено пакети :
+% amsmath,amsfonts,amstheorem,amssymb,latexsym
+%
+% Вже означено theorem-like оточення :
+% {theorem}     - теорема
+% {proposition} - твердження
+% {lemma}       - лема
+% {corollary}   - наслідок
+% {remark}      - зауваження
+% {definition}  - означення
+% {example}     - приклад
+% {examples}    - приклади
+% а також їх аналоги з зірочкою без нумерації :
+% {theorem*}, {proposition*} і т.п.
+
+
+\author{Сливка-Тилищак~Г.І.}
+\title{РІВНЯННЯ КОЛИВАННЯ ОДНОРІДНОЇ СТРУНИ З ВИПАДКОВИМИ ПОЧАТКОВИМИ УМОВАМИ З ПРОСТОРУ ОРЛІЧА }
+\shorttitle{Рівняння коливання однорідної струни}
+
+\enabstract{Slyvka-Tylyshchak~A.}%
+{The equations of homogeneous string vibration with random Orlicz initial conditions}%
+{The conditions of existence with probability one of twice continuously differentiated solution formulating in terms
+of correlation functions of the boundary-value
+problems of homogeneous string vibration with random strongly Orlicz initial conditions are found. The
+estimation for distribution of supremum of this problem has been got too.}
+
+\ruabstract{Сливка-Тилищак~А.И.}%
+{Уравнение колебания однородной струны из  случайными начальными условиями с пространства Орлича}%
+{Найдены условия существования с вероятностью еденица дважды непрерывно диференцируемого
+решения уравнения колебания однородной струны  с строго
+орличевыми начальными условиями в терминах корелляционных функций. Найдено оценку для распределения супремума решения такой задачи.}
+
+\uaabstract{Сливка-Тилищак~Г.І.}%
+{Рівняння коливання однорідної струни з випадковими початковими умовами з простору Орліча}%
+{Знайдено умови існування з імовірністю  двічі неперервно диференційовного розв'язку рівняння коливання однорідної струни з строго орлічевими
+початковими умовами у термінах кореляційних функцій. Знайдено оцінку для розподілу супремуму розв'язку такої задачі.   }%
+
+
+\subjclass{60G60, 60G17}
+\UDC{519.21}
+\keywords{рівняння коливання однорідної струни, випадкові процеси з простору
+Орліча, кореляційні функції}
+
+\pyear{2012} % рік публікації
+\volume{4}   % том
+\issue{2}    % випуск
+\pageno{316} % номер першої сторінки
+\received{01.03.2012}
+%\revised{?}
+\contentslistfile{../total.lst}
+
+
+\address{Київський національний університет імені Тараса Шевченка,\\ Київ, Україна}
+\email{aslyvka@tn.uz.ua}
+
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\maketitle
+
+%%% ----------------------------------------------------------------------
+
+\section*{Вступ}
+При розв'язувані задач математичної фізики часто потрібно враховувати вплив випадкових факторів, що можуть мати різну природу:
+Випадкові крайові та початкові умови, випадкові коефіцієнти, випадкова права частина та інші. У  зв'язку з цим виникає необхідність
+в аналізі, що виражає ймовірнісну специфіку розглядуваної задачі. В залежності від типу задачі, специфіки випадкових факторів застосовують різні методи дослідження.
+
+Вивченню задач математичної фізики  гіперболічного типу з випадковими  початковими умовами  із  простору $Sub_\varphi(\Omega)$
+присвячені такі роботи:  Булдигін В.В., Козаченко Ю.В. \cite{Byld.K.},  Козаченко Ю.В., Ковальчук Ю.О. \cite{Koz.Kov.,Koz.Kov.1}, Козаченко Ю.В., Сливка Г.І. \cite{KS, KDS}, з випадковими  початковими умовами  із  простору
+Орліча ---
+ Барраса де Ла Крус Е., Козаченко Ю.В.   \cite{Bar}. Задачі математичної фізики з випадковою строго $\varphi$-субгауссовою
+ правою частиною  досліджувалися в роботах Довгая Б.В. \cite{Dov, KDS}. Рівняння параболічного типу
+ з випадковими умовами з простору Орліча  розглядалися в роботах Козаченка Ю.В. і Вереш К.Й. \cite{KV}. Посилання
+ на інші роботи, які проводилися в цьому напрямку можна знайти в монографії \cite{KDS}.
+
+ У даній роботі розглядається крайова задача математичної фізики гіперболічного типу про коливання однорідної струни
+ з випадковими початковими умовами з простору Орліча. Знайдено умови існування з ймовірністю одиниця двічі неперервно
+ диференційовного розв'язку у термінах кореляційних функцій.  Для такої задачі отримано оцінку для розподілу  супремуму
+ розв'язку.
+
+
+\section{Випадкові процеси з простору Орліча}
+
+\begin{definition} [\cite{Bar}]
+Парна неперервна опукла функція $U\left(x\right)$ називається $C$-функ-цією, якщо $U\left(0\right)=0$ і
+$U\left(x\right)$ зростає при $x>0$.
+\end{definition}
+\begin{definition} [\cite{Bar}]\label{g}
+Будемо говорити, що $C$-функція u задовольняє $g$-умові, якщо існують такі сталі $z_{0}>0$, $k>0$, $A>0$, що для всіх $x>z_{0}$, $y>z_{0}$ виконується нерівність
+$$
+U(x)U(y)\leq AU(kxy).
+$$
+\end{definition}
+\begin{definition} [\cite{Bar}] Нехай $\left( {T,\rho }
+\right)$ --   метричний простір і  $\varepsilon > 0$. Позначимо через $N_\rho\left( {t,\varepsilon } \right)$ найменшу можливу кількість точок
+$\varepsilon $-сітки множини  $T$ відносно псевдометрики $\rho$.
+Функцію ($N_\rho \left({t,\varepsilon } \right)$,$\varepsilon > 0)$ будемо
+називати масивністю множини $T$ відносно псевдометрики
+ $\rho $.
+\end{definition}
+Нехай $\left\{\Omega,\Im,P\right\}$ стандартний ймовірнісний простір.
+
+\begin{definition} [\cite{Bar}]
+Простором Орліча $L_{u}\left(\Omega\right)$ випадкових величин, породженим С-функцією $u\left(x\right)$, називається такий простір випадкових величин $\xi\left(\omega\right)=\xi$, $\omega\in\Omega$, що для кожної $\xi\in L_{u}\left(\Omega\right)$ існує така константа $r_{\xi}$, що $Eu\left(\frac{\xi}{r_{\xi}}\right)\leq\infty$.
+\end{definition}
+
+Простір Орліча $L_{U}\left(\Omega\right)$ є банаховим простором відносно норми
+$$
+\left\|\xi\right\|_{L_{U}}=inf\left\{r>0:Eu\left(\frac{\xi}{r_{\xi}}\right)\leq1\right\}.
+$$
+
+\begin{definition} [\cite{Bar}]
+Процес $X=\left\{X\left(t\right),t\in T\right\}$ належить простору Орліча $L_{U}\left(\Omega\right)$, якщо для всіх
+$t\in T$ випадкова величина $X\left(t\right)$ належить $L_{U}\left(\Omega\right)$.
+\end{definition}
+
+\begin{definition} [\cite{Bar}]
+Сім'я випадкових величин $\xi$ з простору Орліча $\left(E\xi=0\right)$, називається строго орлічевою, якщо існує стала $C_{\Delta}$, що для скінченної кількості $\xi_{i}\in\Delta$, $i\in I$ і для будь-якого $\lambda_{i}\in\mathbf{R}^{1}$ виконується нерівність
+\begin{displaymath}
+\left\|\sum_{i\in I}\lambda_{i}\xi_{i}\right\|_{L_{u}}\leq C_{\Delta}\left(E\left(\sum_{i\in I}\lambda_{i}\xi_{i}\right)^{2}\right)^{1/2}.
+\end{displaymath}
+\end{definition}
+\begin{definition} [\cite{Bar}]
+Випадковий процес $X=\left\{X\left(t\right), t\in T\right\}$, $\left(X\in L_{U}\left(\Omega\right)\right)$
+ називається строго орлічевим, якщо сім'я випадкових величин $X=\left\{X\left(t\right), t\in T\right\}$ - є строго орлічевою. Випадкові процеси $X=\left\{X\left(t\right), t\in T\right\}$ та $Y=\left\{Y\left(t\right), t\in T\right\}$ називаються сумісно строго орлічевими, якщо сім'я випадкових величин $\left\{X\left(t\right), Y\left(t\right), t\in T\right\}$ є строго орлічевою.
+\end{definition}
+\begin{theorem}[\cite{Glad}]
+Нехай $\xi(X)$, $E\xi(X)=0$, $X\in T$, $T=\left\{(x,y)\left|a_{i}\leq x_{i}\leq b_{i}, i=1,\ldots,n\right\}\right.$
+--- неперервне з ймовірністю одиниця випадкове поле. Нехай  $B(X,Y)=E\xi(X)\xi(Y)$ ---
+кореляційна функція поля $\xi(X)$. Нехай існують частинні похідні
+$B_{ii}(X,Y)=\frac{\partial^{2}B(X,Y)}{\partial X_{i}\partial Y_{i}}$, $i=1,2$. $B_{ii}(X,Y)$ ---
+ кореляційні функції похідних в середньому квадратичному $\frac{\partial\xi(X)}{\partial x_{i}}$.
+  Якщо існує неперервна з ймовірністю одиниця модифікація поля $\frac{\partial\xi(X)}{\partial x_{i}}$, $i=1,\ldots,n$,
+  тоді, ця модифікація є звичайною частинною похідною випадкового поля $\xi(X)$.
+\end{theorem}
+
+\section{Рівняння коливання струни з випадковими початковими умовами з простору Орліча в термінах кореляційних функцій}
+
+Розглянемо першу крайову задачу для однорідного гіперболічного рівняння \cite{Pol.}.
+Ставиться питання про існування функції $u=\left(u\left(x,y\right)\right.$, $\left.x\in\left[0,\pi\right],\right.$
+  $\left.t\in\left[0,t\right]\right)$, яка задовольняє наступним умовам:
+\begin{equation}\label{eq323}
+\frac{\partial}{\partial x}\left(p(x)\frac{\partial u}{\partial x}\right)-q(x)u-\rho(x)\frac{\partial^2 u}{\partial t^2}=0;
+\end{equation}
+\[
+x\in\left[0,\pi\right],\ t\in\left[0,T\right],\;T>0;
+\]
+\begin{equation}\label{eq324}
+u(0,t)=u(\pi,t)=0,\ t\in\left[0,T\right];
+\end{equation}
+\begin{equation}\label{eq325}
+u(x,0)=\xi(x),\ \frac{\partial u(x,0)}{\partial t}=\eta(x),\  x\in\left[0,\pi\right].
+\end{equation}
+Функції $p=\left(p(x),\;x\in\left[0,\pi\right]\right),\ q=\left(q(x),\;x\in\left[0,\pi\right]\right),\ \rho=\left(\rho(x),\;x\in\left[0,\pi\right]\right)$ задовольняють  умовам:
+
+
+\begin{enumerate}
+    \item  $p(x)>0,\rho(x)>0,\ q(x)\geq 0, \ x\in\left[0,\pi\right];$
+    \item $p(x)$, і $\rho(x)$ -- двічі неперервно диференційовні функції на $x\in\left[0,\pi\right]$;
+    \item $q(x)$ -- неперервно диференційовна на  $x\in\left[0,\pi\right]$.
+\end{enumerate}
+
+ Припустимо, що $\left(\xi(x),\;x\in\left[0,\pi\right]\right)$ і $\left(\xi(x),\;x\in\left[0,\pi\right]\right)$  є випадкові процеси із простору Орліча і такі, що майже напевно
+\begin{equation}\label{eq326}
+\xi(0)=\xi(\pi)=\eta(0)=\eta(\pi)=0.
+\end{equation}
+Позначимо кореляційні функції цих процесів через
+\[
+B_{\xi}(x,y)=E\xi(x)\xi(y), \;\;\;
+B_{\eta}(x,y)=E\eta(x)\eta(y), \  x,\:y \in\left[0,\pi\right].
+\]
+ Із рівностей (\ref{eq326}) випливає
+\[
+B_{\xi}(0,y)=B_{\xi}(x,0)=B_{\xi}(\pi,y)=B_{\xi}(x,\pi)=0,
+\]
+\[
+B_{\eta}(0,y)=B_{\eta}(x,0)=B_{\eta}(\pi,y)=B_{\eta}(x,\pi)=0.
+\]
+Рівняння (\ref{eq323}) описує коливання неоднорідної струни із закріпленими кінцями  (\ref{eq324}) і випадковими початковими умовами (\ref{eq325}).
+При цьому випадковий процес $\xi(\bullet)$ описує початкове положення струни, а випадковий процес $\eta(\bullet)$ -- початкову швидкість.
+
+При використанні методу Фур'є \cite {Pol.} розв'язок задачі шукається у вигляді
+\begin{equation}\label{eq327}
+u\left(x,t\right)=\sum_{k=1}^{\infty}X_{k}(x)\left[A_{k}cos\sqrt{\lambda_{k}}t+\frac{B_{k}}{\sqrt{\lambda_{k}}}sin\sqrt{\lambda_{k}}t\right],
+\end{equation}
+\[
+x\in\left[0,\pi\right],\ t\in\left[0,T\right],\;T>0;
+\]
+де
+\[
+A_{k}=\int_{0}^{\pi}\xi(x)X_{k}(x)\rho(x)dx,\;\;\;
+B_{k}=\int_{0}^{\pi}\eta(x)X_{k}(x)\rho(x)dx,\ k\geq 1,
+\]
+$\lambda_{k},\;k\geq 1$ --- власні значення, $X_{k}=(X_{k})(x),\;x\in [0,\pi]),\ k\geq 1$ -- відповідні їм власні функції наступної задачі Штурма-Ліувілля
+\begin{equation}\label{eq328}
+\frac{d}{dx}\left(p(x)\frac{dX_{k}(x)}{dx}\right)-q(x)x(x)+\lambda\rho(x)X(x)=0,\;\;\;x\in[0,\pi],
+\end{equation}
+\begin{equation}\label{eq329}
+X(0)=X(\pi)=0.
+\end{equation}
+Оскільки функції $p(x),\;\rho(x),\;q(x)$ задовольняють умовам 1 - 3, то всі власні значення $\lambda_{k},\;k\geq 1$ додатні \cite{Pol.}, занумеруємо їх так, що $\lambda_{1}<\lambda_{2}<\lambda_{3}<\ldots\lambda_{n}<\ldots$. Власні функції $X_{k},\;k\geq 1$ -- двічі неперервно диференційовні на $[0,\pi]$.
+
+Нехай $D=[0,\pi]\times[0,T]$, а $C(D)$ -- простір неперервних на $D$ функцій, який є сепарабельним Банаховим простором.
+
+\begin{lemma}\label{pol1} \cite{Pol.} Нехай $\lambda_{k},\ k\geq 1$ і $X_{k},\;k\geq 1$  -- власні значення і відповідні їм власні функції задачі Штурма-Ліувілля (4.6)--(4.7), де функції $p,\;q,\;\rho$
+задовольняють умовам 1.--3. Тоді при $k\rightarrow \infty\;\;$
+$
+\sqrt{\lambda_{k}}=k+O\left(\frac{1}{k}\right)
+$
+і для всіх $x\in[0,\pi]$
+\[
+X_{k}(x)=\sqrt{\frac{2}{\pi}}\sin k\left(\int_{0}^{x}\left(\frac{\rho(u)}{p(u)}\right)^{\frac{1}{2}}du\right)+\frac{\beta_{k}}{k},\;\;
+\mathop{\sup}\limits_{k\geq 1}\mathop{sup}\limits_{x\in [0,\pi]}\left|\beta_{k}(x)\right|<\infty.
+\]
+\end{lemma}
+Наступні теореми є частковими випадками теореми 8  та теореми 9 роботи \cite{Sli.Ver.}.
+\begin{theorem}\label{t42} Нехай $\xi(x),\ \eta(x)$ ---  випадкові процеси із простору Орліча $L_{U}(\Omega)$.
+Для того, щоб з ймовірністю одиниця  в області $D$ існував двічі неперервно диференційовний розв'язок задачі
+$(\ref{eq323})$--$(\ref{eq325})$, що зображується у вигляді рівномірно збіжного
+за ймовірністю ряду $(\ref{eq327})$, достатньо щоб виконувались умови:
+\begin{enumerate}
+\item[1)] існували неперервні з ймовірністю одиниця похідні $\frac{d^2\xi(x)}{dx^2},\ \frac{d\eta(x)}{dx},\ 0\leq x\leq \pi$;
+\item[2)] для всіх  $(x,t)\in D$ збігаються ряди:
+\[
+\begin{array}{l}
+ \sum\limits_{k = 1}^\infty {\sum\limits_{l = 1}^\infty {X_k \left( x
+\right)X_l \left( x \right)\left[ {EA_k A_l \cos \sqrt {\lambda _k } t
+\cos
+\sqrt {\lambda _l } t + \frac{EB_k B_l}{\sqrt{\lambda_{k}}\sqrt{\lambda_{l}}} \sin \sqrt {\lambda _k } t\sin \sqrt
+{\lambda _l } t } \right.} } \\
+ + \frac{2 EA_k B_l}{\sqrt{\lambda_l}} \cos \sqrt {\lambda _k } t\sin \sqrt {\lambda _l } t \left.
+\right], \\
+ \end{array}
+\]
+\[
+\begin{array}{l}
+ \sum\limits_{k = 1}^\infty {
+ \sum\limits_{l = 1}^\infty
+ {\sqrt {\lambda _k } \sqrt {\lambda _l } X_k
+ ( x ) X_l ( x ) \left[ {EA_k A_l \sin
+ \sqrt {\lambda_k } t \sin \sqrt {\lambda_l } t +
+  \frac{EB_k B_l}{\sqrt{\lambda_{k}}\sqrt{\lambda_{l}}} \cos \sqrt {\lambda _k } t \cos
+  \sqrt {\lambda _l } t } \right.} } \\
+ - 2 \left.{\frac{EA_k B_l}{\sqrt{\lambda_l}} \cos \sqrt {\lambda _k } t\sin
+ \sqrt {\lambda _l } t}  \right], \\
+ \end{array}
+\]
+\[
+\begin{array}{l}
+ \sum\limits_{k = 1}^\infty {
+ \sum\limits_{l = 1}^\infty
+ {\lambda _k  \lambda _l  X_k
+ ( x ) X_l ( x ) \left[ {EA_k A_l \cos
+ \sqrt {\lambda_k } t \cos \sqrt {\lambda_l } t +
+  \frac{EB_k B_l}{\sqrt{\lambda_{k}}\sqrt{\lambda_{l}}} \sin \sqrt {\lambda _k } t \sin
+  \sqrt {\lambda _l } t } \right.} } \\
+ + 2 \left.{\frac{EA_k B_l}{\sqrt{\lambda_l}}\cos \sqrt {\lambda _k } t\sin
+ \sqrt {\lambda _l } t}  \right]; \\
+ \end{array}
+\]
+
+\item[3)] для $n\geq 1,\ k=0,1,2$
+$$
+{\mathop {\sup }\limits_{\substack{ |x - y| \leq h \\
+|t-s| \leq h} } \left( E \left| S_n^{(k)} (x, t) - S_n^{(k)} (y,
+s)\right|^2 \right)^{\frac{1}{2}} \leq \sigma_k (h)},
+$$
+де $\sigma_{k}(h)$ -- неперервні монотонно зростаючі функції, такі що
+ $\sigma_{k}(h)\rightarrow 0$  при  $h\rightarrow 0$  і виконується умова
+\begin{equation}\label{eqint1}
+\int_{0+}^{\varepsilon}U^{(-1)}\left(\left(\frac{\pi}{2\sigma^{(-1)}(u)}+1\right)\left( \frac{T}{2\sigma^{(-1)}(u)}+1\right)\right)du<\infty,
+\end{equation}
+ де $ \sigma_{k}^{(-1)}(\varepsilon)$ -- обернені функції до $\sigma_{k}(\varepsilon)$.
+ \end{enumerate}
+\end{theorem}
+\begin{example}
+Нехай $\xi(x)$ і $\eta(x)$ сумісно строго орлічеві процеси з простору $L_U(\Omega)$, де $U(x)=|x|^p,\;p>2$ тобто з простору $L_p(\Omega)$.
+Нехай  в умові \ref{eqint1} $\sigma_{k}(h)=C_k|h|^\delta,$ $0<\delta<1.$ Тоді, для того щоб виконувалась умова \ref{eqint1}
+потрібно, щоб для досить малого $\varepsilon>0$ збігався інтеграл:
+$$\int_{0+}^{\varepsilon}\left(\left(\frac{\pi C_{k}^{\frac{1}{\delta}}}{2u^{\frac{1}{\delta}}}+1\right)\left(\frac{T C_{k}^{\frac{1}{\delta}}}{2u^{\frac{1}{\delta}}}+1\right)\right)^{\frac{1}{p}}du.$$
+При достатньо малих $\varepsilon>0$ дана умова буде мати вигляд:
+$$\int_{0+}^{\varepsilon}\left(\frac{\pi C_{k}^{\frac{1}{\delta}}}{2u^{\frac{1}{\delta}}}\cdot\frac{T C_{k}^{\frac{1}{\delta}}}{2u^{\frac{1}{\delta}}}\right)^{\frac{1}{p}}du\leq D\int_{0+}^{\varepsilon}\left(\frac{1}{u^{\frac{2}{p\delta}}}\right)du.$$
+де $D=\left(\frac{\pi TC^{\frac{2}{\delta}}_k}{4}\right)^\frac{1}{p}$. Останній інтеграл збігається коли $\delta>\frac{2}{p}.$
+\end{example}
+
+\begin{theorem}\label{t44} Нехай випадкові процеси $\xi(x)$ і $\eta(x)$, $x\in[0,\pi]$ є сумісно строго
+орлічеві процеси з простору $L_U(\Omega)$, де $U(x)=|x|^p,$ при  $p>2$. Нехай
+$$
+B_{\xi}(x,y)=E\xi(x)\xi(y),\;\;\;
+B_{\eta}(x,y)=E\eta(x)\eta(y).
+$$
+Для того, щоб з ймовірністю одиниця в області $D$ існував двічі неперервно диференціійовний розв'язок задачі
+$(\ref{eq323})$--$(\ref{eq325})$,
+зображений у вигляді рівномірно збіжного за ймовірністю ряду $(\ref{eq327})$,
+достатньо, щоб виконувались умови:
+\begin{enumerate}
+\item[1)] існують неперервні частинні похідні $x,y\in[0,\pi]$
+   $$
+    B^{\ast\ast}_{\xi}(x,y)=\frac{\partial^{4}B(x,y)}{\partial x^{2}\partial y^{2}},\;\;\;
+    B^{\ast}_{\eta}(x,y)=\frac{\partial^{2}B(x,y)}{\partial x\partial y},
+   $$
+для достатньо малого  $h$ і $\delta>\frac{2}{p}$  виконуються нерівності
+    $$
+    \mathop{\sup}\limits_{\left|x-y\right|\leq h}\left(B^{\ast\ast}_{\xi}(x,x)+B^{\ast\ast}_{\xi}(y,y)-2B^{\ast\ast}_{\xi}(x,y)\right)\leq C_{\ast\ast}\left|h\right|^{\delta},
+   $$$$
+    \mathop{\sup}\limits_{\left|x-y\right|\leq h}\left(B^{\ast}_{\eta}(x,x)+B^{\ast}_{\eta}(y,y)-2B^{\ast}_{\eta}(x,y)\right)\leq C_{1\ast}\left| h\right|^{\delta};
+   $$
+\item[2)] збігається наступний ряд
+$$
+\sum_{k=1}^{\infty}\sum_{l=1}^{\infty}k^{2}l^{2}\left[\left|EA_{k}A_{l}\right|+\frac{\left|EB_{k}B_{l}\right|}{kl}+2\frac{|EA_{k}B_{l}|}{l}\right]<\infty;
+$$
+\item[3)]  для довільних $\delta>\frac{2}{p}$  виконуються наступна умова
+$$
+\sum_{k=1}^{\infty}\left(k^{2}\left(EA_{k}^{2}\right)^\frac{1}{2} +\frac{\left(EB_{k}^{2}\right)^\frac{1}{2}}{k}\right)k^{\delta}<\infty.
+$$
+\end{enumerate}
+\end{theorem}
+Накладемо деякі умови на кореляційні функції $B_{\xi}(x,y)$ і $B_{\eta}(x,y)$. Розглянемо задачу
+ (\ref{eq323})--(\ref{eq325})  при $p(x)=\rho(x)=1$. Продовжимо функції  $B_{\xi}(x,y)$,  $B_{\eta}(x,y)$ на всю площину так, щоб вони були періодичними функціями з періодом  $2\pi$ за  $x$ і $y$ і щоб виконувались рівності
+    \[
+    B_{\xi}(-x,y)=-B_{\xi}(x,y)=B_{\xi}(x,-y),\;\;
+    B_{\eta}(-x,y)=-B_{\eta}(x,y)=B_{\eta}(x,-y).
+\]
+Нехай
+$$
+    \Delta_{\tau_{1}\tau_{2}}f(x,y)=f(x+\tau_{1},y+\tau_{2})-f(x+,y+\tau_{2})-
+    f(x+\tau_{1},y)+f(x,y),
+$$
+ $$
+    \hat{B}_{\xi}=\frac{\partial^{6} B_{\xi}(x,y)}{\partial x^{3}\partial y^{3}},\;\;\;
+    \hat{B}_{\eta}=\frac{\partial^{4} B_{\eta}(x,y)}{\partial x^{2}\partial y^{3}},
+$$
+\begin{theorem}\label{t45} Нехай випадкові процеси $\xi(x)$ і $\eta(x)$, $x\in[0,\pi]$ є незалежні строго
+орлічеві процеси з простору $L_U(\Omega)$, де $U(x)=|x|^p,$ при  $p>1$.
+  Для того, щоб з ймовірністю одиниця в
+   області $D$ існував двічі неперервно диференційовний розв'язок задачі
+  $(\ref{eq323})$--$(\ref{eq325})$, при наведених вище обмеженнях, зображений у
+вигляді рівномірно збіжного за
+  ймовірністю ряду  $(\ref{eq327})$,
+   достатньо, щоб виконувались умови:
+\begin{enumerate}
+\item[1)] у продовжених на всю площину функцій $B_{\xi}(x,y)$,  $B_{\eta}(x,y)$ існують обмежені похідні
+  $$
+    \frac{\partial^{6} B_{\xi}(x,y)}{\partial x^{i}\partial y^{j}},\ i+j=6,\;\;\;
+    \frac{\partial^{4} B_{\eta}(x,y)}{\partial x^{i}\partial y^{j}},\ i+j=4;
+$$
+\item[2)] при достатньо малих $\tau_{1}$ і $\tau_{2}$, $\tau_{1}>0,$ $\tau_{2}>0$ та деякому  $\gamma>0$ виконуються умови
+$$
+    \int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\left|\Delta_{\tau_{1}\tau_{2}}\hat{B}_{\xi}(x,y)\right|dxdy\leq c_{1}|\tau_{1}\tau_{2}|^\gamma,\;
+    \int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\left|\Delta_{\tau_{1}\tau_{2}}\hat{B}_{\eta}(x,y)\right|dxdy\leq |c_{2}\tau_{1}\tau_{2}|^\gamma,
+$$
+де $c_{1},\;c_{2}>0;$
+
+\item[3)] при достатньо малому  $\tau>0$  і  деякому    $\delta>\frac{2}{p}$ виконуються умови
+$$
+    \int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\left|\Delta_{\tau\tau}\hat{B}_{\xi}(x,y)\right|dxdy\leq c_{3}\tau^{\delta},\;
+    \int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\left|\Delta_{\tau\tau}\hat{B}_{\eta}(x,y)\right|dxdy\leq c_{4}\tau^{\delta}
+$$
+де $c_{3},c_{4}>0.$
+\end{enumerate}
+\end{theorem}
+\begin{proof} Умова 1) даної теореми забезпечує виконання умови 1) теореми \ref{t44}. Покажемо, що із виконання умови 2)
+даної теореми випливає виконання умови 2) тієї ж теореми.   Для цього достатньо показати, що
+\begin{equation}\label{eq337}
+\left|EA_{k}A_{l}\right|\leq\frac{c}{\left|kl\right|^{3+\gamma}},
+\end{equation}
+\begin{equation}\label{eq338}
+\left|EB_{k}B_{l}\right|\leq\frac{c}{\left|kl\right|^{2+\gamma}},
+\end{equation}
+\noindent {де} $c$ --- деяка стала.
+
+Оскільки, за означенням
+
+    \[
+EA_{k}A_{l}=\int_{0}^{\pi}\int_{0}^{\pi}B_{\xi}(x,y)X_{k}(x)X_{l}(y)dxdy,
+\]
+    \[
+EB_{k}B_{l}=\int_{0}^{\pi}\int_{0}^{\pi}B_{\eta}(x,y)X_{k}(x)X_{l}(y)dxdy,
+\]
+ \noindent{і}
+    \[
+    X_{k}(x)=\frac{1}{\lambda_{k}}\left(X^{\prime\prime}_{k}-q(x)X_{k}(x)\right),
+\]
+\noindent{то інтегруючи частинами  і використовуючи, що}
+    \[
+    B_{\xi}(0,y)=B_{\xi}(\pi,y)=X_{k}(0)=X_{k}(\pi)=0,
+\]
+\noindent{отримаємо}
+    \[
+    \int_{0}^{\pi}B_{\xi}(x,y)X_{k}^{\prime\prime}(x)dx=\int_{0}^{\pi}\frac{\partial ^{2}B_{\xi}(x,y)}{\partial x^{2}}X_{k}(x)dx.
+\]
+Отже
+\begin{eqnarray}
+    &&EA_{k}A_{l}=\frac{1}{\lambda_{k}\lambda_{l}}\left[\int_{0}^{\pi}\int_{0}^{\pi}\left(\frac{\partial ^{2}B_{\xi}(x,y)}{\partial x^{2}}-q(x)B_{\xi}(x,y)\right)X_{l}^{\prime\prime}(y)X_{k}(x)\right.\nonumber\\
+&-&\left.\int_{0}^{\pi}\int_{0}^{\pi}\left(\frac{\partial ^{2}B_{\xi}(x,y)}{\partial x^{2}}-q(x)B_{\xi}(x,y)\right)q(y)X_{l}(x)X_{k}(y)dxdy\right]\nonumber.
+\end{eqnarray}
+Оскільки
+    \[
+    \frac{\partial^{2}B_{\xi}(x,y) }{\partial x^{2}}=E\xi^{\prime}(x)\xi(y),\ \xi(0)=\xi(\pi)=0,
+\]
+\noindent {тобто}
+    \[
+    \frac{\partial^{2}B_{\xi}(x,0) }{\partial x^{2}}=\frac{\partial^{2}B_{\xi}(x,\pi) }{\partial x^{2}}=0,
+\]
+тоді
+\begin{eqnarray}
+    &&\int_{0}^{\pi}\left(\frac{\partial^{2}B_{\xi}(x,y) }{\partial x^{2}}-q(x)B_{\xi}(x,y)\right)X_{l}^{\prime\prime}(y)dy\nonumber \\
+    &=&\int_{0}^{\pi}\left(\frac{\partial^{4}B_{\xi}(x,y) }{\partial x^{2}\partial y^{2}}-q(x)\frac{\partial^{2}B_{\xi}(x,y) }{\partial y^{2}}\right)X_{l}(y)dy.\nonumber
+\end{eqnarray}
+
+Отже
+\begin{eqnarray}
+    EA_{k}A_{l}&=&\frac{1}{\lambda_{k}\lambda_{l}}\left[\int_{0}^{\pi}\int_{0}^{\pi}\frac{\partial^{4}B_{\xi}(x,y) }{\partial x^{2}\partial y^{2}}X_{k}(x)(x)X_{l}(y)dxdy\right.\nonumber\\
+    &+&\left.\int_{0}^{\pi}\int_{0}^{\pi}F(x,y)X_{k}(x)X_{l}(y)dxdy\right],\nonumber
+\end{eqnarray}
+\noindent{де}
+    \[
+    F(x,y)=B_{\xi}(x,y)q(x)q(y)-\frac{\partial^{2}B_{\xi}(x,y) }{\partial x^{2}}q(y)-\frac{\partial^{2}B_{\xi}(x,y) }{\partial y^{2}}q(x).
+\]
+
+За припущенням, функція $B_{\xi}(x,y)$ періодична з періодом $2\pi$ за $x$ і $y$, то  $F(x,y)$  -- періодична з періодом $2\pi$ за $x$ і $y$ ітака, що виконується
+    \[
+    F(-x,y)=-F(x,y)=F(x,-y).
+\]
+
+ Врахувавши властивості функції $F(x,y)$ і асимптотичні представлення $X_{k}(x)$ і $\lambda_{k}$ із леми \ref{pol1}, інтегруючи частинами, отримаємо
+
+    \[
+    \int_{0}^{\pi}F(x,y)\sin lydy=-\frac{1}{2l}\int_{-\pi}^{\pi}\frac{\partial^{2}F(x,y)}{\partial y^{2}}\sin lydy,
+\]
+\[
+    \int_{0}^{\pi}F(x,y)\sin kxdx=-\frac{1}{2k}\int_{-\pi}^{\pi}\frac{\partial^{2}F(x,y)}{\partial x^{2}}\sin kydx,
+\]
+\begin{eqnarray}
+&&  \int_{0}^{\pi}\int_{0}^{\pi}F(x,y)\sin kx\sin lydxdy\nonumber \\
+&=&\frac{1}{4k^{2}l^{2}}\int^{-\pi}_{\pi}\int_{-\pi}^{\pi}\frac{\partial^{4}F(x,y)}{\partial x^{2}\partial y^{2}}\sin kx\sin ly dxdy.\nonumber
+\end{eqnarray}
+Отже
+\begin{eqnarray}
+    &&\left|\frac{1}{\lambda_{k}\lambda_{l}} \int_{0}^{\pi}\int_{0}^{\pi}F(x,y)X_{k}(x)X_{l}(x)dxdy\right|\nonumber \\
+    &=&\left|\frac{1}{\lambda_{k}\lambda_{l}} \frac{1}{k^{2}l^{2}}\left[\int_{\pi}^{\pi}\int_{-\pi}^{\pi}\frac{\partial^{4}F(x,y)}{\partial x^{2}\partial y^{2}}\sin kx\sin lydxdy\right.\right.\nonumber \\
+    &-&\frac{1}{2}\sqrt{\frac{2}{\pi}}\int_{0}^{\pi}\int_{-\pi}^{\pi}\frac{\partial ^{2}F(x,y)}{\partial x^{2}}\sin kx\beta_{l}(y)dxdy\nonumber\\
+    &-&\frac{1}{2}\sqrt{\frac{2}{\pi}}\int_{0}^{\pi}\int_{-\pi}^{\pi}\frac{\partial ^{2}F(x,y)}{\partial y^{2}}\sin lx\beta_{k}(x)dxdy\nonumber\\
+&+&\left.\left.\int_{0}^{\pi}\int_{0}^{\pi}F(x,y)\beta_{l}(y)\beta_{k}xdxdy\right|\right]\leq\frac{c}{k^{4}l^{4}}.\nonumber
+\end{eqnarray}
+Аналогічно, використавши непарність функції $\frac{\partial^{4}B_{\xi}(x,y)}{\partial x^{2}\partial y^{2}}$ за $x$ і за $y
+$ , отримаємо
+\begin{eqnarray}
+    &&\left|\int_{0}^{\pi}\int_{0}^{\pi}\frac{\partial^{4}B_{\xi}(x,y)}{\partial x^{2}\partial y^{2}}X_{k}(x)X_{l}(y)dxdy\right|\nonumber\\
+    &\leq&\frac{1}{2\pi}\frac{1}{kl}\left|\int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\frac{\partial^{6}B_{\xi}(x,y)}{\partial x^{3}\partial y^{3}}\cos kx\cos lydxdy\right|+\frac{d_{1}}{k^{2}l^{2}}\nonumber
+\end{eqnarray}
+Отже
+\begin{equation}\label{eq340}
+\left|EA_{k}A_{l}\right|\leq\frac{1}{4}\frac{1}{k^{3}l^{3}}\left|\int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\frac{\partial^{6}B_{\xi}(x,y)}{\partial x^{3}\partial y^{3}}\cos kx \cos ly dxdy\right|+\frac{d_{2}}{k^{4}l^{4}}.
+\end{equation}
+Розглянемо
+    \[
+    \int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\hat{B}_{\xi}(x,y)\cos kx \cos lydxdy.
+\]
+Оскільки, функція $\hat{B}_{\xi}(x,y)$ періодична з періодом $2\pi$ за $x$, і за $y$, то
+\begin{eqnarray}
+    &&\int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\hat{B}_{\xi}(x,y)\cos kx \cos lydxdy\nonumber \\
+    &=& \int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\hat{B}_{\xi}(x+\frac{\pi}{k},y+\frac{\pi}{l})\cos kx \cos lydxdy.\nonumber
+\end{eqnarray}
+Крім того
+\begin{eqnarray}
+    &&\int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\hat{B}_{\xi}(x,y)\cos kx \cos lydxdy\nonumber \\
+    &=&-    \int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\hat{B}_{\xi}(x+\frac{\pi}{k},y)\cos kx \cos lydxdy.\nonumber
+\end{eqnarray}
+Тоді, враховуючи умову 2 даної теореми, отримаємо
+\begin{eqnarray}\label{eq341}
+&&\left|\int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\hat{B}_{\xi}(x,y)\cos kx \cos lydxdy\right|\nonumber \\
+&=&\left|\frac{1}{4}\right.     \int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\left[\right.\hat{B}_{\xi}(x+\frac{\pi}{k},y+\frac{\pi}{l})-\hat{B}_{\xi}(x+\frac{\pi}{k},y)\nonumber \\
+&-&\left.\left.\hat{B}_{\xi}(x,y+\frac{\pi}{l})+\hat{B}_{\xi}(x,y)\right]\cos kx \cos lydxdy\right|\nonumber\\
+&\leq&\frac{1}{4}\int_{-\pi}^{\pi}\int_{-\pi}^{\pi}\left|\Delta_{\frac{\pi}{k},\frac{\pi}{l}}\hat{B}_{\xi}(x,y)\right|dxdy\leq\frac{c}{kl}.
+\end{eqnarray}
+З (\ref{eq340}) і (\ref{eq341}) отримаємо, що виконується (\ref{eq338}).
+
+Оскільки
+$$
+    EA_{k}^{2}=E\left(\int_{0}^{\pi}\xi(x)X_{k}(x)dx\right)^{2}
+    =\int_{0}^{\pi}\int_{0}^{\pi}B_{\xi}(x,y)X_{k}(x)X_{k}(y)dxdy,$$
+то легко довести, що із виконання умови 3) даної теореми випливає виконання умови 3) теореми \ref{t44}.
+\end{proof}
+\section{Оцінки для розподілу  розв'язку  задачі про коливання однорідної струни }
+\begin{theorem} \cite{Koz.Ver.} \label{sup1} Нехай  $(T,\rho)$ метричний компактний простір, $N(u)$ --- метрична масивність простору  $(T,\rho)$,
+$X=\{X(t),\;t\in T\}$ --- сепарабельний випадковий процес із простору $L_U(\Omega)$, де для $U$ виконується умова $g$.
+Нехай існує така функція $\sigma=\sigma(h),\;0\leq h\leq\sup\limits_{t,s\in T}\rho(t,s)$, що  $\sigma(h)$ монотонно зростає, неперервна
+і така що $\sup\limits_{\rho(t,s)\leq h}\|X(t)-X(s)\|_U\leq\sigma(h).$ Якщо для деякого $\varepsilon$  виконується умова
+\begin{equation}\label{eqsup}
+\int\limits_{0}^{\varepsilon}\chi_U\left(N\left(\sigma^{(-1)}(u)\right)\right)du<\infty,
+\end{equation}
+де
+$$\chi_U(n)=\left\{
+\begin{array}{rl}
+n,& \mbox n< U(z_0);\\
+C_UU^{(-1)}(n),& \mbox n\geq U(z_0),
+\end{array} \right.
+$$
+$C_U=k(1+U(z_0))\max(1,A),$ $z_0,\; k,\; A$ --- константи з означення \ref{g}, $\sigma^{(-1)}(h)$ --- функція обернена до
+$\sigma(h)$. Тоді з імовірністю одиниця випадкова величина $\sup\limits_{t\in T}|X(t)|$ належить простору $L_U(\Omega)$
+та
+$$\left\|\sup\limits_{t\in T}|X(t)|\right\|_U\leq \|X(t_0)\|_U+\frac{1}{\theta(1-\theta)}\int\limits_{0}^{\omega_0\theta}
+\chi_U\left(N\left(\sigma^{(-1)}(u)\right)\right)du=B(t_0,\;\theta),$$
+де $t_0$ --- довільна точка з $T$, $\omega_0=\sigma(\sup\limits_{t\in T}\rho(t_0,\;t)),\;\;0<\theta<1.$ Крім того,
+для будь-якого $\varepsilon>0$
+має місце нерівність
+$$P\left\{\sup\limits_{t\in T}|X(t)|>\varepsilon\right\}\leq \left(U\left(\frac{\varepsilon}{B(t_0,\theta)}\right)\right)^{-1}.$$
+\end{theorem}
+\begin{theorem} Нехай в умовах теореми \ref{sup1} $T=\left\{0\leq x\leq \pi,\; 0\leq t\leq T\right\}$, $\rho\left((x,\;t),\;(x_1,\;t_1)\right)=
+\max\left(|x-x_1|,|t-t_1|\right).$  Тоді умова \ref{eqsup} виконується, коли для деякого $\varepsilon>0$ виконується умова
+$$\int_{0}^{\varepsilon}U^{(-1)}\left(\left(\frac{\pi}{2\sigma^{(-1)}(u)}+1\right)\left(\frac{T}{2\sigma^{(-1)(u)}}+1\right)\right)du<\infty,$$
+а
+$$B(t_0,\;\theta)\leq\widetilde{B}(t_0,\;\theta)=\|X(t_0)\|_U+\frac{1}{\theta(1-\theta)}\int\limits_{0}^{\omega_0\theta}
+\chi U\left(\left(\frac{\pi}{2\sigma^{(-1)}(u)}+1\right)\left(\frac{T}{2\sigma^{(-1)(u)}}+1\right)\right)du,$$
+та для довільного $\varepsilon>0$
+$$P\left\{\sup\limits_{t\in T}|X(t)|>\varepsilon\right\}\leq \left(U\left(\frac{\varepsilon}{B(t_0,\theta)}\right)\right)^{-1}.$$
+\end{theorem}
+\begin{proof} Теорема випливає з теореми \ref{sup1}, оскільки в цьому випадку
+$$N(u)\leq\left(\frac{\pi}{2\sigma^{(-1)}(u)}+1\right)\left(\frac{T}{2\sigma^{(-1)(u)}}+1\right).
+$$
+\end{proof}
+Нехай
+$$u_n\left(x,\;t\right)=\sum_{k=n}^{\infty}X_{k}(x)\left[A_{k}\cos\sqrt{\lambda_{k}}t+\frac{B_{k}}{\sqrt{\lambda_{k}}}\sin\sqrt{\lambda_{k}}t\right].$$
+Нехай як і в  теоремі \ref{t42} виконується умова $$
+{\mathop {\sup }\limits_{\substack{ |x - y| \leq h \\
+|t-s| \leq h} } \left( E \left| S_n^{(0)} (x, t) - S_n^{(0)} (y,
+s)\right|^2 \right)^{\frac{1}{2}} \leq \sigma_0 (h)},
+$$
+де $\sigma_{0}(h)$ -- неперервні монотонно зростаючі функції, такі що
+ $\sigma_{0}(h)\rightarrow 0$  при  $h\rightarrow 0$  і виконується умова
+\begin{equation}\label{eqint}
+\int_{0+}^{\varepsilon}U^{(-1)}\left(\left(\frac{\pi}{2\sigma_0^{(-1)}(u)}+1\right)\left( \frac{T}{2\sigma_0^{(-1)}(u)}+1\right)\right)du<\infty,
+\end{equation}
+ де $ \sigma_{0}^{(-1)}(\varepsilon)$ --- обернені функції до $\sigma_{0}(\varepsilon)$.
+ Тоді має місце нерівність
+$$P\left\{\sup\limits_{t\in T}|u_n(x,\;t)|>\varepsilon\right\}\leq \left(U\left(\frac{\varepsilon}{B(t_0,\theta)}\right)\right)^{-1},$$
+де
+$$B(t_0,\;\theta)\leq\widetilde{B}(t_0,\;\theta)=\|u(x_0,t_0)\|_U+$$$$+\frac{1}{\theta(1-\theta)}\int\limits_{0}^{\omega_0\theta}
+\chi_U\left(\left(\frac{\pi}{2\sigma_0^{(-1)}(u)}+1\right)\left(\frac{T}{2\sigma_0^{(-1)(u)}}+1\right)\right)du.$$
+
+\begin{thebibliography}{99}
+
+\bibitem {Byld.K.}
+Булдыгин В.В., Козаченко Ю.В. \emph{К вопросу применимости метода Фурье для решения задач со случайными краевыми
+условиями}
+// Случайные процесы в задачах математической физики.
+ --- 1979. --- С. 4--35.
+
+ \bibitem {Glad}
+ Гладкая О.Н. \emph{Условия дифференцируимости по направлению выборочных функций случайных полей}
+ // Теория вероятн. и мат. статистика.
+--- 1977. --- Вып. 17. --- C. 33--40.
+
+\bibitem{Dov}
+ Довгай Б.В. \emph{Обгрунтування методу Фур'єдля неоднорідного гіперболічного рівняння з
+випадковою правою частиною} // Укр. мат. журнал. --- 2004. --- T.56, №5. --- С. 616--524.
+
+\bibitem{KDS}
+ Довгай Б.В., Козаченко Ю.В., Сливка-Тилищак Г.І. Крайові задачі математичної фізики з
+випадковими факторами. --- К.: ВПЦ ``Київський  університет'', 2008. --- 175 с.
+
+  \bibitem{Koz.Ver.}
+ Козаченко Ю.В., Вереш К.Й. \emph{Рівняння теплопровідності з випадковими початковими умовами із
+ просторів Орліча} // Теорія ймовірностей та математична статистика.  --- 2009.
+--- Вип. 80. --- С. 56--69.
+
+ \bibitem {Koz.Kov.}
+Козаченко Ю.В., Ковальчук Ю.А. \emph{Краевые задачи со случайными начальными условиями
+и функциональные ряды из $sub_{\varphi}\left(\Omega\right)$ І} // Укр. мат. журнал. --- 1998 . ---  T.50, №4. --- С. 504--515.
+
+\bibitem {Koz.Kov.1}
+Козаченко Ю.В., Ковальчук Ю.А. \emph{Краевые задачи со случайными начальными условиями и функциональные ряды
+из $sub_{\varphi}\left(\Omega\right)$ІІ} //  Укр. мат. журнал. --- 1998. ---  T.50, №5. --- С. 897--906.
+
+\bibitem{KS}
+  Козаченко Ю. В., Сливка Г. І.  \emph{Обґрунтування методу Фур'є для
+гіперболічного рівняння з випадковими початковими умовами } //
+Теорія ймов. та матем. статист.  --- 2003. --- Вип. 69. --- С. 48--63.
+
+\bibitem{Pol.}
+ Положий Г. Н. Уравнения математической физики. -- М.: Высшая
+школа, 1964. --- 559 с.
+
+\bibitem {Sli.Ver.}
+Сливка-Тилищак Г.І., Вереш К.Й. \emph{Обґрунтування методу Фур'є для гіперболічного рівняння з випадковими початковими умовами з простору Орліча}
+// Наук. вісник. Ужгородського ун-ту. Серія математика і інформатика. ---
+2008. --- Вип. 16. --- C. 174--183.
+
+\bibitem{Bar}
+Barrasa de la Krus E., Kozachenko Yu. V. \emph{Boundary-value problems for equations of mathematical
+physics with strictly Orlicz Random initial conditions,}  Random Oper. And Stoch. Eq., \textbf{3}, 3  (1995), 201--220.
+
+\bibitem{KV}
+ Kozachenko Yu.V.,  Veresh  K.J. \emph{Boundary-value problems for a nonhomogeneous
+parabolic equation with Orlicz right side},  Random Oper. and Stoch. Equ., \textbf{18} (2010), 97--119.
+
+
+\
+
+\end{thebibliography}
+
+\end{document}
