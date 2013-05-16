@@ -1,5 +1,5 @@
 <?php
-///	***	Class :: Controller :: Authorization	***	***	***	***	***	***	***	///
+///	***	Class :: Controller :: Journal	***	***	***	***	***	***	***	***	***	///
 
 	/**	***	***	***	***	***	***	***	***	***	***	***	***	***	***	***	*
 	 * 																*
@@ -24,14 +24,17 @@ class JournalController
 	///	***	Methods		***	///
     public function init()
     {
+    	//- Init -//
     	parent :: init();
     }
 
+    //- Default action -//
     public function indexAction()
     {
         // action body
     }
 
+    
     //- List of journal -//
     public function listAction()
     {
@@ -42,12 +45,7 @@ class JournalController
         
     	//- Filters -//
     	$filters = array(
-    		'page' => array(
-	    		'HtmlEntities', 
-	    		'StripTags', 
-	    		'StringTrim'
-	    	), 
-	    	'count' => array(
+    		'*' => array(
 	    		'HtmlEntities', 
 	    		'StripTags', 
 	    		'StringTrim'
@@ -56,10 +54,13 @@ class JournalController
     	
     	//- Validators -//
     	$validators = array(
-    		'page' => array( 
+    		'*'		=> array(
+    			'NotEmpty'
+    		),
+    		'page'	=> array( 
     			'Int' 
     		), 
-    		'count' => array(
+    		'count'	=> array(
     			'Int'
     		)
     	);
@@ -128,7 +129,7 @@ class JournalController
     		}
     }
 
-	//- View -//
+	
     //- View journal -//
     public function viewAction()
     {
@@ -138,17 +139,7 @@ class JournalController
         
     	//- Filters -//
     	$filters = array(
-    		'id' => array(
-	    		'HtmlEntities', 
-	    		'StripTags', 
-	    		'StringTrim'
-	    	), 
-    		'page' => array(
-	    		'HtmlEntities', 
-	    		'StripTags', 
-	    		'StringTrim'
-	    	), 
-	    	'count' => array(
+    		'*' => array(
 	    		'HtmlEntities', 
 	    		'StripTags', 
 	    		'StringTrim'
@@ -157,6 +148,9 @@ class JournalController
     	
     	//- Validators -//
     	$validators = array(
+    		'*'		=> array(
+    			'NotEmpty'
+    		), 
     		'id'	=> array(
     			'Int'
     		), 
@@ -257,19 +251,9 @@ class JournalController
 	    		'HtmlEntities', 
 	    		'StripTags', 
 	    		'StringTrim'
-	    	)/*, 
-    		'title' => array(
-	    		'HtmlEntities', 
-	    		'StripTags', 
-	    		'StringTrim'
-	    	), 
-	    	'description' => array(
-	    		'HtmlEntities', 
-	    		'StripTags', 
-	    		'StringTrim'
-	    	)*/
+	    	)
     	);
-    	
+    	//TODO: regex
     	//- Validators -//
     	$validators = array(
     		'*'	=> array( 
