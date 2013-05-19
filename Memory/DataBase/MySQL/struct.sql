@@ -194,9 +194,7 @@ ENGINE = InnoDB CHARACTER SET = utf8;
 /* -# Journals #- */
 CREATE TABLE `journal`(
 	`id`			INTEGER NOT NULL AUTO_INCREMENT, /* Identificator 		*/
-	`issn`			VARCHAR( 100 ) UNIQUE NOT NULL, /* ISSN of registration */
-	`title`			VARCHAR( 100 ) NOT NULL, 	/* Title of journal 		*/
-	`description`	TEXT, 				/* Short description about journal 	*/
+	`isbn`			VARCHAR( 100 ) UNIQUE NOT NULL, /* ISBN of registration */
 
 	`creation`		TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 	*/
 
@@ -204,6 +202,24 @@ CREATE TABLE `journal`(
 	PRIMARY KEY( `id` )
 )
 ENGINE = InnoDB CHARACTER SET = utf8;
+
+/* -# Journals language #- */
+CREATE TABLE `journal_language`(
+	`id`			INTEGER NOT NULL, 		/* Identificator 	*/
+ 
+	`code_language`	VARCHAR( 2 ) NOT NULL, /* Code of language 	*/
+	`title`			VARCHAR( 100 ) NOT NULL, 	/* Title of journal 		*/
+	`description`	TEXT, 				/* Short description about journal 	*/
+
+	`creation`		TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 	*/
+
+	/* Keys */
+	FOREIGN KEY( `id` ) REFERENCES `journal`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+)
+ENGINE = InnoDB CHARACTER SET = utf8;
+
 
 /* -# Numbers of journal #- */
 CREATE TABLE `journal_number`(

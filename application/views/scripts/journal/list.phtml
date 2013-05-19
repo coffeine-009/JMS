@@ -1,31 +1,32 @@
-
+<!-- List of journals -->
 <table width = "100%">
 	<thead>
 		<tr>
-			<th width = "30%"><?= $this -> translate( 'Title' ); ?></th>
-			<th><?= $this -> translate( 'Description' ); ?></th>
 			<th width = "10%"><?= $this -> translate( 'ISBN' ); ?></th>
+			<th width = "30%"><?= $this -> translate( 'Title' ); ?></th>
+			<th><?= $this -> translate( 'Description' ); ?></th>			
 		</tr>
 	</thead>
 	<tbody>
 		<?php foreach( $this -> journals as $journal ): ?>
 		<tr>
 			<td>
+				<?= $journal[ 'isbn' ] ?>
+			</td>
+			<td>
 				<a href = "/journal/<?= $journal[ 'id' ]; ?>">
-					<?= $journal[ 'title' ] ?>
+					<?= $journal[ 'JournalLanguage' ][ 0 ][ 'title' ] ?>
 				</a>
 			</td>
 			<td>
-				<?= $journal[ 'description' ] ?>
-			</td>
-			<td>
-				<?= $journal[ 'issn' ] ?>
-			</td>
+				<?= $journal[ 'JournalLanguage' ][ 0 ][ 'description' ] ?>
+			</td>			
 		</tr>
 		<?php endforeach; ?>
 	</tbody>
 </table>
 
+<!-- Pages -->
 <div class = "pager">
 	<?= $this -> pages; ?>
 </div>

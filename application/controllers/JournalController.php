@@ -28,10 +28,11 @@ class JournalController
     	parent :: init();
     }
 
+    
     //- Default action -//
     public function indexAction()
     {
-        // action body
+		//TODO: Default page
     }
 
     
@@ -39,6 +40,7 @@ class JournalController
     public function listAction()
     {
     	//- Init view -//
+    	$this -> view -> logotip = 'Journals';
         $this -> view -> Title = 'Journals';
         $this -> view -> pathOfSite = 'Jourmal => List';
         
@@ -78,7 +80,9 @@ class JournalController
     		
 	        //- Get list of journals -//
 	        $query = Doctrine_Query :: create()
-	        	-> from( 'Jms_Journal' )
+	        	-> from( 'Jms_Journal j' )
+	        	-> addFrom( 'j.JournalLanguage jl' )
+	        	-> where( "jl.code_language = 'en'" )
 	        	-> orderBy( 'id' );
 	        	
 	        //- Pager init -//
@@ -134,7 +138,8 @@ class JournalController
     public function viewAction()
     {
 	    //- Init view -//
-        //$this -> view -> Title = 'Journals';
+	    $this -> view -> logotip = 'Journals';
+        $this -> view -> Title = 'Journals';
         $this -> view -> pathOfSite = 'Jourmal => List';
         
     	//- Filters -//
@@ -282,11 +287,17 @@ class JournalController
 	    		//- Save info -//	    			    		
 	    		//- Add journal -//
 				$journal = new Jms_Journal();
-		        	$journal -> issn = $input -> isbn;//TODO: ISBN
-		        	$journal -> title = $input -> title;
-		        	$journal -> description = $input -> description;
+		        	$journal -> isbn = $input -> isbn;		        	
 		        	
 		        $journal -> save();
+		        //- Journal language inf -//
+		        $journal_language = new Jms_JournalLanguage();
+		        	$journal_language -> id = (int)$journal -> id;
+		        	$journal_language -> code_language = 'en';//TODO: Get current
+		        	$journal_language -> title = $input -> title;
+		        	$journal_language -> description = $input -> description;
+		        	
+		        $journal_language -> save();
 		        
 		        //- Create file struct for journal -//
 		        $fJournal = new Coffeine_Files_File();
