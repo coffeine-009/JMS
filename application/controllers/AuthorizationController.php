@@ -450,6 +450,36 @@ class AuthorizationController
 						}
 						
 					}break;
+					
+					//- Journal ISBN -//
+					case 'journalisbn':
+					{
+						$validator = new Zend_Validate_Regex( '/^[[:alnum:]\-]{2,15}$/uix' );
+						
+						if( $validator -> isValid( $input -> value ) )
+						{
+							//- Test in DB -//
+							$response = Doctrine_Query :: create()
+								-> from( "Jms_Journal" )
+								-> where( "isbn = '{$input -> value}'" )
+								-> limit( 1 );
+							
+							if( count( $response->fetchArray() ) === 0 )
+							{
+								//- Username are free -//
+								$this -> view -> status = 1;
+								$this -> view -> msg = 'Isbn is free';
+							}else
+								{
+									//- Username are exist -//
+									$this -> view -> status = 0;
+									$this -> view -> msg = 'Isbn is exist';
+								}
+							
+							return;
+						}
+						
+					}break;
 				}
 			}
 		}

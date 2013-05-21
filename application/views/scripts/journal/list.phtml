@@ -4,7 +4,8 @@
 		<tr>
 			<th width = "10%"><?= $this -> translate( 'ISBN' ); ?></th>
 			<th width = "30%"><?= $this -> translate( 'Title' ); ?></th>
-			<th><?= $this -> translate( 'Description' ); ?></th>			
+			<th width = "10%"><?= $this -> translate( 'Count of numbers' ); ?></th>
+			<th width = "12%"><?= $this -> translate( 'Creation' ); ?></th>			
 		</tr>
 	</thead>
 	<tbody>
@@ -18,9 +19,12 @@
 					<?= $journal[ 'JournalLanguage' ][ 0 ][ 'title' ] ?>
 				</a>
 			</td>
-			<td>
-				<?= $journal[ 'JournalLanguage' ][ 0 ][ 'description' ] ?>
-			</td>			
+			<td align = "center">
+				<?= $journal[ 'numbers_count' ] ?>
+			</td>
+			<td align = "center">
+				<?= $journal[ 'creation' ] ?>
+			</td>
 		</tr>
 		<?php endforeach; ?>
 	</tbody>

@@ -2,29 +2,41 @@
 
 	<div class = "field">
 		<label><?= $this -> translate( 'Cover' ); ?>:</label>
-		<input type = "file" name = "cover" value = "<?= $this -> data[ 'cover' ]; ?>" />
+		<div>
+			<input type = "file" name = "cover" value = "<?= $this -> data[ 'cover' ]; ?>" />
+		</div>
 		<span><?= implode( '<br />', $this -> errors[ 'cover' ] ) ?></span>
 	</div>
 
 	<div class = "field">
 		<label><?= $this -> translate( 'ISBN' ); ?>:</label>
-		<input type = "text" name = "isbn" value = "<?= $this -> data[ 'isbn' ]; ?>" />
-		<span><?= implode( '<br />', $this -> errors[ 'isbn' ] ) ?></span>
+		<div>
+			<input id = "isbn" type = "text" name = "isbn" value = "<?= $this -> data[ 'isbn' ]; ?>" required />
+		</div>
+		<span id = "isbn-msg"><?= implode( '<br />', $this -> errors[ 'isbn' ] ) ?></span>
 	</div>
 	
 	<div class = "field">
 		<label><?= $this -> translate( 'Title' ); ?>:</label>
-		<input type = "text" name = "title" value = "<?= $this -> data[ 'title' ]; ?>" />
+		<div>
+			<input type = "text" name = "title" value = "<?= $this -> data[ 'title' ]; ?>" required />
+		</div>
 		<span><?= implode( '<br />', $this -> errors[ 'title' ] ) ?></span>
 	</div>
 	
 	<div class = "field">
 		<label><?= $this -> translate( 'Description' ); ?>:</label>
-		<textarea name = "description" rows="8" cols="40"><?= $this -> data[ 'description' ]; ?></textarea>
+		<div>
+			<textarea name = "description" rows="8" cols="40" required><?= $this -> data[ 'description' ]; ?></textarea>
+		</div>
 		<span><?= implode( '<br />', $this -> errors[ 'description' ] ) ?></span>
 	</div>	
 
-		
-	<input type = "submit" value = "Add"/>
+	<div class = "field">
+		<label></label>
+		<div>
+			<input type = "submit" value = "Add"/>
+		</div>
+	</div>
 
 </form>

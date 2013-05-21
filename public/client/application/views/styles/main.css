@@ -295,22 +295,25 @@ table
 		
 			.journal>.info>.title
 			{
+				border-bottom	: #ccc solid 1px;
 				font-size		: 20pt;
 			}
 			
 			.journal>.info>.isbn
 			{
+				display			: inline-block;
 				font-size		: 10pt;
 				font-style		: italic;
-				line-height		: 15pt;
+				line-height		: 18pt;
 			}
 			
 			.journal>.info>.creation
 			{
+				display			: inline-block;
+				float			: right;
 				font-size		: 10pt;
 				font-style		: normal;
 				font-weight		: bold;
-				line-height		: 10pt;
 			}
 			
 			.journal>.info>.description
@@ -318,7 +321,7 @@ table
 				font-size		: 10pt;
 				font-style		: normal;
 				line-height		: 15pt;
-				margin-top		: 5px;
+				margin-top		: 10px;
 			}
 	
 	/* Numbers of journal */
@@ -377,7 +380,7 @@ table
 			padding			: 10px;
 		}
 		
-		.field>input
+		.field div input
 		{
 			font-size	:large;
 			height		: 32px;
@@ -388,6 +391,11 @@ table
 		{
 			font-size	:large;			
 			width		: 300px;
+		}
+		
+		.field span
+		{
+			color		: #f00;
 		}
 
 	/* Menu :: Navigation */

@@ -3,13 +3,13 @@
 	
 	echo 
 	$this -> partial(
-		'widgets/journal/navigation.phtml', 
+		'widgets/navigation.phtml', 
 		array(
 			'label'	=> 'Journal', 
 			'items'	=> array(
 				array(
 					'label'	=> 'List', 
-					'uri'	=> '/journal/list'
+					'uri'	=> '/journals'
 				)
 			)
 		)
@@ -33,9 +33,9 @@
 					'description'	=> $this -> errors[ 'description' ]
 				), 
 				'data'	=> array(
-					'isbn'			=> '', 
-					'title'			=> '', 
-					'description'	=> ''
+					'isbn'			=> $this -> data[ 'isbn' ], 
+					'title'			=> $this -> data[ 'title' ], 
+					'description'	=> $this -> data[ 'description' ]
 				)
 			)
 		);

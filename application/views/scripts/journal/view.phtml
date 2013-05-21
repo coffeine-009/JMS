@@ -3,13 +3,13 @@
 	
 	echo 
 	$this -> partial(
-		'widgets/journal/navigation.phtml', 
+		'widgets/navigation.phtml', 
 		array(
 			'label'	=> 'Journal', 
 			'items'	=> array(
 				array(
 					'label'	=> 'List', 
-					'uri'	=> '/journal/list'
+					'uri'	=> '/journals'
 				), 
 				array(
 					'label'	=> 'Add', 
@@ -42,12 +42,12 @@
 	
 		<!-- Title -->
 		<div class = "title">
-			<?= $this -> journal[ 'title' ]; ?>
+			<?= $this -> journal[ 'JournalLanguage' ][ 0 ][ 'title' ]; ?>
 		</div>
 		
 		<!-- ISSN -->
 		<div class = "isbn">
-			<?= $this -> journal[ 'issn' ]; ?>
+			<?= $this -> journal[ 'isbn' ]; ?>
 		</div>
 		
 		<!-- Time of create -->
@@ -57,7 +57,7 @@
 		
 		<!-- Description -->
 		<div class = "description">
-			<?= $this -> journal[ 'description' ]; ?>
+			<?= $this -> journal[ 'JournalLanguage' ][ 0 ][ 'description' ]; ?>
 		</div>
 	
 	</div>
@@ -83,3 +83,8 @@
 	</div>
 		
 </div>
+
+<!-- Pages -->
+<!--<div class = "pager">
+	<?= $this -> pages; ?>
+</div>-->

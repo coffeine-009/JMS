@@ -5,9 +5,9 @@
 	 * 																*
 	 * @copyroght 2013
 	 * 		by
-	 * 	@author Vitaliy Tsutsman
+	 * @author Vitaliy Tsutsman
 	 * 
-	 * @date 2013-05-07 11:33:24 :: 2013-..-.. ..:..:..
+	 * @date 2013-05-07 11:33:24 :: 2013-05-21 14:14:49
 	 * 
 	 * @address Poland/Krakow/Bydruka/5/414
 	 * 																*
@@ -79,10 +79,48 @@ class JournalController
 	        $records_count = (int)$input -> count;
     		
 	        //- Get list of journals -//
+	        /*$connection = Doctrine_Manager :: connection();
+	        	$query = 
+	        	"SELECT  
+	        		journal.id, 
+	        		journal.isbn, 
+	        		journal_language.title,
+	        		COUNT( journal.id ) AS numbers_count, 
+	        		journal.creation
+	        	FROM
+	        		(
+	        			journal
+		        			LEFT JOIN
+		        		journal_language
+		        			ON( journal.id = journal_language.id )
+		        	)
+		        		LEFT JOIN
+		        	journal_number
+		        		ON( journal.id = journal_number.id_journal )
+	        	WHERE 
+	        		journal_language.code_language = '%s'
+	        	GROUP BY
+	        		journal.id
+	        	ORDER BY
+	        		creation DESC
+	        	";
+		        	 
+		        $statement = $connection -> execute( 
+			        sprintf(
+			        	$query, 
+			        	//- Params -//
+			        	'en' 
+			        )
+		        );
+		        $statement -> execute();
+		        //$statement->fetch( PDO::FETCH_ASSOC );*/
 	        $query = Doctrine_Query :: create()
+	        	-> select( 'j.id, j.isbn, jl.title, COUNT( jn.id_journal ) AS numbers_count, j.creation' )
 	        	-> from( 'Jms_Journal j' )
 	        	-> addFrom( 'j.JournalLanguage jl' )
+	        	-> addFrom( 'j.JournalNumber jn' )
 	        	-> where( "jl.code_language = 'en'" )
+	        	-> groupBy( 'jn.id_journal' )
 	        	-> orderBy( 'id' );
 	        	
 	        //- Pager init -//
@@ -138,9 +176,9 @@ class JournalController
     public function viewAction()
     {
 	    //- Init view -//
-	    $this -> view -> logotip = 'Journals';
-        $this -> view -> Title = 'Journals';
-        $this -> view -> pathOfSite = 'Jourmal => List';
+	    $this -> view -> logotip = 'Journal';
+        $this -> view -> Title = 'Journal';
+        $this -> view -> pathOfSite = 'Jourmal => View';
         
     	//- Filters -//
     	$filters = array(
@@ -182,8 +220,10 @@ class JournalController
 	        //- Get data about journal -//
 	        $query = Doctrine_Query :: create()
 	        	-> from( 'Jms_Journal j' )
+	        	-> addFrom( 'j.JournalLanguage jl' )
 	        	-> addFrom( 'j.JournalNumber jn' )
 	        	-> where( 'id = ?', array( $journal_id ) )
+	        	-> addWhere( "jl.code_language = 'en'" )
 	        	-> orderBy( 'id' );
 	       	
 	        //- Pager init -//
@@ -195,10 +235,10 @@ class JournalController
 	        
 	        //- Journals -//
 	        $journal_data = $pager -> execute(
-	        	//array(), 
-	        	//Doctrine :: HYDRATE_ARRAY
+	        	array(), 
+	        	Doctrine :: HYDRATE_ARRAY
 	        );
-	        /*
+	        
 	        //- Init maket for pager -//
 	        $pagerRange = new Doctrine_Pager_Range_Sliding(
 	        	array(
@@ -224,20 +264,34 @@ class JournalController
 	        $pagerLayout -> setTemplate( '<a href = "{%url}">{%page}</a>' );
 	        $pagerLayout -> setSelectedTemplate( '<span class = "current">{%page}</span>' );
 	        $pagerLayout -> setSeparatorTemplate( '&nbsp' );
-			*/
+			
 	        //- Init view -//
-	        $this -> view -> logotip = $journal_data[ 0 ][ 'title' ];
+	        $this -> view -> logotip = $journal_data[ 0 ][ 'JournalLanguage' ][ 0 ][ 'title' ];
 	        $this -> view -> journal = $journal_data[ 0 ];
-	        //$this -> view -> pages = $pagerLayout -> display( null, true );
+	        $this -> view -> pages = $pagerLayout -> display( null, true );
     	}else
     		{
     			throw new Zend_Controller_Action_Exception( 'Invalid input' );
     		}
     }
     
+    
     //- Add new journal -//
     public function addAction()
     {
+    	//- Include css -//
+    	//$this -> view -> headLink() -> appendStylesheet(
+    	//	'/client/application/views/styles/registration.css'
+    	//);
+    	
+    	//- Include JS -//
+    	$this -> view -> headScript() -> appendFile(
+    		'/client/application/views/scripts/journal.js'
+    	);
+    	$this -> view -> headScript() -> appendFile(
+    		'/client/library/Coffeine/Connect/Ajax/Connect.js'
+    	);
+    	
     	//- Init -//
     	$this -> errors = array(
     		'cover'			=> array(), 
@@ -247,6 +301,7 @@ class JournalController
     	);
     	
      	//- Init view -//
+     	$this -> view -> logotip = 'Add journal';
         $this -> view -> Title = 'Add journal';
         $this -> view -> pathOfSite = 'Jourmal => Add';
         
@@ -258,20 +313,20 @@ class JournalController
 	    		'StringTrim'
 	    	)
     	);
-    	//TODO: regex
+
     	//- Validators -//
     	$validators = array(
     		'*'	=> array( 
     			'NotEmpty'
     		), 
     		'isbn'	=> array( 
-    			
+    			new Zend_Validate_Regex( '/^[[:alnum:]\-]{2,15}$/uix' )
     		), 
     		'title' => array( 
-    			 
+    			new Zend_Validate_Regex( '/^[[:alnum:]\-\ ]+$/uix' ) 
     		), 
     		'description' => array(
-    			
+    			new Zend_Validate_Regex( '/^[^&\<\>\/\\#]+/uix' )
     		)
     	);
     	
@@ -353,7 +408,7 @@ class JournalController
 	    			);
 	    		
 	    		if( !$cover -> isValid() )
-	    		{
+	    		{    			
 	    			//- Exception :: Can not upload file -//
 	    			array_merge(
 	    				$this -> errors[ 'cover' ], 
@@ -379,14 +434,35 @@ class JournalController
 	    				$input -> getErrors()
 	    			);
 	    			
+	    			//- Set input data -//
+	    			$this -> view -> data = array(
+	    				'isbn'			=> $input -> isbn, 
+		    			'title'			=> $input -> title, 
+		    			'description'	=> $input -> description
+	    			);
+	    			
 	    			//throw new Zend_Controller_Action_Exception( 'Invalid input' );
 	    		}
     	}
     }
 
+    
     //- Edit journal -//
     public function editAction()
     {
+    	//- Include css -//
+    	//$this -> view -> headLink() -> appendStylesheet(
+    	//	'/client/application/views/styles/registration.css'
+    	//);
+    	
+    	//- Include JS -//
+    	$this -> view -> headScript() -> appendFile(
+    		'/client/application/views/scripts/journal.js'
+    	);
+    	$this -> view -> headScript() -> appendFile(
+    		'/client/library/Coffeine/Connect/Ajax/Connect.js'
+    	);
+    	
     	//- Init -//
     	$this -> errors = array(
     		'cover'			=> array(), 
@@ -400,7 +476,8 @@ class JournalController
     	
     	//- Get info about journal -//
     	$journal = Doctrine_Query :: create()
-    		-> from( 'Jms_Journal' )
+    		-> from( 'Jms_Journal j' )
+    		-> addFrom( 'j.JournalLanguage' )
     		-> where( 'id = ?', array( $journal_id ) )
     		-> limit( 1 );
     	
@@ -426,13 +503,13 @@ class JournalController
     			'NotEmpty'
     		), 
     		'isbn'	=> array( 
-    			
+    			new Zend_Validate_Regex( '/^[[:alnum:]\-]{2,15}$/uix' )
     		), 
     		'title' => array( 
-    			 
+    			new Zend_Validate_Regex( '/^[[:alnum:]\-\ ]+$/uix' ) 
     		), 
     		'description' => array(
-    			
+    			new Zend_Validate_Regex( '/^[^&\<\>\/\\#]+/uix' )
     		)
     	);
     	
@@ -449,74 +526,92 @@ class JournalController
 				$journal = Doctrine :: getTable( 'Jms_Journal' )
 		        	-> find( $journal_id );
 		        	
-		        	$journal -> issn = $input -> isbn;//TODO: ISBN
-		        	$journal -> title = $input -> title;
-		        	$journal -> description = $input -> description;
-		        	
+		        	$journal -> isbn = $input -> isbn;//TODO: ISBN
+		 		        	
 		        $journal -> save();
-		        
+		 	    			    		
+		        //- Journal language inf -//
+		        $connection = Doctrine_Manager :: connection();
+		        	$query = 
+		        	"UPDATE 
+		        		journal_language 
+		        	SET
+		        		title = '{$input -> title}', 
+		        		description = '{$input -> description}'
+		        	WHERE
+		        		id = {$journal_id} 
+		        		AND 
+		        		code_language = 'en'
+		        	";
+		        	 
+		        $statement = $connection -> execute( $query );
+		        $statement -> execute();
+		 	    
 		        
 		        //- Upload cover -//
-	    		$cover = new Zend_File_Transfer();
-	    			$cover -> setDestination( 
-	    				APPLICATION_PATH .'/../public/data/journals/' . $journal -> id . '/photo/'
-	    			);
-	    			$cover -> addFilter(
-	    				'Rename', 
-	    				APPLICATION_PATH .'/../public/data/journals/' . $journal -> id . '/photo/cover.jpg', 
-	    				'cover'
-	    			);
-	    			$cover-> addValidator(	    				
-	    				'Count', 
-	    				false, 
-	    				1, 
-	    				'cover'
-	    			);
-	    			//- Validators -//
-	    			$cover -> addValidator(
-	    				'Size', 
-	    				false, 
-	    				array(
-	    					'min'		=> '10kB', 
-	    					'max'		=> '5MB', 
-	    					'bytestring'=> false
-	    				), 
-	    				'cover'
-	    			);
-	    			$cover -> addValidator(
-	    				'IsImage', 
-	    				false, 
-	    				'jpeg', 
-	    				'cover'
-	    			);
-	    		
-	    		if( !$cover -> isValid() )
-	    		{
-	    			//- Exception :: Can not upload file -//
-	    			array_merge(
-	    				$this -> errors[ 'cover' ], 
-	    				$cover -> getMessages()
-	    			);
-	    			
-	    			return false;
-	    		}
-	    		
-	    		//- Create file struct for journal -//
-		        $fJournal = new Coffeine_Files_File();
-		        
-		        	if( 
-		        		!$fJournal -> delete( 
-							APPLICATION_PATH .'/../public/data/journals/' .  
-							$journal -> id . 
-							'/photo/cover.jpg'
-		        		)
-		        	)
-		        	{
-		        		//- Exception :: File struct not created -//
-		        		$this -> errors[ 'cover' ][] = 'Can not reupload cover';
-		        	}
-	    		
-	    		$cover -> receive();
+		        if( isset( $_POST[ 'cover' ] ) )
+		        {
+		    		$cover = new Zend_File_Transfer();
+		    			$cover -> setDestination( 
+		    				APPLICATION_PATH .'/../public/data/journals/' . $journal -> id . '/photo/'
+		    			);
+		    			$cover -> addFilter(
+		    				'Rename', 
+		    				APPLICATION_PATH .'/../public/data/journals/' . $journal -> id . '/photo/cover.jpg', 
+		    				'cover'
+		    			);
+		    			$cover-> addValidator(	    				
+		    				'Count', 
+		    				false, 
+		    				1, 
+		    				'cover'
+		    			);
+		    			//- Validators -//
+		    			$cover -> addValidator(
+		    				'Size', 
+		    				false, 
+		    				array(
+		    					'min'		=> '10kB', 
+		    					'max'		=> '5MB', 
+		    					'bytestring'=> false
+		    				), 
+		    				'cover'
+		    			);
+		    			$cover -> addValidator(
+		    				'IsImage', 
+		    				false, 
+		    				'jpeg', 
+		    				'cover'
+		    			);
+		    		
+		    		if( !$cover -> isValid() )
+		    		{
+		    			//- Exception :: Can not upload file -//
+		    			array_merge(
+		    				$this -> errors[ 'cover' ], 
+		    				$cover -> getMessages()
+		    			);
+		    			
+		    			return false;
+		    		}
+		    		
+		    		//- Create file struct for journal -//
+			        $fJournal = new Coffeine_Files_File();
+			        
+			        	if( 
+			        		!$fJournal -> delete( 
+								APPLICATION_PATH .'/../public/data/journals/' .  
+								$journal -> id . 
+								'/photo/cover.jpg'
+			        		)
+			        	)
+			        	{
+			        		//- Exception :: File struct not created -//
+			        		$this -> errors[ 'cover' ][] = 'Can not reupload cover';
+			        	}
+		    		
+		    		$cover -> receive();
+		        }
 		        
 		        //- Add message -//
 		        $this -> _helper -> flashMessenger 
@@ -531,6 +626,8 @@ class JournalController
     	}
     }
 
+    
+    //- Delete journal -//
     public function deleteAction()
     {
 		//- Init view -//
@@ -576,7 +673,7 @@ class JournalController
 		        	if( 
 		        		!$fJournal -> delete( 
 							APPLICATION_PATH .'/../public/data/journals/'  . 
-							$journal -> id
+							(int)$input -> id
 		        		)
 		        	)
 		        	{
@@ -589,7 +686,7 @@ class JournalController
 					-> addMessage( 'Journal is deleted.' );
 		        
 		        //- Redirect to view journal -//
-		        $this -> _redirect( '/journal/list' );
+		        $this -> _redirect( '/journals' );
 	    	}else
 	    		{
 	    			throw new Zend_Controller_Action_Exception( 'Invalid input' );

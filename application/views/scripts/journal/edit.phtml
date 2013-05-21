@@ -3,13 +3,13 @@
 	
 	echo 
 	$this -> partial(
-		'widgets/journal/navigation.phtml', 
+		'widgets/navigation.phtml', 
 		array(
 			'label'	=> 'Journal', 
 			'items'	=> array(
 				array(
 					'label'	=> 'List', 
-					'uri'	=> '/journal/list'
+					'uri'	=> '/journals'
 				), 
 				array(
 					'label'	=> 'Add', 
@@ -52,9 +52,9 @@
 					'description'	=> $this -> errors[ 'description' ]
 				), 
 				'data'	=> array(
-					'isbn'			=> $this -> journal[ 'issn' ], //TODO: ISBN
-					'title'			=> $this -> journal[ 'title' ], 
-					'description'	=> $this -> journal[ 'description' ]
+					'isbn'			=> $this -> journal[ 'isbn' ], 
+					'title'			=> $this -> journal[ 'JournalLanguage' ][ 0 ][ 'title' ], 
+					'description'	=> $this -> journal[ 'JournalLanguage' ][ 0 ][ 'description' ]
 				)
 			)
 		);
