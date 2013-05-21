@@ -29,9 +29,10 @@ class JournalnumberController
 		parent :: init();
     }
 
+    //- Default -//
     public function indexAction()
     {
-        // action body
+		//TODO: Default page
     }
 
 
@@ -77,6 +78,7 @@ class JournalnumberController
 	        $query = Doctrine_Query :: create()
 	        	-> from( 'Jms_JournalNumber jn' )
 	        	-> addFrom( 'jn.Journal j' )
+	        	-> addFrom( 'j.JournalLanguage jl' )
 	        	-> where( 'j.id = ?', array( $journal_number_id ) )
 	        	-> orderBy( 'j.id' );
 	       	
@@ -104,7 +106,7 @@ class JournalnumberController
 	        //- Set base url -//
 	        $pageUrlBase = $this -> view -> url(
 	        	array(), 
-	        	'journal_view', 
+	        	'journal_number_view', 
 	        	1
 	        ) . "/{$journal_number_id}/{%page}/{$records_count}";
 	        
@@ -118,9 +120,9 @@ class JournalnumberController
 	        $pagerLayout -> setTemplate( '<a href = "{%url}">{%page}</a>' );
 	        $pagerLayout -> setSelectedTemplate( '<span class = "current">{%page}</span>' );
 	        $pagerLayout -> setSeparatorTemplate( '&nbsp' );
-			
+
 	        //- Init view -//
-	        $this -> view -> logotip = $journal_number_data[ 0 ][ 'Journal' ][ 'title' ];
+	        $this -> view -> logotip = $journal_number_data[ 0 ][ 'Journal' ][ 'JournalLanguage' ][ 0 ][ 'title' ];
 	        $this -> view -> journal = $journal_number_data[ 0 ][ 'Journal' ];
 	        $this -> view -> journalNumbers = $journal_number_data;
 	        $this -> view -> pages = $pagerLayout -> display( null, true );
