@@ -333,3 +333,42 @@ CREATE TABLE `recension_language`(
 		ON DELETE CASCADE
 )
 ENGINE = InnoDB CHARACTER SET = utf8;
+
+
+/* #- Logs -# */
+/* -# Log type #- */
+CREATE TABLE `log_type`(
+	`id`		INTEGER NOT NULL AUTO_INCREMENT, 	/* Identificator 		*/
+
+	`title`		VARCHAR( 80 ) NOT NULL UNIQUE, 		/* Title of logs		*/
+	`description` TEXT, 
+
+	`creation`	TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 		*/
+
+	/* Keys */
+	PRIMARY KEY( `id` )
+)
+ENGINE = InnoDB CHARACTER SET = utf8;
+
+/* -# Logs #- */
+CREATE TABLE `log`(
+	`id`			INTEGER NOT NULL AUTO_INCREMENT, 	/* Identificator 		*/
+	`id_user`		INTEGER, 					/* Identificator of user*/
+	`id_log_type`	INTEGER NOT NULL, 
+
+	`ip_address`	VARCHAR( 128 ), 
+	`os`			VARCHAR( 32 ), 
+	`browser`		VARCHAR( 32 ), 
+
+	`creation`	TIMESTAMP DEFAULT CURRENT_TIMESTAMP, /* Time of create 		*/
+
+	/* Keys */
+	PRIMARY KEY( `id` ), 
+
+	INDEX( `id_log_type` ), 
+
+	FOREIGN KEY( `id_log_type` ) REFERENCES `log_type`( `id` )
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
+)
+ENGINE = InnoDB CHARACTER SET = utf8;

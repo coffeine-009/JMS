@@ -4,6 +4,7 @@
 		<tr>
 			<th width = "15%"><?= $this -> translate( 'Volume' ); ?></th>
 			<th><?= $this -> translate( 'Issue' ); ?></th>
+			<th width = "15%"><?= $this -> translate( 'Count articles' ); ?></th>
 			<th width = "20%"><?= $this -> translate( 'Creation' ); ?></th>
 			<th width = "20%"><?= $this -> translate( 'Actions' ); ?></th>
 		</tr>
@@ -20,10 +21,14 @@
 				</a>
 			</td>
 			<td align = "center">
+				<?= $journalNumber[ 'count' ]; ?>				
+			</td>
+			<td align = "center">
 				<?= $journalNumber[ 'creation' ]; ?>				
 			</td>
 			<td align = "center">
-				del, edit
+				<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/number/<?= $journalNumber[ 'id' ]; ?>/delete">Del</a>
+				<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/number/<?= $journalNumber[ 'id' ]; ?>/edit">Edit</a>
 			</td>
 		</tr>
 		<?php endforeach; ?>

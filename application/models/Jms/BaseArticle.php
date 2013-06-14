@@ -100,5 +100,10 @@ abstract class Jms_BaseArticle extends Doctrine_Record
         $this->hasMany('Jms_Recension as Recension', array(
              'local' => 'id',
              'foreign' => 'id_article'));
+        
+        //- No keys -////TODO: TMP
+        $this->hasMany('Jms_JournalNumber as JournalNumber', array(
+             'local' => 'id',
+             'foreign' => 'id_journal_number'));
     }
 }

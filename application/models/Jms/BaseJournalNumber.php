@@ -75,5 +75,10 @@ abstract class Jms_BaseJournalNumber extends Doctrine_Record
         $this->hasOne('Jms_Journal as Journal', array(
              'local' => 'id_journal',
              'foreign' => 'id'));
+        
+        //- No key -////TODO: Tmp
+        $this->hasOne('Jms_Article as Article', array(
+             'local' => 'id',
+             'foreign' => 'id_journal_number'));
     }
 }

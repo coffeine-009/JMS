@@ -76,10 +76,14 @@ class JournalnumberController
     		
 	        //- Get data about journal -//
 	        $query = Doctrine_Query :: create()
+	        	-> select( 'jn.id, jn.volume, jn.issue, jn.creation, j.id, jl.title, COUNT( a.id ) AS count' )
 	        	-> from( 'Jms_JournalNumber jn' )
 	        	-> addFrom( 'jn.Journal j' )
 	        	-> addFrom( 'j.JournalLanguage jl' )
+	        	-> addFrom( 'jn.Article a' )
 	        	-> where( 'j.id = ?', array( $journal_number_id ) )
+	        	-> groupBy( 'a.id' )
+	        	-> addGroupBy( 'jn.id' )
 	        	-> orderBy( 'j.id' );
 	       	
 	        //- Pager init -//
@@ -104,11 +108,11 @@ class JournalnumberController
 	        );
 	        
 	        //- Set base url -//
-	        $pageUrlBase = $this -> view -> url(
+	        $pageUrlBase = /*$this -> view -> url(
 	        	array(), 
-	        	'journal_number_view', 
+	        	null, //'journal_number_list', 
 	        	1
-	        ) . "/{$journal_number_id}/{%page}/{$records_count}";
+	        ) .*/ "/journal/{$journal_number_id}/numbers/{%page}/{$records_count}";
 	        
 	        //- Init template for display links -//
 	        $pagerLayout = new Doctrine_Pager_Layout(
@@ -345,7 +349,7 @@ class JournalnumberController
 	        $pagerLayout -> setTemplate( '<a href = "{%url}">{%page}</a>' );
 	        $pagerLayout -> setSelectedTemplate( '<span class = "current">{%page}</span>' );
 	        $pagerLayout -> setSeparatorTemplate( '&nbsp' );
-	        
+
 	        //- Init view -//
 	        $this -> view -> journalNumbers = $journalNumbers;
 	        $this -> view -> pages = $pagerLayout -> display( null, true );
