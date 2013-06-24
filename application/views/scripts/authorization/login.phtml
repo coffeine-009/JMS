@@ -13,7 +13,7 @@
 		
 			<!-- Username -->
 			<div class = "param">
-				<label>Login:</label>
+				<label><?= $this -> translate( 'Login' ); ?>:</label>
 				<div>
 					<input type = "email" name = "username" value = "" />
 				</div>
@@ -21,7 +21,7 @@
 			
 			<!-- Password -->
 			<div class = "param">
-				<label>Password:</label>
+				<label><?= $this -> translate( 'Password' ); ?>:</label>
 				<div>
 					<input type = "password" name = "password" />
 				</div>
@@ -30,19 +30,19 @@
 			<!-- Remember me -->
 			<div class = "param_sub">				
 				<input type = "checkbox" name = "remember_me" />
-				<label>Remember me</label>
+				<label><?= $this -> translate( 'Remember me' ); ?></label>
 			</div>
 	
 			<div class = "login">
 				<div>		
-					<input type = "submit" value = "Enter" />
+					<input type = "submit" value = "<?= $this -> translate( 'Enter' ); ?>" />
 				</div>
 			</div>
 		
 		</form>
 		
 		<!-- Forgot password -->
-		<a href = "">Forgot password?</a>
+		<a href = ""><?= $this -> translate( 'Forgot password' ); ?>?</a>
 		
 	</div>
 	

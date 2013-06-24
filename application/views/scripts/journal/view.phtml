@@ -22,6 +22,11 @@
 				array(
 					'label'	=> 'Edit', 
 					'uri'	=> '/journal/edit/' . $this -> journal[ 'id' ]
+				),
+				//- Numbers -// 
+				array(
+					'label'	=> 'Add number', 
+					'uri'	=> '/journal/' . $this -> journal[ 'id' ] . '/number/add'
 				)
 			)
 		)
@@ -64,7 +69,11 @@
 	
 	<!-- Numbers of journal -->
 	<div class = "numbers">
-		<label><?= $this -> translate( 'Numbers' ); ?>:</label>
+		<label>
+			<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/numbers">
+				<?= $this -> translate( 'Numbers' ); ?>
+			</a>:
+		</label>
 		<?php foreach( $this -> journal[ 'JournalNumber' ] as $number ): ?>
 		<div class = "number">
 		
@@ -72,7 +81,7 @@
 				<?= $this -> translate( 'Volume' );?>: <?= $number[ 'volume' ]; ?>
 			</div>
 			<div class = "issue">
-				<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/numbers/">
+				<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/number/<?= $number[ 'id' ] ?>">
 					<?= $this -> translate( 'Issue' );?>: <?= $number[ 'issue' ]; ?>
 				</a>
 			</div>

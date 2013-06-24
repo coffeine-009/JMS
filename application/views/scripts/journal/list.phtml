@@ -1,36 +1,59 @@
-<!-- List of journals -->
-<table width = "100%">
-	<thead>
-		<tr>
-			<th width = "10%"><?= $this -> translate( 'ISBN' ); ?></th>
-			<th width = "30%"><?= $this -> translate( 'Title' ); ?></th>
-			<th width = "10%"><?= $this -> translate( 'Count of numbers' ); ?></th>
-			<th width = "12%"><?= $this -> translate( 'Creation' ); ?></th>			
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach( $this -> journals as $journal ): ?>
-		<tr>
-			<td>
-				<?= $journal[ 'isbn' ] ?>
-			</td>
-			<td>
-				<a href = "/journal/<?= $journal[ 'id' ]; ?>">
-					<?= $journal[ 'JournalLanguage' ][ 0 ][ 'title' ] ?>
-				</a>
-			</td>
-			<td align = "center">
-				<?= $journal[ 'numbers_count' ] ?>
-			</td>
-			<td align = "center">
-				<?= $journal[ 'creation' ] ?>
-			</td>
-		</tr>
-		<?php endforeach; ?>
-	</tbody>
-</table>
+<!-- Menu :: Navigation -->
+<?php
+	
+	echo 
+	$this -> partial(
+		'widgets/navigation.phtml', 
+		array(
+			'label'	=> 'Journal', 
+			'items'	=> array( 
+				array(
+					'label'	=> 'Add', 
+					'uri'	=> '/journal/add'
+				) 
+			)
+		)
+	);
 
-<!-- Pages -->
-<div class = "pager">
-	<?= $this -> pages; ?>
+?>
+
+<!-- List of journals -->
+<div class = "content">
+
+	<table width = "100%">
+		<thead>
+			<tr>
+				<th width = "10%"><?= $this -> translate( 'ISBN' ); ?></th>
+				<th width = "30%"><?= $this -> translate( 'Title' ); ?></th>
+				<th width = "10%"><?= $this -> translate( 'Count of numbers' ); ?></th>
+				<th width = "12%"><?= $this -> translate( 'Creation' ); ?></th>			
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach( $this -> journals as $journal ): ?>
+			<tr>
+				<td>
+					<?= $journal[ 'isbn' ] ?>
+				</td>
+				<td>
+					<a href = "/journal/<?= $journal[ 'id' ]; ?>">
+						<?= $journal[ 'JournalLanguage' ][ 0 ][ 'title' ] ?>
+					</a>
+				</td>
+				<td align = "center">
+					<?= $journal[ 'numbers_count' ] ?>
+				</td>
+				<td align = "center">
+					<?= $journal[ 'creation' ] ?>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+
+	<!-- Pages -->
+	<div class = "pager">
+		<?= $this -> pages; ?>
+	</div>
+	
 </div>

@@ -25,8 +25,8 @@ class Acl_Acl
 	//- Users -//
 	const ROLE_GUEST 			= 'guest';
 	//const ROLE_STUDENT 		= 'student';
-	const ROLE_PROFESSOR 		= 'professor';
-	const ROLE_ADMINISTRATOR 	= 'admin';
+	const ROLE_AUTHOR 			= 'author';
+	const ROLE_ADMINISTRATOR 	= 'administrator';
 	
 	
 	//- Resources -//
@@ -37,7 +37,7 @@ class Acl_Acl
 	
 	const RESOURCE_GUEST 			= 'index';
 	//const RESOURCE_STUDENT 		= 'student';
-	const RESOURCE_PROFESSOR 		= 'professor';
+	const RESOURCE_AUTHOR 			= 'author';
 	const RESOURCE_ADMINISTRATOR 	= 'administrator';
 	
 	
@@ -60,13 +60,13 @@ class Acl_Acl
 		);
 		//- Professor -//
 		$this -> addRole( 
-			new Zend_Acl_Role( self :: ROLE_PROFESSOR ), 
+			new Zend_Acl_Role( self :: ROLE_AUTHOR ), 
 			self :: ROLE_GUEST
 		);
 		//- Administration -//
 		$this -> addRole(
 			new Zend_Acl_Role( self :: ROLE_ADMINISTRATOR ), 
-			self :: ROLE_PROFESSOR
+			self :: ROLE_AUTHOR
 		);
 		
 		
@@ -79,7 +79,7 @@ class Acl_Acl
 		$this -> add( new Zend_Acl_Resource( self :: RESOURCE_GUEST ) );
 		
 		//- Professor -//
-		$this -> add( new Zend_Acl_Resource( self :: RESOURCE_PROFESSOR ) );
+		$this -> add( new Zend_Acl_Resource( self :: RESOURCE_AUTHOR ) );
 		
 		//- Administrator -//
 		$this -> add( new Zend_Acl_Resource( self :: RESOURCE_ADMINISTRATOR )	);
@@ -118,8 +118,8 @@ class Acl_Acl
 
 		//- Professor -//
 		$this -> allow( 
-			self :: ROLE_PROFESSOR, 
-			self :: RESOURCE_PROFESSOR, 
+			self :: ROLE_AUTHOR, 
+			self :: RESOURCE_AUTHOR, 
 			self :: PERM_VIEW
 		);
 		

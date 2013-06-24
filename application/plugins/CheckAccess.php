@@ -48,16 +48,87 @@ class CheckAccess
 		if( Zend_Auth :: getInstance() -> hasIdentity() )
 		{
 			$session = new Zend_Session_Namespace( 'system.user' );
-			$this -> role = $session -> user -> role;
+			$this -> role = $session -> user[ 'role' ][ 'title' ];
 		}
 		
 		//- Get resource -//
-		$resources = array( 
-			'error', 'index', 'locale', 'authorization', 
-			'professor', 'admin' 
+		$resources = array(
+			Acl_Acl :: RESOURCE_ERROR, 
+			Acl_Acl :: RESOURCE_LOCALE, 
+			Acl_Acl :: RESOURCE_AUTHORIZATION, 
+			Acl_Acl :: RESOURCE_GUEST, 
+			Acl_Acl :: RESOURCE_AUTHOR, 
+			Acl_Acl :: RESOURCE_ADMINISTRATOR 
 		);
 		
-		$resource = $Request -> getControllerName();
+		$controller = $Request -> getControllerName();
+		$action = $Request -> getActionName();
+		
+		//- Guest -//
+		$resource = Acl_Acl :: RESOURCE_GUEST;
+		
+		switch( $controller )
+		{
+			//- Author -//
+			case 'author':
+			{
+				$resource = Acl_Acl :: RESOURCE_AUTHOR;
+			}break;
+			
+			
+			//- Admin -//
+			case 'article':
+			{
+				$resource = Acl_Acl :: RESOURCE_AUTHOR;
+				
+				switch( $action )
+				{
+					case 'addtojournal':
+					case 'deletefromjournal':
+					{
+						$resource = Acl_Acl :: RESOURCE_ADMINISTRATOR;
+					}break;
+					
+					case 'view':
+					{
+						$resource = Acl_Acl :: RESOURCE_GUEST;
+					}break;
+				}
+			}break;
+			
+			case 'journal':
+			{
+				switch( $action )
+				{
+					case 'add':
+					case 'edit':
+					case 'delete':
+					{
+						$resource = Acl_Acl :: RESOURCE_ADMINISTRATOR;
+					}break;
+				}
+			}break;
+			
+			case 'journalnumber':
+			{
+				switch( $action )
+				{
+					case 'add':
+					case 'edit':
+					case 'delete':
+					{
+						$resource = Acl_Acl :: RESOURCE_ADMINISTRATOR;
+					}break;
+				}
+			}break;
+			
+			
+				
+			case 'admin':
+			{				
+				$resource = Acl_Acl :: RESOURCE_ADMINISTRATOR;
+			}break;
+		}
 		
 		//- Test params -//
 		if( 

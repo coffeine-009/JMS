@@ -12,6 +12,7 @@ class BaseController
 {
 	///	***	Properties	***	///
 	protected $session;
+	protected $locale;
 	
 	protected $errors;
 	
@@ -20,6 +21,7 @@ class BaseController
 	{
 		//- Test user -//
 		$this -> session = new Zend_Session_Namespace( 'system.user' );
+		$this -> locale = new Zend_Session_Namespace( 'system.locale' );
 		
 		if( Zend_Auth :: getInstance() -> hasIdentity() )
 		{

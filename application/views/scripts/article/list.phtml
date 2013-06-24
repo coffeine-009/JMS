@@ -1,43 +1,65 @@
+<!-- Menu :: Navigation -->
+<?php
 
-<table width = "100%">
-	<thead>
-		<tr>
-			<th width = "30%"><?= $this -> translate( 'Title' ); ?></th>
-			<th><?= $this -> translate( 'Authors' ); ?></th>
-			<th width = "15%"><?= $this -> translate( 'Status' ); ?></th>
-			<th width = "10%"><?= $this -> translate( 'Language' ); ?></th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach( $this -> articles as $article ): ?>
-		<tr>
-			<td>
-				<a href = "/article/<?= $article[ 'id' ]; ?>">
-					<?= $article[ 'ArticleLanguage' ][ 0 ][ 'title' ] ?>
-				</a>
-			</td>
-			<td>
-				<?= $article[ 'ArticleLanguage' ][ 0 ][ 'author' ] ?>
-			</td>
-			<td align = "center" valign = "middle">
-				<?php
-					if( isset( $this -> article[ 'id_journal_number' ] ) )
-					{
-						echo 'Publisher';
-					}else
+	echo 
+	$this -> partial(
+		'widgets/navigation.phtml', 
+		array(
+			'label'	=> 'Article', 
+			'items'	=> array(
+				array(
+					'label'	=> 'Add', 
+					'uri'	=> '/article/add'
+				)
+			)
+		)
+	);
+
+?>
+
+<div class = "content">
+
+	<table width = "100%">
+		<thead>
+			<tr>
+				<th><?= $this -> translate( 'Title' ); ?></th>
+				<th width = "15%"><?= $this -> translate( 'Author' ); ?></th>
+				<th width = "15%"><?= $this -> translate( 'Status' ); ?></th>
+				<th width = "10%"><?= $this -> translate( 'Language' ); ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach( $this -> articles as $article ): ?>
+			<tr>
+				<td>
+					<a href = "/article/<?= $article[ 'id' ]; ?>">
+						<?= $article[ 'ArticleLanguage' ][ 0 ][ 'title' ] ?>
+					</a>
+				</td>
+				<td>
+					<?= $article[ 'ArticleLanguage' ][ 0 ][ 'author' ] ?>
+				</td>
+				<td align = "center" valign = "middle">
+					<?php
+						if( isset( $article[ 'id_journal_number' ] ) )
 						{
-							echo '<font color = "green">Accepted</font>';					
-						}
-				?>
-			</td>
-			<td align = "center" valign = "middle">
-				<?= $article[ 'code_language' ] ?>
-			</td>
-		</tr>
-		<?php endforeach; ?>
-	</tbody>
-</table>
-
-<div class = "pager">
-	<?= $this -> pages; ?>
+							echo $this -> translate( 'Publisher' );
+						}else
+							{
+								echo '<font color = "green">', $this -> translate( 'Accepted' ), '</font>';					
+							}
+					?>
+				</td>
+				<td align = "center" valign = "middle">
+					<?= $article[ 'code_language' ] ?>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+	
+	<div class = "pager">
+		<?= $this -> pages; ?>
+	</div>
+	
 </div>

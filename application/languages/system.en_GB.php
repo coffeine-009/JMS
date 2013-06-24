@@ -1,5 +1,8 @@
 <?php
 
 return array(
-	'HELLO_ALL'	=> 'Hello'
+	//- Layout -//
+	'Sign in'	=> 'Sign in', 
+	'Sign up'	=> 'Sign up', 
+	'Sign out'	=> 'Sign out'
 );

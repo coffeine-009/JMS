@@ -1,4 +1,4 @@
-
+<!-- Menu :: Navigation -->
 <?php
 
 	echo 
@@ -18,6 +18,16 @@
 ?>
 
 <div class = "content">
+
+	<div class = "errors">
+		<?php if( !empty( $this -> errors[ 'filesystem' ] ) ): ?>
+		<ul>
+			<?php foreach( $this -> errors[ 'filesystem' ] as $error ): ?>
+			<li><?= $this -> translate( $error ); ?></li>
+			<?php endforeach; ?>
+		</ul>
+		<?php endif; ?>
+	</div>
 
 	<?php
 
@@ -40,8 +50,3 @@
 	?>
 	
 </div>
-<?php 
-Zend_Debug::dump($this -> errors);
-Zend_Debug::dump($this -> data);
-Zend_Debug::dump($this -> journal);
-?>

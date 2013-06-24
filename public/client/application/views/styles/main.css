@@ -465,6 +465,7 @@ table
 {
 	background		: #ccc;
 	background		: -moz-linear-gradient( top, #ccc, #eee, #fff );
+	clear			: both;
 	color			: #000;
 	font-size		: medium;
 	padding			: 5px;
@@ -570,3 +571,8 @@ table
 		font-size	: small;
 		font-weight	: bold;
 	}
+
+.data
+{
+	margin-top		: 15px;
+}

@@ -27,6 +27,11 @@ class JournalnumberController
     {
 		//- Init -//
 		parent :: init();
+		
+		//- Init others view formats -//
+		$this -> _helper -> getHelper( 'contextSwitch' )
+			-> addActionContext( 'getjournalnumbers', 'json' )
+			-> initContext();
     }
 
     //- Default -//
@@ -58,6 +63,12 @@ class JournalnumberController
     			'NotEmpty'
     		), 
     		'id'	=> array(
+    			'Int'
+    		), 
+    		'page'	=> array(
+    			'Int'
+    		), 
+    		'count'	=> array(
     			'Int'
     		)
     	);
@@ -243,7 +254,7 @@ class JournalnumberController
 			    	);
 		    	
 	    			//- Exception :: Input invalid -//
-	    			array_merge(
+	    			$this -> errors[ 'filesystem' ] = array_merge(
 	    				$this -> errors[ 'filesystem' ], 
 	    				$input -> getErrors()
 	    			);
@@ -284,6 +295,9 @@ class JournalnumberController
     		'id'	=> array( 
     			'Int'
     		), 
+    		'idn'	=> array( 
+    			'Int'
+    		), 
     		'page'	=> array( 
     			'Int'
     		), 
@@ -291,6 +305,17 @@ class JournalnumberController
     			'Int'
     		)
     	);
+    	
+    	//- Get params -//
+        $journal_id = (int)$this -> getRequest() -> getParam( 'id' );
+    	
+	    //- Init view -//
+        $this -> view -> Title = 'Number of journal';
+        $this -> view -> logotip = 'Number of journal';
+        $this -> view -> pathOfSite = 'Jourmal => Add';
+        $this -> view -> journal = array(
+        	'id'	=> $journal_id
+        );
     	
     	$input = new Zend_Filter_Input( $filters, $validators );
 	    	$input -> setData(
@@ -304,11 +329,57 @@ class JournalnumberController
 	        $records_count = (int)$input -> count;
     		
 	        //- Get list of journals -//
+	        /*$connection = Doctrine_Manager :: connection();
+		        $query = 
+		        "SELECT
+		        	*
+		        FROM
+		        	(
+			        	journal_number
+			        		RIGHT JOIN
+			        	article
+			        		ON( journal_number.id = article.id_journal_number )
+			        )
+			        	LEFT JOIN
+			        article_language
+			        	ON( article.id = article_language.id )
+			    WHERE
+			    	journal_number.id = %s
+			    		AND
+			    	article_language.code_language = '%s'
+			    ORDER BY
+			    	article.creation DESC
+		        ";
+		        
+			$statement = $connection -> execute( 
+				sprintf(
+					$query, 
+					//- Params -//
+					(int)$input -> idn, 
+					'en'
+				)
+			);
+			$statement -> execute();*/
 	        $query = Doctrine_Query :: create()
+	        	-> select( 
+	        		'jn.id, 
+	        		jn.volume, 
+	        		jn.issue, 
+	        		jn.creation, 
+	        		a.id, 
+	        		a.code_language, 
+	        		a.creation, 
+	        		al.author, 
+	        		al.title' 
+	        	)
     			-> from( 'Jms_Article a' )
-    			-> addFrom( 'Jms_JournalNumber jn' )
-    			-> where( 'jn.id = ?', array( (int)$input -> id ) )
-    			-> addWhere( 'a.id_journal_number = ?', array( (int)$input -> id ) )
+    			-> addFrom( 'a.JournalNumber jn' )
+    			//-> from( 'Jms_JournalNumber jn' )
+    			//-> addFrom( 'jn.Article a' )
+    			-> addFrom( 'a.ArticleLanguage al' )
+    			-> where( 'jn.id = ' . (int)$input -> idn )
+    			-> addWhere( 'a.id_journal_number IS NOT NULL' )
+    			-> addWhere( 'al.code_language = \'en\'' )
 	        	-> orderBy( 'a.id' );
 	        	
 	        //- Pager init -//
@@ -333,11 +404,11 @@ class JournalnumberController
 	        );
 	        
 	        //- Set base url -//
-	        $pageUrlBase = $this -> view -> url(
+	        $pageUrlBase = /*$this -> view -> url(
 	        	array(), 
 	        	'journal_number_view', 
 	        	1
-	        ) . "/{%page}/{$records_count}";
+	        ) . */"/journal/{$journal_id}/number/{$input -> idn}/{%page}/{$records_count}";
 	        
 	        //- Init template for display links -//
 	        $pagerLayout = new Doctrine_Pager_Layout(
@@ -350,7 +421,17 @@ class JournalnumberController
 	        $pagerLayout -> setSelectedTemplate( '<span class = "current">{%page}</span>' );
 	        $pagerLayout -> setSeparatorTemplate( '&nbsp' );
 
+	        //- Get data about Number of journal -//
+	        $q = Doctrine_Query :: create()
+	        	-> select( 'jn.id, jn.volume, jn.issue, jn.creation' )
+	        	-> from( 'Jms_JournalNumber jn' )
+	        	-> where( 'jn.id = ' . (int)$input -> idn )
+	        	-> limit( 1 );
+	        	
+	        $number = $q -> fetchArray();
+	        
 	        //- Init view -//
+	        $this -> view -> number = $number[ 0 ];
 	        $this -> view -> journalNumbers = $journalNumbers;
 	        $this -> view -> pages = $pagerLayout -> display( null, true );
     	}else
@@ -360,5 +441,25 @@ class JournalnumberController
     		}
     }
 
+    
+    //- Get journal numbers -//
+    public function getjournalnumbersAction()
+    {
+    	$journal_id = (int)$this -> getRequest() -> getParam( 'id' );
+    	
+    	$numbers_q = Doctrine_Query :: create()
+    		-> select()
+    		-> from( 'Jms_JournalNumber jn' )
+    		-> where( 'jn.id_journal = ?', $journal_id )
+    		-> orderBy( 'jn.id DESC' );
+    		
+    	$numbers_q -> execute();
+    	
+    	$numbers = $numbers_q -> fetchArray();
+    	    		
+    	$this -> view -> status = 1;
+    	$this -> view -> msg = 'OK';
+    	$this -> view -> data = $numbers;
+    }
 
 }

@@ -1,1 +1,65 @@
-<br /><br /><center>View script for controller <b>Article</b> and script/action name <b>addtojournal</b></center>
+
+<?php
+	
+	echo 
+	$this -> partial(
+		'widgets/navigation.phtml', 
+		array(
+			'label'	=> 'Article', 
+			'items'	=> array(
+				array(
+					'label'	=> 'List', 
+					'uri'	=> '/articles'
+				), 
+				array(
+					'label'	=> 'Add', 
+					'uri'	=> '/article/add'
+				)				
+			)
+		)
+	);
+
+?>
+
+<!-- Article :: View -->
+<div class = "content">
+
+	<div class = "errors">
+		<?php if( !empty( $this -> errors ) ): ?>
+		<ul>
+			<?php foreach( $this -> errors as $error ): ?>
+			<li><?= $this -> translate( $error ); ?></li>
+			<?php endforeach; ?>
+		</ul>
+		<?php endif; ?>
+		
+	</div>
+
+	<form action = "" method = "post">
+	
+		<div id = "journal" class = "field">
+			<label><?= $this -> translate( 'Journal' ); ?>:</label>
+			<div>
+				<select id = "jid" name = "jid">
+					<option value = "0"></option>
+					<?php foreach( $this -> journals as $journal ): ?>
+					<option value = "<?= $journal[ 'id' ]; ?>"><?= $journal[ 'JournalLanguage' ][ 0 ][ 'title' ]; ?></option>
+					<?php endforeach; ?>
+				</select>
+			</div>			
+		</div>
+		
+		<div class = "field">
+			<label><?= $this -> translate( 'Number' ); ?>:</label>
+			<div>
+				<select id = "jn_volume" name = "jnid">
+					
+				</select>
+			</div>			
+		</div>
+						
+		<input type = "submit" value = "Add"/>
+	
+	</form>
+
+</div>

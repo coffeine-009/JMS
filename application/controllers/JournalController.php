@@ -401,14 +401,18 @@ class JournalController
 	    				'cover'
 	    			);
 	    			$cover -> addValidator(
-	    				'IsImage', 
+	    				'MimeType', 
 	    				false, 
-	    				'jpeg', 
-	    				'cover'
+	    				'image', 
+	    				array( 
+	    					'image/jpeg', 
+	    					'image/jpg', 
+	    					'image/gif'
+	    				)
 	    			);
 	    		
 	    		if( !$cover -> isValid() )
-	    		{    			
+	    		{
 	    			//- Exception :: Can not upload file -//
 	    			array_merge(
 	    				$this -> errors[ 'cover' ], 
@@ -549,8 +553,23 @@ class JournalController
 		 	    
 		        
 		        //- Upload cover -//
-		        if( isset( $_POST[ 'cover' ] ) )
+		        if( isset( $_FILES[ 'cover' ] ) && !empty( $_FILES[ 'cover' ][ 'name' ] ) )
 		        {
+		        	//- Create file struct for journal -//
+			        $fJournal = new Coffeine_Files_File();
+			        
+			        	if( 
+			        		!$fJournal -> delete( 
+								APPLICATION_PATH .'/../public/data/journals/' .  
+								$journal -> id . 
+								'/photo/cover.jpg'
+			        		)
+			        	)
+			        	{
+			        		//- Exception :: File struct not created -//
+			        		$this -> errors[ 'cover' ][] = 'Can not reupload cover';
+			        	}
+			        	
 		    		$cover = new Zend_File_Transfer();
 		    			$cover -> setDestination( 
 		    				APPLICATION_PATH .'/../public/data/journals/' . $journal -> id . '/photo/'
@@ -578,37 +597,26 @@ class JournalController
 		    				'cover'
 		    			);
 		    			$cover -> addValidator(
-		    				'IsImage', 
+		    				'MimeType', 
 		    				false, 
-		    				'jpeg', 
-		    				'cover'
+		    				'image', 
+		    				array( 
+		    					'image/jpeg', 
+		    					'image/jpg', 
+		    					'image/gif'
+		    				)
 		    			);
 		    		
 		    		if( !$cover -> isValid() )
 		    		{
 		    			//- Exception :: Can not upload file -//
-		    			array_merge(
+		    			$this -> errors[ 'cover' ] = array_merge(
 		    				$this -> errors[ 'cover' ], 
-		    				$cover -> getMessages()
+		    				$cover -> getErrors()
 		    			);
-		    			
+
 		    			return false;
 		    		}
-		    		
-		    		//- Create file struct for journal -//
-			        $fJournal = new Coffeine_Files_File();
-			        
-			        	if( 
-			        		!$fJournal -> delete( 
-								APPLICATION_PATH .'/../public/data/journals/' .  
-								$journal -> id . 
-								'/photo/cover.jpg'
-			        		)
-			        	)
-			        	{
-			        		//- Exception :: File struct not created -//
-			        		$this -> errors[ 'cover' ][] = 'Can not reupload cover';
-			        	}
 		    		
 		    		$cover -> receive();
 		        }

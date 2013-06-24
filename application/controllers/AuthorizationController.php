@@ -272,7 +272,7 @@ class AuthorizationController
     public function loginAction()
     {
     	//- Init view -//
-        $this -> view -> logotip = strtoupper('Authorization');
+        $this -> view -> logotip = 'Authorization';
         $this -> view -> Title = 'Authorization';
         $this -> view -> pathOfSite = 'Authorization => Login';
         
@@ -490,14 +490,3 @@ class AuthorizationController
 		//throw new Zend_Controller_Action_Exception( 'Invalid input' );
 	}
 }
-
-
-
-
-
-
-
-
-
-
-

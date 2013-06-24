@@ -1,0 +1,20 @@
+<!-- # Access denied # -->
+<div id="Message" style="font-size: 36pt;">
+
+	<h1 align="center">
+	<?php echo $this -> title; ?>
+	</h1>
+
+	<p align="center">
+	<?php
+
+	echo
+	implode(
+				'<hr />', 
+	$this -> messages
+	);
+
+	?>
+	</p>
+
+</div>

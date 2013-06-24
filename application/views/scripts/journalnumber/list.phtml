@@ -1,40 +1,62 @@
+<!-- Menu :: Navigation -->
+<?php
 
-<table width = "100%">
-	<thead>
-		<tr>
-			<th width = "15%"><?= $this -> translate( 'Volume' ); ?></th>
-			<th><?= $this -> translate( 'Issue' ); ?></th>
-			<th width = "15%"><?= $this -> translate( 'Count articles' ); ?></th>
-			<th width = "20%"><?= $this -> translate( 'Creation' ); ?></th>
-			<th width = "20%"><?= $this -> translate( 'Actions' ); ?></th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach( $this -> journalNumbers as $journalNumber ): ?>
-		<tr>
-			<td>
-				<?= $journalNumber[ 'volume' ]; ?>				
-			</td>
-			<td>
-				<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/number/<?= $journalNumber[ 'id' ]; ?>">
-					<?= $journalNumber[ 'issue' ]; ?>
-				</a>
-			</td>
-			<td align = "center">
-				<?= $journalNumber[ 'count' ]; ?>				
-			</td>
-			<td align = "center">
-				<?= $journalNumber[ 'creation' ]; ?>				
-			</td>
-			<td align = "center">
-				<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/number/<?= $journalNumber[ 'id' ]; ?>/delete">Del</a>
-				<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/number/<?= $journalNumber[ 'id' ]; ?>/edit">Edit</a>
-			</td>
-		</tr>
-		<?php endforeach; ?>
-	</tbody>
-</table>
+	echo 
+	$this -> partial(
+		'widgets/navigation.phtml', 
+		array(
+			'label'	=> 'Number of journal', 
+			'items'	=> array(
+				array(
+					'label'	=> 'Add', 
+					'uri'	=> '/journal/' . $this -> journal[ 'id' ] . '/number/add'
+				)
+			)
+		)
+	);
 
-<div class = "pager">
-	<?= $this -> pages; ?>
+?>
+
+<div class = "content">
+
+	<table width = "100%">
+		<thead>
+			<tr>
+				<th width = "15%"><?= $this -> translate( 'Volume' ); ?></th>
+				<th><?= $this -> translate( 'Issue' ); ?></th>
+				<th width = "15%"><?= $this -> translate( 'Count articles' ); ?></th>
+				<th width = "20%"><?= $this -> translate( 'Creation' ); ?></th>
+				<th width = "20%"><?= $this -> translate( 'Actions' ); ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach( $this -> journalNumbers as $journalNumber ): ?>
+			<tr>
+				<td>
+					<?= $journalNumber[ 'volume' ]; ?>				
+				</td>
+				<td>
+					<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/number/<?= $journalNumber[ 'id' ]; ?>">
+						<?= $journalNumber[ 'issue' ]; ?>
+					</a>
+				</td>
+				<td align = "center">
+					<?= $journalNumber[ 'count' ]; ?>				
+				</td>
+				<td align = "center">
+					<?= $journalNumber[ 'creation' ]; ?>				
+				</td>
+				<td align = "center">
+					<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/number/<?= $journalNumber[ 'id' ]; ?>/delete">Del</a>
+					<a href = "/journal/<?= $this -> journal[ 'id' ]; ?>/number/<?= $journalNumber[ 'id' ]; ?>/edit">Edit</a>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+	
+	<div class = "pager">
+		<?= $this -> pages; ?>
+	</div>
+	
 </div>

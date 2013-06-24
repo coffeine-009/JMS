@@ -1,7 +1,85 @@
+<!-- Menu :: Navigation -->
 <?php
-	Zend_Debug :: dump( $this -> journalNumbers );
+
+	echo 
+	$this -> partial(
+		'widgets/navigation.phtml', 
+		array(
+			'label'	=> 'Number of journal', 
+			'items'	=> array(
+				array(
+					'label'	=> 'List', 
+					'uri'	=> '/journal/' . $this -> journal[ 'id' ] . '/numbers'
+				)
+			)
+		)
+	);
+
 ?>
 
-<div class = "pager">
-	<?= $this -> pages; ?>
+<div class = "content">
+
+	<h1>
+		<?=	$this -> translate( 'Volume' ); ?>: <?= $this -> number[ 'volume' ]; ?>, 
+		<?= $this -> translate( 'issue' ); ?>: <?= $this -> number[ 'issue' ]; ?> 
+	</h1>
+	
+	<div class = "params">
+		<div class = "creation">
+			<?= $this -> number[ 'creation' ]; ?>
+		</div>
+	</div>
+		
+	<div class = "data">
+
+		<table width = "100%">
+			<thead>
+				<tr>
+					<th><?= $this -> translate( 'Title' ); ?></th>
+					<th width = "15%"><?= $this -> translate( 'Author' ); ?></th>
+					<th width = "10%"><?= $this -> translate( 'Status' ); ?></th>
+					<th width = "10%"><?= $this -> translate( 'Language' ); ?></th>
+					<th width = "10%"><?= $this -> translate( 'Creation' ); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach( $this -> journalNumbers as $article ): ?>
+				<tr>
+					<td>
+						<a href = "/article/<?= $article[ 'id' ]; ?>">
+							<?= $article[ 'ArticleLanguage' ][ 0 ][ 'title' ] ?>
+						</a>
+					</td>
+					<td>
+						<?= $article[ 'ArticleLanguage' ][ 0 ][ 'author' ] ?>
+					</td>
+					<td align = "center" valign = "middle">
+						<?php
+							if( isset( $this -> article[ 'id_journal_number' ] ) )
+							{
+								echo 'Publisher';
+							}else
+								{
+									echo '<font color = "green">Accepted</font>';					
+								}
+						?>
+					</td>
+					<td align = "center" valign = "middle">
+						<?= $article[ 'code_language' ] ?>
+					</td>
+					<td align = "center" valign = "middle">
+						<?= $article[ 'creation' ] ?>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	
+	</div>
+	
+
+	<div class = "pager">
+		<?= $this -> pages; ?>
+	</div>
+
 </div>

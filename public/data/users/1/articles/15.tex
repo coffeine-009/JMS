@@ -1,0 +1,878 @@
+%Format:
+\documentclass[12pt,twoside,draft,ua,bysec]{cmpart}
+% Необов'язкові опції :
+% draft - чернетка
+% en, ua, ru - основна мова документа
+% bysec - твердження, леми, означення і т.п. (але не теореми)
+%         нумеруються в межах кожної \section окремо
+% theorembysec - теореми теж нумеруються окремо для кожної \section
+% win   - кодування кирилиці CP-1251 (Windows)
+% koi   - кодування кирилиці KOI8_U  (Unix)
+%
+% Вже завантажено пакети :
+% amsmath,amsfonts,amstheorem,amssymb,latexsym
+%
+% Вже означено theorem-like оточення :
+% {theorem}     - теорема
+% {proposition} - твердження
+% {lemma}       - лема
+% {corollary}   - наслідок
+% {remark}      - зауваження
+% {definition}  - означення
+% {example}     - приклад
+% {examples}    - приклади
+% а також їх аналоги з зірочкою без нумерації :
+% {theorem*}, {proposition*} і т.п.
+
+
+\author{Герич~М.С.}
+\title{Уточнення основної факторизаційної тотожності для майже напівнеперервних гратчастих пуассонівських процесів на ланцюгах Маркова}
+\shorttitle{Уточнення основної факторизаційної тотожності}
+
+\enabstract{Gerich~M.}%
+{Clarification of basic factorization identity is for the almost semi-continuous latticed Poisson processes on the Markov chain}%
+{Let $\{\xi(t), x(t)\}$ be a homogeneous semi-continuous lattice  Poisson process on the Markov chain.
+The jumps of one sign are geometrically distributed, and jumps of the opposite sign are arbitrary latticed distribution. For a such
+processes the relations for the components of two-sided matrix factorization are established.
+This relations define the moment genereting functions for extremumf of the process and their complements.
+}
+
+\ruabstract{Герич~М.С.}%
+{Уточнение основного факторизационного тождеста для почти полунепрерывных решетчатых пуассоновских процессов на цепи Маркова}%
+{Пусть $\{\xi(t), x(t)\}$ --- почти полунепрерывный решетчатый однородный
+пуассоновский процесс на цепи Маркова.
+Скачки одного знака для $\xi(t)$ геометрически распределены, противоположного
+знака --- имеют произвольное решетчатое распределение.
+Для таких процессов установленны соотношения для компонент двусторонней матричной факторизации. Эти соотношения определяют генератрисы
+экстремумов процесса и их дополнений.}
+
+\uaabstract{Герич~М.С.}%
+{Уточнення основної факторизаційної тотожності для майже напівнеперервних гратчастих пуассонівських процесів на ланцюгах Маркова}%
+{Нехай $\{\xi(t),x(t)\}$ --- майже напівнеперервний гратчастий однорідний
+пуассонівський процес на ланцюгу Маркова.
+Стрибки одного знаку для $\xi(t)$ геометрично розподілені, протилежного знаку
+--- мають довільний гратчастий розподіл. Для таких процесів встановлені
+співвідношення для компонент двосторонньої матричної факторизації. Ці співвідношення визначають генератриси екстремумів процесу та їх доповнень.}%
+
+
+\subjclass{60G60, 60G17}
+\UDC{519.21}
+\keywords{основна факторизаційна тотожність, майже напівнеперервні процеси на
+ланцюгах Маркова, генератриса екстремумів процесу та їх доповнень}
+
+\pyear{2012} % рік публікації
+\volume{4}   % том
+\issue{2}    % випуск
+\pageno{229} % номер першої сторінки
+\received{19.03.2012}
+%\revised{?}
+%\contentslistfile{../total.lst}
+
+
+\address{Ужгородський національний університет,\\ Ужгород,
+Україна}
+\email{miroslava.gerich@yandex.ru}
+
+\def\baselinestretch{1.1}
+
+\begin{document}
+
+\maketitle
+
+%%% ----------------------------------------------------------------------
+
+\section*{Вступ}
+
+Процеси з незалежними приростами (н.п.) на ланцюгах Маркова (ЛМ) часто називають адитивними процесами на ЛМ
+або процесами в марковському середовищі (див. роботи \cite{kelwis, mil}); в
+статті Єжова І.І., Скорохода А.В. \cite{eskor} ---
+марковськими процесами, однорідними за другою компонентою; інколи процесами,
+керованими ЛМ. У вказаних роботах
+розглядався випадок (С), коли стрибки процесів або випадкових блукань мають
+неперервний розподіл ((С) --- continuity).
+Випадок (L), коли розподіл стрибків --- гратчастий ((L) --- lattice) розглядався
+А.А.
+Боровковим і Б.А. Рогозіним \cite{borrog}.
+
+Для вивчення розподілу граничних функціоналів процесів, керованих ЛМ, в
+монографії Д.В.~Гусака \cite{Gus1} розвинуто факторизаційний метод у випадку
+(С).
+Там одержано уточнені результати для напівнеперервних процесів на ЛМ (зі
+стрибками одного знаку). В роботах Є.В. Карнауха \cite{karn}
+узагальнено ці результати для майже напівнеперервних процесів.
+
+Для випадку (L) одержані уточнення деяких результатів в спільних роботах
+\linebreak Д.В.~Гусака та А.І. Туреніязової \cite{gustur1, gustur2}  для
+напівнеперервних знизу процесів, стрибки яких в одну сторону лише одиничні.
+
+В даній роботі перед нами поставлена задача уточнити результати розподілу для граничних функціоналів та їх доповнень (випадок L)
+майже напівнеперервних гратчастих процесів, для яких стрибки вверх або вниз мають геометричний розподіл.
+Для такої задачі знайдено вигляд генератрис граничних функціоналів та їх доповнень.
+
+\section{Майже напівнеперервні процеси на скінченному ланцюгу Маркова.}
+
+Розглянемо двовимірний марковський процес
+\begin{center}
+$Z(t)=\{\xi(t),x(t)\}$, $( t\geq 0,~\xi(0)=0 )$
+\end{center}
+однорідний за часом, з простором станів $\mathbb{Z} \times
+\mathbb{E}$
+$(\mathbb{Z}=\{0; \pm1; \pm2; \ldots\}$, $\mathbb{E} =\{ 1, 2, \ldots,
+m\})$.
+
+Друга компонента $\{x(t), t \geq 0\}$
+процесу $Z(t)$ є однорідним ланцюгом Маркова з матрицею
+перехідних імовірностей
+\[
+\textbf{P}(t)= \|P\{x(t)=r | x(0)=k\}\|_{k, r \in \mathbb{E}} =
+e^{\textbf{Q}t},
+\]
+де інфінітезимальна (твірна) матриця $\textbf{Q}$ ЛМ $x(t)$ має вигляд
+\[
+\textbf{Q} = \textbf{N}(\textbf{P}- \textbf{I}),\,\, \textbf{N} =
+\|\delta_{kr}n_k\|_{k, r \in \mathbb{E}},\,\, \textbf{I} =
+\|\delta_{kr}\|_{k, r \in \mathbb{E}},
+\]
+$\{n_k >0, k \in \mathbb{E}\}$ --- параметри показниково
+розподілених випадкових величин $\zeta_k$ --- часів перебування
+$x(t)$ в стані $k$, $\textbf{P}= \|p_{kr}\|$ --- матриця перехідних імовірностей
+вкладеного ЛМ
+$\{y_n = x(\sigma_n + 0), n > 0\}$, $\sigma_n$ --- момент $n$-ї
+зміни стану $x(t)$, тоді
+\[
+p_{kr} = P\{y_{n+1}=r | y_n = k\} = P\{y_1 = r | y_0 = k\},
+\]
+\[
+\sum\limits_{r = 1}^n p_{kr} = 1, \, p_{rr} = 0, \, n > 0.
+\]
+
+Розглянемо сукупність незалежних процесів $\{\xi_{k}(t)\}_{k=1}^{m}$, де
+$\xi_{k}(t)=\!\!\!\!\sum\limits_{i \leq N_k(t)} \!\!\xi_i^{(k)}$,
+а $N_k(t)$\! ---\! простий пуассонівський процес
+\[
+P\{N_k(t) = r\} = \frac{(\lambda_{k}t)^r}{r!}e^{-\lambda_{k} t},
+\]
+$\{\lambda_k > 0\}$ --- параметри показниково розподілених
+випадкових величин $\zeta'_k$, які визначають час між двома сусідніми скачками процесу
+$\xi_{k}(t)$, стрибки $\xi_i^{(k)}$ --- сукупність незалежних однаково
+розподілених випадкових величин
+для $\xi_{k}(t)$.
+
+Відносно першої компоненти $\{\xi(t), t \geq 0\}$
+будемо припускати, що її прирости на інтервалі $[\sigma_n,
+\sigma_{n + 1})$ мають той же розподіл, що і прирости одного із
+процесів $\{\xi_k(t)\}$, тобто $\Delta \xi(t) \doteq \Delta
+\xi_k(t)$, якщо $x(t) = k$, $t, t+ \Delta t \in [\sigma_n,
+\sigma_{n + 1})$. Крім того, в момент $\sigma_{n+1}$ зміни станів,
+коли вкладений ЛМ переходить із стану $k = x(\sigma_{n+1} - 0)$ в стан
+$r =x(\sigma_{n+1} + 0)$, процес $\xi(t)$ має додаткові прирости
+\[
+\chi_{kr} =\xi(\sigma_{n+1} + 0) - \xi(\sigma_{n+1} - 0)\,\,
+(\chi_{kr} = 0 \mbox{ при } k=r),
+\]
+причому $\{\chi_{kr}\}_{k, r = 1}^{m}$ --- сукупність незалежних
+випадкових величин, що не залежать від $\xi_k(t)$ з
+функцією розподілу
+\[
+\textbf{f}(x) = \|f_{kr}(x)\| = \|p_{kr} P\{\chi_{kr} = x\}\|,
+\]
+та матричною твірною функцією
+\[
+\widetilde{\textbf{f}}(z) =
+\|E[z^{\chi_{kr}}, y_1 = r | y_0 = k]\|.
+\]
+ В силу однорідності $Z(t)$ за часом по компоненті
+$\xi(t)$ для опису розподілу цього процесу достатньо розглянути
+матричну твірну функцію
+\[
+\mathbf{g}_{t}(z)=\textbf{E}z^{\xi(t)} = e^{t\textbf{K}(z)}, \, |z|
+= 1,
+\]
+кумулянта процесу має наступний вигляд
+\[
+\textbf{K}(z) = \ln\textbf{E}z^{\xi(t)} = \sum\limits_{x
+\neq0}(z^{x} - 1)(\mathbf{\Lambda} \textbf{p}(x) + \textbf{Nf}(x))
++ \textbf{Q}
+\]
+або в термінах твірних функцій
+\[
+\textbf{K}(z)
+=\mathbf{\Lambda}(\widetilde{\textbf{p}}(z)-\mathbf{I})+\textbf{N}(\widetilde{\textbf{f}}(z)-\mathbf{P})
++ \textbf{Q},
+\]
+де $\textbf{p}(x) = \|\delta_{kr} P \{\xi_{1}^{(k)} = x\}\|$,
+$\textbf{Q}, \textbf{f}(x), \textbf{N}, \textbf{P},
+\widetilde{\textbf{f}}(z)$ визначені вище, $\mathbf{\Lambda} =
+\|\delta_{kr}\lambda_k\|$,
+$\widetilde{\textbf{p}}(z)= \textbf{E}
+z^{\xi_{1}} = \|E_{k}z^{\xi_{1}}\|,$ $k, r \in \mathbb{E}$.
+
+\begin{definition}
+Введений таким чином процес $Z(t)=\{\xi(t), x(t)\}$
+називається складним гратчастим процесом Пуассона з незалежними приростами, заданим на
+скінченному ЛМ.
+\end{definition}
+Нехай $\mathbf{\Lambda}=\|\delta_{kr}\lambda_{k}\|$,
+$$
+\lambda_{k}=
+\left\{
+\begin{array}{c}
+\lambda_{k}^{(1)},\,\,  \xi_{1}^{(k)}>0,\\
+\lambda_{k}^{(2)},\,\,  \xi_{1}^{(k)}<0,
+\end{array}
+\right.
+$$
+$\mathbf{\Lambda}=\mathbf{\Lambda}_{1}+\mathbf{\Lambda}_{2}$,
+$\mathbf{\Lambda}_{1}=\|\delta_{kr}\lambda_{k}^{(1)}\|$,
+$\mathbf{\Lambda}_{2}=\|\delta_{kr}\lambda_{k}^{(2)}\|$,
+$$
+\mathbf{p}(x)=
+\left\{
+\begin{array}{c}
+\mathbf{p}_{1}(x),\,\,  \xi_{1}^{(k)}>0,\\
+\mathbf{p}_{2}(x),\,\,  \xi_{1}^{(k)}<0,
+\end{array}
+\right.
+\qquad
+\widetilde{\mathbf{p}}(z)=
+\left\{
+\begin{array}{c}
+\widetilde{\mathbf{p}}_{1}(z),\,\,  \xi_{1}^{(k)}>0,\\
+\widetilde{\mathbf{p}}_{2}(z),\,\,  \xi_{1}^{(k)}<0,
+\end{array}
+\right.
+$$
+$\mathbf{C}=\|\delta_{kr}C_{k}\|, \,\, \mathbf{B}=\|\delta_{kr}B_{k}\|$, де
+$C_{k}$ ($B_{k}$) --- параметри геометрично розподілених
+додатних (від'ємних) стрибків $\xi(t)$, якщо $x(t)=k$.
+\begin{definition}
+Складний гратчастий процес Пуассона $Z(t)$, заданий на ЛМ, називається майже напівнеперервним зверху, якщо компонента $\xi(t)$
+перетинає додатний рівень лише додатними геометрично розподіленими стрибками, тобто кумулянта якого має вигляд
+\[
+\textbf{K}(z) =  \mathbf{\Lambda_{1}}[(\mathbf{I}-\mathbf{C})z(\mathbf{I}-\mathbf{C}z)^{-1}-\mathbf{I}]+
+\mathbf{\Lambda_{2}}\sum\limits_{x<0}(z^{x} - 1)\textbf{p}_{2}(x)+
+\]
+\[
++\textbf{N}\sum\limits_{x<0}(z^{x} - 1)\textbf{f}(x)+\textbf{Q},
+\]
+або
+\[
+\textbf{K}(z) =  \mathbf{\Lambda_{1}}[(\mathbf{I}-\mathbf{C})z(\mathbf{I}-\mathbf{C}z)^{-1}-\mathbf{I}]+
+\mathbf{\Lambda_{2}}[\widetilde{\textbf{p}}\,_{2}(z)-\mathbf{I}]+\textbf{N}[\widetilde{\textbf{f}}(z)-\textbf{P}]+\textbf{Q}.
+\]
+\end{definition}
+\begin{definition}
+Складний гратчастий процес Пуассона $Z(t)$, заданий на ЛМ, називається майже напівнеперервним знизу, якщо компонента $\xi(t)$
+перетинає від'ємний рівень лише від'ємними геометрично розподіленими стрибками, тобто кумулянта якого має вигляд
+\[
+\textbf{K}(z) =  \mathbf{\Lambda_{1}}\sum\limits_{x>0}(z^{x} - 1)\textbf{p}_{1}(x)+
+\mathbf{\Lambda_{2}}[(\mathbf{I}-\mathbf{B})(z\mathbf{I}-\mathbf{B})^{-1}-\mathbf{I}]+
+\]
+\[
++\textbf{N}\sum\limits_{x>0}(z^{x} - 1)\textbf{f}(x)+\textbf{Q},
+\]
+або
+\[
+\textbf{K}(z) =  \mathbf{\Lambda_{1}}[\widetilde{\textbf{p}}_{1}(z)-\mathbf{I}]+
+\mathbf{\Lambda_{2}}[(\mathbf{I}-\mathbf{B})(z\mathbf{I}-\mathbf{B})^{-1}-\mathbf{I}]+\textbf{N}[\widetilde{\textbf{f}}(z)-\textbf{P}]+\textbf{Q}.
+\]
+\end{definition}
+
+\begin{definition}
+Складний гратчастий процес Пуассона $Z(t)$, заданий на ЛМ, називається напівнеперервним зверху (знизу)
+якщо $\mathbf{C}=0$ ($\mathbf{B}=0$), тобто додатні (від'ємні) стрибки процесу одиничні.
+\end{definition}
+
+Введемо позначення деяких функціоналів для $\xi(t)$:\\
+--- функціонали, що характеризують екстремуми процесу на інтервалі $[0; t]$ та
+їх доповнення:
+\[
+\xi^{+}(t) = \sup\limits_{0 \leq u \leq t} \xi(t),\quad\quad
+\overline{\xi} (t) = \xi(t) - \xi^{+} (t);
+\]
+\[
+\xi^{-}(t) = \inf\limits_{0 \leq u \leq t} \xi(t),\quad\quad
+\check{\xi}(t) = \xi(t) - \xi^{-} (t);\vspace{0,1cm}
+\]\\
+--- функціонали, пов'язані з перетином рівня $x\in \mathbb{Z}^{+}\cup \{0\}$:
+\[
+\tau^{+} (x) = \inf\{t > 0 : \xi(t) > x\},\quad\quad
+\gamma^{+}(x)= \xi(\tau^{+}(x)) - x;
+\]
+\[
+\overline{\tau}^{+} (x) = \inf\{t > 0 : \xi(t) \geq x\},\quad\quad
+\overline{\gamma}^{+}(x)= \xi(\tau^{+}(x)) - x;
+\]
+--- функціонали, пов'язані з перетином рівня $x \in \mathbb{Z}^{-}\cup \{0\}$:
+\[
+\tau^{-} (x) = \inf\{t >0 : \xi(t) < x\},\quad\quad
+\gamma^{-}(x)= x - \xi(\tau^{-}(x)).
+\]
+Також введемо позначення розподілів екстремумів:
+\[
+\textbf{P}\{\xi^{+}(\theta_s) = x\}= \|P\{\xi^{+}(\theta_s) = x,
+\,\, x(\theta_{s})=r|x(0)=k\}\|=\mathbf{p}_{x}^{+}(s), \,\,
+\]
+\[
+\textbf{P}\{\check{\xi}(\theta_s) =x\}=\check{\mathbf{p}}_{x}^{+}(s), \,\, x\in \mathbb{Z}^{+};
+\]
+\[
+\textbf{P}\{\xi^{-}(\theta_s) = x\}=\mathbf{p}_{x}^{-}(s), \,
+\textbf{P}\{\overline{\xi}(\theta_s) =
+x\}=\check{\mathbf{p}}_{x}^{-}(s),\,x\in \mathbb{Z}^{-},\, \textbf{P}\{\xi(\theta_s) = x\}=\mathbf{p}_{x}(s), \,\, x\in \mathbb{Z}.
+\]
+\[
+\textbf{P}\{\xi^{+}(\theta_s) = 0\}=\mathbf{p}_{+}(s), \,\,
+\textbf{P}\{\xi^{-}(\theta_s) = 0\}=\mathbf{p}_{-}(s),\,
+\]
+\[\textbf{P}\{\overline{\xi}(\theta_s) = 0\}=\mathbf{p}^{-}(s),\,
+\textbf{P}\{\check{\xi}^{+}(\theta_s) = 0\}=\mathbf{p}^{+}(s).
+\]
+\[
+\textbf{P}_{+}(s, x) = \textbf{P}\{\xi^{+} (\theta_s) < x\} =
+\|P\{\xi^{+}(\theta_s) < x, \,\, x(\theta_s) = r | x(0) = k\}\|,
+\]
+\[
+\textbf{P}^{+}(s, x) = \textbf{P}\{\check{\xi} (\theta_s) < x\}, \,
+\textbf{P}_{-}(s, x) = \textbf{P}\{\xi^{-} (\theta_s) < x\}, \,\,
+\textbf{P}^{-}(s, x) = \textbf{P}\{\overline{\xi} (\theta_s) <
+x\},
+\]
+\[
+\textbf{P}(s, x) = \textbf{P}\{\xi (\theta_s) < x\}, \,\,
+\overline{\textbf{P}}(s, x)=\textbf{P}_{s}-\textbf{P}(s, x).
+\]
+\[
+\textbf{q}_{+}(s)=\textbf{P}_{s}-\textbf{p}_{+}(s), \,
+\textbf{q}_{-}(s)=\textbf{P}_{s}-\textbf{p}_{-}(s), \,
+\]
+\[
+\textbf{q}^{+}(s)=\textbf{P}_{s}-\textbf{p}^{+}(s), \,
+\textbf{q}^{-}(s)=\textbf{P}_{s}-\textbf{p}^{-}(s).
+\]
+Їм відповідають матричні твірні функцій:
+\[
+\textbf{g}(s, z) =
+\textbf{E}z^{\xi(\theta_s)}=\|E[z^{\xi(\theta_{s})},\,\,
+x(\theta_s) = r | x(0) =k\}\|,
+\]
+\[
+\textbf{g}_{+}(s, z) = \textbf{E}z^{\xi^{+}(\theta_s)}, \,
+\textbf{g}_{-}(s, z) = \textbf{E}z^{\xi^{-}(\theta_s)}, \,
+\]
+\[
+\textbf{g}^{+}(s, z) = \textbf{E}z^{\check{\xi}(\theta_s)}, \,
+\textbf{g}^{-}(s, z) = \textbf{E}z^{\overline{\xi}(\theta_s)}.
+\]
+Для функціональних послідовностей $\{\textbf{R}_x, x = 0, \pm1, \pm2, \ldots\}$
+введемо поняття кілець, розширених кілець і відповідних півкілець та їх
+проекцій. А саме, позначимо кільце твірних функцій $\widetilde{\textbf{R}}(z)$
+\[
+\mathbb{L}: \{\widetilde{\textbf{R}}(z) = \sum\limits_{x=-\infty}^{+\infty} z^x \textbf{R}_x,
+\sum\limits_{x=-\infty}^{+\infty} \mid\textbf{R}_x\mid < \infty , |z|=1\}
+\]
+із операцією "множення" \,\, типу згортки та звичайною операцією додавання,
+а розширення кільця $\mathbb{L}$ ---
+\[
+\mathbb{L}_{\mathbf{I}}: \{\mathbf{I} \pm \widetilde{\textbf{R}}(z) = \widetilde{\textbf{R}}_{\mathbf{I}}(z), \,\,
+\det\widetilde{\textbf{R}}_{\mathbf{I}}(z) \neq 0\}.
+\]
+Аналогічно позначимо підкільця на півосях та їх розширення
+\[
+\mathbb{L}^{\pm}: \left\{\widetilde{\textbf{R}}_{\pm} (z) =
+\sum\limits_{x=0}^{\pm\infty} z^x \textbf{R}_x\right\},
+\mathbb{L}_{\mathbf{I}}^{\pm}: \{\mathbf{I} - \widetilde{\textbf{R}}_{\pm}(z),
+\det[\mathbf{I} - \widetilde{\textbf{R}}_{\pm}(z)] \neq 0\},
+\]
+які допускають аналітичне продовження на $|z| \geq 1$ ($|z| \leq 1$)
+$\widetilde{\textbf{R}}_{\pm}^{\pm1} (z) \in \mathbb{L}_{\mathbf{I}}^{\pm}$.
+Визначимо також операції проектування:
+\[
+[\widetilde{\textbf{R}}(z)]_{+} = \sum\limits_{x = 1}^{+\infty} z^x \textbf{R}_x,\quad\quad
+[\widetilde{\textbf{R}}(z)]_{-} = \sum\limits_{x = -1}^{-\infty} z^x \textbf{R}_x,
+\]
+\[
+[\widetilde{\textbf{R}}(z)]_{+}^{0} = \sum\limits_{x = 0}^{+\infty} z^x \textbf{R}_x,\quad\quad
+[\widetilde{\textbf{R}}(z)]_{-}^{0} = \sum\limits_{x = -\infty}^{0} z^x \textbf{R}_x,
+\]
+\[
+\widetilde{\textbf{R}}(z) = [\widetilde{\textbf{R}}(z)]_{+} + [\widetilde{\textbf{R}}(z)]_{-}^{0} =
+[\widetilde{\textbf{R}}(z)]_{-} + [\widetilde{\textbf{R}}(z)]_{+}^{0}.
+\]
+В подальших викладках для спрощення позначень
+інтегральних та твірних перетворень перетворень будемо
+користуватися відповідно показниково та геометрично розподіленими випадковими
+величинами $\theta_s$, $\widetilde{\nu}_{\varepsilon}$:
+\[
+P\{\theta_s > t\} = e^{-st}, \,\, s > 0, \,\, t \geq 0,
+\]
+\[
+P\{\widetilde{\nu}_{\varepsilon}=k\}
+=(1-\varepsilon)\varepsilon^{k}, \,\, 0<\varepsilon<1, \,\,
+k=0,1,2,\ldots
+\]
+Після застосування інтегрального перетворення Лапласа-Карсона по $t$ до $\textbf{g}_{t}(z)$ та $\textbf{P}(t)$ отримаємо
+\begin{equation*}
+\label{fvst21}
+\mathbf{g}(s,z)=s\int_{0}^{+\infty}e^{-st}\textbf{g}_{t}(z)dt=\textbf{E}z^{\xi(\theta_{s})}=s(s
+\mathbf{I} - \textbf{K}(z))^{-1},
+\end{equation*}
+\begin{equation}
+\label{fvst22} \textbf{P}_s =s\int_{0}^{+\infty}e^{-st}\textbf{P}(t)dt= s(s\mathbf{I} - \textbf{Q})^{-1}.
+\end{equation}
+
+Важливим методом дослідження твірних перетворень розподілів граничних
+функ\-ці\-о\-налів є метод,
+заснований на факторизаційному розкладі $\textbf{g}(s,z)$ і визначенні цих перетворень у термінах
+факторизаційних компонент. Має місце матричний аналог основної
+факторизаційної тотожності (о.ф.т.), яка внаслідок некомутативності компонент є двоїстою.
+\begin{lemma}\cite{Gus1}
+Для двовимірного процесу  $Z(t)$ при $s>0$ має місце матрична о.ф.т. на
+$\mid{z}\mid\,=1$
+\begin{equation}
+\label{fvst23}
+\textbf{g}(s, z) =\textbf{E}\,z^{\xi(\theta_s)} =
+\left\{
+\begin{array}{c}
+\textbf{g}_{+}(s, z)\textbf{P}_{s}^{-1}\textbf{g}^{-}(s, z),\\
+\textbf{g}_{-}(s, z)\textbf{P}_{s}^{-1}\textbf{g}^{+}(s, z).
+\end{array}
+\right.
+\end{equation}
+\end{lemma}
+
+Надалі будемо позначати
+\[
+\textbf{T}_{\ast}^{\pm}(s,x)=\textbf{E}[e^{-s\tau^{\pm}(x)}, \,\, \tau^{\pm}(x)<\infty]=\|E[e^{-s\tau^{\pm}(x)}, \,\, x(\tau^{\pm}(x))=r | x(0)=k]\|,
+\]
+\[
+\textbf{T}_{\ast}^{\pm}(s,x,z)=\textbf{E}[e^{-s\tau^{\pm}(x)}z^{\gamma^{\pm}(x)}, \, \tau^{\pm}(x)<\infty]=\|E[e^{-s\tau^{\pm}(x)}z^{\gamma^{\pm}(x)}, \,\, x(\tau^{\pm}(x))=r | x(0)=k]\|,
+\]
+\[
+\widetilde{\textbf{T}}_{\ast}^{+}(s,\varepsilon,z)=(1-\varepsilon)\sum_{x=0}^{+\infty}\varepsilon^{x}\textbf{T}_{\ast}^{+}(s,x,z)=\textbf{E}[e^{-s\tau^{+}(\widetilde{\nu}_{\varepsilon})}z^{\gamma^{+}(\widetilde{\nu}_{\varepsilon})}, \, \tau^{+}(\widetilde{\nu}_{\varepsilon})<\infty],
+\]
+беручи до уваги, що генератриси $\tau^{\pm}(x)$ розглядаються на ланцюгу $y_{x}^{\ast}=x(\tau^{\pm}(x))$, відповідно.
+Необхідно зазначити, що множина значень ланцюга $x(\tau^{\pm}(x))$ може звузитися за рахунок недосяжності рівня $x>0$ $(x<0)$ процесом $\xi(t)$.
+Тому будемо накладати наступну умову
+\[
+\forall k \in \mathbb{E}: \,\, P\{y_{x}^{\ast}=k\}>0.
+\]
+Зв'язок між розподілами $\xi^{\pm}(\theta_{s})$ та генератрисами $\tau^{\pm}(x)$
+визначають наступними спів\-відношеннями:
+\begin{equation}
+\label{fvst24}
+\textbf{P}\{\xi^{+}(\theta_{s})>x\}=\textbf{E}[e^{-s\tau^{+}(x)}, \,\,
+\tau^{+}(x)<\infty]\textbf{P}_{s}=\textbf{T}_{\ast}^{+}(s,x)\textbf{P}_{s},
+\end{equation}
+\begin{equation*}
+\label{fvst25}
+\textbf{P}\{\xi^{-}(\theta_{s})<x\}=\textbf{E}[e^{-s\tau^{-}(x)}, \,\, \tau^{-}(x)<\infty]\textbf{P}_{s}=\textbf{T}_{\ast}^{-}(s,x)\textbf{P}_{s}.
+\end{equation*}
+\begin{lemma}\cite{gustur1}
+Для процесу  $Z(t)$ пара функціоналів $\{\tau^{+}(x), \, \gamma^{+}(x)\}$
+зв'язана з $\xi^{+}(\theta_{s})$ наступними співвідношеннями:
+\begin{equation*}
+\label{fvdop6}
+\textbf{T}_{\ast}^{+}(s,x,z)=\textbf{E}[z^{\xi^{+}(\theta_{s})-x}, \, \xi^{+}(\theta_{s})\geq x](\textbf{g}_{+}(s,z))^{-1},
+\end{equation*}
+\begin{equation}
+\label{fvdop7}
+\widetilde{\textbf{T}}_{\ast}^{+}(s,\varepsilon,z)=\frac{(1-\varepsilon)z}{z-\varepsilon}(\textbf{g}_{+}(s,z)-\textbf{g}_{+}(s,\varepsilon))(\textbf{g}_{+}(s,z))^{-1}.
+\end{equation}
+\end{lemma}
+Співвідношення  \rm(\ref{fvdop7}) називається другою факторизаційною тотожністю
+(2 ф.т.).
+
+
+
+\section{Компоненти факторизації}
+
+У випадку (C) в роботі \cite{Gus1} були отримані уточнення компонент факторизації (\ref{fvst23})\ для напівнеперервних процесів, а
+для майже напівнеперервних процесів  в \cite{karn}. Розглянемо далі аналогічні результати для  майже напівнеперервних процесів на ЛМ, але у випадку (L).
+\begin{theorem}
+Для майже напівнеперервних зверху процесів генератриса та розподіл
+$\xi^{+}(\theta_{s})$ визначаються співвідношеннями:
+\begin{equation}
+\label{fvst28}
+\textbf{g}_{+}(s,z)=(\mathbf{I}-\mathbf{C}z)[\mathbf{I}-\textbf{Z}_{s}^{-1}z]^{-1}\textbf{p}_{+}(s),
+\end{equation}
+\begin{equation}
+\label{fvst29}
+\textbf{p}_{x}^{+}(s)=(\mathbf{I}-\mathbf{C}\mathbf{Z}_{s})\mathbf{Z}_{s}^{-x}\textbf{p}_{+}(s), \,\, x\in \mathbb{Z}^{+},
+\end{equation}
+\begin{equation}
+\label{fvst210}
+\textbf{p}_{+}(s)=(\mathbf{I}-\mathbf{Z}_{s}^{-1})(\mathbf{I}-\mathbf{C})^{-1}\textbf{P}_{s};
+\end{equation}
+для $\overline{\xi}(\theta_{s})$ маємо:
+\begin{eqnarray}
+\label{fvst211}
+\textbf{g}^{-}(s,z)=\textbf{P}_{s}(\textbf{p}_{+}(s))^{-1}([\textbf{g}(s,z)]_{-}
+^{0}\nonumber\\
++\textbf{q}_{+}(s)\textbf{P}_{s}^{-1}
+(\mathbf{I}-\mathbf{C})z(\mathbf{I}-\mathbf{C}z)^{-1}\textbf{E}[\textbf{C}\,^{\mid\xi(\theta_{s})\mid}-z^{\xi(\theta_{s})}, \, \xi(\theta_{s})<0]),
+\end{eqnarray}
+\begin{equation}
+\label{fvst212}
+\check{\textbf{p}}_{x}^{-}(s)=\textbf{P}_{s}(\textbf{p}_{+}(s))^{-1}(\textbf{p}_{x}(s)+
+(\mathbf{C}-\mathbf{Z}_{s}^{-1})\textbf{C}\,^{x-1}\textbf{E}[\textbf{C}\,^{\mid\xi(\theta_{s})\mid}, \, \xi(\theta_{s})<x]), \,\,
+x\in\mathbb{Z}^{-}\cup\{0\},
+\end{equation}
+де $\mathbf{Z}_{s}^{-1}=\textbf{q}_{+}(s)\textbf{P}_{s}^{-1}+\textbf{p}_{+}(s)\textbf{P}_{s}^{-1}\textbf{C}$.
+\end{theorem}
+\begin{proof}
+У  (\ref{fvdop7}) переходимо до границі при $\varepsilon\rightarrow 0$. Внаслідок чого
+      отримуємо наступне співвідношення для $\textbf{g}_{+}(s,z)$
+      \begin{equation}\label{fvst213}
+\textbf{g}_{+}(s,z)=(\textbf{I}-\widetilde{\textbf{T}}_{\ast}^{+}(s,0,z))^{-1}
+\textbf{p}_{+}(s).
+      \end{equation}
+Розглянемо для майже напівнеперервного зверху процесу множник $(\textbf{I}-\widetilde{\textbf{T}}_{\ast}^{+}(s,0,z))^{-1}$.
+Віднімемо від нього одиницю та виконаємо наступні перетворення:
+\[(\textbf{I}-\widetilde{\textbf{T}}_{\ast}^{+}(s,0,z))^{-1}-\textbf{I}=
+(\textbf{I}-\textbf{T}_{\ast}^{+}(s,0)\widetilde{\textbf{p}}_{1}(z))^{-1}-\textbf{I}=
+\textbf{T}_{\ast}^{+}(s,0)\widetilde{\textbf{p}}_{1}(z)[\textbf{I}-\textbf{T}_{
+\ast}^{+}(s,0)\widetilde{\textbf{p}}_{1}(z)]^{-1}
+\]
+\[
+=
+\textbf{T}_{\ast}^{+}(s,0)(\mathbf{I}-\mathbf{C})z(\mathbf{I}-\mathbf{C}z)^{-1}[
+\textbf{I}-\textbf{T}_{\ast}^{+}(s,0)(\mathbf{I}-\mathbf{C})z(\mathbf{I}-\mathbf
+{C}z)^{-1}]^{-1}
+\]
+\[
+=\textbf{T}_{\ast}^{+}(s,0)(\mathbf{I}-\mathbf{C})z[\textbf{I}-\textbf{C}
+z-\textbf{T}_{\ast}^{+}(s,0)z+\textbf{T}_{\ast}^{+}(s,0)\textbf{C}z]^{-1}
+\]
+\[
+=\textbf{T}_{\ast}^{+}(s,0)(\mathbf{I}-\mathbf{C})z[\textbf{I}-(\textbf{T}_{\ast}^{+}(s,0)+(\textbf{I}-\textbf{T}_{\ast}^{+}(s,0))\textbf{C})z]^{-1}.
+\]
+Позначимо через $\textbf{Z}_{s}^{-1}=(\textbf{T}_{\ast}^{+}(s,0)+(\textbf{I}-\textbf{T}_{\ast}^{+}(s,0))\textbf{C}$.
+З врахуванням умови (\ref{fvst24}) вираз для $\textbf{Z}_{s}^{-1}$ можна переписати у наступному вигляді $\mathbf{Z}_{s}^{-1}=\textbf{q}_{+}(s)\textbf{P}_{s}^{-1}+\textbf{p}_{+}(s)\textbf{P}_{s}^{-1}\textbf{C}$.
+Згідно з умовою (\ref{fvst24}) підставивши $\textbf{Z}_{s}^{-1}$ отримаємо
+\begin{equation}
+\label{fvst214}
+(\textbf{I}-\widetilde{\textbf{T}}_{\ast}^{+}(s,0,z))^{-1}=\textbf{q}_{+}(s)\textbf{P}_{s}^{-1}(\mathbf{I}-\mathbf{C})z[\textbf{I}-\textbf{Z}_{s}^{-1}z]^{-1}+\textbf{I}.
+\end{equation}
+Підставляючи (\ref{fvst214}) в (\ref{fvst213}) отримаємо (\ref{fvst28}).
+Обернувши формулу (\ref{fvst28}) по $z$ отримаємо (\ref{fvst29}).
+Формулу (\ref{fvst210}) отримаємо як розвязок матричного рівняння із
+$\textbf{Z}_{s}^{-1}$.
+Формулу (\ref{fvst211}) можна одержати із (\ref{fvst23}), підставляючи
+представлення
+для $\textbf{g}_{+}(s,z)$, та застосувавши операцію проектування на
+$[\,\,]_{-}^{0}$.
+Співвідношення (\ref{fvst212}) може бути отримане обертанням (\ref{fvst211}) по $z$.
+\end{proof}
+
+З попередньої теореми з врахуванням умови напівнеперервності зверху випливає
+наступний наслідок.
+\begin{corollary}
+Для напівнеперервних зверху процесів генератриса та розподіл
+$\xi^{+}(\theta_{s})$ визначаються співвідношеннями:
+\[
+\textbf{g}_{+}(s,z)=[\mathbf{I}-\textbf{Z}_{s}^{-1}z]^{-1}\textbf{p}_{+}(s),
+\]
+\[
+\textbf{p}_{x}^{+}(s)=\mathbf{Z}_{s}^{-x}\textbf{p}_{+}(s), \,\, x\in \mathbb{Z}^{+},
+\]
+\[
+\textbf{p}_{+}(s)=(\mathbf{I}-\mathbf{Z}_{s}^{-1})\textbf{P}_{s};
+\]
+для  $\overline{\xi}(\theta_{s})$ маємо:
+\[
+\textbf{g}^{-}(s,z)=\textbf{P}_{s}(\textbf{p}_{+}(s))^{-1}([\textbf{g}(s,z)]_{-}^{0}-\mathbf{Z}_{s}^{-1}z[\textbf{g}(s,z)]_{-}),
+\]
+\[
+\check{\textbf{p}}_{x}^{-}(s)=\textbf{P}_{s}(\textbf{p}_{+}(s))^{-1}(\textbf{p}_{x}(s)-\mathbf{Z}_{s}^{-1}\textbf{p}_{x-1}(s)), \,\, x\in\mathbb{Z}^{-}\cup\{0\},
+\]
+де $\mathbf{Z}_{s}^{-1}=\textbf{q}_{+}(s)\textbf{P}_{s}^{-1}$.
+\end{corollary}
+
+\begin{theorem}
+Для майже напівнеперервних зверху процесів генератриса та розподіл
+$\check{\xi}(\theta_{s})$ визначаються співвідношеннями:
+\begin{equation}
+\label{fvst215}
+\textbf{g}^{+}(s,z)=\textbf{p}^{+}(s)[\mathbf{I}-\mathbf{Q}_{s}^{-1}z]^{-1}(\mathbf{I}-\mathbf{C}z),
+\end{equation}
+\begin{equation}
+\label{fvst216}
+\check{\textbf{p}}_{x}^{+}(s)=\textbf{p}^{+}(s)\textbf{Q}_{s}^{-x}[\mathbf{I}-\mathbf{Q}_{s}\textbf{C}\,], \,\, x\in\mathbb{Z}\,^{+},
+\end{equation}
+\begin{equation*}
+\label{fvst217}
+\textbf{p}^{+}(s)=\textbf{P}_{s}(\mathbf{I}-\mathbf{C})^{-1}
+(\mathbf{I}-\mathbf{Q}_{s}^{-1});
+\end{equation*}
+для $\xi^{-}(\theta_{s})$ маємо:
+\begin{eqnarray}
+\label{fvst218}
+\textbf{g}_{-}(s,z)=([\textbf{g}(s,z)]_{-}^{0}\nonumber\\
++\textbf{E}[\textbf{C}\,^{\mid\xi(\theta_{s})\mid}-z^{\xi(\theta_{s})}, \,
+\xi(\theta_{s})<0]\cdot
+(\textbf{C}z-\textbf{I})^{-1}\textbf{C}z(\textbf{I}-\textbf{C}^{-1}\textbf{Q}_{s}^{-1}))(\textbf{p}^{+}(s))^{-1}\textbf{P}_{s},
+\end{eqnarray}
+\begin{equation}
+\label{fvst219}
+\textbf{p}_{x}^{-}(s)=[\textbf{p}_{x}^{-}(s)+\textbf{E}[\textbf{C}\,^{\mid\xi(\theta_{s})\mid}, \, \xi(\theta_{s})<x]
+\cdot\textbf{C}\,^{x-1}(\textbf{C}-\textbf{Q}_{s}^{-1})](\textbf{p}^{+}(s))^{-1}\textbf{P}_{s}, \,\, x\in \mathbb{Z}^{-}\cup \{0\},
+\end{equation}
+де $\mathbf{Q}_{s}^{-1}=\textbf{P}_{s}^{-1}\textbf{q}^{+}(s)+\textbf{C}\,\textbf{P}_{s}^{-1}\textbf{p}^{+}(s)$.
+\end{theorem}
+\begin{proof}
+На основі стохастичних співвідношень для $\tau_{kr}^{-}(x)$, ($x\in \mathbb{Z}_{-}\cup \{0\}$), де нижні індекси
+означають початкове значення  $x(t)$  та значення $x(t)$ в момент досягнення
+рівня  $x$ відповідно ($x(0)=k, \,\, x(\tau^{-}(x))=r$). Треба зазначити, що
+розглядаються
+тільки ті траєкторії процесу, для яких  $\tau^{-}(x)<\infty$
+      $$
+\tau_{kr}^{-}(x)\doteq
+\left\{
+\begin{array}{c}
+\zeta'_{k}, \,\,\,\,  \xi_{1}^{(k)}<x, \,\, \zeta'_{k}<\zeta_{k};\\
+\zeta_{k}, \,\,\,\,  \chi_{kr}<x, \,\, \zeta'_{k}>\zeta_{k};\\
+\zeta'_{k}+\tau_{kr}^{-}(x-\xi_{k}), \,\,  \xi_{1}^{(k)}\geq x, \,\, \zeta'_{k}<\zeta_{k};\\
+\zeta_{k}+\tau_{kr}^{-}(x-\chi_{kj}), \,\,  \chi_{kj}\geq x, \,\,
+\zeta'_{k}>\zeta_{k}, \,\, (x(\zeta_{k})=j).
+\end{array}
+\right.
+$$
+На основі цих стохастичних співвідношень виводимо  рівняння
+\begin{equation}\label{fvst220}
+\begin{split}
+   T_{\ast kr}^{-}(s,x)&=E[e^{-s\tau^{\pm}(x)}, \,\, x(\tau^{\pm}(x))=r
+| x(0)=k]  \\
+&=\lambda_{k}\int_{0}^{+\infty}e^{-(s+\lambda_{k}+n_{k})y}dy \sum
+\limits_{l=-\infty}^{x-1} P\{\xi_{k}=l\}  \\
+   &+n_{k}\int_{0}^{+\infty}e^{-(s+\lambda_{k}+n_{k})y}dy
+\sum\limits_{l=-\infty}^{x-1} p_{kr}P\{\chi_{kr}=l\}  \\
+    &+\lambda_{k}\int_{0}^{+\infty}e^{-(s+\lambda_{k}+n_{k})y}dy
+\sum\limits_{l=x}^{+\infty} e^{-s\tau_{kr}^{-}(x-l)}P\{\xi_{k}=l\}  \\
+   &+n_{k}\sum\limits_{j=1}^{n}\int_{0}^{+\infty}e^{-(s+\lambda_{k}+n_{k})y}dy
+\sum\limits_{l=x}^{+\infty} e^{-s\tau_{kr}^{-}(x-l)}p_{kj}P\{\chi_{kj}=l\}.
+\end{split}
+\end{equation}
+Запишемо  (\ref{fvst220}) в матричній формі:
+\begin{equation}
+\label{fvst221}
+(s\mathbf{I}+\mathbf{\Lambda}+\mathbf{N})\mathbf{T}_{\ast}^{-}(s,x)=\sum_{l\,=-\infty}^{x-1}\left(\mathbf{\Lambda p}(l)+\mathbf{Nf}(l)\right)
++\sum_{l\,=x}^{+\infty}\left(\mathbf{\Lambda p}(l)+\mathbf{Nf}(l)\right)\mathbf{T}_{\ast}^{-}(s,x-l).
+\end{equation}
+Застосовуючи до (\ref{fvst221}) твірне перетворення по
+$x\in \mathbb{Z}_{-}\cup \{0\}$
+та врахувавши умову майже напівнеперервності зверху, отримаємо
+\begin{eqnarray}
+\label{fvst222}
+(s\mathbf{I}-\mathbf{K}(z))\widetilde{\mathbf{T}}_{\ast}^{-}(s,z)=\frac{z}{z-1}[
+-\mathbf{\Lambda}_{2}(\widetilde{\mathbf{p}}_{2}(z)-\mathbf{I})-\mathbf{N}
+(\widetilde{\mathbf{f}}(z)-\mathbf{P})]\nonumber\\
+      -\mathbf{\Lambda}_{1}(\mathbf{I}-\mathbf{C})z(\mathbf{I}-\mathbf{C}z)^{-1}\widetilde{\mathbf{T}}_{\ast}^{-}(s,\, \mathbf{C}\,^{-1}),
+\end{eqnarray}
+де
+$$
+\widetilde{\mathbf{T}}_{\ast}^{-}\left(s,z\right)=\sum_{x=-\infty}^{0}z^{x}\mathbf{T}_{\ast}^{-}(s,x)=\frac{z}{z-1}(\mathbf{I}-\mathbf{g}_{-}(s,z)\mathbf{P}_{s}^{-1}).
+$$
+Підставляючи в ($\ref{fvst222}$) останнє співвідношення та (\ref{fvst22}),
+отримаємо
+\begin{eqnarray}
+\label{fvst223}
+      (s\mathbf{I}-\mathbf{K}(z))\textbf{g}_{-}(s,z)=[s\mathbf{I}+\mathbf{\Lambda}_{1}(1-z)(\mathbf{I}-\mathbf{C}z)^{-1}\mathbf{g}_{-}(s,\mathbf{C}^{-1})].
+\end{eqnarray}
+З (\ref{fvst223}) після врахування другого співвідношення (\ref{fvst23}), одержимо,
+     \begin{eqnarray}
+\label{fvst224}
+\textbf{g}^{+}(s,z)=\textbf{P}_{s}[\mathbf{I}+\mathbf{\Lambda}_{1}s^{-1}(1-z)(\mathbf{I}-\mathbf{C}z)^{-1}\mathbf{g}_{-}(s,\mathbf{C}^{-1})]^{-1}.
+     \end{eqnarray}
+Після граничного переходу при $z\rightarrow 0$ в (\ref{fvst223}), отримаємо
+\begin{eqnarray}
+\label{fvst225}
+\textbf{p}^{+}(s)=\textbf{P}_{s}[\mathbf{I}+\mathbf{\Lambda}_{1}s^{-1}\mathbf{g}_{-}(s,\mathbf{C}^{-1})]^{-1}.
+\end{eqnarray}
+Підставляючи (\ref{fvst225}) в формулу (\ref{fvst224}), одержимо (\ref{fvst215}). Після обертання (\ref{fvst215}) по $z$ випливає формула (\ref{fvst216}).
+Використовуючи (\ref{fvst215}) та другий рядок (\ref{fvst23}), отримаємо,
+попередньо застосувавши операцію проектування на $[\,\,]_{-}^{0}$,
+співвідношення (\ref{fvst218}).
+Формула (\ref{fvst219}) виводиться з (\ref{fvst218}) за допомогою обертання по $z$.
+\end{proof}
+
+З попередньої теореми, з врахуванням умови напівнеперервності зверху, випливає наступний наслідок.
+\begin{corollary}
+Для напівнеперервних зверху процесів генератриса та розподіл
+$\check{\xi}(\theta_{s})$ визначаються співвідношеннями:
+\[
+\textbf{g}^{+}(s,z)=\textbf{p}^{+}(s)[\mathbf{I}-\textbf{Q}_{s}^{-1}z]^{-1},
+\]
+\[
+\check{\textbf{p}}_{x}^{+}(s)=\textbf{p}_{+}(s)\mathbf{Q}_{s}^{-x}, \,\, x\in \mathbb{Z}^{+},
+\]
+\[
+\textbf{p}^{+}(s)=\textbf{P}_{s}(\mathbf{I}-\mathbf{Q}_{s}^{-1});
+\]
+для  $\xi^{-}(\theta_{s})$ маємо:
+\[
+\textbf{g}_{-}(s,z)=([\textbf{g}(s,z)]_{-}^{0}-[\textbf{g}(s,z)]_{-}\mathbf{Q}_{s}^{-1}z)(\textbf{p}_{+}(s))^{-1}\textbf{P}_{s},
+\]
+\[
+\textbf{p}_{x}^{-}(s)=(\textbf{p}_{x}(s)-\textbf{p}_{x-1}(s)\textbf{Q}_{s}^{-1})(\textbf{p}_{+}(s))^{-1}\textbf{P}_{s}, \,\, x\in\mathbb{Z}^{-}\cup\{0\},
+\]
+де $\mathbf{Q}_{s}^{-1}=\textbf{P}_{s}^{-1}\textbf{q}^{+}(s)$.
+\end{corollary}
+Нехай $Z(t)=\{\xi(t), \, x(t)\}$ --- майже напівнеперервний знизу процес, тоді
+$Z_{1}(t)=\{\xi_{1}(t), \, x_{1}(t)\}=\{-\xi(t), \, x(t)\}$
+є майже напівнеперервним зверху. Використовуючи на\-ступ\-ні співвідношення між
+генератрисами екстремумів процесів $Z(t)$ та $Z_{1}(t)$ та їх розподілів:
+\[
+\textbf{g}_{\mp}(s, z) =\textbf{g}_{\pm}^{1}(s,z^{-1}), \,\, \textbf{g}^{\mp}(s,z)=\textbf{g}_{1}^{\pm}(s,z^{-1}),
+\]
+\[
+\textbf{p}_{\mp}(s) =\textbf{p}_{\pm}^{1}(s), \,\, \textbf{p}^{\mp}(s)=\textbf{p}_{1}^{\pm}(s),
+\]
+\[
+\textbf{q}_{\mp}(s) =\textbf{q}_{\pm}^{1}(s), \,\, \textbf{q}^{\mp}(s)=\textbf{q}_{1}^{\pm}(s),
+\]
+\[
+\textbf{p}_{x}^{\mp}(s) =(\textbf{p}_{-x}^{\pm}(s))_{1}, \,\, \check{\textbf{p}}^{+}_{x}(s)=(\check{\textbf{p}}_{-x}^{-}(s))_{1}, \,\,
+\check{\textbf{p}}^{-}_{x}(s)=(\check{\textbf{p}}_{-x}^{+}(s))_{1},
+\]
+можна отримати твердження про уточнення компонент факторизації (3) для майже
+напівнеперервних знизу процесів.
+\begin{theorem}
+Для майже напівнеперервного знизу процесу, заданого на ЛМ, мають місце
+наступні представлення для генератрис екстремумів та їх розподілів:\\
+для $\xi^{-}(\theta_{s})$ маємо:
+\[
+\textbf{g}_{-}(s,z)=(z\textbf{I}-\textbf{B})(z\textbf{I}-\textbf{Z}_{s})^{-1}\textbf{p}_{-}(s),
+\]
+\[
+\textbf{p}_{x}^{-}(s)=(\mathbf{I}-\mathbf{B}\mathbf{Z}_{s}^{-1})\mathbf{Z}_{s}^{-x}\textbf{p}_{-}(s), \,\, x\in \mathbb{Z}^{-},
+\]
+\[
+\textbf{p}_{-}(s)=(\mathbf{I}-\mathbf{Z}_{s})(\textbf{I}-\textbf{B})^{-1}\textbf{P}_{s};
+\]
+для  $\check{\xi}(\theta_{s})$ маємо:
+\[
+\textbf{g}^{+}(s,z)=\textbf{P}_{s}(\textbf{p}_{-}(s))^{-1}([\textbf{g}(s,z)]_{+}
+^{0}
+\]
+\[
++(\textbf{B}-\mathbf{Z}_{s})(\textbf{B}-\textbf{I}z)^{-1}\textbf{E}[\textbf{B}\,^{\xi(\theta_{s})}-z^{\xi(\theta_{s})}, \,\, \xi(\theta_{s})>0]),
+\]
+\[
+\check{\textbf{p}}_{x}^{+}(s)=\textbf{P}_{s}(\textbf{p}_{-}(s))^{-1}(\textbf{p}_{x}(s)+(\textbf{B}-\mathbf{Z}_{s})\mathbf{B}^{-x-1}\textbf{E}[\textbf{B}\,^{\xi(\theta_{s})}, \, \xi(\theta_{s})>x]),
+\]
+де $x\in \mathbb{Z}^{+}\cup \{0\}$, $\textbf{Z}_{s}=\textbf{q}_{-}(s)\textbf{P}_{s}^{-1}+\textbf{p}_{-}(s)\textbf{P}_{s}^{-1}\textbf{B}$;\\
+для  $\overline{\xi}(\theta_{s})$ маємо:
+\[
+\textbf{g}^{-}(s,z)=\textbf{p}^{-}(s)[z\textbf{I}-\textbf{Q}_{s}]^{-1}(z\textbf{I}-\textbf{B}),
+\]
+\[
+\check{\textbf{p}}_{x}^{-}(s)=\textbf{p}^{-}(s)\textbf{Q}_{s}^{-x}(\textbf{I}-\textbf{Q}_{s}^{-1}\textbf{B}), \,\, x\in \mathbb{Z}^{-},
+\]
+\[
+\textbf{p}^{-}(s)=\textbf{P}_{s}(\textbf{I}-\textbf{B})^{-1}(\textbf{I}-\textbf{Q}_{s});
+\]
+для  $\xi^{+}(\theta_{s})$ маємо:
+\[
+\textbf{g}_{+}(s,z)=([\textbf{g}(s,z)]_{+}^{0}
+\]
+\[
++\textbf{E}[\textbf{B}\,^{\xi(\theta_{s})}-z^{\xi(\theta_{s})}, \,\, \xi(\theta_{s})>0])(\textbf{B}-z\textbf{I})^{-1}(\textbf{B}-\textbf{Q}_{s}))
+(\textbf{p}^{-}(s))^{-1}\textbf{P}_{s},
+\]
+\[
+\textbf{p}_{x}^{+}(s)=(\textbf{p}_{x}(s)+\textbf{E}[\textbf{B}\,^{\xi(\theta_{s})}, \,\, \xi(\theta_{s})>x])\textbf{B}^{-x-1}(\textbf{B}-\textbf{Q}_{s}))
+(\textbf{p}^{-}(s))^{-1}\textbf{P}_{s},
+\]
+де $x\in \mathbb{Z}^{+}\cup \{0\}$,  $\textbf{Q}_{s}=\textbf{P}_{s}^{-1}\textbf{q}^{-}(s)+\textbf{B}\textbf{P}_{s}^{-1}\textbf{p}^{-}(s)$.
+\end{theorem}
+
+З попередньої теореми випливає наступний наслідок.
+\begin{corollary}
+Для напівнеперервних знизу процесів генератриси екстремумів та їх розподілів визначаються співвідношеннями:\\
+для $\xi^{-}(\theta_{s})$:
+\[
+\textbf{g}_{-}(s,z)=z[z\mathbf{I}-\textbf{Z}_{s}]^{-1}\textbf{p}_{-}(s),
+\]
+\[
+\textbf{p}_{x}^{-}(s)=\mathbf{Z}_{s}^{-x}\textbf{p}_{-}(s), \,\, x\in \mathbb{Z}^{-},
+\]
+\[
+\textbf{p}_{-}(s)=(\mathbf{I}-\mathbf{Z}_{s})\textbf{P}_{s};
+\]
+для  $\check{\xi}(\theta_{s})$:
+\[
+\textbf{g}^{+}(s,z)=\textbf{P}_{s}(\textbf{p}_{-}(s))^{-1}([\textbf{g}(s,z)]_{+}^{0}-\mathbf{Z}_{s}z^{-1}[\textbf{g}(s,z)]_{+}),
+\]
+\[
+\check{\textbf{p}}_{x}^{+}(s)=\textbf{P}_{s}(\textbf{p}_{-}(s))^{-1}(\textbf{p}_{x}(s)-\textbf{Z}_{s}\textbf{p}_{x+1}(s)), \,\, x\in\mathbb{Z}^{+}\cup\{0\},
+\]
+де $\mathbf{Z}_{s}=\textbf{q}_{-}(s)\textbf{P}_{s}^{-1}$;\\
+для $\overline{\xi}(\theta_{s})$:
+\[
+\textbf{g}^{-}(s,z)=\textbf{p}^{-}(s)[z\mathbf{I}-\textbf{Q}_{s}]^{-1}z,
+\]
+\[
+\check{\textbf{p}}_{x}^{-}(s)=\textbf{p}^{-}(s)\mathbf{Q}_{s}^{-x}, \,\, x\in \mathbb{Z}^{-},
+\]
+\[
+\textbf{p}^{-}(s)=\textbf{P}_{s}(\mathbf{I}-\mathbf{Q}_{s});
+\]
+для  $\xi^{+}(\theta_{s})$:
+\[
+\textbf{g}_{+}(s,z)=([\textbf{g}(s,z)]_{+}^{0}-[\textbf{g}(s,z)]_{+}z^{-1}\mathbf{Q}_{s})(\textbf{p}^{-}(s))^{-1}\textbf{P}_{s},
+\]
+\[
+\textbf{p}_{x}^{+}(s)=(\textbf{p}_{x}(s)-\textbf{p}_{x+1}(s)\textbf{Q}_{s})(\textbf{p}^{-}(s))^{-1}\textbf{P}_{s}, \,\, x\in\mathbb{Z}^{+}\cup\{0\},
+\]
+де $\mathbf{Q}_{s}=\textbf{P}_{s}^{-1}\textbf{q}^{-}(s)$.
+\end{corollary}
+
+
+
+\begin{thebibliography}{19}
+\bibitem{borrog}
+{Боровков~А.А., Рогозин~Б.А.}\emph{ Граничные задачи для некоторых двумерных
+случайных
+блужданий} // Теория вероятн. и её примен.~---~1984.~---~Т.{9},
+№3.~---~С.~401--430.
+\bibitem{Gus1}
+{Гусак~Д.В.} Граничні задачі для процесів з незалежними приростами
+на скінченних ланцюгах Маркова та для напівмарковських процесів.~---~К.: Ін-т
+математики НАН
+України,~1998.~---~320~с.
+\bibitem{Gus2}
+{Гусак~Д.В.} Метод факторизации в граничных задачах для
+одного класса процессов на цепи Маркова.~I. ~---~Киев: Ин-т
+математики АН УССР,~1978.~---~60~с. (Препринт 78.~II.)
+\bibitem{gustur1}
+{Гусак~Д.В., Турениязова~А.И.} \emph{Распределение некоторых
+граничных функционалов для решетчатых пуассоновских процессов на
+цепи Маркова} // Асимптотические методы в исследовании
+стохастических моделей: Сб.науч.тр. ---~К.: Ин-т математики АН
+УССР, 1967. ---~\mbox{С.~21--27.}
+\bibitem{gustur2}
+{Гусак~Д.В., Турениязова~А.И.}\emph{ О решетчатых полунепрерывных
+пуассоновских процессах на цепи Маркова} // Укр. мат. журн. ---~1987.
+--- Т.39, №6. --- С.~707--711.
+\bibitem{eskor}
+{Ежов~И.И., Скороход~А.В.} \emph{Марковские процессы, однородные
+по второй компоненте.~I} // Теория вероятн. и её
+примен.~---~1969.~---~Т.{14}, №1, №4.
+\bibitem{karn}
+{Карнаух Є.В.} Граничні задачі для одного класу процесів на ланцюгу Маркова:
+Автореф. дис. кан-та фіз.-мат. наук.~---~Київ,~2007,~18с.
+\bibitem{kelwis}
+Keilson J., Wishart D.M. \emph{A central limit theorem for processes
+defined on a finite Markov chain}, Proc. Cambridge  Philos. Soc., \textbf{60}, 3
+(1964), 547--567.
+\bibitem{mil}
+Miller H.D. \emph{A matrix factorization problem in the theory of random
+variables defined on a finite central limit theorem for processes
+defined on a finite Markov chain. Absorption probabilities for
+sums of rahdom variables defined on a finite Markov chain}, Proc.
+Cambridge Philos. Soc., \textbf{58} (1962), 268--298.
+
+\end{thebibliography}
+
+\end{document}

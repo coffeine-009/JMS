@@ -20,7 +20,7 @@
 <div class = "content">
 	<div style = "text-align: left;">
 		<div class = "message">
-			Choose file from your article in TeX for upload and click Upload button
+			<?= $this -> translate( 'Choose file from your article in TeX for upload and click Upload button' ); ?>			
 		</div>
 	
 	<form action = "/article/add" method = "post" enctype="multipart/form-data">
@@ -29,7 +29,7 @@
 			<label style = "font-size:x-large;"><?= $this -> translate( 'Article' ); ?>:</label>
 			<input style = "font-size:18pt;" type = "file" name = "article"/>	
 			<!-- Submit -->
-			<input class = "submit" type = "submit" value = "Upload" style = "font-size:18pt;" />
+			<input class = "submit" type = "submit" value = "<?= $this -> translate( 'Upload' ); ?>" style = "font-size:18pt;" />
 		</div>
 		
 	</form>

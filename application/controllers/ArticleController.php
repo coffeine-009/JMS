@@ -39,24 +39,43 @@ class ArticleController
     //- Add new article(Upload) -//
     public function addAction()
     {
+    	//- Errors -//
+    	$this -> errors = array(
+    		'article'	=> array()
+    	);
+    	
 		//- Init view -//
-		$this -> view -> logotip = strtoupper( 'Add new article' );
+		$this -> view -> logotip = 'New article';
 		$this -> view -> Title = 'Add new article';
         $this -> view -> pathOfSite = 'Jourmal => List';        
         
 		//- Test of submiting file -//
     	if( $this -> getRequest() -> isPost() )
     	{
+    		//- Save base info -//
+	    	$article_data = new Jms_Article();
+	    		$article_data -> id_user = (int)$this -> session -> user[ 'id' ];
+	    		$article_data -> code_language = 'en';
+	    		
+	    	$article_data -> save();
+	    	
+	    	
 			//- Upload init and validation -//
 	    	$article = new Zend_File_Transfer();
 	    		$article -> setDestination( 
-	    			APPLICATION_PATH .'/../public/data/users/'// . $this -> session -> user[ 'id' ] . '/articles/'
+	    			APPLICATION_PATH .'/../public/data/users/' . 
+	    			$this -> session -> user[ 'id' ] . '/articles/'
+	    			
 	    		);
-	    		/*$article -> addFilter(
+	    		$article -> addFilter(
 	    			'Rename', 
-	    			APPLICATION_PATH .'/../public/data/users/1.tex',// . $this -> session -> user[ 'id' ] . '/articles/123.tex', 
+	    			
+	    			APPLICATION_PATH .'/../public/data/users/' . 
+	    			$this -> session -> user[ 'id' ] . '/articles/' . 
+	    			(int)$article_data -> id . '.tex', 
+	    			
 	    			'article'
-	    		);*/
+	    		);
 				//- Validators -//
     			$article 
     			-> addValidator( 'Count', false, 1, 'article' )
@@ -66,13 +85,21 @@ class ArticleController
     				), 
     				'article'
     			)
-    			-> addValidator( 'MimeType', false, 'text/x-tex', 'article' );
+    			-> addValidator( 
+    				'MimeType', 
+    				false, 
+    				'text', 
+    				array( 
+    					'text/x-tex' 
+    				), 
+    				'article' 
+    			);
     			
     		//- Test of valid input data -//    		    		
     		if( !$article -> isValid() )
     		{
     			//- Exception :: Can not upload file -//
-    			array_merge(
+    			$this -> errors[ 'article' ] = array_merge(
     				$this -> errors[ 'article' ], 
     				$article -> getErrors()
     			);
@@ -121,11 +148,12 @@ class ArticleController
 	    	$article_params = $parser -> getValue();
 
 	    	//- Save base info -//
-	    	$article_data = new Jms_Article();
-	    		$article_data -> id_user = (int)$this -> session -> user[ 'id' ];
-	    		$article_data -> code_language = $article_params[ 'language' ][ 'code' ];
+	    	$article_data_u = Doctrine :: getTable( 'Jms_Article' )
+	    		-> find( (int)$article_data -> id );
 	    		
-	    	$article_data -> save();
+	    		$article_data_u -> code_language = $article_params[ 'language' ][ 'code' ];
+	    		
+	    	$article_data_u -> save();
 
 	    	//- Save content -//
 	    	$article_data_lang = new Jms_ArticleLanguage();
@@ -155,7 +183,7 @@ class ArticleController
     public function viewAction()
     {
 		//- Init view -//
-		$this -> view -> logotip = strtoupper( 'Params of article' );
+		$this -> view -> logotip = 'Params of article';
 		$this -> view -> Title = 'View params of article';
         $this -> view -> pathOfSite = 'Jourmal => List';
         
@@ -182,16 +210,26 @@ class ArticleController
     	
     	if( $input -> isValid() )
     	{
+    		$locale = new Zend_Locale( $this -> locale -> locale );
+    			$lang = $locale -> getLanguage();
+    		
     		//- Get article params -//
     		$article = Doctrine_Query :: create()
     			-> from( 'Jms_Article a' )
     			-> addFrom( 'a.ArticleLanguage al' )
     			-> where( 'id = ?', array( (int)$input -> id ) )
-    			-> addWhere( "al.code_language = 'en'" )
-    			-> addWhere( 'a.id_user = ?', array( $this -> session -> user[ 'id' ] ) )
-    			-> orderBy( 'al.code_language' );
-    		
+    			-> addWhere( "al.code_language = '{$lang}'" )
+    			//-> addWhere( 'a.id_user = ?', array( $this -> session -> user[ 'id' ] ) )
+    			-> orderBy( 'al.code_language' );//TODO: Test status
+    			
     		$article = $article -> fetchArray();
+    		
+    		if( count( $article ) === 0 )
+    		{
+    			//- ERROR :: Article not fount -//
+    			throw new Zend_Controller_Action_Exception( 'Article not found' );
+    		}
+    		
     		//- Init view -//
     		$this -> view -> article = $article[ 0 ];	        
     	}else
@@ -275,8 +313,8 @@ class ArticleController
     public function listAction()
     {
     	//- Init view -//
-		$this -> view -> logotip = strtoupper( 'List of article' );
-		$this -> view -> Title = 'List of article';
+		$this -> view -> logotip = 'Articles';
+		$this -> view -> Title = 'Articles';
         $this -> view -> pathOfSite = 'Jourmal => List';
         
     	//- Filters -//
@@ -373,7 +411,108 @@ class ArticleController
 
     public function addtojournalAction()
     {
-        // action body
+    	//- Include JS -//
+    	$this -> view -> headScript() -> appendFile(
+    		'/client/application/views/scripts/articleToJournal.js'
+    	);
+    	$this -> view -> headScript() -> appendFile(
+    		'/client/library/Coffeine/Connect/Ajax/Connect.js'
+    	);
+    	
+    	
+    	//- Init view -//
+        $this -> view -> Title = 'Add article to number of journal';
+        $this -> view -> pathOfSite = 'Jourmal => Delete';
+        
+        //- Get count numbers of journal -//
+        $journals_q = Doctrine_Query :: create()
+        	-> select( 'j.id, jl.title' )//, jn.id, jn.volume, jn.issue' )
+        	-> from( 'Jms_Journal j' )
+        	-> addFrom( 'j.JournalLanguage jl' )
+        	//-> addFrom( 'j.JournalNumber jn' )
+        	-> where( "jl.code_language = 'en'" )//TODO: Dynamic lang
+        	-> orderBy( 'j.id' );
+        	//-> addOrderBy( 'jn.id DESC' );
+        	
+        $journals = $journals_q -> fetchArray();
+                
+        //- Init view -//
+        $this -> view -> journals = $journals;
+        
+    	//- Filters -//
+    	$filters = array(
+    		'*' => array(
+	    		'HtmlEntities', 
+	    		'StripTags', 
+	    		'StringTrim'
+	    	)
+    	);
+    	
+    	//- Validators -//
+    	$validators = array(
+    		'*'		=> array(
+    			'NotEmpty'
+    		),
+    		'id'	=> array( 
+    			'Int'
+    		),
+    		'jid'	=> array( 
+    			'Int'
+    		), 
+    		'jnid'	=> array(
+    			'Int'
+    		)
+    	);
+    	
+    	if( $this -> getRequest() -> isPost() )
+    	{
+	    	$input = new Zend_Filter_Input( $filters, $validators );
+	    		$input -> setData(
+	    			$this -> getRequest() -> getParams()
+	    		);
+    	
+	    	if( $input -> isValid() )
+	    	{
+	    		//- Save info -//
+				$article = Doctrine :: getTable( 'Jms_Article' )
+					-> find( (int)$input -> id );
+
+					$article -> id_journal_number = (int)$input -> jnid;
+					
+		        $article -> save();
+		        
+		    	//- Copy file of article to journal number -//
+		        $fJournal = new Coffeine_Files_File();
+		        
+		        	if( 
+		        		!$fJournal -> copy( 
+							APPLICATION_PATH .'/../public/data/users/'  . 
+							$this -> session -> user[ 'id' ] . '/articles/' . 
+							(int)$input -> id . '.tex', 
+							
+							APPLICATION_PATH . '/../public/data/journals/' . 
+							(int)$input -> jid . 
+							'/numbers/' . 
+							(int)$input -> jnid . 
+							'/articles'
+		        		)
+		        	)
+		        	{
+		        		//- Exception :: File struct not created -//
+		        		$this -> errors[] = 'Can not copy file';return;
+		        	}
+		        
+		        //- Add message -//
+		        $this -> _helper -> flashMessenger 
+					-> addMessage( 'Article was added' );
+		        
+		        //- Redirect to view journal -//
+		        $this -> _redirect( '/articles' );
+	    	}else
+	    		{
+	    			throw new Zend_Controller_Action_Exception( 'Invalid input' );
+	    		}
+    	}
     }
 
     public function deletefromjournalAction()

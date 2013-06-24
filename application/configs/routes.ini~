@@ -2,12 +2,11 @@
 
 [routes]
 ;//- Locale :: change -//
-;routes.locale.route = "/locale/:locale/:redirect"
-;routes.locale.defaults.module = "default"
-;routes.locale.defaults.controller = "locale"
-;routes.locale.defaults.action = "change"
-;routes.locale.defaults.locale = "uk_UA"
-;routes.locale.defaults.redirect = "/"
+routes.locale_set.route = "/locale/set/:locale"
+routes.locale_set.defaults.module = "default"
+routes.locale_set.defaults.controller = "locale"
+routes.locale_set.defaults.action = "change"
+routes.locale_set.defaults.locale = "en_US"
 
 ;//- User :: Registration -//
 routes.registration.route = "/registration"
@@ -57,3 +56,147 @@ routes.client.defaults.controller = "author"
 routes.client.defaults.action = "index"
 ;routes.client.defaults.locale = "uk_UA"
 
+;//- Journal -//
+;//- Journal :: View -//
+routes.journal_view.route = "/journal/:id/:page/:count"
+routes.journal_view.defaults.module = "default"
+routes.journal_view.defaults.controller = "journal"
+routes.journal_view.defaults.action = "view"
+routes.journal_view.defaults.id = 1
+routes.journal_view.defaults.page = 1
+routes.journal_view.defaults.count = 15
+
+;//- Journal :: Edit -//
+routes.journal_edit.route = "/journal/edit/:id"
+routes.journal_edit.defaults.module = "default"
+routes.journal_edit.defaults.controller = "journal"
+routes.journal_edit.defaults.action = "edit"
+routes.journal_edit.defaults.id = 1
+
+;//- Journal :: Delete -//
+routes.journal_delete.route = "/journal/delete/:id"
+routes.journal_delete.defaults.module = "default"
+routes.journal_delete.defaults.controller = "journal"
+routes.journal_delete.defaults.action = "delete"
+routes.journal_delete.defaults.id = null
+
+;//- Journal :: Add -//
+routes.journal_add.route = "/journal/add"
+routes.journal_add.defaults.module = "default"
+routes.journal_add.defaults.controller = "journal"
+routes.journal_add.defaults.action = "add"
+
+;//- Journal :: List -//
+routes.journal_list.route = "/journals/:page/:count"
+routes.journal_list.defaults.module = "default"
+routes.journal_list.defaults.controller = "journal"
+routes.journal_list.defaults.action = "list"
+routes.journal_list.defaults.page = 1
+routes.journal_list.defaults.count = 15
+
+;//- JournalNumber -//
+;//- JournalNumber :: List -//
+routes.journal_number_list.route = "/journal/:id/numbers/:page/:count"
+routes.journal_number_list.defaults.module = "default"
+routes.journal_number_list.defaults.controller = "journalnumber"
+routes.journal_number_list.defaults.action = "list"
+routes.journal_number_list.defaults.id = 0
+routes.journal_number_list.defaults.page = 1
+routes.journal_number_list.defaults.count = 15
+
+;//- JournalNumber :: View -//
+routes.journal_number_view.route = "/journal/:id/number/:idn/:page/:count"
+routes.journal_number_view.defaults.module = "default"
+routes.journal_number_view.defaults.controller = "journalnumber"
+routes.journal_number_view.defaults.action = "view"
+routes.journal_number_view.defaults.id = 0
+routes.journal_number_view.defaults.idn = 0
+routes.journal_number_view.defaults.page = 1
+routes.journal_number_view.defaults.count = 15
+
+;//- JournalNumber :: Add -//
+routes.journal_number_add.route = "/journal/:id/number/add"
+routes.journal_number_add.defaults.module = "default"
+routes.journal_number_add.defaults.controller = "journalnumber"
+routes.journal_number_add.defaults.action = "add"
+routes.journal_number_add.defaults.id = 0
+
+;//- JournalNumber :: Edit -//
+routes.journal_number_edit.route = "/journal/:id/number/:idn/edit"
+routes.journal_number_edit.defaults.module = "default"
+routes.journal_number_edit.defaults.controller = "journalnumber"
+routes.journal_number_edit.defaults.action = "edit"
+routes.journal_number_edit.defaults.id = 0
+routes.journal_number_edit.defaults.idn = 0
+
+;//- JournalNumber :: Delete -//
+routes.journal_number_delete.route = "/journal/:id/number/:idn/delete"
+routes.journal_number_delete.defaults.module = "default"
+routes.journal_number_delete.defaults.controller = "journalnumber"
+routes.journal_number_delete.defaults.action = "delete"
+routes.journal_number_delete.defaults.id = 0
+routes.journal_number_delete.defaults.idn = 0
+
+;//- JournalNumber :: getJournalNumbers -//
+routes.journal_numbers_get.route = "/journal/:id/numbers/get"
+routes.journal_numbers_get.defaults.module = "default"
+routes.journal_numbers_get.defaults.controller = "journalnumber"
+routes.journal_numbers_get.defaults.action = "getjournalnumbers"
+routes.journal_numbers_get.defaults.id = 0
+
+
+;//- Articles -//
+;//- Article :: List -//
+routes.article_list.route = "/articles/:page/:count"
+routes.article_list.defaults.module = "default"
+routes.article_list.defaults.controller = "article"
+routes.article_list.defaults.action = "list"
+routes.article_list.defaults.page = 1
+routes.article_list.defaults.count = 15
+
+;//- Article :: Journal.Number.List -//
+routes.journal_number_article_list.route = "/journal/:id/number/:idn/articles/:page/:count"
+routes.journal_number_article_list.defaults.module = "default"
+routes.journal_number_article_list.defaults.controller = "article"
+routes.journal_number_article_list.defaults.action = "listfromjournal"
+routes.journal_number_article_list.defaults.id = 0
+routes.journal_number_article_list.defaults.idn = 0
+routes.journal_number_article_list.defaults.page = 1
+routes.journal_number_article_list.defaults.count = 15
+
+;//- Article :: View -//
+routes.article_view.route = "/article/:id/:page/:count"
+routes.article_view.defaults.module = "default"
+routes.article_view.defaults.controller = "article"
+routes.article_view.defaults.action = "view"
+routes.article_view.defaults.id = 0
+routes.article_view.defaults.page = 1
+routes.article_view.defaults.count = 15
+
+;//- Article :: Add -//
+routes.article_add.route = "/article/add"
+routes.article_add.defaults.module = "default"
+routes.article_add.defaults.controller = "article"
+routes.article_add.defaults.action = "add"
+routes.article_add.defaults.id = 0
+
+;//- Article :: Edit -//
+routes.article_edit.route = "/article/:id/edit"
+routes.article_edit.defaults.module = "default"
+routes.article_edit.defaults.controller = "article"
+routes.article_edit.defaults.action = "edit"
+routes.article_edit.defaults.id = 0
+
+;//- Article :: Delete -//
+routes.article_delete.route = "/article/:id/delete"
+routes.article_delete.defaults.module = "default"
+routes.article_delete.defaults.controller = "article"
+routes.article_delete.defaults.action = "delete"
+routes.article_delete.defaults.id = 0
+
+;//- Article :: AddToJournal -//
+routes.article_addtojournal.route = "/article/:id/addtojournal"
+routes.article_addtojournal.defaults.module = "default"
+routes.article_addtojournal.defaults.controller = "article"
+routes.article_addtojournal.defaults.action = "addtojournal"
+routes.article_addtojournal.defaults.id = 0

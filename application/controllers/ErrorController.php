@@ -36,6 +36,14 @@ class ErrorController extends Zend_Controller_Action
         $this->view->request   = $errors->request;
     }
 
+	public function accessdenyAction()
+	{
+		$this -> view -> title = 'Access deny';
+		$this -> view -> messages = array(
+			'You have not permission!'
+			);
+	}
+    
     public function getLog()
     {
         $bootstrap = $this->getInvokeArg('bootstrap');

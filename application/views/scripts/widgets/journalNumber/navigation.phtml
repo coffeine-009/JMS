@@ -6,7 +6,7 @@
 		<?php foreach( $this -> items as $item ) : ?>
 		<li>
 			<a href = "<?= $item[ 'uri' ] ?>">
-				<?= $item[ 'label' ]; ?>
+				<?= $this -> translate( $item[ 'label' ] ); ?>
 			</a>
 		</li>
 		<?php endforeach; ?>

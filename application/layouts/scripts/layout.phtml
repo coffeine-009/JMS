@@ -3,10 +3,13 @@
 
 	<head>
 	
-		<meta/>
+		<meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
+
+		<meta name="robots" content="ALL" />
 	
 		<title>JMS</title>
-		
+	
+		<link type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />	
 		
 		<!-- Library -->
 		<!-- jQuery -->
@@ -65,8 +68,8 @@
 			<div id = "auth" class = "auth">
 			
 				<?php if( !isset( $this -> user ) ): ?>
-				<a href = "/login">Sing in</a> | 
-				<a href = "/registration">Sing up</a>
+				<a href = "/login"><?= $this -> translate( 'Sign in' ); ?></a> | 
+				<a href = "/registration"><?= $this -> translate( 'Sign up' ); ?></a>
 				<?php else: ?>
 				<a><?= $this -> user[ 'first_name' ]; ?></a> | 
 				<a href = "/logout"><?= $this -> translate( 'Sign out' ); ?></a>
@@ -123,6 +126,13 @@
 			&copy; 2013 by <a href = "">Vitaliy Tsutsman</a>
 			<br />
 			<a href = "">About</a>
+			
+			<div class = "locale">
+				<a href = "/locale/set/en_GB">en_GB</a> | 
+				<a href = "/locale/set/en_US">en_US</a> | 
+				<a href = "/locale/set/uk_UA">uk_UA</a> | 
+				<a href = "/locale/set/ru_RU">ru_RU</a>
+			</div>
 		
 		</div>
 	

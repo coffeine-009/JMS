@@ -48,12 +48,12 @@
 			<div class = "registration-item-field">
 				<div>					
 					<input id = "gender-male" type = "radio" name = "gender" value = "1" <?//= ($this -> input[ 'gender' ] == 1) ? 'checked' : ''; ?> required />
-					<label for = "gender-male">Male</label>
+					<label for = "gender-male"><?= $this -> translate( 'Male' ); ?></label>
 				</div>
 				
 				<div>				
 					<input id = "gender-female" type = "radio" name = "gender" value = "0" <?//= ($this -> input[ 'gender' ] == '0') ? 'checked' : ''; ?> required />
-					<label for = "gender-female">Female</label>
+					<label for = "gender-female"><?= $this -> translate( 'Female' ); ?></label>
 				</div>
 			</div>
 			<span class = "registration-item-message">
@@ -194,16 +194,16 @@
 					<input id = "" type = "checkbox" name = "" />
 					<label><?= $this -> translate( 'Send me a letter' ); ?></label>
 				</div>
-				<div>
+				<!--<div>
 					<input id = "" type = "checkbox" name = "" />
 					<label><?= $this -> translate( 'Other' ); ?></label>
-				</div>
+				</div>-->
 			</div>
 			<span class = "registration-item-message">
-				<?=
+				<?/*
 					$this -> translate(
 						$this -> errors[ 'params' ]
-					);				
+					);*/				
 				?>
 			</span>
 		</div>

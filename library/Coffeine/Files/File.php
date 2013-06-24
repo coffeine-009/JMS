@@ -115,7 +115,7 @@ class Coffeine_Files_File
 
 	//- FILE.COPY -//
 	public function copy( /*string*/$PathSource, /*string*/$PathDestination )// : bool
-	{
+	{Zend_Debug::dump(array($PathSource, $PathDestination));
 		//- Get file name -//
 		$path_parts = split( '/', $PathSource );
 
