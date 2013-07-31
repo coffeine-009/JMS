@@ -92,7 +92,7 @@ table
 	{
 		color		: #000;
 		display		: inline-block;
-		font-weight	: bold;
+		font-weight	: bold;		
 	}
 	
 	.menu-main>ul
@@ -102,9 +102,10 @@ table
 	
 		.menu-main>ul>li
 		{
-			color	: inherit;
-			display : inline;
-			margin	: 3px;
+			color		: inherit;
+			display 	: inline;
+			list-style	: none;			
+			position	: relative;
 		}
 		
 			.menu-main>ul>li>a
@@ -124,6 +125,54 @@ table
 				color			:#999;
 				text-decoration	: overline;
 			}
+			
+			/* Sub section in menu(Level 2) */
+			ul.navigation>li>ul
+			{
+				display	: none;				
+			}
+			
+			ul.navigation>li:hover>ul
+			{
+				background		: #ddd;
+				border-left		: #000 solid 1px;
+				border-right	: #000 solid 1px;
+				border-bottom	: #000 solid 1px;
+				display			: block;
+				list-style-type	: none;
+				position		: absolute;
+				top				: 20px;
+				left			: 0;
+				padding			: 0;
+			}
+			
+				/* Item from 2 level of menu */
+				ul.navigation>li>ul>li
+				{
+					color			: inherit;
+					float			: none;
+					list-style-type	: none;
+					position		: relative;
+					padding			: 5px 5px 0 5px;
+				}
+				
+					ul.navigation>li>ul>li>a
+					{
+						color			: inherit;
+						text-decoration	: none;
+					}
+					
+					ul.navigation>li>ul>li.active>a
+					{
+						color			: #555;
+						text-decoration	: overline;
+					}
+					
+					ul.navigation>li>ul>li>a:hover, ul.navigation>li>ul>li:hover
+					{
+						background		: #999;
+						color			: #fff;
+					}
 			
 	/* Tools */
 	.tools

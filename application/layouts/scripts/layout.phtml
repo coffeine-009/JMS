@@ -32,7 +32,7 @@
 		
 		<!-- Styles :: CSS -->
 		<link type = "text/css" rel = "stylesheet" href = "/client/application/views/styles/main.css" />
-				
+	
 		<!-- Dynamic styles -->
 		<?= $this -> headLink(); ?>
 		
@@ -60,7 +60,7 @@
 			<!-- Manu :: Main -->
 			<div id = "menu-main" class = "menu-main">
 				
-				<?= $this -> navigation() -> menu(); ?>				
+				<?= $this -> navigation() -> menu() -> setRenderParents( true ); ?>				
 			
 			</div>
 			
@@ -106,8 +106,9 @@
 			<div id = "" class = "">
 				<?=
 					$this -> navigation() 
-						-> breadcrumbs() 
+						-> breadcrumbs()
 						-> setLinkLast( false ) 
+						-> setMinDepth( 0 )
 						-> setSeparator( ' / ' ); 
 				?>
 			</div>

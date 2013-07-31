@@ -53,7 +53,7 @@ class Bootstrap
 		);
 		
 		//- Add helper -//
-		require_once 'helpers/Navigation.php';
+		require_once 'views/helpers/Navigation.php';
 		Zend_Controller_Action_HelperBroker :: addHelper(
 			new Application_Helpers_Navigation()
 		);
@@ -151,15 +151,28 @@ class Bootstrap
 	{
 		//- Load files -//
 		Zend_Loader :: loadFile( APPLICATION_PATH . '/classes/Acl/Acl.php' );
-		Zend_Loader :: loadFile( APPLICATION_PATH . '/plugins/CheckAccess.php' );
-				
+		//Zend_Loader :: loadFile( APPLICATION_PATH . '/plugins/CheckAccess.php' );
+
+		//- Create new ACL -//
+		$acl = new Acl_Acl();
+		
 		//- Register plugin -//
-		Zend_Controller_Front :: getInstance() 
+		/*Zend_Controller_Front :: getInstance() 
 		-> registerPlugin( 
 			new CheckAccess( 
-				new Acl_Acl() 
+				$acl 
 			) 
-		);
+		);*/
+		
+		//- Get current session -//
+		$session = new Zend_Session_Namespace( 'system.user' );
+		
+		//- Get role -//
+		$role = ( isset( $session -> user[ 'role' ] ) ) ? $session -> user[ 'role' ][ 'title' ] : Acl_Acl :: ROLE_GUEST;
+		
+		//- Set default role -//
+		Zend_View_Helper_Navigation_HelperAbstract :: setDefaultAcl( $acl );
+		Zend_View_Helper_Navigation_HelperAbstract :: setDefaultRole( $role );
 	}
 
 	//- Doctrine -//
