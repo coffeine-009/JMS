@@ -12,5 +12,12 @@
  */
 class Jms_User extends Jms_BaseUser
 {
-
+    /// *** Properties  *** ///
+    
+    /// *** Methods     *** ///
+    public function sendActivationLetter()// : bool
+    {
+        //TODO: write
+        return true;
+    }
 }

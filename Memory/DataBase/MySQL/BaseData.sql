@@ -39,3 +39,4 @@ VALUES
 (	1,	'Active',		'Normal active account.'	), 
 (	2,	'NotActive',	'Not comfirmed account'		), 
 (	3,	'Deleted',		'Deleted of administrator'	);
+

@@ -59,7 +59,7 @@ class Auth_Adapter
 		$response -> execute();
 		
 		//- Get response -//
-		$userData = $response->fetchArray();
+		$userData = $response -> fetchArray();
 
 		//- Test response from DB -//
 		if( count( $userData ) === 1 )

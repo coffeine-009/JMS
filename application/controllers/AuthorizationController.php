@@ -160,7 +160,7 @@ class AuthorizationController
 		    	$email -> save();
 
 		    	//- Send letter for activate -//
-		    	$user -> sendActivationLatter();
+		    	$user -> sendActivationLetter();
 		    	//TODO: Review
 				//- Add message -//
 				$this -> _helper -> flashMessenger -> clearCurrentMessages();
