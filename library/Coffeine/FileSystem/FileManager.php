@@ -15,9 +15,16 @@
      *																	*
     *///	***	***	***	***	***	***	***	***	***	***	***	***	***	***	***	*
 
+///	***	Import  *** ***	***	***	***	***	***	***	***	***	***	***	***	***	***	///
+
+
 ///	***	Code    *** ***	***	***	***	***	***	***	***	***	***	***	***	***	***	///
-namespace SystemFile
+namespace FileSystem
 {
+    //- Using other namespace -//
+    require_once 'Coffeine/FileSystem/PathManager.php';//TODO: write autoloader
+    use FileSystem\PathManager as PathManager;
+
     /** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *
      * Manager of files and folders
      *  --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- *
@@ -46,17 +53,17 @@ namespace SystemFile
 
         ///	***	Methods	***	///
         public function __construct(
-            /*string*/  $Path = ''
+            /*string*/  $Path = '.'
         )
         {
-            $this -> path = '';
+            $this -> path = new PathManager( $Path );
             $this -> content = null;
-            //TODO
         }
 
         public function __destruct()
         {
-            //TODO
+            //- Free memory -//
+            $this -> path = null;
         }
 
         //- SET.ADRESS -//
@@ -96,9 +103,9 @@ namespace SystemFile
                 }
 
                 $content[ $pos++ ] = array(
-                    'name'	=> $directory, 
-                    'type'	=> strtolower( $type ),  
-                    'size'	=> filesize( $this -> path . '/' . $directory ), 
+                    'name'	=> $directory,
+                    'type'	=> strtolower( $type ),
+                    'size'	=> filesize( $this -> path . '/' . $directory ),
                     'date'	=> date( 'Y/m/d H:i:s', filemtime( $this -> path.'/'.$directory ) )
                 );
             }
@@ -129,7 +136,7 @@ namespace SystemFile
 
         //- FILE.COPY -//
         public function copy( /*string*/$PathSource, /*string*/$PathDestination )// : bool
-        {Zend_Debug::dump(array($PathSource, $PathDestination));
+        {
             //- Get file name -//
             $path_parts = split( '/', $PathSource );
 
