@@ -1,5 +1,5 @@
 <?php
-///	***	FileSystem :: PathManager	***	***	***	***	***	***	***	***	***	***	///
+///	***	FileSystem :: Path  *** *** ***	***	***	***	***	***	***	***	***	***	///
 
     /**	***	***	***	***	***	***	***	***	***	***	***	***	***	***	***	***	*
      * 																	*
@@ -18,6 +18,7 @@
 ///	***	Code    *** ***	***	***	***	***	***	***	***	***	***	***	***	***	***	///
 namespace FileSystem
 {
+    require_once 'Coffeine/FileSystem/PathException.php';
     /** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *
      * Manager of path
      *  --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- *
@@ -52,7 +53,7 @@ namespace FileSystem
          * @return void
         *///*** *** *** *** *** *** *** *** *** *** *** *** *** *
         public function __construct( /*string*/$Path = '.' )// : void
-        {//TODO: add exceptions
+        {
             //- Split path -//
             $this -> nodes = explode(
                 self :: SEPARATOR,
@@ -76,9 +77,8 @@ namespace FileSystem
             )
             {
                 //- Exception :: Bad base path -//
-                throw new \Exception(
-                    'Bad base path',
-                    1000//TODO: set correct
+                throw new PathException(
+                    'Bad base path'
                 );
             }
 

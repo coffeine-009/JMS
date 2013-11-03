@@ -20,7 +20,8 @@ namespace FileSystem
 {
     //- Using other namespace -//
     require_once 'Coffeine/FileSystem/Path.php';//TODO: write autoloader
-    use FileSystem\Path as Path;
+    require_once 'Coffeine/FileSystem/FileException.php';
+#    use FileSystem\Path as Path;
 
     /** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *
      * File
@@ -375,7 +376,7 @@ namespace FileSystem
 
                 default:
                 {
-                    throw new \Exception( 'Unsuorted size format' );
+                    throw new FileException( 'Unsuported size format' );
                 }break;
             }
         }
@@ -409,7 +410,7 @@ namespace FileSystem
             if( $this -> type === self :: TYPE_DIR )
             {
                 //- EXCEPTION :: Can not set content to folder -//
-                throw new \Exception( 'Can not set content to folder' );//TODO: create new Exception
+                throw new FileException( 'Can not set content to folder' );
             }
 
             //- Content -//

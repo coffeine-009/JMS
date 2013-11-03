@@ -10,13 +10,14 @@ set_include_path(implode(PATH_SEPARATOR, array(
 )));
 
 /*
-require_once 'Coffeine/FileSystem/PathManager.php';
+require_once 'Coffeine/FileSystem/Path.php';
 
-$pm = new \FileSystem\PathManager( '    /downloads' );
+$pm = new \FileSystem\Path( '~/Downloads' );
 $pm -> Forward( 'backup.zip' );
 
 echo $pm -> Get();
- */
+*/
+
 //require_once 'Coffeine/FileSystem/FileManager.php';
 //
 //$fm = new \FileSystem\FileManager();
@@ -24,11 +25,10 @@ echo $pm -> Get();
 
 require_once 'Coffeine/FileSystem/File.php';
 $f = new FileSystem\File( '/home/vitaliy/Projects/Web/JMS/tmp/dsc' );
-var_dump($f->GetCreation()); 
+var_dump($f->GetSize()); 
 //echo var_dump($f->Create('r'));
 //echo var_dump($f ->Copy('/home/vitaliy/Projects/Web/JMS/tmp/dsc'));
 //echo var_dump($f ->Move('/home/vitaliy/Projects/Web/JMS/tmp/dsc'));
 //echo var_dump($f ->Delete());
 //echo var_dump($f -> GetContent());
 //$f ->SetContent('ok');
-
