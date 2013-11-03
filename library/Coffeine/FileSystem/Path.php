@@ -7,7 +7,7 @@
      * 			by
      * 		@author Vitaliy Tsutsman
      *
-     * 		@date 2013-10-07 22:38:03 - ..../../..
+     * 		@date 2013-10-07 22:38:03 - 2013-11-03 15:20:44
      *
      * 		@description Manager path of files
      *
@@ -22,23 +22,26 @@ namespace FileSystem
      * Manager of path
      *  --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- *
      * @operations
-     *  FORWARD
      *  BACK
+     *  BACK_TO_BASE
+     *  FORWARD
+     *  GET
+     *  GET_LAST_NODE
     *///*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *
     class Path
     {
         /// *** Constants   *** ///
-        const /*string*/SEPARATOR = '/';
+        const /*string*/SEPARATOR = '/';    //- Separator for items of path -//
         //- Base path -//
-        const /*string*/BASE_PATH_SERVER = './';
-        const /*string*/BASE_PATH_UNIX = '/';
-        const /*string*/BASE_PATH_WIN = '\w:/';
+        const /*string*/BASE_PATH_SERVER = './';    //- Web server  -//
+        const /*string*/BASE_PATH_UNIX = '/';       //- Unix        -//
+        const /*string*/BASE_PATH_WIN = '\w:/';     //- Windows     -//
 
 
         /// *** Properties  *** ///
-        protected /*const string*/$basePath;
-        protected /*string.array*/$nodes;
-        protected /*uint*/$length;
+        protected /*const string*/  $basePath;  //- Base path       -//
+        protected /*string.array*/  $nodes;     //- Items of path   -//
+        protected /*uint*/          $length;    //- Count of nodes  -//
 
 
         /// *** Methods     *** ///
@@ -56,8 +59,7 @@ namespace FileSystem
                 $Path
             );
 
-            //- Set UPPER case -//
-            //- Test base path -//
+            //- Determinate base path -//
             if(
                 !in_array(
                     $this -> nodes[ 0 ] . self :: SEPARATOR,
@@ -106,7 +108,9 @@ namespace FileSystem
         public function __destruct()
         {
             //- Free memory -//
-            $this -> nodes = null;
+            $this -> basePath   = null;
+            $this -> length     = null;
+            $this -> nodes      = null;            
         }
 
 
@@ -123,7 +127,7 @@ namespace FileSystem
             $this -> nodes[] = $Item;
 
             //- Update count nodes -//
-            $this -> length--;
+            $this -> length++;
         }
 
         /** *** *** *** *** *** *** *** *** *** *** *** *** *** *
