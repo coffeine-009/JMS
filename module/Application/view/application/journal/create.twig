@@ -1,0 +1,29 @@
+<!-- Menu :: Navigation -->
+{%
+    include "navigation" 
+    with
+    { 
+        'label': 'Journal', 
+        'items': [
+            {
+                'uri': '/journal/list', 
+                'label': 'List'
+            }
+        ] 
+    } 
+%}
+
+{# Form :: Add new Journal #}
+<div class = "content">
+    
+    {%
+        include 
+            'application/journal/form' 
+        with 
+        { 
+            value   : value, 
+            error   : error
+        } 
+    %}
+    
+</div>

@@ -1,0 +1,83 @@
+<html>
+    
+    <head>
+        
+        <style>
+            
+            .square
+            {
+                position: fixed;
+                top: 150px;
+                left: 200px;
+                width: 100px;
+                height: 100px;
+                background: #f00;
+            }
+            
+        </style>
+        
+        <script type = "text/javascript">
+            
+            var _square = {
+                top : 150,
+                left : 200, 
+                jumpState: false
+            };
+            
+            window.onload = function()
+            {
+                var square = document.getElementById( "square" );
+                
+                window.addEventListener(
+                    'keypress',
+                    function( Button )
+                    {
+                        switch( Button.keyCode )
+                        {
+                            case Button.DOM_VK_LEFT:
+                            {
+                                square.style.left = (_square.left -= 3) + "px";
+                                console.log('left');
+                            }break;
+                            
+                            case Button.DOM_VK_RIGHT:
+                            {
+                                square.style.left = (_square.left += 3) + "px";
+                                console.log('R');
+                            }break;
+                            
+                            case Button.DOM_VK_UP:
+                            {
+                                var jump = setInterval(
+                                    function(){
+                                        if( !_square.jumpState && _square.top < 70 ) {
+                                            square.style.top = (_square.top += 5) + "px";
+                                        } else if( _square.top > 0 ) {
+                                            _square.jumpState = true;
+                                            square.style.top = (_square.top -= 5) + "px";
+                                        } else {
+                                            clearInterval( jump );
+                                        }
+                                        //console.log('UP');
+                                    }, 
+                                    100
+                                );
+                            }break;
+                        }                  
+                    }
+                );
+            };
+            
+        </script>
+        
+    </head>
+    
+    <body>
+        
+        <div id = "square" class = "square">
+            
+        </div>
+        
+    </body>
+    
+</html>

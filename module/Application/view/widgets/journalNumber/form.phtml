@@ -1,0 +1,21 @@
+<form action = "<?= $this -> action; ?>" method = "post" enctype = "multipart/form-data">
+
+	<div class = "field">
+		<label><?= $this -> translate( 'Volume' ); ?>:</label>
+		<div>
+			<input type = "text" name = "volume" value = "<?= $this -> data[ 'volume' ]; ?>" />
+		</div>
+		<span><?= implode( '<br />', $this -> errors[ 'volume' ] ) ?></span>
+	</div>
+	
+	<div class = "field">
+		<label><?= $this -> translate( 'Issue' ); ?>:</label>
+		<div>
+			<input type = "text" name = "issue" value = "<?= $this -> data[ 'issue' ]; ?>" />
+		</div>
+		<span><?= implode( '<br />', $this -> errors[ 'issue' ] ) ?></span>
+	</div>
+			
+	<input type = "submit" value = "Add"/>
+
+</form>

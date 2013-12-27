@@ -1,0 +1,61 @@
+<form action = "<?= $this -> action; ?>" method = "post" enctype = "multipart/form-data">
+
+	<div class = "field">
+		<label><?= $this -> translate( 'ISBN' ); ?>:</label>
+		<div class = "input">
+			<input id = "isbn" type = "text" name = "isbn" value = "<?= $this -> data[ 'isbn' ]; ?>" required = "required" />
+
+            <div class = "error-input">
+                <ul>
+                <?php if( isset($this -> errors[ 'isbn' ]) ): ?>
+                <?php foreach( $this -> errors[ 'isbn' ] as $error ): ?>
+                    <li><?= $error ?></li>
+                <?php endforeach; ?>
+                <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+	</div>
+	
+	<div class = "field">
+		<label><?= $this -> translate( 'Title' ); ?>:</label>
+		<div class = "input">
+			<input type = "text" name = "title" value = "<?= $this -> data[ 'title' ]; ?>" required />
+
+            <div class = "error-input">
+                <ul>
+                <?php if( isset($this -> errors[ 'title' ]) ): ?>
+                <?php foreach( $this -> errors[ 'title' ] as $error ): ?>
+                    <li><?= $error ?></li>
+                <?php endforeach; ?>
+                <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+	</div>
+	
+	<div class = "field">
+		<label><?= $this -> translate( 'Description' ); ?>:</label>
+		<div class = "input">
+			<textarea name = "description" rows="8" cols="40" required><?= $this -> data[ 'description' ]; ?></textarea>
+
+            <div class = "error-input">
+                <ul>
+                <?php if( isset($this -> errors[ 'description' ]) ): ?>
+                <?php foreach( $this -> errors[ 'description' ] as $error ): ?>
+                    <li><?= $error ?></li>
+                <?php endforeach; ?>
+                <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+	</div>	
+
+	<div class = "field">
+		<label></label>
+		<div>
+			<input type = "submit" value = "Add"/>
+		</div>
+	</div>
+
+</form>

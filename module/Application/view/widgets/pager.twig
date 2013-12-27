@@ -1,0 +1,26 @@
+<!-- Pages -->
+<div class = "pager">
+    <!-- Button :: Prev -->
+    {% if prev.active %}
+        <a href = "{{ prev.url }}">{{ translate( prev.label ) | raw }}</a>
+    {% else %}
+        <span class = "current">{{ translate( prev.label ) | raw }}</span>
+    {% endif %}
+
+    <!-- Buttons :: Pages -->
+    {% for page in pages %}
+        {% if page.active %}
+            <span class = "current">{{ translate( page.label ) | raw }}</span>
+        {% else %}
+            <a href = "{{ page.url }}">{{ translate( page.label ) | raw }}</a>
+        {% endif %}
+    {% endfor %}
+
+    <!-- Button :: Prev -->
+    {% if next.active %}
+        <a href = "{{ next.url }}">{{ translate( next.label ) | raw }}</a>
+    {% else %}
+        <span class = "current">{{ translate( next.label ) | raw }}</span>
+    {% endif %}
+
+</div>

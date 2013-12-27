@@ -1,0 +1,83 @@
+<div class = "form">
+
+    <form action = "/journal/create" method = "post" enctype = "multipart/form-data">
+        
+        <!-- Image -->
+        <div class = "form-field {% if error.issn | length > 0 %} form-field-input-error {% endif %}">
+            <label>{{ translate( 'Logotip' ) }}:</label>
+            <div class = "form-field-input">
+                <input type = "file" name = "logotip" placeholder = "{{ translate( 'ISSN' ) }}">
+                <div class = "form-field-input-messages">
+                {% if error.issn %}
+                <ul>
+                    {% for error in error.issn %}
+                    <li>{{ error | raw }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+        
+        <!-- ISSN -->
+        <div class = "form-field {% if error.issn | length > 0 %} form-field-input-error {% endif %}">
+            <label>{{ translate( 'ISSN' ) }}:</label>
+            <div class = "form-field-input">
+                <input type = "text" name = "issn" value = "{{ value.issn }}" placeholder = "{{ translate( 'ISSN' ) }}">
+                <div class = "form-field-input-messages">
+                {% if error.issn %}
+                <ul>
+                    {% for error in error.issn %}
+                    <li>{{ error | raw }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <div class = "form-field {% if error.title | length > 0 %} form-field-input-error {% endif %}">
+            <label>{{ translate( 'Title' ) }}:</label>
+            <div class = "form-field-input">
+                <input type = "text" name = "title" value = "{{ value.title }}" placeholder = "{{ translate( 'Title' ) }}">
+                <div class = "form-field-input-messages">
+                {% if error.title %}
+                <ul>
+                    {% for error in error.title %}
+                    <li>{{ error | raw }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class = "form-field {% if error.description | length > 0 %} form-field-input-error {% endif %}">
+            <label>{{ translate( 'Description' ) }}:</label>
+            <div class = "form-field-input">
+                <textarea type = "text" name = "description" placeholder = "{{ translate( 'Description' ) }}">{{ value.description }}</textarea>
+                <div class = "form-field-input-messages">
+                {% if error.description %}
+                <ul>
+                    {% for error in error.description %}
+                    <li>{{ error | raw }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <!-- Submit -->
+        <div class = "form-field">
+            <label></label>
+            <div class = "form-field-input">
+                <input type = "submit" value = "{{ translate( 'Create' ) }}">
+            </div>
+        </div>
+
+    </form>
+
+</div>

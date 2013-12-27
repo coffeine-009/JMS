@@ -1,0 +1,90 @@
+<!-- Menu :: Navigation -->
+{%
+    include "navigation" 
+    with
+    { 
+        'label': 'Journal', 
+        'items': [
+            {
+                'uri': '/journal/list', 
+                'label': 'List'
+            }, 
+            {
+                'uri': '/journal/create', 
+                'label': 'Create'
+            }, 
+            {
+                'uri': '/journal/update', 
+                'label': 'Update'
+            }, 
+            {
+                'uri': '/journal/delete', 
+                'label': 'Delete'
+            }
+        ] 
+    } 
+%}
+
+<div class = "journal">
+	<!--/data/journals/{{ journal.id }}/photo/cover.jpg-->
+	<!-- Logotip(First page) -->
+	<img src = "/img/Moto.jpg" 
+		width = "240" 
+		align = "left" 
+	/>
+	
+	<!-- Info -->
+	<div class = "info">
+	
+		<!-- Title -->
+		<div class = "title">
+			{{ journal.JournalLanguage.title | raw }}
+		</div>
+		
+		<!-- ISSN -->
+		<div class = "isbn">
+			{{ journal.isbn | raw }}
+		</div>
+		
+		<!-- Time of create -->
+		<div class = "creation">
+			{{ journal.creation | raw }}
+		</div>
+		
+		<!-- Description -->
+		<div class = "description">
+			{{ journal.JournalLanguage.description | raw }}
+		</div>
+	
+	</div>
+	
+	<!-- Numbers of journal -->
+	<div class = "numbers">
+		<label>
+			<a href = "/journal/{{ journal.id }}/numbers">
+				{{ translate( 'Numbers' ) | raw }}
+			</a>:
+		</label>
+		{% for number in journal.JournalNumber %}
+		<div class = "number">
+		
+			<div class = "volume">
+				{{ translate( 'Volume' ) | raw }}: {{ number.volume | raw }}
+			</div>
+			<div class = "issue">
+				<a href = "/journal/{{ journal.id }}/number/{{ number.id | raw }}">
+					{{ translate( 'Issue' ) | raw }}: {{ number.issue | raw }}
+				</a>
+			</div>
+		
+		</div>
+		{% endfor %}
+	
+	</div>
+		
+</div>
+
+<!-- Pages -->
+<!--<div class = "pager">
+	<?= $this -> pages; ?>
+</div>-->
